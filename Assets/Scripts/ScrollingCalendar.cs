@@ -25,6 +25,7 @@ using UnityEngine.UI;
         UIVerticalScroller code3VerticalScroller;
 
         public Text codeText;
+        public Text taskText;
 
         private string[] code1Names = new string[]{"print.","debug.","set"};
         private string[] code2Names = new string[]{"{Hello world}","Hello World","(Hello World)"};
@@ -99,7 +100,7 @@ using UnityEngine.UI;
         }
 
         // Use this for initialization
-        public void Awake()
+        private void Awake()
         {
             InitializeCode1();
             InistializeCode2();
@@ -115,7 +116,7 @@ using UnityEngine.UI;
             code3VerticalScroller.Start();
         }
 
-        void Update()
+        private void Update()
         {
             code1VerticalScroller.Update();
             code2VerticalScroller.Update();
@@ -128,32 +129,38 @@ using UnityEngine.UI;
             codeText.text = code1String + "" + code2tring + "" + code3tring;
         }
 
-        public void code3ScrollUp()
+        public void Run(){
+            if(codeText.text == taskText.text){
+                Debug.Log("WIN!");
+            }
+        }
+
+        private void code3ScrollUp()
         {
             code3VerticalScroller.ScrollUp();
         }
 
-        public void code3ScrollDown()
+        private void code3ScrollDown()
         {
             code3VerticalScroller.ScrollDown();
         }
 
-        public void code2ScrollUp()
+        private void code2ScrollUp()
         {
             code2VerticalScroller.ScrollUp();
         }
 
-        public void code2ScrollDown()
+        private void code2ScrollDown()
         {
             code2VerticalScroller.ScrollDown();
         }
 
-        public void YearsScrollUp()
+        private void YearsScrollUp()
         {
             code1VerticalScroller.ScrollUp();
         }
 
-        public void YearsScrollDown()
+        private void YearsScrollDown()
         {
             code1VerticalScroller.ScrollDown();
         }

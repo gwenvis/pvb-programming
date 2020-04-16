@@ -1,8 +1,6 @@
-﻿/// Credit Mrs. YakaYocha 
-/// Sourced from - https://www.youtube.com/channel/UCHp8LZ_0-iCvl-5pjHATsgw
-/// Please donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RJ8D9FRFQF9VS
-
+﻿
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 namespace UnityEngine.UI.Extensions
 {
@@ -153,7 +151,7 @@ namespace UnityEngine.UI.Extensions
 
         private void ScrollingElements(float position)
         {
-            float newY = Mathf.Lerp(_scrollingPanel.anchoredPosition.y, position, Time.deltaTime * 1f);
+            float newY = Mathf.Lerp(_scrollingPanel.anchoredPosition.y, position, Time.deltaTime * 9f);
             Vector2 newPosition = new Vector2(_scrollingPanel.anchoredPosition.x, newY);
             _scrollingPanel.anchoredPosition = newPosition;
         }
