@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checking out project 👀
+      uses: actions/checkout@v2
+      
+    - name: Activating Cache 📝
+      uses: actions/cache@v1.1.0
+      with:
+        path: Library
+        key: Library-pvb-programming-StandaloneWindows
+        restore-keys: |
+          Library-pvb-programming-
+          Library-
+    
+    - name: Build Unity Project 👾
+      uses: webbertakken/unity-builder@v0.12
+      env:
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      with:
+        # Version of unity to use for building the project.
+        unityVersion: 2019.3.7f1
+        # Platform that the build should target.
+        targetPlatform: StandaloneWindows
+        # Relative path to the project to be built.
+        projectPath: .
+      
+    - name: Uploading 🤷‍
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Build
+        path: build
