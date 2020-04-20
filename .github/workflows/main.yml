@@ -14,12 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Unity - Activate
-      uses: webbertakken/unity-activate@v1.2
-      with:
-        unityVersion: 2019.3.7f1
-        
+
     - name: Unity - Builder
       uses: webbertakken/unity-builder@v0.12
       env:
