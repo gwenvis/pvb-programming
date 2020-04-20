@@ -16,7 +16,8 @@ jobs:
     - name: Checking out project 👀
       uses: actions/checkout@v2
       
-    - uses: actions/cache@v1.1.0
+    - name: Activating Cache 📝
+      uses: actions/cache@v1.1.0
       with:
         path: Library
         key: Library-pvb-programming-StandaloneWindows
@@ -36,7 +37,7 @@ jobs:
         # Relative path to the project to be built.
         projectPath: .
       
-    - name: Uploading...
+    - name: Uploading 🤷‍
       uses: actions/upload-artifact@v1.0.0
       with:
         name: Build
