@@ -24,13 +24,16 @@ using UnityEngine.UI;
         UIVerticalScroller code2VerticalScroller;
         UIVerticalScroller code3VerticalScroller;
 
+        [SerializeField]
+        private GameObject container;
+        private int numb = 4;
+
         public Text codeText;
         public Text taskText;
 
         private string[] code1Names = new string[]{"print.","debug.","set"};
         private string[] code2Names = new string[]{"{Hello world}","Hello World","(Hello World)"};
         private string[] code3Names = new string[]{":",";","."};
-
 
         private void InitializeCode1()
         {
@@ -102,6 +105,8 @@ using UnityEngine.UI;
         // Use this for initialization
         private void Awake()
         {
+            SetCodeLength();
+
             InitializeCode1();
             InistializeCode2();
             InitializeCode3();
@@ -133,6 +138,12 @@ using UnityEngine.UI;
             if(codeText.text == taskText.text){
                 Debug.Log("WIN!");
             }
+        }
+
+        private void SetCodeLength(){
+            float width = container.GetComponent<RectTransform>().rect.width;
+            Vector2 newSize = new Vector2((width - (numb * 40)) / numb, 200);
+            container.GetComponent<GridLayoutGroup>().cellSize = newSize;
         }
 
         private void code3ScrollUp()
