@@ -13,21 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checking out project 👀
+      uses: actions/checkout@v2
     
-    - name: Unity - Activate
-      uses: webbertakken/unity-activate@v1.2
-      with:
-        unityVersion: 2019.3.7f1
-      env:
-        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-    
-    - name: Unity - Builder
+    - name: Build Unity Project 👾
       uses: webbertakken/unity-builder@v0.12
       env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }} 
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       with:
         # Version of unity to use for building the project.
         unityVersion: 2019.3.7f1
@@ -36,7 +28,7 @@ jobs:
         # Relative path to the project to be built.
         projectPath: .
       
-    - name: Upload artifact
+    - name: Uploading...
       uses: actions/upload-artifact@v1.0.0
       with:
         name: Build
