@@ -15,6 +15,14 @@ jobs:
     steps:
     - name: Checking out project 👀
       uses: actions/checkout@v2
+      
+    - uses: actions/cache@v1.1.0
+      with:
+        path: Library
+        key: Library-pvb-programming-StandaloneWindows
+        restore-keys: |
+          Library-pvb-programming-
+          Library-
     
     - name: Build Unity Project 👾
       uses: webbertakken/unity-builder@v0.12
