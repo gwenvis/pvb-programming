@@ -25,7 +25,7 @@ public class player : MonoBehaviour
 
     private IEnumerator Go()
     {
-        rectTransform.anchoredPosition = Vector3.Lerp(startpos, endpos, 3);
+       // rectTransform.anchoredPosition = Vector3.Lerp(startpos, endpos, 3);
         yield return null;
     }
 }
