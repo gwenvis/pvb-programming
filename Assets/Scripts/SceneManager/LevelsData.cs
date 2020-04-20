@@ -9,6 +9,6 @@ namespace DN.SceneManagement.Data
     {
         public Level[] Levels => levels;
 
-        [SerializeField] private Level[] levels;
+        [SerializeField]private Level[] levels;
     }
 }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace DN.SceneManagement.Data
 {
+    [System.Serializable]
     public class Level
     {
-        private string LevelName => levelName;
-        private string SevelName => sceneName;
+        public string LevelName => levelName;
+        public string SceneName => sceneName;
 
         [SerializeField]private string levelName;
         [SerializeField]private string sceneName;
