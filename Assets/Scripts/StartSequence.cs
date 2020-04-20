@@ -12,6 +12,8 @@ public class StartSequence : MonoBehaviour
     string SecondPick;
     string ThirdPick;
 
+    public GameObject gameObj;
+
     void Start()
     {
         GameObject itemSlot0 = GameObject.Find("ItemSlot0");
@@ -38,7 +40,7 @@ public class StartSequence : MonoBehaviour
         }
     }
 
-    void displaysequence()
+    public void Displaysequence()
     {
         Debug.Log(firstPick + ", " + SecondPick + ", " + ThirdPick);
     }
