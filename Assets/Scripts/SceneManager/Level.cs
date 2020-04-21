@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace DN.SceneManagement.Data
 {
+    /// <summary>
+    /// This is what my data is set.
+    /// </summary>
     [System.Serializable]
     public class Level
     {

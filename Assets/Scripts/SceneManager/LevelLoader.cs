@@ -5,6 +5,9 @@ using DN.SceneManagement.Data;
 
 namespace DN.SceneManagement
 {
+    /// <summary>
+    /// Here i do the actual loading of a scene through the buttons.
+    /// </summary>
     public class LevelLoader : MonoBehaviour
     {
         [SerializeField]private LevelsData levelsData;

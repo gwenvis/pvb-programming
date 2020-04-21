@@ -5,6 +5,10 @@ using DN.SceneManagement.Data;
 
 namespace DN.UI
 {
+    ///<summary>
+    ///In this class i check wich button is the closest to the conter and snap it to that button.
+    ///I also set the sizes of the buttons and the interactivability here.
+    ///<summary>
     public class HorizontalScroller : MonoBehaviour
     {
         [SerializeField] private LevelsData levelsData;
