@@ -31,6 +31,7 @@ namespace DN.UI
                 Button button = (Button)Instantiate(buttonPrefab, parent.transform);
                 button.gameObject.name = "Level" + (i + 1) + "Button";
                 button.GetComponent<Button>().onClick.AddListener(() => { levelLoader.LoadScene(); });
+                button.GetComponentInChildren<Text>().text = levelsData.Levels[i].LevelName;
                 horizontalScroller.btn.Add(button);
             }
         }
