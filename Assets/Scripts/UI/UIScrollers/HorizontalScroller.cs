@@ -65,12 +65,12 @@ namespace DN.UI
                     minBtnNumb = j;
                     currentBtnIndex = j;
                     LerpBetweenButtonsSize(j, maxSize);
-                    SetButtonInteractive(j, true);
+                    SetButtonInteractive(j, !levelsData.Levels[j].IsLocked);
                 }
                 else
                 {
                     LerpBetweenButtonsSize(j, minSize);
-                    SetButtonInteractive(j, false);
+                    SetButtonInteractive(j, !levelsData.Levels[j].IsLocked);
                 }
             }
 
