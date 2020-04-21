@@ -1,102 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DraggableItem : MonoBehaviour
+namespace DN.UI
 {
-    private List<Transform> touchingItemSlots;
-    private Vector2 startPos;
-    private Transform myParent;
-
-    private void Awake()
+    /// <summary>
+    /// This script is used if you want the item to be draggable. When the item is dropped it checks if it is dropped on top of an <see cref="IDroppable"/> object.
+    /// </summary>
+    public class DraggableItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        startPos = transform.position;
-        touchingItemSlots = new List<Transform>();
-    }
+        public Vector2 StartPos => startPos;
+        [SerializeField] private Canvas canvas;
 
-    public void PickUp()
-    {
-        transform.parent = myParent;
-        touchingItemSlots.Clear();
-        transform.localScale = new Vector3(6f, 6f, 6f);
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-    }
+        private CanvasGroup canvasGroup;
+        private RectTransform rectTransform;
 
-    public void Drop()
-    {
-        transform.localScale = new Vector3(5f, 5f, 5f);
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        public event System.Action PickedUpItemEvent;
 
-        Vector2 newPos;
-        if (touchingItemSlots.Count == 0)
+        private Vector2 startPos;
+
+        private void Awake()
         {
-            transform.position = startPos;
-            transform.parent = myParent;
-            return;
+            startPos = transform.position;
+            rectTransform = GetComponent<RectTransform>();
+            canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        var currentItemSlot = touchingItemSlots[0];
-        if(touchingItemSlots.Count == 1)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            newPos = currentItemSlot.position;
+            PickedUpItemEvent?.Invoke();
         }
-        else
-        {
-            var distance = Vector2.Distance(transform.position, touchingItemSlots[0].position);
 
-            foreach(Transform itemSlot in touchingItemSlots)
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            canvasGroup.alpha = .5f;
+            canvasGroup.blocksRaycasts = false;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+
+            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, transform.GetComponent<BoxCollider2D>().size * transform.lossyScale / 2, 90, transform.forward);
+            foreach (RaycastHit2D hit in hits)
             {
-                if(Vector2.Distance(transform.position, itemSlot.position) < distance)
-                {
-                    currentItemSlot = itemSlot;
-                    distance = Vector2.Distance(transform.position, itemSlot.position);
-                }
+                hit.transform.GetComponent<IDroppable>()?.Drop(this);
             }
-            newPos = currentItemSlot.position;
         }
-
-        //check if the itemslot is not occupied by another item
-        if(currentItemSlot.childCount != 0)
-        {
-            transform.position = startPos;
-            transform.parent = myParent;
-            return;
-        }
-        else
-        {
-            transform.parent = currentItemSlot;
-            StartCoroutine(SnapIntoPos(transform.position, newPos));
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.GetComponent<ItemSlot>()) return;
-        if (!touchingItemSlots.Contains(other.transform))
-        {
-            touchingItemSlots.Add(other.transform);
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.GetComponent<DraggableItem>()) return;
-        if (touchingItemSlots.Contains(other.transform))
-        {
-            touchingItemSlots.Remove(other.transform);
-        }
-    }
-
-    IEnumerator SnapIntoPos(Vector2 startPos, Vector2 endPos)
-    {
-        float duration = 0.2f;
-        float elapsedTime = 0;
-        while(elapsedTime < duration)
-        {
-            transform.position = Vector2.Lerp(startPos, endPos, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        transform.position = endPos;
     }
 }
