@@ -27,12 +27,15 @@ namespace DN.UI
         {
             int btnLength = btn.Count;
             distance = new float[btnLength];
-
-            btnDistance = (int)Mathf.Abs(btn[1].GetComponent<RectTransform>().anchoredPosition.x - btn[0].GetComponent<RectTransform>().anchoredPosition.x);
         }
 
         private void Update()
         {
+            if (btnDistance != 510)
+            {
+                CalculateDistance();
+            }
+
             for (int i = 0; i < btn.Count; i++)
             {
                 distance[i] = Mathf.Abs(center.transform.position.x - btn[i].transform.position.x);
@@ -71,6 +74,11 @@ namespace DN.UI
         public void EndDrag()
         {
             dragging = false;
+        }
+
+        public void CalculateDistance()
+        {
+            btnDistance = (int)Mathf.Abs(btn[0].GetComponent<RectTransform>().anchoredPosition.x - btn[1].GetComponent<RectTransform>().anchoredPosition.x);
         }
     }
 }

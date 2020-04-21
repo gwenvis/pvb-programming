@@ -23,3 +23,5 @@ MonoBehaviour:
     sceneName: level_4
   - levelName: Level 5
     sceneName: level_5
+  - levelName: Level 6
+    sceneName: level_6
