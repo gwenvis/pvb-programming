@@ -9,11 +9,17 @@ namespace DN.UI
 	/// </summary>
 	public class Lives : MonoBehaviour
 	{
+
+		public int currentLives
+		{
+			get { return hearts.Count; }
+		}
+
 		[SerializeField] private int lives = 3;
-		[SerializeField] private int size = 15;
+		[SerializeField] private float size = 15;
 		private Sprite heart;
-		List<GameObject> hearts;
-		RectTransform canvas;
+		private List<GameObject> hearts;
+		private RectTransform canvas;
 
 		private void Start()
 		{
@@ -28,7 +34,7 @@ namespace DN.UI
 				RectTransform rTransform = g.GetComponent<RectTransform>();
 				g.transform.parent = transform;
 				rTransform.sizeDelta = new Vector2(size, size);
-				rTransform.position = new Vector2(rTransform.rect.width + ((float)size / 4 + rTransform.rect.width) * i, canvas.rect.height - rTransform.rect.height);
+				rTransform.position = new Vector2(rTransform.rect.width + (size / 4 + rTransform.rect.width) * i, canvas.rect.height - rTransform.rect.height);
 				hearts.Add(g);
 			}
 
@@ -45,11 +51,6 @@ namespace DN.UI
 			{
 				Debug.LogError("There are no lives left");
 			}
-		}
-
-		public int GetLives()
-		{
-			return hearts.Count;
 		}
 	}
 }
