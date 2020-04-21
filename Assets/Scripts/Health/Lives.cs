@@ -16,7 +16,7 @@ namespace DN.UI
 		}
 
 		[SerializeField] private int lives = 3;
-		[SerializeField] private float size = 15;
+		[SerializeField] private float size = 0.0015f;
 		private Sprite heart;
 		private List<GameObject> hearts;
 		private RectTransform canvas;
@@ -33,8 +33,8 @@ namespace DN.UI
 				g.AddComponent<Image>().sprite = heart;
 				RectTransform rTransform = g.GetComponent<RectTransform>();
 				g.transform.parent = transform;
-				rTransform.sizeDelta = new Vector2(size, size);
-				rTransform.position = new Vector2(rTransform.rect.width + (size / 4 + rTransform.rect.width) * i, canvas.rect.height - rTransform.rect.height);
+				rTransform.sizeDelta = new Vector2(size * canvas.rect.height, size * canvas.rect.height);
+				rTransform.position = new Vector2(rTransform.rect.width + (size * canvas.rect.width / 4 + rTransform.rect.width ) * i, canvas.rect.height - rTransform.rect.height);
 				hearts.Add(g);
 			}
 

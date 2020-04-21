@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
-  size: 15
+  size: 0.1
 --- !u!114 &1118113326
 MonoBehaviour:
   m_ObjectHideFlags: 0
