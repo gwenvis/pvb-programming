@@ -88,6 +88,11 @@ namespace DN.UI
             panel.anchoredPosition = newPosition;
         }
 
+        private void CalculateDistance()
+        {
+            btnDistance = (int)Mathf.Abs(btn[0].GetComponent<RectTransform>().anchoredPosition.x - btn[1].GetComponent<RectTransform>().anchoredPosition.x);
+        }
+
         private void SetButtonInteractive(int i, bool value)
         {
             currentButton[i].interactable = value;
@@ -96,6 +101,7 @@ namespace DN.UI
         private void LerpBetweenButtonsSize(int i, Vector2 size)
         {
             currentRect[i].sizeDelta = Vector2.Lerp(currentRect[i].sizeDelta, size, Time.deltaTime * LERP_SPEED);
+            Debug.Log(Vector2.Lerp(currentRect[i].sizeDelta, size, Time.deltaTime * LERP_SPEED));
         }
 
         public void StartDrag()
@@ -106,11 +112,6 @@ namespace DN.UI
         public void EndDrag()
         {
             dragging = false;
-        }
-
-        public void CalculateDistance()
-        {
-            btnDistance = (int)Mathf.Abs(btn[0].GetComponent<RectTransform>().anchoredPosition.x - btn[1].GetComponent<RectTransform>().anchoredPosition.x);
         }
     }
 }
