@@ -32,10 +32,16 @@ namespace DN.UI
 				rTransform.position = new Vector2(rTransform.rect.width + (size / 4 + rTransform.rect.width) * i, Screen.height - size);
 				hearts.Add(life);
 			}
-			lives.LifeLostEvent += OnLiveLostEvent;
+			lives.LifeLostEvent += OnLifeLostEvent;
+			lives.AllLifeLost += OnAllLifeLostEvent;
 		}
 
-		private void OnLiveLostEvent(int obj)
+		private void OnAllLifeLostEvent()
+		{
+			lives.LifeLostEvent -= OnLifeLostEvent;
+		}
+
+		private void OnLifeLostEvent(int obj)
 		{
 			Destroy(hearts[hearts.Count - 1]);
 			hearts.RemoveAt(hearts.Count - 1);
@@ -48,7 +54,7 @@ namespace DN.UI
 
 		private void OnDestroy()
 		{
-			lives.LifeLostEvent -= OnLiveLostEvent;
+			lives.LifeLostEvent -= OnLifeLostEvent;
 		}
 	}
 }
