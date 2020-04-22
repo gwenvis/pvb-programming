@@ -13,7 +13,7 @@ namespace DN.UI
 		private Sprite heart;
 		private List<GameObject> hearts;
 		private RectTransform canvas;
-		Lives lives = new Lives();
+		private Lives lives = new Lives();
 
 		private void Start()
 		{
@@ -44,6 +44,11 @@ namespace DN.UI
 		public void LoseLife()
 		{
 			lives.LoseLife();
+		}
+
+		private void OnDestroy()
+		{
+			lives.LifeLostEvent -= OnLiveLostEvent;
 		}
 	}
 }

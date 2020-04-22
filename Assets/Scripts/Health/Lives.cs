@@ -25,11 +25,8 @@ namespace DN.UI
 
 		public void LoseLife()
 		{
-			if (CurrentLives > 0)
-			{
-				CurrentLives--;
-				LifeLostEvent?.Invoke(CurrentLives);
-			}
+			CurrentLives--;
+			LifeLostEvent?.Invoke(CurrentLives);
 
 			if(CurrentLives <= 0)
 			{
