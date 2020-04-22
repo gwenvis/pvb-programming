@@ -12,7 +12,7 @@ namespace DN.Puzzle.Color
 	/// </summary>
 	public class Player : MonoBehaviour
 	{
-		enum State
+		public enum State
 		{ 
 			Idle,
 			Navigating,
@@ -21,6 +21,8 @@ namespace DN.Puzzle.Color
 			Stuck,
 			Done,
 		}
+
+		public static event Action<State> RunFinishedEvent;
 
 		[SerializeField] private Node currentNode;
 		private PlayerPathFinding playerPathFinding;
@@ -46,9 +48,17 @@ namespace DN.Puzzle.Color
 
 		private Line Navigate(ColorCommand colorCommand) => playerPathFinding.FindLine(colorCommand, currentNode);
 
+		private void Update()
+		{
+			if(Input.GetKeyDown(KeyCode.R))
+			{
+				UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+			}
+		}
+
 		private void OnRunCompleted()
 		{
-			Debug.Log($"I AM DONE, ENDED WITH STATE: {currentState}");
+			RunFinishedEvent?.Invoke(currentState);
 		}
 
 		private IEnumerator RunQueue(Action callback)
