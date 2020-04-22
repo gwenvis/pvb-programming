@@ -193,6 +193,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 7936196771790557679, guid: 40b74870444408848b68a46455b78358,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae2d1f6c271e599468c8dc8b1ed060f0,
+        type: 3}
+    - target: {fileID: 7936196771823331548, guid: 40b74870444408848b68a46455b78358,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae2d1f6c271e599468c8dc8b1ed060f0,
+        type: 3}
+    - target: {fileID: 7936196771889371529, guid: 40b74870444408848b68a46455b78358,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae2d1f6c271e599468c8dc8b1ed060f0,
+        type: 3}
+    - target: {fileID: 7936196772904964544, guid: 40b74870444408848b68a46455b78358,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae2d1f6c271e599468c8dc8b1ed060f0,
+        type: 3}
+    - target: {fileID: 9216740607891815558, guid: 40b74870444408848b68a46455b78358,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae2d1f6c271e599468c8dc8b1ed060f0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b74870444408848b68a46455b78358, type: 3}
 --- !u!114 &216445856 stripped
@@ -221,10 +251,6 @@ PrefabInstance:
     - target: {fileID: 1528992671, guid: 48f1cee21bb16214ebfe5c2fe4b5fff1, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528992674, guid: 48f1cee21bb16214ebfe5c2fe4b5fff1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1952207171106991624, guid: 48f1cee21bb16214ebfe5c2fe4b5fff1,
         type: 3}

@@ -79,7 +79,7 @@ namespace DN.Puzzle.Color
 			arrow.transform.position = 
 				endNode.transform.position - 
 				(endNode.transform.position - startingNode.transform.position).normalized * 
-				35.0f;
+				42.0f;
 		}
 
 #if UNITY_EDITOR
