@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DN.SceneManagement.Data;
+using DN.SceneManagement;
 
 namespace DN.UI
 {
@@ -11,7 +12,6 @@ namespace DN.UI
     ///<summary>
     public class HorizontalScroller : MonoBehaviour
     {
-        [SerializeField] private LevelsData levelsData;
 
         public List<Button> btn = new List<Button>();
         public int currentBtnIndex = 0;
@@ -21,11 +21,16 @@ namespace DN.UI
 
         [SerializeField] private GameObject parent;
 
+        [SerializeField] private LevelsData levelsData;
+        [SerializeField] private HorizontalScrollerLevelLoader horizontalScrollerLevelLoader;
+
         private float[] distance;
         private bool dragging = false;
 
         private int btnDistance;
         private int minBtnNumb;
+
+        private bool checkedOnce = false;
 
         private Vector2 minSize = new Vector2(350, 250);
         private Vector2 maxSize = new Vector2(450, 350);
@@ -50,6 +55,16 @@ namespace DN.UI
 
         private void Update()
         {
+            if (!dragging)
+            {
+                LerpToBtn(minBtnNumb * -btnDistance);
+                if (checkedOnce)
+                {
+                    checkedOnce = true;
+                    return;
+                }
+            }
+
             if (btnDistance != ORIGIN_DISTANCE)
             {
                 CalculateDistance();
@@ -76,11 +91,6 @@ namespace DN.UI
                     LerpBetweenButtonsSize(j, minSize);
                     SetButtonInteractive(j, !levelsData.Levels[j].IsLocked);
                 }
-            }
-
-            if (!dragging)
-            {
-                LerpToBtn(minBtnNumb * -btnDistance);
             }
         }
 

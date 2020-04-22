@@ -17,11 +17,11 @@ namespace DN.UI
         [SerializeField] private Button buttonPrefab;
         [SerializeField] private GameObject parent;
 
-        private LevelLoader levelLoader;
+        private HorizontalScrollerLevelLoader levelLoader;
 
         private void Awake()
         {
-            levelLoader = GetComponent<LevelLoader>();
+            levelLoader = GetComponent<HorizontalScrollerLevelLoader>();
             horizontalScroller = GetComponent<HorizontalScroller>();
 
             InitializeButtonSpawn();
@@ -33,10 +33,15 @@ namespace DN.UI
             {
                 Button button = (Button)Instantiate(buttonPrefab, parent.transform);
                 button.gameObject.name = levelsData.Levels[i].LevelName;
-                button.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => { levelLoader.LoadScene(); });
+                button.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(OnClickEvent);
                 button.transform.GetChild(0).GetComponentInChildren<Text>().text = levelsData.Levels[i].LevelName;
                 horizontalScroller.btn.Add(button);
             }
+        }
+
+        private void OnClickEvent()
+        {
+            levelLoader.LoadScene(horizontalScroller.currentBtnIndex);
         }
     }
 }

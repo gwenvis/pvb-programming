@@ -565,8 +565,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -21, y: 0}
+  m_SizeDelta: {x: 278.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431964244
 MonoBehaviour:
@@ -908,12 +908,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d153ffe126d58e499751e115a7659da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelsData: {fileID: 11400000, guid: 09337fb39de07bf469a102e265f44159, type: 2}
   btn: []
   currentBtnIndex: 0
   panel: {fileID: 199461299}
   center: {fileID: 100856698}
   parent: {fileID: 199461298}
+  levelsData: {fileID: 11400000, guid: 09337fb39de07bf469a102e265f44159, type: 2}
+  horizontalScroller: {fileID: 0}
 --- !u!4 &1731658960
 Transform:
   m_ObjectHideFlags: 0
@@ -941,6 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelsData: {fileID: 11400000, guid: 09337fb39de07bf469a102e265f44159, type: 2}
+  currentIndex: 0
 --- !u!114 &1731658962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,7 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelsData: {fileID: 11400000, guid: 09337fb39de07bf469a102e265f44159, type: 2}
-  horizontalScroller: {fileID: 0}
+  horizontalScroller: {fileID: 1731658959}
   buttonPrefab: {fileID: 4393510424363920194, guid: 074fd5a9399d3ec408c114520ceee3dc,
     type: 3}
   parent: {fileID: 199461298}
