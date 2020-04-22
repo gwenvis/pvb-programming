@@ -3,38 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI.Extensions;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class ScrollingCalendar : MonoBehaviour
+public class CodeCollector : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject container;
+    [SerializeField] private GameObject container;
+    [SerializeField] private GameObject codeButtonPrefab;
+
+    [SerializeField] private RectTransform code1ScrollingPanel;
+    [SerializeField] private RectTransform code2ScrollingPanel;
+    [SerializeField] private RectTransform code3ScrollingPanel;
+
+    [SerializeField] private GameObject[] code1Buttons;
+    [SerializeField] private GameObject[] code2Buttons;
+    [SerializeField] private GameObject[] code3Buttons;
+
+    [SerializeField] private RectTransform code1Center;
+    [SerializeField] private RectTransform code2Center;
+    [SerializeField] private RectTransform code3Center;
+
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject loseScreen;
+
+    private UIVerticalScroller code1VerticalScroller;
+    private UIVerticalScroller code2VerticalScroller;
+    private UIVerticalScroller code3VerticalScroller;
+
+    [SerializeField] private Text taskText;
+
     private int codeNumbs = 3;
 
-    public RectTransform code1ScrollingPanel;
-    public RectTransform code2ScrollingPanel;
-    public RectTransform code3ScrollingPanel;
-
-    public GameObject codeButtonPrefab;
-
-    private GameObject[] code1Buttons;
-    private GameObject[] code2Buttons;
-    private GameObject[] code3Buttons;
-
-    public RectTransform code1Center;
-    public RectTransform code2Center;
-    public RectTransform code3Center;
-
-    UIVerticalScroller code1VerticalScroller;
-    UIVerticalScroller code2VerticalScroller;
-    UIVerticalScroller code3VerticalScroller;
-
-    public Text codeText;
-    public Text taskText;
+    private string codeText;
 
     private string[] code1Names = new string[] { "print.", "debug.", "set" };
     private string[] code2Names = new string[] { "{Hello world}", "Hello World", "(Hello World)" };
     private string[] code3Names = new string[] { ":", ";", "." };
+
+    private void InitializeCodes(int codeLength)
+    {
+        for (int i = 0; i < codeLength; i++)
+        {
+
+        }
+    }
 
     private void InitializeCode1()
     {
@@ -125,29 +137,33 @@ public class ScrollingCalendar : MonoBehaviour
         code2VerticalScroller.Update();
         code3VerticalScroller.Update();
 
-        string code3tring = code3VerticalScroller.GetResults();
-        string code2tring = code2VerticalScroller.GetResults();
-        string code1String = code1VerticalScroller.GetResults();
+        string code1 = code1VerticalScroller.GetResults();
+        string code2 = code2VerticalScroller.GetResults();
+        string code3 = code3VerticalScroller.GetResults();
 
-        codeText.text = code1String + "" + code2tring + "" + code3tring;
+        codeText = code1 + code2 + code3;
     }
-
-    public void Run()
-    {
-        if (codeText.text == taskText.text)
-        {
-            Debug.Log("WIN!");
-        }
-        else
-        {
-            Debug.Log("LOSE STUIPID");
-        }
-    }
-
     private void SetCodeLength()
     {
         float width = container.GetComponent<RectTransform>().rect.width;
         Vector2 newSize = new Vector2((width - (codeNumbs * 40)) / codeNumbs, 200);
         container.GetComponent<GridLayoutGroup>().cellSize = newSize;
+    }
+
+    public void Run()
+    {
+        if (codeText == taskText.text.ToString())
+        {
+            winScreen.SetActive(true);
+        }
+        else
+        {
+            loseScreen.SetActive(true);
+        }
+    }
+
+    public void CloseScreen()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
