@@ -35,13 +35,13 @@ namespace DN.UI
                 button.gameObject.name = levelsData.Levels[i].LevelName;
                 button.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(OnClickEvent);
                 button.transform.GetChild(0).GetComponentInChildren<Text>().text = levelsData.Levels[i].LevelName;
-                horizontalScroller.btn.Add(button);
+                horizontalScroller.AddButtons(button);
             }
         }
 
         private void OnClickEvent()
         {
-            levelLoader.LoadScene(horizontalScroller.currentBtnIndex);
+            levelLoader.LoadScene(horizontalScroller.CurrentBtnIndex);
         }
     }
 }

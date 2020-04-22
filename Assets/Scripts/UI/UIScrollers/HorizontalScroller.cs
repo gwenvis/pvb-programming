@@ -12,9 +12,7 @@ namespace DN.UI
     ///<summary>
     public class HorizontalScroller : MonoBehaviour
     {
-
-        public List<Button> btn = new List<Button>();
-        public int currentBtnIndex = 0;
+        public int CurrentBtnIndex => currentBtnIndex;
 
         [SerializeField] private RectTransform panel;
         [SerializeField] private RectTransform center;
@@ -29,6 +27,7 @@ namespace DN.UI
 
         private int btnDistance;
         private int minBtnNumb;
+        private int currentBtnIndex = 0;
 
         private bool checkedOnce = false;
 
@@ -40,6 +39,7 @@ namespace DN.UI
 
         private List<RectTransform> currentRect = new List<RectTransform>();
         private List<Button> currentButton = new List<Button>();
+        private List<Button> btn = new List<Button>();
 
         private void Start()
         {
@@ -126,6 +126,11 @@ namespace DN.UI
         public void EndDrag()
         {
             dragging = false;
+        }
+
+        public void AddButtons(Button buttons)
+        {
+            btn.Add(buttons);
         }
     }
 }
