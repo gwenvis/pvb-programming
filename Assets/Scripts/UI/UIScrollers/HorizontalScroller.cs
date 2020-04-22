@@ -68,7 +68,7 @@ namespace DN.UI
 
             for (int j = 0; j < btn.Count; j++)
             {
-                if (minDistance == distance[j])
+                if (Mathf.Approximately(minDistance, distance[j]))
                 {
                     minBtnNumb = j;
                     currentBtnIndex = j;
