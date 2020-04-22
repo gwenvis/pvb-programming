@@ -16,10 +16,9 @@ namespace DN.UI
             if(currentObj == null)
             {
                 droppedObject.transform.position = transform.position;
-
                 currentObj = droppedObject;
-
                 droppedObject.PickedUpItemEvent += OnPickedUpItemEvent;
+                return;
             }
             else
             {

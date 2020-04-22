@@ -10,14 +10,13 @@ namespace DN.UI
     /// </summary>
     public class DraggableItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
+        public event System.Action PickedUpItemEvent;
+
         public Vector2 StartPos => startPos;
         [SerializeField] private Canvas canvas;
 
         private CanvasGroup canvasGroup;
         private RectTransform rectTransform;
-
-        public event System.Action PickedUpItemEvent;
-
         private Vector2 startPos;
 
         private void Awake()
@@ -49,7 +48,13 @@ namespace DN.UI
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
 
-            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, transform.GetComponent<BoxCollider2D>().size * transform.lossyScale / 2, 90, transform.forward);
+            RaycastHit2D[] hits = Physics2D.BoxCastAll(
+                transform.position, 
+                transform.GetComponent<BoxCollider2D>().size * transform.lossyScale / 2, 
+                90, 
+                transform.forward
+                );
+
             foreach (RaycastHit2D hit in hits)
             {
                 hit.transform.GetComponent<IDroppable>()?.Drop(this);
