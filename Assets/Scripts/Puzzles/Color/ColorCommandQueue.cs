@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DN.Puzzle.Color
 {
@@ -11,7 +12,7 @@ namespace DN.Puzzle.Color
 			this.colorCommands = new Queue<ColorCommand>(colorCommands);
 		}
 
-		public bool Empty => colorCommands.Peek() == null;
+		public bool Empty => !colorCommands.Any();
 
 		public ColorCommand RequestNext() => colorCommands.Dequeue();
 	}

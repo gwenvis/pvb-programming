@@ -9,8 +9,10 @@ namespace DN.Puzzle.Color
 	public class Node : MonoBehaviour
 	{
 		public IEnumerable<Line> ConnectedLines => connectedLines;
+		public bool IsFinish => isFinish;
 
 		[SerializeField] private List<Line> connectedLines;
+		[SerializeField] private bool isFinish;
 
 #if UNITY_EDITOR
 		public void ConnectLine(Line line)

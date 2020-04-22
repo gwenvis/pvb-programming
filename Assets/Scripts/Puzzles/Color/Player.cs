@@ -22,7 +22,7 @@ namespace DN.Puzzle.Color
 			Done,
 		}
 
-		private Node currentNode;
+		[SerializeField] private Node currentNode;
 		private PlayerPathFinding playerPathFinding;
 		private ColorPuzzleSettings colorPuzzleSettings;
 		private ICommandQueue<ColorCommand> commandQueue;
@@ -53,7 +53,7 @@ namespace DN.Puzzle.Color
 
 		private IEnumerator RunQueue(Action callback)
 		{
-			ColorCommand colorCommand = commandQueue.RequestNext();
+			ColorCommand colorCommand;
 			Line currentLine = null;
 
 			bool running = true;
@@ -66,14 +66,20 @@ namespace DN.Puzzle.Color
 						currentState = State.Navigating;
 						break;
 					case State.Navigating:
+						colorCommand = commandQueue.RequestNext();
 						currentLine = Navigate(colorCommand);
 						currentState = currentLine == null ? State.Stuck : State.Moving;
 						break;
 					case State.Moving:
-						yield return Moving(currentLine);
+						Node endNode = currentNode == currentLine.StartingNode ? currentLine.EndNode : currentLine.StartingNode;
+						yield return Moving(currentLine, endNode);
+						currentNode = endNode;
+						currentState = currentNode.IsFinish ? State.Done : State.Waiting;
 						break;
 					case State.Waiting:
 						yield return new WaitForSeconds(colorPuzzleSettings.DestinationTimeout);
+						currentLine = null;
+						currentState = State.Navigating;
 						break;
 					case State.Stuck:
 						running = false;
@@ -85,7 +91,7 @@ namespace DN.Puzzle.Color
 						break;
 				}
 
-				if (commandQueue.Empty)
+				if (commandQueue.Empty && currentLine == null)
 				{
 					break;
 				}
@@ -96,9 +102,9 @@ namespace DN.Puzzle.Color
 			callback?.Invoke();
 		}
 
-		private IEnumerator Moving(Line line)
+		private IEnumerator Moving(Line line, Node endNode)
 		{
-			Node endNode = currentNode == line.StartingNode ? line.EndNode : line.StartingNode;
+			;
 			bool moving = true;
 			while (moving)
 			{
@@ -111,7 +117,7 @@ namespace DN.Puzzle.Color
 				transform.position = nextPosition;
 
 				float distance = Vector3.Distance(transform.position, endNode.transform.position);
-				if (Mathf.Approximately(distance, 0))
+				if (distance < 0.001f)
 				{
 					moving = false;
 				}

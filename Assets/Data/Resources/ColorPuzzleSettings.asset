@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572335577b4c4024cb87a628be0b1758, type: 3}
   m_Name: ColorPuzzleSettings
   m_EditorClassIdentifier: 
-  playerSpeed: 10
+  playerSpeed: 150
   destinationTimeout: 0.5
   colorSettings:
   - lineColor: 0
-    color: {r: 1, g: 0, b: 0, a: 1}
+    color: {r: 0.9725491, g: 0.6627451, b: 0.7254902, a: 1}
   - lineColor: 1
-    color: {r: 0.93431926, g: 1, b: 0, a: 1}
+    color: {r: 0.9921569, g: 0.86274517, b: 0.50980395, a: 1}
   - lineColor: 2
-    color: {r: 0, g: 1, b: 0.10012627, a: 1}
+    color: {r: 0.9921569, g: 0.86274517, b: 0.50980395, a: 1}
   - lineColor: 3
-    color: {r: 0, g: 0.43849897, b: 1, a: 1}
+    color: {r: 0.5647059, g: 0.72156864, b: 0.8313726, a: 1}
