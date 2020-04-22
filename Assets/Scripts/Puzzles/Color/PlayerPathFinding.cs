@@ -2,6 +2,9 @@
 
 namespace DN.Puzzle.Color
 {
+	/// <summary>
+	/// This is path finding
+	/// </summary>
 	public class PlayerPathFinding : MonoBehaviour
 	{ 
 		/// <summary>

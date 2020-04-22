@@ -2,6 +2,9 @@
 
 namespace DN.Puzzle.Color
 {
+	/// <summary>
+	/// This object holds all settings that are used within the color puzzle
+	/// </summary>
 	public class ColorPuzzleSettings : ScriptableObject
 	{
 		[System.Serializable]

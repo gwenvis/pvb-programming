@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 namespace DN.Puzzle.Color
 {
+	/// <summary>
+	/// The line holds information of the starting node and end node.
+	/// On start it will rotate to the correct point, and also add an arrow if needed.
+	/// </summary>
 	public class Line : MonoBehaviour
 	{
 		public LineColor LineColor => lineColor;

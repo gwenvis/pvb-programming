@@ -3,7 +3,7 @@
 namespace DN.Puzzle.Color.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// The run button starts the queue when the button is pressed.
 	/// </summary>
 	public class RunButton : MonoBehaviour
 	{

@@ -6,7 +6,8 @@ using UnityEngine;
 namespace DN.Puzzle.Color
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// This dropzone sets the parent of the dropped object as the current one, 
+	/// and properly resets it once it's removed
 	/// </summary>
 	public class ColorCommandDropzone : MonoBehaviour, IDroppable
 	{
