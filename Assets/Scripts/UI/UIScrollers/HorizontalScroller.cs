@@ -29,8 +29,6 @@ namespace DN.UI
         private int minBtnNumb;
         private int currentBtnIndex = 0;
 
-        private bool checkedOnce = false;
-
         private Vector2 minSize = new Vector2(150, 150);
         private Vector2 maxSize = new Vector2(250, 250);
 
@@ -58,23 +56,14 @@ namespace DN.UI
             if (!dragging)
             {
                 LerpToBtn(minBtnNumb * -btnDistance);
-                if (checkedOnce)
-                {
-                    checkedOnce = true;
-                    return;
-                }
             }
 
-            if (btnDistance != ORIGIN_DISTANCE)
-            {
-                CalculateDistance();
-            }
+            CheckDistanceCenterToButton();
+            AnimateButtons();
+        }
 
-            for (int i = 0; i < btn.Count; i++)
-            {
-                distance[i] = Mathf.Abs(center.transform.position.x - btn[i].transform.position.x);
-            }
-
+        private void AnimateButtons()
+        {
             float minDistance = Mathf.Min(distance);
 
             for (int j = 0; j < btn.Count; j++)
@@ -91,6 +80,19 @@ namespace DN.UI
                     LerpBetweenButtonsSize(j, minSize);
                     SetButtonInteractive(j, !levelsData.Levels[j].IsLocked);
                 }
+            }
+        }
+
+        private void CheckDistanceCenterToButton()
+        {
+            if (btnDistance != ORIGIN_DISTANCE)
+            {
+                CalculateDistance();
+            }
+
+            for (int i = 0; i < btn.Count; i++)
+            {
+                distance[i] = Mathf.Abs(center.transform.position.x - btn[i].transform.position.x);
             }
         }
 
@@ -115,7 +117,6 @@ namespace DN.UI
         private void LerpBetweenButtonsSize(int i, Vector2 size)
         {
             currentRect[i].sizeDelta = Vector2.Lerp(currentRect[i].sizeDelta, size, Time.deltaTime * LERP_SPEED);
-            Debug.Log(Vector2.Lerp(currentRect[i].sizeDelta, size, Time.deltaTime * LERP_SPEED));
         }
 
         public void StartDrag()
