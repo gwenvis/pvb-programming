@@ -376,7 +376,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 350}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &199461301
 CanvasRenderer:
@@ -406,8 +406,8 @@ MonoBehaviour:
   m_ChildAlignment: 3
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 450, y: 350}
-  m_Spacing: {x: 60, y: 0}
+  m_CellSize: {x: 250, y: 250}
+  m_Spacing: {x: 30, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!1 &344445922
@@ -914,7 +914,7 @@ MonoBehaviour:
   center: {fileID: 100856698}
   parent: {fileID: 199461298}
   levelsData: {fileID: 11400000, guid: 09337fb39de07bf469a102e265f44159, type: 2}
-  horizontalScroller: {fileID: 0}
+  horizontalScrollerLevelLoader: {fileID: 0}
 --- !u!4 &1731658960
 Transform:
   m_ObjectHideFlags: 0
@@ -942,7 +942,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelsData: {fileID: 11400000, guid: 09337fb39de07bf469a102e265f44159, type: 2}
-  currentIndex: 0
 --- !u!114 &1731658962
 MonoBehaviour:
   m_ObjectHideFlags: 0

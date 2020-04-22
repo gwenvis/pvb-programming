@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: LevelsData
   m_EditorClassIdentifier: 
   levels:
-  - levelName: Level 1
+  - levelName: 1
     sceneName: level_1
     isLocked: 0
-  - levelName: Level 2
+  - levelName: 2
     sceneName: level_2
     isLocked: 1
-  - levelName: Level 3
+  - levelName: 3
     sceneName: level_3
     isLocked: 1
-  - levelName: Level 4
+  - levelName: 4
     sceneName: level_4
     isLocked: 1
-  - levelName: Level 5
+  - levelName: 5
     sceneName: level_5
     isLocked: 1
-  - levelName: Level 6
+  - levelName: 6
     sceneName: level_6
     isLocked: 1

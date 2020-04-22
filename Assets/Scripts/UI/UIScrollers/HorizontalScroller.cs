@@ -32,8 +32,8 @@ namespace DN.UI
 
         private bool checkedOnce = false;
 
-        private Vector2 minSize = new Vector2(350, 250);
-        private Vector2 maxSize = new Vector2(450, 350);
+        private Vector2 minSize = new Vector2(150, 150);
+        private Vector2 maxSize = new Vector2(250, 250);
 
         private const int ORIGIN_DISTANCE = 510;
         private const float LERP_SPEED = 10f;
