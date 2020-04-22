@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 namespace DN.UI
 {
@@ -9,11 +8,8 @@ namespace DN.UI
     /// </summary>
     public static class InputManager
     {
-
         public static bool HasInput => Input.GetMouseButton(0);
 
-        public static Vector2 CurrentTouchPos => Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        
+        public static Vector2 CurrentTouchPos => Camera.main.ScreenToWorldPoint(Input.mousePosition);   
     }
 }
