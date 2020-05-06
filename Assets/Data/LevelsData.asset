@@ -22,12 +22,3 @@ MonoBehaviour:
   - levelName: 3
     sceneName: level_3
     isLocked: 1
-  - levelName: 4
-    sceneName: level_4
-    isLocked: 1
-  - levelName: 5
-    sceneName: level_5
-    isLocked: 1
-  - levelName: 6
-    sceneName: level_6
-    isLocked: 1
