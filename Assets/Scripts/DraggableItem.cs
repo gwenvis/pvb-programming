@@ -9,13 +9,13 @@ namespace DN.UI
     /// This script is used if you want the item to be draggable. When the item is dropped it checks if it is dropped on top of an <see cref="IDroppable"/> object.
     /// </summary>
     public class DraggableItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
-    {
+	{
         public event System.Action PickedUpItemEvent;
 
         public Vector2 StartPos => startPos;
         [SerializeField] private Canvas canvas;
 
-        private CanvasGroup canvasGroup;
+        protected CanvasGroup canvasGroup;
         private RectTransform rectTransform;
         private Vector2 startPos;
 
@@ -26,10 +26,10 @@ namespace DN.UI
             canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+		public void OnPointerDown(PointerEventData eventData)
         {
             PickedUpItemEvent?.Invoke();
-        }
+		}
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -40,25 +40,32 @@ namespace DN.UI
         public void OnDrag(PointerEventData eventData)
         {
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+		}
 
-        }
+		protected RaycastHit2D[] GetBoxCastHits()
+		{
+			return Physics2D.BoxCastAll(
+				transform.position,
+				transform.GetComponent<BoxCollider2D>().size * transform.lossyScale / 2,
+				90,
+				transform.forward
+				);
+		}
 
-        public void OnEndDrag(PointerEventData eventData)
+        public virtual void OnEndDrag(PointerEventData eventData)
         {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
 
-            RaycastHit2D[] hits = Physics2D.BoxCastAll(
-                transform.position, 
-                transform.GetComponent<BoxCollider2D>().size * transform.lossyScale / 2, 
-                90, 
-                transform.forward
-                );
-
-            foreach (RaycastHit2D hit in hits)
+			foreach (RaycastHit2D hit in GetBoxCastHits())
             {
                 hit.transform.GetComponent<IDroppable>()?.Drop(this);
             }
         }
+
+		public void SetCanvas(Canvas newCanvas)
+		{
+			canvas = newCanvas;
+		}
     }
 }
