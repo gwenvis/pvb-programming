@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using DN.UI;
 using DN.SceneManagement.Data;
 
-namespace DN.SceneManagement
+namespace DN.Levelselect.SceneManagment
 {
     /// <summary>
     /// Here i do the actual loading of a scene through the buttons.
@@ -18,7 +17,7 @@ namespace DN.SceneManagement
         {
             for (int i = 0; i < levelsData.Levels.Length; i++)
             {
-                if (levelsData.Levels[i].SceneName == levelName)
+                if (levelsData.Levels[i].SceneName == levelName && !levelsData.Levels[i].IsLocked)
                 {
                     SceneManager.LoadScene(levelName, LoadSceneMode.Single);
                 }

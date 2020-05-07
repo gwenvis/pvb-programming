@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace DN.Levelselect.CameraMovement
 {
+    /// <summary>
+    /// Here i make the camera move with the car.
+    /// </summary>
     public class VehicleCamera : MonoBehaviour
     {
 

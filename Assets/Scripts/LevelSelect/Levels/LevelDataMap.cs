@@ -3,7 +3,7 @@
 namespace DN.Levelselect.LevelData
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// I store the Level that the object chose in here so i can ask for it through the other scripts
 	/// </summary>
 	public class LevelDataMap : MonoBehaviour
 	{

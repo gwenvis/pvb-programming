@@ -1,12 +1,12 @@
 ﻿using DN.Levelselect.LevelData;
-using DN.SceneManagement;
+using DN.Levelselect.SceneManagment;
 using DN.SceneManagement.Data;
 using UnityEngine;
 
-namespace DN
+namespace DN.Levelselect.Player
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Here i check for collision with the car and the Level Pads and the input for entering the level
 	/// </summary>
 	public class OnLevelCollide : MonoBehaviour
 	{

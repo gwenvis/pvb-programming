@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace DN.Levelselect.PhysicsObjects
 {
+    /// <summary>
+    /// This script can be applied on an object to make it handle the physiscs collision with the car so it can move around or be bumped into with a fun effect.
+    /// </summary>
     public class PhysicsObject : MonoBehaviour
     {
         void Awake()
