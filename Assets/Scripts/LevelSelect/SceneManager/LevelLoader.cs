@@ -12,6 +12,8 @@ namespace DN.SceneManagement
     {
         [SerializeField] private LevelsData levelsData;
 
+        private const string LEVEL_SELECT_NAME = "LevelSelect";
+
         public void LoadScene(string levelName)
         {
             for (int i = 0; i < levelsData.Levels.Length; i++)
@@ -25,6 +27,11 @@ namespace DN.SceneManagement
                     Debug.Log("Error mismatch scenes");
                 }
             }
+        }
+
+        public void LoadLevelSelect()
+        {
+            SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }
     }
 }
