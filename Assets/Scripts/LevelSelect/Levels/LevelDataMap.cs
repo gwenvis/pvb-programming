@@ -7,8 +7,8 @@ namespace DN.Levelselect.LevelData
 	/// </summary>
 	public class LevelDataMap : MonoBehaviour
 	{
-		public enum Level { none, level_1, level_2, level_3};
+		public enum Level { None, Level1, Level2, Level3 };
 
-		public Level level = Level.none;
+		public Level level = Level.None;
 	}
 }

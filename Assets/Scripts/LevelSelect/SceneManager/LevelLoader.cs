@@ -17,7 +17,7 @@ namespace DN.Levelselect.SceneManagment
         {
             for (int i = 0; i < levelsData.Levels.Length; i++)
             {
-                if (levelsData.Levels[i].SceneName == levelName && !levelsData.Levels[i].IsLocked)
+                if (levelsData.Levels[i].LevelName == levelName && !levelsData.Levels[i].IsLocked)
                 {
                     SceneManager.LoadScene(levelName, LoadSceneMode.Single);
                 }
