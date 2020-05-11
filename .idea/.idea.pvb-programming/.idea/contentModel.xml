@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Stepe\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Stepe\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_pvb-programming.-1137947822.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Stepe\pvb-programming" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Button" t="Include">
+            <e p="RunButton.cs" t="Include" />
+          </e>
+          <e p="Context" t="Include">
+            <e p="Editor" t="Include">
+              <e p="CreateCSharpClass.cs" t="Include" />
+              <e p="CreateScriptableObject.cs" t="Include" />
+              <e p="Templates" t="Include">
+                <e p="CSharpBehaviourTemplate.cs.txt" t="Include" />
+                <e p="CSharpClassTemplate.cs.txt" t="Include" />
+                <e p="CSharpInterfaceTemplate.cs.txt" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="DraggableItem.cs" t="Include" />
+          <e p="Health" t="Include">
+            <e p="Lives.cs" t="Include" />
+            <e p="LivesUI.cs" t="Include" />
+          </e>
+          <e p="IDroppable.cs" t="Include" />
+          <e p="InputManager.cs" t="Include" />
+          <e p="ItemDropZone.cs" t="Include" />
+          <e p="Puzzles" t="Include">
+            <e p="Color" t="Include">
+              <e p="ColorCommand.cs" t="Include" />
+              <e p="ColorCommandQueue.cs" t="Include" />
+              <e p="ColorPuzzleSettings.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="ColorPuzzleEditorWindow.cs" t="Include" />
+                <e p="InteractiveEditor.cs" t="Include" />
+              </e>
+              <e p="ICommandQueue.cs" t="Include" />
+              <e p="Line.cs" t="Include" />
+              <e p="LineColor.cs" t="Include" />
+              <e p="LineData.cs" t="Include" />
+              <e p="Node.cs" t="Include" />
+              <e p="NodeData.cs" t="Include" />
+              <e p="Player.cs" t="Include" />
+              <e p="PlayerPathFinding.cs" t="Include" />
+              <e p="UI" t="Include">
+                <e p="ColorCommandDropzone.cs" t="Include" />
+                <e p="FinishUI.cs" t="Include" />
+                <e p="RunButton.cs" t="Include" />
+              </e>
+            </e>
+            <e p="ColorLevelData.cs" t="Include" />
+            <e p="LevelData.cs" t="Include" />
+          </e>
+          <e p="SceneManager" t="Include">
+            <e p="HorizontalScrollerLevelLoader.cs" t="Include" />
+            <e p="Level.cs" t="Include" />
+            <e p="LevelsData.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Buttons" t="Include">
+              <e p="LevelButtonLoader.cs" t="Include" />
+              <e p="MenuButtonsController.cs" t="Include" />
+            </e>
+            <e p="UIScrollers" t="Include">
+              <e p="HorizontalScroller.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="pvb-programming.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

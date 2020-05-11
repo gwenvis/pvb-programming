@@ -10,22 +10,16 @@ namespace DN.Puzzle.Color
 	/// </summary>
 	public class Line : MonoBehaviour
 	{
-		public LineColor LineColor => lineColor;
-		public Node StartingNode => startingNode;
-		public Node EndNode => endNode;
-		public bool CanTraverseBothWays => canTraverseBothWays;
-
-		[SerializeField] private LineColor lineColor;
-		[SerializeField] private Node startingNode;
-		[SerializeField] private Node endNode;
-		[SerializeField] private bool canTraverseBothWays;
+		public LineData Data { get; private set; }
+		
 		[SerializeField] private Image lineSprite;
+		[SerializeField] private Image lineWithArrowSprite;
 
 		private GameObject arrow;
-
+		
 		private void Awake()
 		{
-			if (!startingNode || !endNode || !lineSprite)
+			if (!Data.StartingNode || !Data.EndNode || !lineSprite)
 			{
 				Debug.LogError("Assign all elements first.", gameObject);
 				return;
@@ -39,16 +33,24 @@ namespace DN.Puzzle.Color
 			CreateArrow(rotation, color);
 		}
 
+		public void InitializeData(LineData data)
+		{
+			if (Data is null)
+			{
+				Data = data;
+			}
+		}
+		
 		private UnityEngine.Color SetColor()
 		{
 			ColorPuzzleSettings settings = Resources.Load<ColorPuzzleSettings>("ColorPuzzleSettings");
-			lineSprite.color = settings.ColorSettings.First(x => x.LineColor == lineColor).Color;
+			lineSprite.color = settings.ColorSettings.First(x => x.LineColor == Data.LineColor).Color;
 			return lineSprite.color;
 		}
 
 		private float SetRotation()
 		{
-			Vector3 vector = endNode.transform.position - startingNode.transform.position;
+			Vector3 vector = Data.EndNode.transform.position - Data.StartingNode.transform.position;
 			float rotation = Mathf.Atan2(
 				vector.y,
 				vector.x) * Mathf.Rad2Deg;
@@ -62,47 +64,27 @@ namespace DN.Puzzle.Color
 			Canvas canvas = GetComponentInParent<Canvas>();
 
 			Vector3 scale = lineSprite.transform.localScale;
-			scale.x = Vector2.Distance(startingNode.transform.position, endNode.transform.position) / canvas.transform.lossyScale.x;
+			scale.x = Vector2.Distance(Data.StartingNode.transform.position, Data.EndNode.transform.position) / canvas.transform.lossyScale.x;
 			lineSprite.transform.localScale = scale;
 			return scale.x;
 		}
 
 		private void CreateArrow(float rotation, UnityEngine.Color color)
 		{
-			if(CanTraverseBothWays)
+			if(Data.CanTraverseBothWays)
 					return;
 
-			GameObject arrow = Instantiate(this.arrow, gameObject.transform);
-			arrow.GetComponent<Image>().color = color;
-			arrow.transform.eulerAngles = new Vector3(0, 0, rotation - 90);
+			GameObject lArrow = Instantiate(this.arrow, gameObject.transform);
+			lArrow.GetComponent<Image>().color = color;
+			lArrow.transform.eulerAngles = new Vector3(0, 0, rotation - 90);
 
-			arrow.transform.position = 
-				endNode.transform.position - 
-				(endNode.transform.position - startingNode.transform.position).normalized * 
+			var position = Data.EndNode.transform.position;
+			lArrow.transform.position = 
+				position - 
+				(position - Data.StartingNode.transform.position).normalized * 
 				42.0f;
 		}
 
-#if UNITY_EDITOR
-		public void ConnectNode(Node node, bool startingNode)
-		{
-			if (startingNode)
-				this.startingNode = node;
-			else
-				this.endNode = node;
-		}
 
-		public void DisconnectNode(bool startingNode)
-		{
-			if (startingNode)
-				this.startingNode = null;
-			else
-				this.endNode = null;
-		}
-
-		public void SetTraverseBothWays(bool canTraverseBothWays)
-		{
-			this.canTraverseBothWays = canTraverseBothWays;
-		}
-#endif
 	}
 }

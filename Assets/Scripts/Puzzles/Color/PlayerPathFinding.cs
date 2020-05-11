@@ -13,9 +13,9 @@ namespace DN.Puzzle.Color
 		/// <param name="colorCommand">The color command requested by the player.</param>
 		/// <param name="node">The node that it has to search from</param>
 		/// <returns>A line if it has been found, null if there is no line.</returns>
-		public Line FindLine(ColorCommand colorCommand, Node node)
+		public LineData FindLine(ColorCommand colorCommand, Node node)
 		{
-			foreach(Line line in node.ConnectedLines)
+			foreach(LineData line in node.Data.ConnectedLines)
 			{
 				if ((line.StartingNode == node || line.CanTraverseBothWays) && line.LineColor == colorCommand.Color)
 					return line;
