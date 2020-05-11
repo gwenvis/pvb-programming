@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DN.Levelselect.SceneManagment
+namespace DN.LevelSelect.SceneManagment
 {
 	/// <summary>
 	/// Here is where the pasue menu is handled.

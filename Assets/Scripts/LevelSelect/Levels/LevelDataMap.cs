@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DN.Levelselect.LevelData
+namespace DN.LevelSelect.LevelData
 {
 	/// <summary>
 	/// this is wjere you store the Level that the object chose in here so i can ask for it through the other scripts

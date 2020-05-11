@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DN.Levelselect.PhysicsObjects
+namespace DN.LevelSelect.PhysicsObjects
 {
     /// <summary>
     /// This script can be applied on an object to make it handle the physiscs collision with the car so it can move around or be bumped into with a fun effect.

@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using DN.SceneManagement.Data;
 
-namespace DN.Levelselect.SceneManagment
+namespace DN.LevelSelect.SceneManagment
 {
     /// <summary>
     /// This is the actual scene loader where you load thge selected scene

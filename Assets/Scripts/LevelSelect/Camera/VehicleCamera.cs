@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DN.Levelselect.CameraMovement
+namespace DN.LevelSelect.CameraMovement
 {
     /// <summary>
     /// THis is the camera movement to follow the car
@@ -24,7 +24,7 @@ namespace DN.Levelselect.CameraMovement
             camera = cameraRig.GetChild(0).GetComponent<Camera>();
         }
 
-        void FixedUpdate()
+        void LateUpdate()
         {
             cameraRig.position = Vector3.Lerp(cameraRig.position, transform.position + cameraPositionOffset, Time.deltaTime * followSpeed);
         }

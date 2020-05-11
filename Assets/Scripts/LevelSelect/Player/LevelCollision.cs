@@ -1,14 +1,14 @@
-﻿using DN.Levelselect.LevelData;
-using DN.Levelselect.SceneManagment;
+﻿using DN.LevelSelect.LevelData;
+using DN.LevelSelect.SceneManagment;
 using DN.SceneManagement.Data;
 using UnityEngine;
 
-namespace DN.Levelselect.Player
+namespace DN.LevelSelect.Player
 {
 	/// <summary>
 	/// This is where you check for collision with the car and the Level Pads and the input for entering the level
 	/// </summary>
-	public class OnLevelCollide : MonoBehaviour
+	public class LevelCollision : MonoBehaviour
 	{
 		[SerializeField] private GameObject txtPanel;
 
@@ -16,9 +16,11 @@ namespace DN.Levelselect.Player
 
 		private string levelIndex;
 
+		private KeyCode enterLevelInput = KeyCode.KeypadEnter;
+
 		private void Update()
 		{
-			if (Input.GetKey(KeyCode.KeypadEnter) && txtPanel.active)
+			if (Input.GetKey(enterLevelInput) && txtPanel.active)
 			{
 				levelLoader.LoadScene(levelIndex);
 			}

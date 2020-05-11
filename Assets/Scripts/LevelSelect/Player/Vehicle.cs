@@ -1,9 +1,9 @@
-﻿using DN.Levelselect.LevelData;
+﻿using DN.LevelSelect.LevelData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DN.Levelselect.Player
+namespace DN.LevelSelect.Player
 {
     /// <summary>
     /// This is the car his movement and physiscs handling system.
@@ -18,16 +18,26 @@ namespace DN.Levelselect.Player
         [SerializeField] [Range(20.0f, 160.0f)] private float steering = 80f;
         [SerializeField] [Range(0.0f, 20.0f)] private float gravity = 10f;
 
-        private Transform container, wheelFrontLeft, wheelFrontRight;
+        private Transform container;
+        private Transform wheelFrontLeft;
+        private Transform wheelFrontRight;
         [SerializeField] private Transform body;
 
-        private float speed, speedTarget;
-        private float rotate, rotateTarget;
+        private float speed;
+        private float speedTarget;
+        private float rotate;
+        private float rotateTarget;
+
+        private KeyCode accelarate = KeyCode.W;
+        private KeyCode reverse = KeyCode.S;
+        private KeyCode turnRight = KeyCode.D;
+        private KeyCode turnLeft = KeyCode.A;
 
         private float tilt = 0.0f;
 
         private bool canSteer = false;
-        private bool nearGround, onGround;
+        private bool nearGround;
+        private bool onGround;
 
         private Vector3 containerBase;
 
@@ -46,7 +56,7 @@ namespace DN.Levelselect.Player
 
             // Stops vehicle from floating around when standing still
 
-            if (speed == 0 && sphere.velocity.magnitude < 4f)
+            if (Mathf.Approximately(speed, 0)&& sphere.velocity.magnitude < 4f)
             {
                 sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f);
                 canSteer = false;
@@ -89,12 +99,12 @@ namespace DN.Levelselect.Player
 
             speed = 0f;
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(accelarate))
             {
                 speed = acceleration;
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(reverse))
             {
                 speed = -acceleration;
             }
@@ -107,12 +117,12 @@ namespace DN.Levelselect.Player
             if (canSteer && nearGround)
             {
 
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(turnLeft))
                 {
                     rotate = -steering;
                 }
 
-                if (Input.GetKey(KeyCode.D))
+                if (Input.GetKey(turnRight))
                 {
                     rotate = steering;
                 }
