@@ -16,12 +16,9 @@ MonoBehaviour:
   - levelName: 1
     sceneName: level_1
     isLocked: 0
-    levelImage: {fileID: 21300000, guid: 18efb2263eac35049b66a3c2ec04df63, type: 3}
   - levelName: 2
     sceneName: level_2
     isLocked: 1
-    levelImage: {fileID: 21300000, guid: d411e4dbe391d6d4da467cddaf32b216, type: 3}
   - levelName: 3
     sceneName: level_3
     isLocked: 1
-    levelImage: {fileID: 21300000, guid: c467ebd9b66e98d4ab08dab3283c947f, type: 3}
