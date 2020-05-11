@@ -7,14 +7,14 @@ namespace DN.UI
 	/// </summary>
 	public class BlockDropZone : MonoBehaviour, IDroppable
 	{
-		public DraggableItem currentObj;
+		public DraggableItem CurrentObj { get; private set; }
 
 		public void Drop(DraggableItem droppedObject)
 		{
-			if (currentObj == null && droppedObject.gameObject != GetComponent<MazeDraggableItem>().parentObject)
+			if (CurrentObj == null && droppedObject.gameObject != GetComponent<MazeDraggableItem>().ParentObject)
 			{
 				droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, GetComponent<RectTransform>().rect.height / 2);
-				currentObj = droppedObject;
+				CurrentObj = droppedObject;
 				droppedObject.PickedUpItemEvent += OnPickedUpItemEvent;
 				return;
 			}
@@ -22,9 +22,9 @@ namespace DN.UI
 
 		private void OnPickedUpItemEvent()
 		{
-			currentObj.PickedUpItemEvent -= OnPickedUpItemEvent;
-			currentObj.GetComponent<MazeDraggableItem>().SetParent(null, 0);
-			currentObj = null;
+			CurrentObj.PickedUpItemEvent -= OnPickedUpItemEvent;
+			CurrentObj.GetComponent<MazeDraggableItem>().SetParent(null, 0);
+			CurrentObj = null;
 		}
 	}
 }

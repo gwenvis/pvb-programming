@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5821353898984469145}
   - component: {fileID: 5963009145353248228}
   - component: {fileID: 5214189201378285269}
-  - component: {fileID: 245079375749561007}
   - component: {fileID: 5608569631025522675}
+  - component: {fileID: 2397995795654768819}
   m_Layer: 5
   m_Name: TurnBlock
   m_TagString: Untagged
@@ -117,19 +117,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 115.429504, y: 19.392487}
   m_EdgeRadius: 0
---- !u!114 &245079375749561007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5821353898984469147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6f79177de50fa4b9f8702720ed9e6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
 --- !u!114 &5608569631025522675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +129,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593880e59357ea949aff8d31f06381dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2397995795654768819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821353898984469147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee693c24c1d59944d8f57168ca3dcf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  parentObject: {fileID: 0}
+  dropdown: {fileID: 6168019180792663408}
 --- !u!1 &5821353899969593812
 GameObject:
   m_ObjectHideFlags: 0

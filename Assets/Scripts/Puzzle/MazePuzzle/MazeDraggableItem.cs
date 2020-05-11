@@ -8,7 +8,7 @@ namespace DN.UI
 	/// </summary>
 	public class MazeDraggableItem : DraggableItem, IEndDragHandler
 	{
-		public GameObject parentObject;
+		public GameObject ParentObject { get; private set; }
 		private float yOffset;
 		private float height;
 
@@ -33,7 +33,7 @@ namespace DN.UI
 					{
 						dropZone = hit.transform.GetComponent<IDroppable>();
 					}
-					else if (hit.transform.GetComponent<BlockDropZone>().currentObj == null)
+					else if (hit.transform.GetComponent<BlockDropZone>().CurrentObj == null)
 					{
 						hit.transform.GetComponent<IDroppable>().Drop(this);
 					}
@@ -49,21 +49,21 @@ namespace DN.UI
 
 		public void DestroyAllChildren()
 		{
-			(GetComponent<BlockDropZone>().currentObj as MazeDraggableItem)?.DestroyAllChildren();
+			(GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem)?.DestroyAllChildren();
 			Destroy(gameObject);
 		}
 
 		public void SetParent(GameObject parent, float offset)
 		{
-			parentObject = parent;
+			ParentObject = parent;
 			yOffset = offset;
 		}
 
 		private void Update()
 		{
-			if (parentObject != null)
+			if (ParentObject != null)
 			{
-				transform.position = new Vector2(parentObject.transform.position.x, parentObject.transform.position.y - height - yOffset);
+				transform.position = new Vector2(ParentObject.transform.position.x, ParentObject.transform.position.y - height - yOffset);
 			}
 		}
 	}

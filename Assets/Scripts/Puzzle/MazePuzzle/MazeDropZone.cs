@@ -12,7 +12,6 @@ namespace DN.UI
 
 		public void Drop(DraggableItem droppedObject)
 		{
-			droppedObject.PickedUpItemEvent += OnPickedUpItemEvent;
 			if (!currentObjects.Contains(droppedObject))
 			{
 				currentObjects.Add(droppedObject);
@@ -26,10 +25,37 @@ namespace DN.UI
 			}
 		}
 
-		private void OnPickedUpItemEvent()
+		public (int, MazeDraggableItem) GetGameObjectWithMostChilds()
 		{
-			//currentObj.PickedUpItemEvent -= OnPickedUpItemEvent;
-			//currentObj = null;
+			if (currentObjects.Count == 0)
+				return (0, null);
+
+			int highestChildCount = -1;
+			DraggableItem mostChildsObject = currentObjects[0];
+			foreach (DraggableItem draggableItem in currentObjects)
+			{
+				bool FoundLastChild = false;
+				DraggableItem currentDraggableItem = draggableItem;
+
+				for(int i = 0; !FoundLastChild || i >= 100; i++)
+				{
+					if(currentDraggableItem.GetComponent<BlockDropZone>().CurrentObj != null)
+					{
+						currentDraggableItem = currentDraggableItem.GetComponent<BlockDropZone>().CurrentObj;
+					}
+					else
+					{
+						if(highestChildCount < i)
+						{
+							highestChildCount = i;
+							mostChildsObject = currentDraggableItem;
+							FoundLastChild = true;
+						}
+					}
+				}
+			}
+
+			return (highestChildCount, mostChildsObject as MazeDraggableItem);
 		}
 	}
 }
