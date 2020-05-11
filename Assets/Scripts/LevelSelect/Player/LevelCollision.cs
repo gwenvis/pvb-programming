@@ -12,7 +12,8 @@ namespace DN.LevelSelect.Player
 
 		[SerializeField] private LevelLoader levelLoader;
 
-		private LevelData.SelectedPuzzle levelIndex;
+		private LevelData.SelectedPuzzle selectedPuzzle;
+		private LevelData.SelectedAnimal selectedAnimal;
 
 		private GameObject otherGo;
 
@@ -22,9 +23,10 @@ namespace DN.LevelSelect.Player
 
 		private void Update()
 		{
-			if (Input.GetKey(enterLevelInput) && txtPanel.active)
+			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
-				levelLoader.LoadScene(otherGo, levelIndex, isLocked);
+				levelLoader.SetLoadingLevelData(otherGo, selectedPuzzle, selectedAnimal, isLocked);
+				levelLoader.LoadInBetweenScene();
 			}
 		}
 
@@ -33,7 +35,8 @@ namespace DN.LevelSelect.Player
 			if (other.GetComponent<LevelData>())
 			{
 				otherGo = other.gameObject;
-				levelIndex = other.GetComponent<LevelData>().PuzzleSelected;
+				selectedPuzzle = other.GetComponent<LevelData>().PuzzleSelected;
+				selectedAnimal = other.GetComponent<LevelData>().AnimalSelected;
 				isLocked = other.GetComponent<LevelData>().isLocked;
 				txtPanel.SetActive(true);
 			}

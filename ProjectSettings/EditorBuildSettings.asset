@@ -12,9 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu/LevelSelect.unity
     guid: 1ed292573331ab44ab6f877d16c7bc40
   - enabled: 1
-    path: Assets/Scenes/Levels/ColorPuzzle.unity
+    path: Assets/Scenes/Levels/Puzzles/ColorPuzzle.unity
     guid: b70e1ff6964108544bc9f1f6846c7c28
   - enabled: 1
-    path: Assets/Scenes/Levels/MazePuzzle.unity
+    path: Assets/Scenes/Levels/Puzzles/MazePuzzle.unity
     guid: 0b2f8796315770f409a2dfb3a9b5ba6e
+  - enabled: 1
+    path: Assets/Scenes/Levels/InBetweenScenes/DogIBS.unity
+    guid: 4ba335e43abbe0d4f9619f3d643a28fc
+  - enabled: 1
+    path: Assets/Scenes/Levels/InBetweenScenes/OwlIBS.unity
+    guid: 974432413fa578c46bd9fb7eb2063438
   m_configObjects: {}
