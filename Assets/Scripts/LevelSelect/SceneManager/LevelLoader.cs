@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using DN.SceneManagement.Data;
 
 namespace DN.LevelSelect.SceneManagment
 {
@@ -9,22 +8,19 @@ namespace DN.LevelSelect.SceneManagment
     /// </summary>
     public class LevelLoader : MonoBehaviour
     {
-        [SerializeField] private LevelsData levelsData;
+        [SerializeField] private LevelData levelsData;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
 
-        public void LoadScene(string levelName)
+        public void LoadScene(GameObject other, LevelData.SelectedPuzzle levelName, bool isLocked)
         {
-            for (int i = 0; i < levelsData.Levels.Length; i++)
+            if (other.GetComponent<LevelData>().PuzzleSelected == levelName && !isLocked)
             {
-                if (levelsData.Levels[i].LevelName == levelName && !levelsData.Levels[i].IsLocked)
-                {
-                    SceneManager.LoadScene(levelName, LoadSceneMode.Single);
-                }
-                else
-                {
-                    Debug.Log("Error mismatch scenes");
-                }
+                SceneManager.LoadScene(levelName.ToString(), LoadSceneMode.Single);
+            }
+            else
+            {
+                Debug.Log("Error mismatch scenes");
             }
         }
 

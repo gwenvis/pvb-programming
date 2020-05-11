@@ -1,6 +1,4 @@
-﻿using DN.LevelSelect.LevelData;
-using DN.LevelSelect.SceneManagment;
-using DN.SceneManagement.Data;
+﻿using DN.LevelSelect.SceneManagment;
 using UnityEngine;
 
 namespace DN.LevelSelect.Player
@@ -14,7 +12,11 @@ namespace DN.LevelSelect.Player
 
 		[SerializeField] private LevelLoader levelLoader;
 
-		private string levelIndex;
+		private LevelData.SelectedPuzzle levelIndex;
+
+		private GameObject otherGo;
+
+		private bool isLocked;
 
 		private KeyCode enterLevelInput = KeyCode.KeypadEnter;
 
@@ -22,22 +24,24 @@ namespace DN.LevelSelect.Player
 		{
 			if (Input.GetKey(enterLevelInput) && txtPanel.active)
 			{
-				levelLoader.LoadScene(levelIndex);
+				levelLoader.LoadScene(otherGo, levelIndex, isLocked);
 			}
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.GetComponent<LevelDataMap>())
+			if (other.GetComponent<LevelData>())
 			{
-				levelIndex = other.GetComponent<LevelDataMap>().level.ToString();
+				otherGo = other.gameObject;
+				levelIndex = other.GetComponent<LevelData>().PuzzleSelected;
+				isLocked = other.GetComponent<LevelData>().isLocked;
 				txtPanel.SetActive(true);
 			}
 		}
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.GetComponent<LevelDataMap>())
+			if (other.GetComponent<LevelData>())
 			{
 				txtPanel.SetActive(false);
 			}
