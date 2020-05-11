@@ -15,9 +15,7 @@ namespace DN.LevelSelect.Player
 		private LevelData.SelectedPuzzle selectedPuzzle;
 		private LevelData.SelectedAnimal selectedAnimal;
 
-		private GameObject otherGo;
-
-		private bool isLocked;
+		private GameObject otherObj;
 
 		private KeyCode enterLevelInput = KeyCode.KeypadEnter;
 
@@ -25,7 +23,7 @@ namespace DN.LevelSelect.Player
 		{
 			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
-				levelLoader.SetLoadingLevelData(otherGo, selectedPuzzle, selectedAnimal, isLocked);
+				levelLoader.SetLoadingLevelData(otherObj, selectedPuzzle, selectedAnimal);
 				levelLoader.LoadInBetweenScene();
 			}
 		}
@@ -34,10 +32,9 @@ namespace DN.LevelSelect.Player
 		{
 			if (other.GetComponent<LevelData>())
 			{
-				otherGo = other.gameObject;
+				otherObj = other.gameObject;
 				selectedPuzzle = other.GetComponent<LevelData>().PuzzleSelected;
 				selectedAnimal = other.GetComponent<LevelData>().AnimalSelected;
-				isLocked = other.GetComponent<LevelData>().isLocked;
 				txtPanel.SetActive(true);
 			}
 		}

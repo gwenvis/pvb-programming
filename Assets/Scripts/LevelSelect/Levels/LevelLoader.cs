@@ -15,12 +15,10 @@ namespace DN.LevelSelect.SceneManagment
         public GameObject LevelObject => levelObject;
         public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
         public LevelData.SelectedAnimal SelectedAnimal => selectedAnimal;
-        public bool IsLevelLocked => isLevelLocked;
 
         private GameObject levelObject;
         private LevelData.SelectedPuzzle selectedPuzzle;
         private LevelData.SelectedAnimal selectedAnimal;
-        private bool isLevelLocked;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
         private const string DOG_IBS_NAME = "DogIBS";
@@ -33,37 +31,32 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadInBetweenScene()
         {
-            switch (selectedAnimal)
+            if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
             {
-                case LevelData.SelectedAnimal.Dog:
-                    SceneManager.LoadScene(DOG_IBS_NAME, LoadSceneMode.Single);
-                    break;
+                switch (selectedAnimal)
+                {
+                    case LevelData.SelectedAnimal.Dog:
+                        SceneManager.LoadScene(DOG_IBS_NAME, LoadSceneMode.Single);
+                        break;
 
-                case LevelData.SelectedAnimal.Owl:
-                    SceneManager.LoadScene(OWL_IBS_NAME, LoadSceneMode.Single);
-                    break;
+                    case LevelData.SelectedAnimal.Owl:
+                        SceneManager.LoadScene(OWL_IBS_NAME, LoadSceneMode.Single);
+                        break;
+                }
             }
         }
 
         public void LoadPuzzleScene()
         {
-            if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle && !isLevelLocked)
-            {
-                SceneManager.LoadScene(selectedPuzzle.ToString(), LoadSceneMode.Single);
-                isInBetweenFinished = false;
-            }
-            else
-            {
-                Debug.Log("Error mismatch scenes");
-            }
+            SceneManager.LoadScene(selectedPuzzle.ToString(), LoadSceneMode.Single);
+            isInBetweenFinished = false;
         }
 
-        public void SetLoadingLevelData(GameObject other, LevelData.SelectedPuzzle puzzle, LevelData.SelectedAnimal animal, bool locked)
+        public void SetLoadingLevelData(GameObject other, LevelData.SelectedPuzzle puzzle, LevelData.SelectedAnimal animal)
         {
             levelObject = other;
             selectedPuzzle = puzzle;
             selectedAnimal = animal;
-            isLevelLocked = locked;
         }
 
         public void LoadLevelSelect()
