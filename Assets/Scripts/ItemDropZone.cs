@@ -26,7 +26,7 @@ namespace DN.UI
             }
         }
 
-        private void OnPickedUpItemEvent()
+        private void OnPickedUpItemEvent(DraggableItem item)
         {
             currentObj.PickedUpItemEvent -= OnPickedUpItemEvent;
             currentObj = null;
