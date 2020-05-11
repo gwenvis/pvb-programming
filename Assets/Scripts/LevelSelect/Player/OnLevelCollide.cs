@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DN.Levelselect.Player
 {
 	/// <summary>
-	/// Here i check for collision with the car and the Level Pads and the input for entering the level
+	/// This is where you check for collision with the car and the Level Pads and the input for entering the level
 	/// </summary>
 	public class OnLevelCollide : MonoBehaviour
 	{

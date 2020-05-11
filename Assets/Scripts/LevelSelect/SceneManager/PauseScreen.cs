@@ -3,7 +3,7 @@
 namespace DN.Levelselect.SceneManagment
 {
 	/// <summary>
-	/// Here i handle all the pause menu stuff.
+	/// Here is where the pasue menu is handled.
 	/// </summary>
 	public class PauseScreen : MonoBehaviour
 	{
@@ -30,14 +30,7 @@ namespace DN.Levelselect.SceneManagment
 
 		private void FreezeGame(bool isPaused)
 		{
-			if (isPaused)
-			{
-				Time.timeScale = 0f;
-			}
-			else
-			{
-				Time.timeScale = 1f;
-			}
+			Time.timeScale = isPaused ? 0f : 1f;
 		}
 	}
 }

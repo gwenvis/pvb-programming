@@ -5,7 +5,7 @@ using DN.SceneManagement.Data;
 namespace DN.Levelselect.SceneManagment
 {
     /// <summary>
-    /// Here i do the actual loading of a scene through the buttons.
+    /// This is the actual scene loader where you load thge selected scene
     /// </summary>
     public class LevelLoader : MonoBehaviour
     {

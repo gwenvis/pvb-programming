@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DN.Levelselect.Player
 {
     /// <summary>
-    /// Here i made the car his movement and its physics.
+    /// This is the car his movement and physiscs handling system.
     /// </summary>
     public class Vehicle : MonoBehaviour
     {
@@ -23,6 +23,8 @@ namespace DN.Levelselect.Player
 
         private float speed, speedTarget;
         private float rotate, rotateTarget;
+
+        private float tilt = 0.0f;
 
         private bool canSteer = false;
         private bool nearGround, onGround;
@@ -62,8 +64,6 @@ namespace DN.Levelselect.Player
 
         private void VehicleTilt()
         {
-            float tilt = 0.0f;
-
             container.localPosition = containerBase + new Vector3(0, Mathf.Abs(tilt) / 2000, 0);
             container.localRotation = Quaternion.Slerp(container.localRotation, Quaternion.Euler(0, rotateTarget / 8, tilt), Time.deltaTime * 10.0f);
         }
