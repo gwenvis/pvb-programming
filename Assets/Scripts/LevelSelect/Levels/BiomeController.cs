@@ -1,5 +1,7 @@
 ﻿using System.Dynamic;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DN.LevelSelect
 {
@@ -11,10 +13,13 @@ namespace DN.LevelSelect
         [SerializeField] private GameObject[] biomes;
         [SerializeField] private GameObject[] levels;
 
-        [SerializeField] private Transform borderParent;
-        private GameObject[] borders;
+        [SerializeField] private Sprite levelCompletedSprite;
 
+        [SerializeField] private Transform borderParent;
+        
         [SerializeField] private BiomeUI biomeUI;
+
+        private GameObject[] borders;
 
         private GameObject currentBiomeObj;
         private GameObject previousBiome;
@@ -53,7 +58,7 @@ namespace DN.LevelSelect
                 if (levels[i].GetComponent<LevelData>().isCompleted)
                 {
                     currentLevelsCompleted++;
-                    levels[i].SetActive(false);
+                    levels[i].GetComponentInChildren<SpriteRenderer>().sprite = levelCompletedSprite;
                 }
             }
 
