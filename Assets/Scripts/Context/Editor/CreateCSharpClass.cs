@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace DN
 {
-	public class CreateCSharpClass
+	public static class CreateCSharpClass
 	{
 		private const string CSharpTemplatePath = "Assets/Scripts/Context/Editor/Templates/CSharpClassTemplate.cs.txt";
 		private const string CSharpInterfaceTemplatePath = "Assets/Scripts/Context/Editor/Templates/CSharpInterfaceTemplate.cs.txt";
