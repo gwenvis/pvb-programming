@@ -30,16 +30,38 @@
           <e p="IDroppable.cs" t="Include" />
           <e p="InputManager.cs" t="Include" />
           <e p="ItemDropZone.cs" t="Include" />
+          <e p="LevelSelect" t="Include">
+            <e p="Camera" t="Include">
+              <e p="VehicleCamera.cs" t="Include" />
+            </e>
+            <e p="Levels" t="Include">
+              <e p="LevelDataMap.cs" t="Include" />
+            </e>
+            <e p="Physics" t="Include">
+              <e p="PhysicsObject.cs" t="Include" />
+            </e>
+            <e p="Player" t="Include">
+              <e p="LevelCollision.cs" t="Include" />
+              <e p="Vehicle.cs" t="Include" />
+            </e>
+            <e p="SceneManager" t="Include">
+              <e p="Level.cs" t="Include" />
+              <e p="LevelLoader.cs" t="Include" />
+              <e p="LevelsData.cs" t="Include" />
+              <e p="PauseScreen.cs" t="Include" />
+            </e>
+          </e>
           <e p="Puzzles" t="Include">
             <e p="Color" t="Include">
               <e p="ColorCommand.cs" t="Include" />
               <e p="ColorCommandQueue.cs" t="Include" />
               <e p="ColorPuzzleSettings.cs" t="Include" />
-              <e p="Editor" t="Include">
-                <e p="ColorPuzzleEditorWindow.cs" t="Include" />
-                <e p="InteractiveEditor.cs" t="Include" />
-              </e>
               <e p="ICommandQueue.cs" t="Include" />
+              <e p="LevelEditor" t="Include">
+                <e p="LevelDataDropdown.cs" t="Include" />
+                <e p="NewDialog.cs" t="Include" />
+                <e p="PuzzleEditor.cs" t="Include" />
+              </e>
               <e p="Line.cs" t="Include" />
               <e p="LineColor.cs" t="Include" />
               <e p="LineData.cs" t="Include" />
@@ -49,26 +71,43 @@
               <e p="PlayerPathFinding.cs" t="Include" />
               <e p="UI" t="Include">
                 <e p="ColorCommandDropzone.cs" t="Include" />
-                <e p="FinishUI.cs" t="Include" />
                 <e p="RunButton.cs" t="Include" />
               </e>
             </e>
             <e p="ColorLevelData.cs" t="Include" />
             <e p="LevelData.cs" t="Include" />
           </e>
-          <e p="SceneManager" t="Include">
-            <e p="HorizontalScrollerLevelLoader.cs" t="Include" />
-            <e p="Level.cs" t="Include" />
-            <e p="LevelsData.cs" t="Include" />
+          <e p="Services" t="Include">
+            <e p="ServiceAttribute.cs" t="Include" />
+            <e p="ServiceLocator.cs" t="Include" />
           </e>
-          <e p="UI" t="Include">
-            <e p="Buttons" t="Include">
-              <e p="LevelButtonLoader.cs" t="Include" />
-              <e p="MenuButtonsController.cs" t="Include" />
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
             </e>
-            <e p="UIScrollers" t="Include">
-              <e p="HorizontalScroller.cs" t="Include" />
-            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
       </e>

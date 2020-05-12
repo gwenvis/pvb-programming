@@ -83,9 +83,9 @@ namespace DN.Puzzle.Color
 						break;
 					case State.Moving:
 						// ReSharper disable once PossibleNullReferenceException
-						Node endNode = currentNode == currentLine.Data.StartingNode
-							? currentLine.Data.EndNode
-							: currentLine.Data.StartingNode;
+						Node endNode = currentNode.Data == currentLine.Data.StartingNode
+							? currentLine.Data.EndNode.Owner
+							: currentLine.Data.StartingNode.Owner;
 						yield return Moving(currentLine, endNode);
 						currentNode = endNode;
 						currentState = currentNode.Data.IsFinish ? State.Done : State.Waiting;

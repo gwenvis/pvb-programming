@@ -19,7 +19,7 @@ namespace DN.Puzzle.Color
 		
 		private void Awake()
 		{
-			if (!Data.StartingNode || !Data.EndNode || !lineSprite)
+			if (Data.StartingNode == null || Data.EndNode == null || lineSprite == null)
 			{
 				Debug.LogError("Assign all elements first.", gameObject);
 				return;
@@ -50,7 +50,7 @@ namespace DN.Puzzle.Color
 
 		private float SetRotation()
 		{
-			Vector3 vector = Data.EndNode.transform.position - Data.StartingNode.transform.position;
+			Vector3 vector = Data.EndNode.Owner.transform.position - Data.StartingNode.Owner.transform.position;
 			float rotation = Mathf.Atan2(
 				vector.y,
 				vector.x) * Mathf.Rad2Deg;
@@ -64,7 +64,7 @@ namespace DN.Puzzle.Color
 			Canvas canvas = GetComponentInParent<Canvas>();
 
 			Vector3 scale = lineSprite.transform.localScale;
-			scale.x = Vector2.Distance(Data.StartingNode.transform.position, Data.EndNode.transform.position) / canvas.transform.lossyScale.x;
+			scale.x = Vector2.Distance(Data.StartingNode.Owner.transform.position, Data.EndNode.Owner.transform.position) / canvas.transform.lossyScale.x;
 			lineSprite.transform.localScale = scale;
 			return scale.x;
 		}
@@ -78,13 +78,11 @@ namespace DN.Puzzle.Color
 			lArrow.GetComponent<Image>().color = color;
 			lArrow.transform.eulerAngles = new Vector3(0, 0, rotation - 90);
 
-			var position = Data.EndNode.transform.position;
+			var position = Data.EndNode.Owner.transform.position;
 			lArrow.transform.position = 
 				position - 
-				(position - Data.StartingNode.transform.position).normalized * 
+				(position - Data.StartingNode.Owner.transform.position).normalized * 
 				42.0f;
 		}
-
-
 	}
 }

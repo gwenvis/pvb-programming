@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DN.Puzzle.Color;
 
-namespace DN
+namespace DN.Puzzle.Color
 {
     public class ColorLevelData : LevelData
     {
@@ -22,6 +22,25 @@ namespace DN
             LineData lineData = new LineData();
             lines.Add(lineData);
             return lineData;
+        }
+
+        public LineData AddLine(LineData lineData)
+        {
+            lines.Add(lineData);
+            return lineData;
+        }
+
+        public NodeData CreateNode()
+        {
+            NodeData nodeData = new NodeData();
+            nodes.Add(nodeData);
+            return nodeData;
+        }
+
+        public NodeData AddNode(NodeData data)
+        {
+            nodes.Add(data);
+            return data;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace DN.Puzzle.Color
 		{
 			foreach(LineData line in node.Data.ConnectedLines)
 			{
-				if ((line.StartingNode == node || line.CanTraverseBothWays) && line.LineColor == colorCommand.Color)
+				if ((line.StartingNode.Owner == node || line.CanTraverseBothWays) && line.LineColor == colorCommand.Color)
 					return line;
 			}
 

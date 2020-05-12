@@ -4,14 +4,14 @@ namespace DN.Puzzle.Color
     {
         public Line Owner { get; private set; }
         public LineColor LineColor { get; private set; }
-        public Node StartingNode { get; private set; }
-        public Node EndNode { get; private set; }
+        public NodeData StartingNode { get; private set; }
+        public NodeData EndNode { get; private set; }
         public bool CanTraverseBothWays { get; private set; }
 
         public LineData(
             LineColor lineColor = Color.LineColor.Blue, 
-            Node startingNode = null,
-            Node endNode = null,
+            NodeData startingNode = null,
+            NodeData endNode = null,
             bool traverseBothWays = false)
         {
             LineColor = lineColor;
@@ -29,7 +29,7 @@ namespace DN.Puzzle.Color
         }
 
 #if UNITY_EDITOR
-        public void ConnectNode(Node node, bool startingNode)
+        public void ConnectNode(NodeData node, bool startingNode)
         {
             if (startingNode)
                 this.StartingNode = node;
