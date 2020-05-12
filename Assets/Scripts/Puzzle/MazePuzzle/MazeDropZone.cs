@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace DN.UI
 {
@@ -15,6 +16,7 @@ namespace DN.UI
 			if (!currentObjects.Contains(droppedObject))
 			{
 				currentObjects.Add(droppedObject);
+				(droppedObject as MazeDraggableItem).IsDestroyedEvent += OnDestroyedEvent;
 			}
 
 			RectTransform blockTransform = droppedObject.GetComponent<RectTransform>();
@@ -25,19 +27,42 @@ namespace DN.UI
 			}
 		}
 
+		private void OnDestroyedEvent(MazeDraggableItem item)
+		{
+			CheckCurrentObjects();
+			item.IsDestroyedEvent -= OnDestroyedEvent;
+		}
+
+		public void DestroyAllBlocks()
+		{
+			CheckCurrentObjects();
+			for (int i = 0; i < currentObjects.Count; i++)
+			{
+				Destroy(currentObjects[i].gameObject);
+				SpawnBlock.DeleteBlock();
+			}
+			currentObjects = new List<DraggableItem>();
+		}
+
+		public void CheckCurrentObjects()
+		{
+			currentObjects.RemoveAll(x => x == null);
+		}
+
 		public (int, MazeDraggableItem) GetGameObjectWithMostChilds()
 		{
+			CheckCurrentObjects();
 			if (currentObjects.Count == 0)
 				return (0, null);
 
-			int highestChildCount = -1;
+			int highestChildCount = 0;
 			DraggableItem mostChildsObject = currentObjects[0];
 			foreach (DraggableItem draggableItem in currentObjects)
 			{
 				bool FoundLastChild = false;
 				DraggableItem currentDraggableItem = draggableItem;
 
-				for(int i = 0; !FoundLastChild || i >= 100; i++)
+				for(int i = 1; !FoundLastChild || i >= 100; i++)
 				{
 					if(currentDraggableItem.GetComponent<BlockDropZone>().CurrentObj != null)
 					{
@@ -48,14 +73,21 @@ namespace DN.UI
 						if(highestChildCount < i)
 						{
 							highestChildCount = i;
-							mostChildsObject = currentDraggableItem;
+							mostChildsObject = draggableItem;
 							FoundLastChild = true;
 						}
+						FoundLastChild = true;
 					}
 				}
 			}
 
 			return (highestChildCount, mostChildsObject as MazeDraggableItem);
+		}
+
+		private void OnDestroy()
+		{
+			foreach(DraggableItem item in currentObjects)
+				(item as MazeDraggableItem).IsDestroyedEvent -= OnDestroyedEvent;
 		}
 	}
 }

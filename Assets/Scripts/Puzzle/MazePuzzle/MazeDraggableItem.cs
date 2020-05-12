@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace DN.UI
@@ -9,10 +11,11 @@ namespace DN.UI
 	public class MazeDraggableItem : DraggableItem, IEndDragHandler
 	{
 		public GameObject ParentObject { get; private set; }
+		public event Action<MazeDraggableItem> IsDestroyedEvent;
 		private float yOffset;
 		private float height;
 
-		private void Start()
+		protected virtual void Start()
 		{
 			height = GetComponent<RectTransform>().rect.height;
 		}
@@ -27,7 +30,8 @@ namespace DN.UI
 			foreach (RaycastHit2D hit in GetBoxCastHits())
 			{
 				if (hit.transform.GetComponent<IDroppable>() != null 
-				&& hit.transform != transform)
+				&& hit.transform != transform
+				&& !GetAllChildren().Contains(hit.transform.gameObject))
 				{
 					if (hit.transform.GetComponent<BlockDropZone>() == null)
 					{
@@ -47,9 +51,23 @@ namespace DN.UI
 			DestroyAllChildren();
 		}
 
+		private List<GameObject> GetAllChildren()
+		{
+			BlockDropZone dropZone = GetComponent<BlockDropZone>();
+			if (dropZone.CurrentObj == null)
+				return new List<GameObject>();
+
+			List<GameObject> children = dropZone.CurrentObj.GetComponent<MazeDraggableItem>().GetAllChildren();
+			children.Add(dropZone.CurrentObj.gameObject);
+			return children;
+		}
+
+
 		public void DestroyAllChildren()
 		{
 			(GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem)?.DestroyAllChildren();
+			SpawnBlock.DeleteBlock();
+			IsDestroyedEvent?.Invoke(this);
 			Destroy(gameObject);
 		}
 
@@ -59,7 +77,7 @@ namespace DN.UI
 			yOffset = offset;
 		}
 
-		private void Update()
+		private void LateUpdate()
 		{
 			if (ParentObject != null)
 			{

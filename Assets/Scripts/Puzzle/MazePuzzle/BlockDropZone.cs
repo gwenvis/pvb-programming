@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace DN.UI
 {
@@ -11,7 +12,7 @@ namespace DN.UI
 
 		public void Drop(DraggableItem droppedObject)
 		{
-			if (CurrentObj == null && droppedObject.gameObject != GetComponent<MazeDraggableItem>().ParentObject)
+			if (CurrentObj == null)
 			{
 				droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, GetComponent<RectTransform>().rect.height / 2);
 				CurrentObj = droppedObject;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DN
+namespace DN.UI
 {
 	/// <summary>
 	/// ADD CLASS SUMMARY!
@@ -11,13 +11,16 @@ namespace DN
 	public class LoadLevel : MonoBehaviour
 	{
 		public Vector2 StartPosition { get; private set; }
+		public Vector2 EndPosition { get; private set; }
 		public event Action LevelLoadedEvent;
 		[SerializeField]private Sprite[] blocks;
 		[SerializeField]private GameObject canvas;
 		[SerializeField] private Dictionary<MazeBlocks, Sprite> blockDictionary = new Dictionary<MazeBlocks, Sprite>();
-		
+
+
+		public static int MaxBlocks { get; private set; } = 20; 
 		//Voor nu het level moet later gezet worden door data met SetLevel(); 
-		public MazeBlocks[][] Level { get; private set; } = {
+		public static MazeBlocks[][] Level { get; private set; } = {
 										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path },
 										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path },
 										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path },
@@ -42,6 +45,11 @@ namespace DN
 			Level = level;
 		}
 
+		public void SetMaxBlocks(int amount)
+		{
+			MaxBlocks = amount;
+		}
+
 		public void Load(MazeBlocks[][] mazeBlocks)
 		{
 			CreateLevel(mazeBlocks);
@@ -54,7 +62,7 @@ namespace DN
 				for (int x = 0; x < mazeBlocks[x].GetLength(0); x++)
 				{
 					GameObject gameObject = new GameObject($"level tile ({x} {y})");
-					gameObject.transform.SetParent(canvas.transform);
+					gameObject.transform.SetParent(transform);
 					gameObject.AddComponent<CanvasRenderer>();
 					var sprite = gameObject.AddComponent<Image>();
 					Sprite spriteee = blockDictionary[mazeBlocks[y][x]];
@@ -65,9 +73,10 @@ namespace DN
 						1.0f);
 					gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 					if(mazeBlocks[y][x] == MazeBlocks.Start)
-					{
 						StartPosition = new Vector2(x,y);
-					}
+					if(mazeBlocks[y][x] == MazeBlocks.End)
+						EndPosition = new Vector2(x, y);
+
 				}
 			}
 		}

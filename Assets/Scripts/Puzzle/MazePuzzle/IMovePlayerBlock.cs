@@ -1,10 +1,10 @@
-﻿namespace DN
+﻿namespace DN.UI
 {
 	/// <summary>
 	/// ADD CLASS SUMMARY!
 	/// </summary>
 	public interface IMovePlayerBlock
 	{
-		void MovePlayer(MazePlayerMovement mazePlayerMovement);
+		MazeFunctions GetMazeFunctions();
 	}
 }

@@ -1,10 +1,13 @@
-﻿/// <summary>
-/// Blocks for the maze puzzle
-/// </summary>
-public enum MazeBlocks
+﻿namespace DN.UI
 {
-	Start,
-	End,
-	Path,
-	None
+	/// <summary>
+	/// blocks the level is made out of
+	/// </summary>
+	public enum MazeBlocks
+	{
+		Start,
+		End,
+		Path,
+		None
+	}
 }

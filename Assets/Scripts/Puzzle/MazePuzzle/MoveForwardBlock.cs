@@ -7,9 +7,11 @@ namespace DN.UI
 	/// </summary>
 	public class MoveForwardBlock : MazeDraggableItem, IMovePlayerBlock
 	{
-		public void MovePlayer(MazePlayerMovement mazePlayerMovement)
+		MazeFunctions function = MazeFunctions.Forward;
+
+		public MazeFunctions GetMazeFunctions()
 		{
-			throw new System.NotImplementedException();
+			return function;
 		}
 	}
 }
