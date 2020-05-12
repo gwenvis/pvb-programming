@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DN.UI;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
 	/// Spawns Block when clicked.

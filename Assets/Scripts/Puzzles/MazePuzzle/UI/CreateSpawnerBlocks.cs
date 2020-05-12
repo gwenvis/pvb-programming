@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using DN.UI;
+using UnityEngine;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
 	/// Creates the blocks that spawn blocks

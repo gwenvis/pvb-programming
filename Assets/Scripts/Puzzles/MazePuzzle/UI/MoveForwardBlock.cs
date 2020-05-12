@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Class for the MoveForward block
 	/// </summary>
 	public class MoveForwardBlock : MazeDraggableItem, IMovePlayerBlock
 	{

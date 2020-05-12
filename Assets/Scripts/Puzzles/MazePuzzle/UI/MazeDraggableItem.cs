@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DN.UI;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// basse Class for every draggable item in the maze puzzle
 	/// </summary>
 	public class MazeDraggableItem : DraggableItem, IEndDragHandler
 	{

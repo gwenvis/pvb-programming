@@ -1,4 +1,4 @@
-﻿namespace DN.UI
+﻿namespace DN.Puzzle.Maze
 {
 	/// <summary>
 	/// Functions the draggable blocks can do.

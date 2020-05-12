@@ -2,10 +2,10 @@
 using TMPro;
 using System;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Controlls the TurnBlock
 	/// </summary>
 	public class TurnBlock : MazeDraggableItem, IMovePlayerBlock
 	{

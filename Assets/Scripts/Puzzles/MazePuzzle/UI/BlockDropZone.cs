@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DN.UI;
 using UnityEngine;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
 	/// DropZone for the blocks
@@ -21,7 +21,7 @@ namespace DN.UI
 			}
 		}
 
-		private void OnPickedUpItemEvent()
+		private void OnPickedUpItemEvent(DraggableItem obj)
 		{
 			CurrentObj.PickedUpItemEvent -= OnPickedUpItemEvent;
 			CurrentObj.GetComponent<MazeDraggableItem>().SetParent(null, 0);

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Class for loading the levels
 	/// </summary>
 	public class LoadLevel : MonoBehaviour
 	{

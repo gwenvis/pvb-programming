@@ -1,4 +1,4 @@
-﻿namespace DN.UI
+﻿namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
 	/// blocks the level is made out of

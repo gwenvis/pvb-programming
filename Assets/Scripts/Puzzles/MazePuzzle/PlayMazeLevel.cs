@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DN.Puzzle.Maze.UI;
+using DN.UI;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze
 {
 	/// <summary>
 	/// Gets Puzzle Data and uses it to set player data.

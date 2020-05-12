@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DN.Puzzle.Maze.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DN.UI
+namespace DN.Puzzle.Maze
 {
 	/// <summary>
 	/// Class for player movement in maze puzzle.
@@ -23,6 +24,7 @@ namespace DN.UI
 
 		public IEnumerator StartLevel()
 		{
+			bool gameEnded = false;
 			foreach(MazeFunctions function in functionQueue)
 			{
 				UseFunction(function);
@@ -38,13 +40,15 @@ namespace DN.UI
 				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
 				{
 					LoseLifeEvent?.Invoke();
+					gameEnded = true;
 					break;
 				}
 
 				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
 					WinEvent?.Invoke();
 			}
-			LoseLifeEvent?.Invoke();
+			if(!gameEnded)
+				LoseLifeEvent?.Invoke();
 		}
 
 		private void UseFunction(MazeFunctions function)

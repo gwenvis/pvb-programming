@@ -1,7 +1,7 @@
-﻿namespace DN.UI
+﻿namespace DN.Puzzle.Maze.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Interface for the blocks that move the player
 	/// </summary>
 	public interface IMovePlayerBlock
 	{
