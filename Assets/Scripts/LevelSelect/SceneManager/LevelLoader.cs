@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using DN.SceneManagement.Data;
+using System.Collections;
 
 namespace DN.LevelSelect.SceneManagment
 {
@@ -10,6 +11,7 @@ namespace DN.LevelSelect.SceneManagment
     public class LevelLoader : MonoBehaviour
     {
         [SerializeField] private LevelsData levelsData;
+        [SerializeField] private Animator transition;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
 
@@ -19,6 +21,8 @@ namespace DN.LevelSelect.SceneManagment
             {
                 if (levelsData.Levels[i].LevelName == levelName && !levelsData.Levels[i].IsLocked)
                 {
+                    transition.SetTrigger("Start");
+
                     SceneManager.LoadScene(levelName, LoadSceneMode.Single);
                 }
                 else
