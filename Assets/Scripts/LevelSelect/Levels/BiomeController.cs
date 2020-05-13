@@ -123,10 +123,13 @@ namespace DN.LevelSelect
 
             if (!isBiomeFinished)
             {
-                ServiceLocator.Locate<LevelMemoryService>().SetBiomeFinished(isBiomeFinished);
-                for (int i = 0; i < ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes.Count; i++)
+                if (ServiceLocator.Locate<LevelMemoryService>().IsGameWon)
                 {
-                    levels[ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes[i]].GetComponent<LevelData>().isCompleted = true;
+                    ServiceLocator.Locate<LevelMemoryService>().SetBiomeFinished(isBiomeFinished);
+                    for (int i = 0; i < ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes.Count; i++)
+                    {
+                        levels[ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes[i]].GetComponent<LevelData>().isCompleted = true;
+                    }
                 }
             }
             else

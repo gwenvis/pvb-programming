@@ -69,5 +69,12 @@ namespace DN.LevelSelect.SceneManagment
             GetData();
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }
+
+        public void LoadLevelSelectFromPuzzle(bool isGameWon)
+        {
+            print("Man");
+            ServiceLocator.Locate<LevelMemoryService>().SetGameWonOrLost(isGameWon);
+            SceneManager.LoadScene(LEVEL_SELECT_NAME);
+        }
     }
 }

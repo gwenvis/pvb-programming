@@ -21,6 +21,7 @@ namespace DN.LevelSelect
 		public bool PlayerPosSetOnce => playerPosSetOnce;
 		public bool BiomeSetOnce => biomeSetOnce;
 		public bool BiomeFinished => biomeFinished;
+		public bool IsGameWon => isGameWon;
 		public List<int> CompletedLevelIndexes => completedLevelIndexes;
 		public List<int> CompletedBiomeIndexes => completedBiomeIndexes;
 
@@ -36,6 +37,7 @@ namespace DN.LevelSelect
 		private bool playerPosSetOnce;
 		private bool biomeSetOnce;
 		private bool biomeFinished;
+		private bool isGameWon;
 
 		private int currentBiome;
 		private int currentLevelsCompleted;
@@ -69,6 +71,11 @@ namespace DN.LevelSelect
 		public void ClearList()
 		{
 			completedLevelIndexes.Clear();
+		}
+
+		public void SetGameWonOrLost(bool value)
+		{
+			isGameWon = value;
 		}
 	}
 }
