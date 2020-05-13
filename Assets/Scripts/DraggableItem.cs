@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +11,8 @@ namespace DN.UI
 	/// </summary>
 	public class DraggableItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 	{
-		public event System.Action<DraggableItem> PickedUpItemEvent;
+		public event Action<DraggableItem> PickedUpItemEvent;
+		public event Action<DraggableItem> DroppedItemEvent;
 
 		public Vector2 StartPos => startPos;
 		[SerializeField] private Canvas canvas;
@@ -24,6 +26,9 @@ namespace DN.UI
 			startPos = transform.position;
 			rectTransform = GetComponent<RectTransform>();
 			canvasGroup = GetComponent<CanvasGroup>();
+
+			if (!canvas)
+				canvas = GetComponentInParent<Canvas>();
 		}
 
 		public void OnPointerDown(PointerEventData eventData)
@@ -64,6 +69,8 @@ namespace DN.UI
 			{
 				hit.transform.GetComponent<IDroppable>()?.Drop(this);
 			}
+
+			DroppedItemEvent?.Invoke(this);
 		}
 
 		private Vector2 GetSize()

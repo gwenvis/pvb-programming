@@ -8,7 +8,15 @@ namespace DN
 	public abstract class LevelData : ScriptableObject
 	{
 		public string LevelName => levelName;
-		
-		private string levelName;
+
+		[SerializeField] private string levelName;
+
+		public void SetLevelName(string newName)
+		{
+			if (string.IsNullOrWhiteSpace(levelName))
+			{
+				levelName = newName;
+			}
+		}
 	}
 }

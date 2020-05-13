@@ -1,46 +1,75 @@
 using System.Collections.Generic;
+using System.Linq;
 using DN.Puzzle.Color;
+using DN.Puzzle.Color.Editor;
+using UnityEngine;
 
 namespace DN.Puzzle.Color
 {
+    /// <summary>
+    /// Holds the data for a specific Color Puzzle level that is
+    /// then in turn loaded in by either the level editor or the color puzzle itself.
+    /// </summary>
     public class ColorLevelData : LevelData
     {
         public IEnumerable<LineData> Lines => lines;
         public IEnumerable<NodeData> Nodes => nodes;
         
-        private List<LineData> lines;
-        private List<NodeData> nodes;
+        [SerializeField] private LineData[] lines;
+        [SerializeField] private NodeData[] nodes;
 
-        public ColorLevelData()
+        public bool SetData(object sender, IEnumerable<NodeData> nodeData, IEnumerable<LineData> lineData)
         {
-            lines = new List<LineData>();
-            nodes = new List<NodeData>();
+            if (sender.GetType() != typeof(PuzzleEditor))
+            {
+                return false;
+            }
+
+            lines = lineData.ToArray();
+            nodes = nodeData.ToArray();
+            return true;
+        }
+    }
+
+    public class LevelEditorColorData
+    {
+        public IEnumerable<NodeData> Nodes => NodeData;
+        public IEnumerable<LineData> Lines => LineData;
+        
+        private List<NodeData> NodeData { get; set; }
+        private List<LineData> LineData { get; set; }
+        
+        public LevelEditorColorData(IEnumerable<NodeData> nodeData, IEnumerable<LineData> lineData)
+        {
+            LineData = new List<LineData>(lineData);
+            NodeData = new List<NodeData>(nodeData);
         }
 
         public LineData CreateLine()
         {
-            LineData lineData = new LineData();
-            lines.Add(lineData);
-            return lineData;
+            var lineData = new LineData();
+            return AddLine(lineData);
         }
 
         public LineData AddLine(LineData lineData)
         {
-            lines.Add(lineData);
+            LineData.Add(lineData);
             return lineData;
         }
 
         public NodeData CreateNode()
         {
-            NodeData nodeData = new NodeData();
-            nodes.Add(nodeData);
-            return nodeData;
+            var nodeData = new NodeData();
+            return AddNode(nodeData);
         }
 
         public NodeData AddNode(NodeData data)
         {
-            nodes.Add(data);
+            NodeData.Add(data);
             return data;
         }
+
+        public bool RemoveNode(NodeData data) => NodeData.Remove(data);
+        public bool RemoveLine(LineData data) => LineData.Remove(data);
     }
 }

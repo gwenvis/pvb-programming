@@ -18,17 +18,20 @@ namespace DN.Puzzle.Color
 
 		private List<ColorLevelData> levelData;
 		
-		protected void Awake()
+		protected void Start()
 		{
 			RefreshDropdown();
 		}
 
+		public void Refresh() => RefreshDropdown();
+
 		private void RefreshDropdown()
 		{
 			dropdown.ClearOptions();
-			var data = Resources.FindObjectsOfTypeAll<ColorLevelData>();
+			var data = Resources.LoadAll<ColorLevelData>("");
 			if (data.Length == 0) return;
 
+			levelData = new List<ColorLevelData>(data);
 			dropdown.AddOptions(data.Select(x => x.LevelName).ToList());
 		}
 

@@ -1,12 +1,16 @@
+using System;
+using UnityEngine;
+
 namespace DN.Puzzle.Color
 {
+    [Serializable]
     public class LineData
     {
-        public Line Owner { get; private set; }
-        public LineColor LineColor { get; private set; }
-        public NodeData StartingNode { get; private set; }
-        public NodeData EndNode { get; private set; }
-        public bool CanTraverseBothWays { get; private set; }
+        [field: NonSerialized] public Line Owner { get; private set; }
+        [field: SerializeField, HideInInspector] public LineColor LineColor { get; private set; }
+        [field: SerializeField, HideInInspector] public NodeData StartingNode { get; private set; }
+        [field: SerializeField, HideInInspector] public NodeData EndNode { get; private set; }
+        [field: SerializeField, HideInInspector] public bool CanTraverseBothWays { get; private set; }
 
         public LineData(
             LineColor lineColor = Color.LineColor.Blue, 

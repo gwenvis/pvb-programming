@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aacbad7531af4025a5c05ce9b15ecbd1, type: 3}
-  m_Name: ColorPuzzle94d6740394d228641aee9aee3e31e860
+  m_Script: {fileID: 11500000, guid: 1cc033c2ffce44e4bfd9d0428a483ed7, type: 3}
+  m_Name: EditorPrefabsData
   m_EditorClassIdentifier: 
+  createNewPopup: {fileID: 5053050708060644797, guid: b08c3e143629c5d47addf7a4a8c1a31a,
+    type: 3}
+  unsavedDataPopup: {fileID: 0}
