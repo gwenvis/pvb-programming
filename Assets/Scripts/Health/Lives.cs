@@ -41,9 +41,6 @@ namespace DN.UI
 			CurrentLives--;
 			LifeLostEvent?.Invoke(CurrentLives);
 
-			//print(CurrentLives);
-			//print(ServiceLocator.Locate<LivesService>().CurrenlivesLives);
-
 			if (CurrentLives <= 0)
 			{
 				AllLifeLost?.Invoke();

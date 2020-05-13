@@ -23,8 +23,8 @@ namespace DN.LevelSelect.SceneManagment
         private LevelData.SelectedAnimal selectedAnimal;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
-        private const string DOG_IBS_NAME = "DogIBS";
-        private const string OWL_IBS_NAME = "OwlIBS";
+        private const string DOG_IBS_NAME = "LevelOpenerDragonfly";
+        private const string OWL_IBS_NAME = "LevelOpenerOwl";
 
         public void GetData()
         {
@@ -72,7 +72,6 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadLevelSelectFromPuzzle(bool isGameWon)
         {
-            print("Man");
             ServiceLocator.Locate<LevelMemoryService>().SetGameWonOrLost(isGameWon);
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }

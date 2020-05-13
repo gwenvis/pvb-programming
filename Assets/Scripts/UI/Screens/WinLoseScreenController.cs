@@ -76,6 +76,7 @@ namespace DN.UI
 
 		public void ContinueToLevelselectLose()
 		{
+			ServiceLocator.Locate<LivesService>().SetCurrentLives(3, false);
 			levelLoader.LoadLevelSelectFromPuzzle(false);
 		}
 

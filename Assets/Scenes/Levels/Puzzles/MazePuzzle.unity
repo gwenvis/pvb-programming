@@ -147,7 +147,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2065340450}
     - target: {fileID: 2944723930726908920, guid: 60627c51b5e50624daf93ebd9570a918,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -680,7 +680,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2065340450}
     - target: {fileID: 8530316040437022757, guid: f7d3978a5f8c6ce4c84d0d8ab4d8c323,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -710,7 +710,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2065340450}
     - target: {fileID: 8706311557492075578, guid: f7d3978a5f8c6ce4c84d0d8ab4d8c323,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1675,7 +1675,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b775c2b3834864643aa1c822168edca3, type: 3}
   - {fileID: 21300000, guid: 894baeed968e1d3498fc0390595415aa, type: 3}
   - {fileID: 21300000, guid: 64957e2ec25121f48b69048b5335d0f9, type: 3}
-  canvas: {fileID: 0}
+  canvas: {fileID: 2065340444}
 --- !u!222 &2114529483
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1701,6 +1701,6 @@ MonoBehaviour:
   runButton: {fileID: 1498587884}
   playerPrefab: {fileID: 7998395933334784031, guid: c800b9b4693cf0349a7f0bea7c02aa35,
     type: 3}
-  lives: {fileID: 0}
-  winController: {fileID: 0}
+  lives: {fileID: 2065340452}
+  winController: {fileID: 2065340451}
   blocktext: {fileID: 537529605}

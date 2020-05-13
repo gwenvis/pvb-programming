@@ -1,4 +1,5 @@
-﻿using DN.UI.LevelOpener.Object;
+﻿using DN.LevelSelect.SceneManagment;
+using DN.UI.LevelOpener.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,9 +21,11 @@ namespace DN.UI
         [SerializeField]
         private Image triggerField;
 
+        [SerializeField] private LevelLoader levelLoader;
+
         private float startZoomPos;
         private float endZoomPos;
-        private float duration = 3;
+        private float duration = 2;
         private Vector3 desiredPosition;
 
         void Start()
@@ -73,6 +76,7 @@ namespace DN.UI
 
                 //a;ofbnpei;oagnpaoifghb NIET COPYRIGHT MY CODE DOING MY NO COPY    
             }
+            levelLoader.LoadPuzzleScene();
         }
     }
 }
