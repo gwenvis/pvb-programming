@@ -5,17 +5,16 @@ using UnityEngine.EventSystems;
 
 namespace DN.UI
 {
-	/// <summary>
-	/// This script is used if you want the item to be draggable. When the item is dropped it checks if it is dropped on top of an <see cref="IDroppable"/> object.
 	/// </summary>
+	/// This script is used if you want the item to be draggable. When the item is dropped it checks if it is dropped on top of an <see cref="IDroppable"/> object.
+	/// <summary>
 	public class DraggableItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 	{
 		public event System.Action<DraggableItem> PickedUpItemEvent;
-
 		public Vector2 StartPos => startPos;
 		[SerializeField] private Canvas canvas;
 
-		private CanvasGroup canvasGroup;
+		protected CanvasGroup canvasGroup;
 		private RectTransform rectTransform;
 		private Vector2 startPos;
 
@@ -45,7 +44,7 @@ namespace DN.UI
 			rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
 		}
 
-		public void OnEndDrag(PointerEventData eventData)
+		public virtual void OnEndDrag(PointerEventData eventData)
 		{
 			if (canvasGroup)
 			{
@@ -53,12 +52,7 @@ namespace DN.UI
 				canvasGroup.blocksRaycasts = true;
 			}
 
-			RaycastHit2D[] hits = Physics2D.BoxCastAll(
-				transform.position,
-				GetSize(),
-				90,
-				transform.forward
-				);
+			RaycastHit2D[] hits = GetBoxCastHits();
 
 			foreach (RaycastHit2D hit in hits)
 			{
@@ -71,5 +65,20 @@ namespace DN.UI
 			var boxCollider = GetComponent<BoxCollider2D>();
 			return boxCollider == null ? rectTransform.sizeDelta : boxCollider.size * transform.lossyScale / 2;
 		}
-	}
+
+		protected RaycastHit2D[] GetBoxCastHits()
+		{
+			return Physics2D.BoxCastAll(
+				transform.position,
+				transform.GetComponent<BoxCollider2D>().size * transform.lossyScale / 2,
+				90,
+				transform.forward
+				);
+		}
+
+		public void SetCanvas(Canvas newCanvas)
+		{
+			canvas = newCanvas;
+		}
+    }
 }
