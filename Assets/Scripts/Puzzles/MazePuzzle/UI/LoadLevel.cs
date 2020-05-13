@@ -68,8 +68,8 @@ namespace DN.Puzzle.Maze.UI
 					Sprite spriteee = blockDictionary[mazeBlocks[y][x]];
 					sprite.sprite = spriteee;
 					gameObject.transform.position = new Vector3(
-						transform.position.x + 0.5f + x*80,
-						transform.position.y + 0.5f - y*80,
+						transform.position.x + x*75,
+						transform.position.y - y*75,
 						1.0f);
 					gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 					if(mazeBlocks[y][x] == MazeBlocks.Start)

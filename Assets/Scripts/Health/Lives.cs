@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DN.Service;
+using System;
 using UnityEngine;
 
 namespace DN.UI
@@ -24,7 +25,15 @@ namespace DN.UI
 
 		public Lives()
 		{
-			CurrentLives = startLives;
+			if (!ServiceLocator.Locate<LivesService>().RunOnce)
+			{
+				ServiceLocator.Locate<LivesService>().SetCurrentLives(startLives, true);
+				CurrentLives = ServiceLocator.Locate<LivesService>().CurrenlivesLives;
+			}
+			else
+			{
+				CurrentLives = ServiceLocator.Locate<LivesService>().CurrenlivesLives;
+			}
 		}
 
 		public void LoseLife()
@@ -32,7 +41,10 @@ namespace DN.UI
 			CurrentLives--;
 			LifeLostEvent?.Invoke(CurrentLives);
 
-			if(CurrentLives <= 0)
+			//print(CurrentLives);
+			//print(ServiceLocator.Locate<LivesService>().CurrenlivesLives);
+
+			if (CurrentLives <= 0)
 			{
 				AllLifeLost?.Invoke();
 			}

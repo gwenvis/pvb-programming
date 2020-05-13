@@ -1,4 +1,6 @@
 ﻿using DN.LevelSelect.SceneManagment;
+using DN.Puzzle.Color;
+using DN.Service;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,18 +26,51 @@ namespace DN.UI
 			winController.GameWonEvent += OnGameWonEvent;
 		}
 
+		private void OnEnable()
+		{
+			Player.RunFinishedEvent += OnRunFinishedEvent;
+		}
+
+		private void OnDisable()
+		{
+			Player.RunFinishedEvent -= OnRunFinishedEvent;
+		}
+
+		private void OnRunFinishedEvent(Player.State obj)
+		{
+			if (obj == Player.State.Done)
+			{
+				OnGameWonEvent();
+				return;
+			}
+			Stuck();
+		}
+
 		private void OnGameWonEvent()
 		{
 			winScreen.SetActive(true);
 		}
 
+		private void Stuck()
+		{
+			lives.LoseLife();
+			ServiceLocator.Locate<LivesService>().SetCurrentLives(lives.CurrentLives, true);
+			if (ServiceLocator.Locate<LivesService>().CurrenlivesLives >= 1)
+			{
+				print("Test");
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+			}
+		}
+
 		private void OnAllLifeLost()
 		{
+			ServiceLocator.Locate<LivesService>().SetCurrentLives(3, false);
 			loseScreen.SetActive(true);
 		}
 
 		public void ReloadScene()
 		{
+			ServiceLocator.Locate<LivesService>().SetCurrentLives(3, false);
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 		}
 
