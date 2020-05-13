@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DN.Service;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace DN.LevelSelect.Player
 
         [SerializeField] private Transform vehicleModel;
         [SerializeField] private Rigidbody sphere;
+        [SerializeField] private Transform spherePos;
 
         [SerializeField] [Range(5.0f, 40.0f)] private float acceleration = 30f;
         [SerializeField] [Range(20.0f, 160.0f)] private float steering = 80f;
@@ -38,12 +40,26 @@ namespace DN.LevelSelect.Player
         private bool nearGround;
         private bool onGround;
 
+        private bool setOnceVehicle;
+
         private Vector3 containerBase;
 
         void Awake()
         {
             container = vehicleModel.GetChild(0);
             containerBase = container.localPosition;
+
+            if (!ServiceLocator.Locate<LevelMemoryService>().PlayerPosSetOnce)
+            {
+                setOnceVehicle = true;
+                ServiceLocator.Locate<LevelMemoryService>().SetVehicleData(spherePos.position, vehicleModel.rotation, setOnceVehicle);
+            }
+
+            if (ServiceLocator.Locate<LevelMemoryService>().PlayerPos != spherePos.position)
+            {
+                spherePos.position = ServiceLocator.Locate<LevelMemoryService>().PlayerPos;
+                vehicleModel.rotation = ServiceLocator.Locate<LevelMemoryService>().PlayerRot;
+            }
         }
 
         void Update()

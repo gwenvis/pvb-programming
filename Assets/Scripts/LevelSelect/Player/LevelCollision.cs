@@ -1,4 +1,5 @@
 ﻿using DN.LevelSelect.SceneManagment;
+using DN.Service;
 using UnityEngine;
 
 namespace DN.LevelSelect.Player
@@ -11,19 +12,23 @@ namespace DN.LevelSelect.Player
 		[SerializeField] private GameObject txtPanel;
 
 		[SerializeField] private LevelLoader levelLoader;
+		[SerializeField] private BiomeController biomeController;
+		[SerializeField] private Transform player;
 
 		private LevelData.SelectedPuzzle selectedPuzzle;
 		private LevelData.SelectedAnimal selectedAnimal;
 
-		private GameObject otherObj;
+		private GameObject currentLevelSelected;
 
-		private KeyCode enterLevelInput = KeyCode.KeypadEnter;
+		private KeyCode enterLevelInput = KeyCode.Return;
 
 		private void Update()
 		{
 			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
-				levelLoader.SetLoadingLevelData(otherObj, selectedPuzzle, selectedAnimal);
+				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal);
+				ServiceLocator.Locate<LevelMemoryService>().SetData(biomeController.CurrentBiome, biomeController.CurrentLevelsCompleted, selectedPuzzle, selectedAnimal, biomeController.SelectedLevelCompleted, biomeController.CurrentLevelIndex);
+				ServiceLocator.Locate<LevelMemoryService>().SetVehicleData(player.position, player.rotation, true);
 				levelLoader.LoadInBetweenScene();
 			}
 		}
@@ -32,7 +37,7 @@ namespace DN.LevelSelect.Player
 		{
 			if (other.GetComponent<LevelData>())
 			{
-				otherObj = other.gameObject;
+				currentLevelSelected = other.gameObject;
 				selectedPuzzle = other.GetComponent<LevelData>().PuzzleSelected;
 				selectedAnimal = other.GetComponent<LevelData>().AnimalSelected;
 				txtPanel.SetActive(true);

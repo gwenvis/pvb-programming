@@ -12,7 +12,6 @@ namespace DN.LevelSelect
 	[System.Serializable]
 	public partial class LevelData : MonoBehaviour
 	{
-		public bool isLocked;
 		public bool isCompleted;
 
 		public SelectedAnimal AnimalSelected => selectedAnimal;

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using DN.LevelSelect.Player;
+using DN.Service;
+using System.ComponentModel;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,13 +26,15 @@ namespace DN.LevelSelect.SceneManagment
         private const string DOG_IBS_NAME = "DogIBS";
         private const string OWL_IBS_NAME = "OwlIBS";
 
-        void Awake()
+        public void GetData()
         {
-            DontDestroyOnLoad(this.gameObject);
+            selectedPuzzle = ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle;
+            selectedAnimal = ServiceLocator.Locate<LevelMemoryService>().SelectedAnimal;
         }
 
         public void LoadInBetweenScene()
         {
+            GetData();
             if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
             {
                 switch (selectedAnimal)
@@ -48,6 +52,7 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadPuzzleScene()
         {
+            GetData();
             SceneManager.LoadScene(selectedPuzzle.ToString(), LoadSceneMode.Single);
             isInBetweenFinished = false;
         }
@@ -61,6 +66,7 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadLevelSelect()
         {
+            GetData();
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }
     }

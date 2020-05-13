@@ -1,4 +1,9 @@
-﻿using System.Dynamic;
+﻿using Boo.Lang;
+using DN.LevelSelect.SceneManagment;
+using DN.Service;
+using System.Diagnostics.PerformanceData;
+using System.Dynamic;
+using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +15,23 @@ namespace DN.LevelSelect
     /// </summary>
     public class BiomeController : MonoBehaviour
     {
+        public int CurrentBiome => currentBiome;
+        public int CurrentLevelsCompleted => currentLevelsCompleted;
+        public int SelectedLevelCompleted => selectedLevelCompleted;
+        public int CurrentLevelIndex => currentLevelIndex;
+        public bool IsBiomeFinished => isBiomeFinished;
+
+        private int currentLevelIndex;
+        private int currentBiome;
+        private int currentLevelsCompleted;
+        private int selectedLevelCompleted;
+
+        private bool isBiomeFinished;
+
         [SerializeField] private GameObject[] biomes;
         [SerializeField] private GameObject[] levels;
+
+        [SerializeField] private Transform player;
 
         [SerializeField] private Sprite levelCompletedSprite;
 
@@ -21,32 +41,31 @@ namespace DN.LevelSelect
 
         private GameObject[] borders;
 
-        private GameObject currentBiomeObj;
         private GameObject previousBiome;
 
-        private int currentBiome;
         private int biomeCount;
 
-        private int currentLevelsCompleted;
+        private GameObject prevBiomeObj;
+        private GameObject currentBiomeObj;
+
         private int minBiomeLevelsCompleted = 0;
         private int maxBiomeLevelsCompleted;
 
-        private bool isBiomeFinished;
         private bool isGameFinished;
 
         private void Awake()
         {
+            SetLevelData();
             SetBiomeStart();
             SetBordersStart();
             GetBiomeLevels();
+            CheckForCompletionBiome();
+            UpdateBorders();
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Backspace))
-            {
-                CheckForCompletionBiome();
-            }
+            UpdateSelectedLevel();
         }
 
         private void CheckForCompletionBiome()
@@ -62,19 +81,20 @@ namespace DN.LevelSelect
                 }
             }
 
-            if (currentLevelsCompleted == maxBiomeLevelsCompleted)
+            if (currentLevelsCompleted >= maxBiomeLevelsCompleted)
             {
-                previousBiome = currentBiomeObj;
                 currentLevelsCompleted = minBiomeLevelsCompleted;
+                previousBiome = currentBiomeObj;
                 currentBiome++;
 
-                if(currentBiome != biomeCount)
+
+                if (currentBiome != biomeCount)
                 {
                     currentBiomeObj = biomes[currentBiome];
                 }
 
                 isBiomeFinished = true;
-                NextBiome(isBiomeFinished, currentBiome);
+                NextBiome(isBiomeFinished);
             }
             else
             {
@@ -83,6 +103,7 @@ namespace DN.LevelSelect
                 isBiomeFinished = false;
             }
         }
+
         private void SetBordersStart()
         {
             borders = new GameObject[borderParent.childCount];
@@ -99,11 +120,25 @@ namespace DN.LevelSelect
             {
                 levels[i] = currentBiomeObj.transform.GetChild(i).gameObject;
             }
+
+            if (!isBiomeFinished)
+            {
+                ServiceLocator.Locate<LevelMemoryService>().SetBiomeFinished(isBiomeFinished);
+                for (int i = 0; i < ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes.Count; i++)
+                {
+                    levels[ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes[i]].GetComponent<LevelData>().isCompleted = true;
+                }
+            }
+            else
+            {
+                ServiceLocator.Locate<LevelMemoryService>().SetBiomeFinished(!isBiomeFinished);
+                ServiceLocator.Locate<LevelMemoryService>().NextBiomeClear(currentBiome);
+                ServiceLocator.Locate<LevelMemoryService>().ClearList();
+            }
         }
 
         private void SetBiomeStart()
         {
-            currentBiome = 0;
             biomes = new GameObject[transform.childCount];
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -115,7 +150,7 @@ namespace DN.LevelSelect
             currentBiomeObj.SetActive(true);
         }
 
-        private void NextBiome(bool value, int currentCompletedBiome)
+        private void NextBiome(bool value)
         {
             ClearLevels();
             GetBiomeLevels();
@@ -123,14 +158,32 @@ namespace DN.LevelSelect
             biomeUI.SetTaskManager(isBiomeFinished, (maxBiomeLevelsCompleted - currentLevelsCompleted));
 
             currentBiomeObj.SetActive(value);
-            previousBiome.SetActive(!value);
-
-            UpdateBorders(currentCompletedBiome);
         }
 
-        private void UpdateBorders(int currentBiomeCleared)
+        private void UpdateBorders()
         {
-            borders[currentBiomeCleared - 1].SetActive(false);
+            for (int i = 0; i < ServiceLocator.Locate<LevelMemoryService>().CompletedBiomeIndexes.Count; i++)
+            {
+                if(ServiceLocator.Locate<LevelMemoryService>().CompletedBiomeIndexes.Count <= biomeCount)
+                {
+                    borders[i].SetActive(false);
+                }
+            }
+        }
+
+        private void UpdateSelectedLevel()
+        {
+            float distance;
+            float minDistance = 4f;
+
+            for (int i = 0; i < levels.Length; i++)
+            {
+                distance = Vector3.Distance(player.position, levels[i].transform.position);
+                if(distance <= minDistance)
+                {
+                    currentLevelIndex = i;
+                }
+            }
         }
 
         private void ClearLevels()
@@ -148,6 +201,14 @@ namespace DN.LevelSelect
                 isGameFinished = true;
                 Debug.Log("Finished Game biem");
             }
+        }
+
+        private void SetLevelData()
+        {
+            currentBiome = ServiceLocator.Locate<LevelMemoryService>().CurrentBiome;
+            currentLevelsCompleted = ServiceLocator.Locate<LevelMemoryService>().CurrentLevelsCompleted;
+            selectedLevelCompleted = ServiceLocator.Locate<LevelMemoryService>().SelectedLevelCompleted;
+            isBiomeFinished = ServiceLocator.Locate<LevelMemoryService>().BiomeFinished;
         }
     }
 }
