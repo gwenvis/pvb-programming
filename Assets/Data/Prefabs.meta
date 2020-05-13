@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Data/Prefabs.meta
 guid: 0d1e90bf3cc00bf489b2e5e6baafce69
+=======
+guid: b4075ea9dc940f9459388d7678907397
+>>>>>>> develop:Assets/Scripts/Puzzles/MazePuzzle/UI.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
