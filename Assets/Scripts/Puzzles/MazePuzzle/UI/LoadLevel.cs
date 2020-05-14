@@ -21,13 +21,13 @@ namespace DN.Puzzle.Maze.UI
 		public static int MaxBlocks { get; private set; } = 20; 
 		//Voor nu het level moet later gezet worden door data met SetLevel(); 
 		public static MazeBlocks[][] Level { get; private set; } = {
-										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path },
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
 										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path },
 										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path },
-										new[] { MazeBlocks.Start, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path },
+										new[] { MazeBlocks.Start, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path },
 										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.End },
 										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.None },
-										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
 										};
 
 		private void Start()
@@ -64,12 +64,14 @@ namespace DN.Puzzle.Maze.UI
 					GameObject gameObject = new GameObject($"level tile ({x} {y})");
 					gameObject.transform.SetParent(transform);
 					gameObject.AddComponent<CanvasRenderer>();
+					AspectRatioFitter af = gameObject.AddComponent<AspectRatioFitter>();
+					af.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
 					var sprite = gameObject.AddComponent<Image>();
 					Sprite spriteee = blockDictionary[mazeBlocks[y][x]];
 					sprite.sprite = spriteee;
 					gameObject.transform.position = new Vector3(
-						transform.position.x + 0.5f + x*80,
-						transform.position.y + 0.5f - y*80,
+						transform.position.x + x * 75,
+						transform.position.y - y * 75,
 						1.0f);
 					gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 					if(mazeBlocks[y][x] == MazeBlocks.Start)

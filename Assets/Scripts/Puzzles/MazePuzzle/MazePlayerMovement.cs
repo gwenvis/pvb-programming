@@ -34,7 +34,7 @@ namespace DN.Puzzle.Maze
 					t += Time.deltaTime / time;
 					transform.position = Vector3.Lerp(transform.position, targetPosition, t);
 					transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
-					yield return null;
+					yield return new WaitForEndOfFrame();
 				}
 
 				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
@@ -45,7 +45,10 @@ namespace DN.Puzzle.Maze
 				}
 
 				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
+				{
+					gameEnded = true;
 					WinEvent?.Invoke();
+				}
 			}
 			if(!gameEnded)
 				LoseLifeEvent?.Invoke();
@@ -123,8 +126,8 @@ namespace DN.Puzzle.Maze
 		private Vector3 GetPositionOnGrid(Vector2 startPos)
 		{
 			return new Vector3(
-						transform.parent.position.x + 0.5f + startPos.x * 80,
-						transform.parent.position.y + 0.5f - startPos.y * 80,
+						transform.parent.position.x + startPos.x * 75,
+						transform.parent.position.y - startPos.y * 75,
 						1.0f);
 		}
 	}
