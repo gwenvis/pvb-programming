@@ -13,8 +13,6 @@ namespace DN.LevelSelect.SceneManagment
     /// </summary>
     public class LevelLoader : MonoBehaviour
     {
-        [HideInInspector] public bool isInBetweenFinished;
-
         public GameObject LevelObject => levelObject;
         public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
         public LevelData.SelectedAnimal SelectedAnimal => selectedAnimal;
@@ -33,6 +31,8 @@ namespace DN.LevelSelect.SceneManagment
         {
             if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
             {
+                ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(false);
+
                 switch (selectedAnimal)
                 {
                     case LevelData.SelectedAnimal.Dog:
@@ -81,7 +81,6 @@ namespace DN.LevelSelect.SceneManagment
         public void LoadPuzzleScene()
         {
             GetAndSetScene(selectedPuzzle.ToString());
-            isInBetweenFinished = false;
         }
 
         public void SetLoadingLevelData(GameObject other, LevelData.SelectedPuzzle puzzle, LevelData.SelectedAnimal animal)
@@ -101,6 +100,7 @@ namespace DN.LevelSelect.SceneManagment
             GetAndSetScene(LEVEL_SELECT_NAME);
             levelObject.GetComponent<LevelData>().isCompleted = isGameWon;
             ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
+            ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(true);
         }
     }
 }

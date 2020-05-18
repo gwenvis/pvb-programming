@@ -13,6 +13,7 @@ namespace DN.LevelSelect.Player
 
 		[SerializeField] private LevelLoader levelLoader;
 		[SerializeField] private BiomeController biomeController;
+		[SerializeField] private SetAudioListener audioListener;
 
 		private LevelData.SelectedPuzzle selectedPuzzle;
 		private LevelData.SelectedAnimal selectedAnimal;
@@ -26,7 +27,7 @@ namespace DN.LevelSelect.Player
 			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
 				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal);
-				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelController(biomeController, levelLoader);
+				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelAndAudioController(biomeController, levelLoader, audioListener);
 				levelLoader.LoadInBetweenScene();
 			}
 		}

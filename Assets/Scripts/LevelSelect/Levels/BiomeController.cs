@@ -15,18 +15,6 @@ namespace DN.LevelSelect
     /// </summary>
     public class BiomeController : MonoBehaviour
     {
-        public int CurrentBiome => currentBiome;
-        public int CurrentLevelsCompleted => currentLevelsCompleted;
-        public int SelectedLevelCompleted => selectedLevelCompleted;
-        public int CurrentLevelIndex => currentLevelIndex;
-        public bool IsBiomeFinished => isBiomeFinished;
-
-        private int currentLevelIndex;
-        private int currentBiome;
-        private int currentLevelsCompleted;
-        private int selectedLevelCompleted;
-
-        private bool isBiomeFinished;
 
         [SerializeField] private GameObject[] biomes;
         [SerializeField] private GameObject[] levels;
@@ -42,10 +30,13 @@ namespace DN.LevelSelect
         private GameObject[] borders;
 
         private int previousBiome;
-
         private int biomeCount;
+        private int currentBiome;
 
-        private GameObject prevBiomeObj;
+        private int currentLevelsCompleted;
+
+        private bool isBiomeFinished;
+
         private GameObject currentBiomeObj;
 
         private int minBiomeLevelsCompleted = 0;
@@ -57,11 +48,6 @@ namespace DN.LevelSelect
             SetBordersStart();
             GetBiomeLevels();
             CompletedLevel();
-        }
-
-        private void Update()
-        {
-            UpdateSelectedLevel();
         }
 
         public void CompletedLevel()
@@ -150,21 +136,6 @@ namespace DN.LevelSelect
         private void UpdateBorders()
         {
             borders[previousBiome].SetActive(false);
-        }
-
-        private void UpdateSelectedLevel()
-        {
-            float distance;
-            float minDistance = 4f;
-
-            for (int i = 0; i < levels.Length; i++)
-            {
-                distance = Vector3.Distance(player.position, levels[i].transform.position);
-                if(distance <= minDistance)
-                {
-                    currentLevelIndex = i;
-                }
-            }
         }
 
         private void ClearLevels()
