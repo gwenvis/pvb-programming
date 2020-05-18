@@ -3,7 +3,7 @@
 namespace DN.LevelSelect
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// This is where you can disable and enable the audiolistener of the level select scene.
 	/// </summary>
 	public class SetAudioListener : MonoBehaviour
 	{

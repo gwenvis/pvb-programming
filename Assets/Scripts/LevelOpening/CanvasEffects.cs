@@ -76,9 +76,7 @@ namespace DN.UI
                 animal.transform.localScale = Vector3.one * Mathf.Lerp(startZoomPos, endZoomPos, t);
                 animal.transform.position = Vector3.Lerp(animal.transform.position, desiredPosition, t);
 
-                yield return new WaitForEndOfFrame();
-
-                //a;ofbnpei;oagnpaoifghb NIET COPYRIGHT MY CODE DOING MY NO COPY    
+                yield return new WaitForEndOfFrame(); 
             }
             levelLoader.LoadPuzzleScene();
         }

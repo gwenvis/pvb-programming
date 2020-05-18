@@ -52,7 +52,6 @@ namespace DN.LevelSelect
 
         public void CompletedLevel()
         {
-            print("man");
             CheckForCompletionBiome();
         }
 

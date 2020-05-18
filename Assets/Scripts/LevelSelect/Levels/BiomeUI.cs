@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DN
+namespace DN.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Here the in game UI gets set in the level select.
 	/// </summary>
 	public class BiomeUI : MonoBehaviour
 	{

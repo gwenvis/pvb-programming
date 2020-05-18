@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace DN.LevelSelect
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// This is where the data gets stored per level object in the scene.
 	/// </summary>
 	
 	[System.Serializable]
