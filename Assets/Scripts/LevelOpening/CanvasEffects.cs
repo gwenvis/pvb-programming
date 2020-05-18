@@ -1,4 +1,6 @@
-﻿using DN.LevelSelect.SceneManagment;
+﻿using DN.LevelSelect;
+using DN.LevelSelect.SceneManagment;
+using DN.Service;
 using DN.UI.LevelOpener.Object;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace DN.UI
         [SerializeField]
         private Image triggerField;
 
-        [SerializeField] private LevelLoader levelLoader;
+        private LevelLoader levelLoader;
 
         private float startZoomPos;
         private float endZoomPos;
@@ -35,6 +37,8 @@ namespace DN.UI
             blackFade.canvasRenderer.SetAlpha(0.0f);
 
             desiredPosition = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+
+            levelLoader = ServiceLocator.Locate<LevelMemoryService>().LevelLoader;
 
             StartCoroutine(FadeInAnimal());
         }

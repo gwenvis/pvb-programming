@@ -13,7 +13,6 @@ namespace DN.LevelSelect.Player
 
 		[SerializeField] private LevelLoader levelLoader;
 		[SerializeField] private BiomeController biomeController;
-		[SerializeField] private Transform player;
 
 		private LevelData.SelectedPuzzle selectedPuzzle;
 		private LevelData.SelectedAnimal selectedAnimal;
@@ -27,8 +26,7 @@ namespace DN.LevelSelect.Player
 			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
 				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal);
-				ServiceLocator.Locate<LevelMemoryService>().SetData(biomeController.CurrentBiome, biomeController.CurrentLevelsCompleted, selectedPuzzle, selectedAnimal, biomeController.SelectedLevelCompleted, biomeController.CurrentLevelIndex);
-				ServiceLocator.Locate<LevelMemoryService>().SetVehicleData(player.position, player.rotation, true);
+				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelController(biomeController, levelLoader);
 				levelLoader.LoadInBetweenScene();
 			}
 		}

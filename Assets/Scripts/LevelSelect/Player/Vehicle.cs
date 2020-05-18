@@ -48,18 +48,6 @@ namespace DN.LevelSelect.Player
         {
             container = vehicleModel.GetChild(0);
             containerBase = container.localPosition;
-
-            if (!ServiceLocator.Locate<LevelMemoryService>().PlayerPosSetOnce)
-            {
-                setOnceVehicle = true;
-                ServiceLocator.Locate<LevelMemoryService>().SetVehicleData(spherePos.position, vehicleModel.rotation, setOnceVehicle);
-            }
-
-            if (ServiceLocator.Locate<LevelMemoryService>().PlayerPos != spherePos.position)
-            {
-                spherePos.position = ServiceLocator.Locate<LevelMemoryService>().PlayerPos;
-                vehicleModel.rotation = ServiceLocator.Locate<LevelMemoryService>().PlayerRot;
-            }
         }
 
         void Update()

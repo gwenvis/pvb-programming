@@ -1,4 +1,5 @@
-﻿using DN.LevelSelect.SceneManagment;
+﻿using DN.LevelSelect;
+using DN.LevelSelect.SceneManagment;
 using DN.Puzzle.Color;
 using DN.Service;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace DN.UI
 
 		private void Start()
 		{
+			levelLoader = ServiceLocator.Locate<LevelMemoryService>().LevelLoader;
+
 			loseScreen.SetActive(false);
 			winScreen.SetActive(false);
 			lives.AllLifeLost += OnAllLifeLost;
@@ -71,7 +74,7 @@ namespace DN.UI
 		public void ReloadScene()
 		{
 			ServiceLocator.Locate<LivesService>().SetCurrentLives(3, false);
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Additive);
 		}
 
 		public void ContinueToLevelselectLose()

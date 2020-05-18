@@ -1,5 +1,6 @@
 ﻿using DN.LevelSelect.Player;
 using DN.Service;
+using System.Collections;
 using System.ComponentModel;
 using UnityEditorInternal;
 using UnityEngine;
@@ -26,34 +27,60 @@ namespace DN.LevelSelect.SceneManagment
         private const string DOG_IBS_NAME = "LevelOpenerDragonfly";
         private const string OWL_IBS_NAME = "LevelOpenerOwl";
 
-        public void GetData()
-        {
-            selectedPuzzle = ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle;
-            selectedAnimal = ServiceLocator.Locate<LevelMemoryService>().SelectedAnimal;
-        }
+        private string prevSceneLoaded;
 
         public void LoadInBetweenScene()
         {
-            GetData();
             if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
             {
                 switch (selectedAnimal)
                 {
                     case LevelData.SelectedAnimal.Dog:
-                        SceneManager.LoadScene(DOG_IBS_NAME, LoadSceneMode.Single);
+                        GetAndSetScene(DOG_IBS_NAME);
                         break;
 
                     case LevelData.SelectedAnimal.Owl:
-                        SceneManager.LoadScene(OWL_IBS_NAME, LoadSceneMode.Single);
+                        GetAndSetScene(OWL_IBS_NAME);
                         break;
                 }
             }
         }
 
+        private void GetAndSetScene(string sceneName)
+        {
+            prevSceneLoaded = SceneManager.GetActiveScene().name;
+
+            Scene loadedLevel = SceneManager.GetSceneByName(sceneName);
+            if (loadedLevel.isLoaded)
+            {
+                SceneManager.SetActiveScene(loadedLevel);
+                SceneManager.UnloadScene(prevSceneLoaded);
+                return;
+            }
+
+            StartCoroutine(LoadLevel(sceneName, prevSceneLoaded));
+        }
+
+        IEnumerator LoadLevel(string sceneName, string prevSceneName)
+        {
+            enabled = false;
+            yield return SceneManager.LoadSceneAsync(
+                sceneName, LoadSceneMode.Additive
+            );
+
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
+            if (prevSceneName != LEVEL_SELECT_NAME)
+            {
+                SceneManager.UnloadScene(prevSceneName);
+            }
+
+            enabled = true;
+        }
+
         public void LoadPuzzleScene()
         {
-            GetData();
-            SceneManager.LoadScene(selectedPuzzle.ToString(), LoadSceneMode.Single);
+            GetAndSetScene(selectedPuzzle.ToString());
             isInBetweenFinished = false;
         }
 
@@ -66,14 +93,14 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadLevelSelect()
         {
-            GetData();
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }
 
         public void LoadLevelSelectFromPuzzle(bool isGameWon)
         {
-            ServiceLocator.Locate<LevelMemoryService>().SetGameWonOrLost(isGameWon);
-            SceneManager.LoadScene(LEVEL_SELECT_NAME);
+            GetAndSetScene(LEVEL_SELECT_NAME);
+            levelObject.GetComponent<LevelData>().isCompleted = isGameWon;
+            ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
         }
     }
 }
