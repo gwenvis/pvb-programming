@@ -29,7 +29,7 @@ namespace DN.LevelSelect.Player
 				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal);
 				ServiceLocator.Locate<LevelMemoryService>().SetData(biomeController.CurrentBiome, biomeController.CurrentLevelsCompleted, selectedPuzzle, selectedAnimal, biomeController.SelectedLevelCompleted, biomeController.CurrentLevelIndex);
 				ServiceLocator.Locate<LevelMemoryService>().SetVehicleData(player.position, player.rotation, true);
-				levelLoader.LoadInBetweenScene();
+				StartCoroutine(levelLoader.LoadInBetweenScene());
 			}
 		}
 

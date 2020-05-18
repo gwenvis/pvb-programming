@@ -1,5 +1,6 @@
 ﻿using DN.LevelSelect.Player;
 using DN.Service;
+using System.Collections;
 using System.ComponentModel;
 using UnityEditorInternal;
 using UnityEngine;
@@ -14,6 +15,9 @@ namespace DN.LevelSelect.SceneManagment
     {
         [HideInInspector] public bool isInBetweenFinished;
 
+        [SerializeField]
+        private Animator transition;
+
         public GameObject LevelObject => levelObject;
         public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
         public LevelData.SelectedAnimal SelectedAnimal => selectedAnimal;
@@ -26,14 +30,20 @@ namespace DN.LevelSelect.SceneManagment
         private const string DOG_IBS_NAME = "LevelOpenerDragonfly";
         private const string OWL_IBS_NAME = "LevelOpenerOwl";
 
+        private float transitionTime = 1f;
+
         public void GetData()
         {
             selectedPuzzle = ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle;
             selectedAnimal = ServiceLocator.Locate<LevelMemoryService>().SelectedAnimal;
         }
 
-        public void LoadInBetweenScene()
+        public IEnumerator LoadInBetweenScene()
         {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transitionTime);
+
             GetData();
             if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
             {
@@ -70,8 +80,12 @@ namespace DN.LevelSelect.SceneManagment
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }
 
-        public void LoadLevelSelectFromPuzzle(bool isGameWon)
+        public IEnumerator LoadLevelSelectFromPuzzle(bool isGameWon)
         {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transitionTime);
+
             ServiceLocator.Locate<LevelMemoryService>().SetGameWonOrLost(isGameWon);
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }

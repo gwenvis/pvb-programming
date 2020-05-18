@@ -39,6 +39,23 @@ namespace DN.UI
             StartCoroutine(FadeInAnimal());
         }
 
+        private void Update()
+        {
+            animalJitter();
+        }
+
+        private void animalJitter()
+        {
+            /*float jitterValue = 0.3f;
+            float animalPosX = animal.transform.position.x;
+            float animalPosY = animal.transform.position.y;
+            float[] animalPossX = new float[] { animalPosX - jitterValue, animalPosX + jitterValue };
+            float[] animalPossY = new float[] { animalPosY - jitterValue, animalPosY + jitterValue };
+
+            animal.transform.position = new Vector3(Random.Range(0, animalPossX.Length), Random.Range(0, animalPossY.Length), transform.position.z);
+        */    
+        }
+
         private IEnumerator FadeInAnimal()
         {
             yield return new WaitForSeconds(2f);
