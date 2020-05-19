@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DN.Puzzle.Color.Editor;
 using DN.UI;
 using UnityEngine;
 
@@ -22,9 +23,6 @@ namespace DN.Puzzle.Color
 
 		private UnityEngine.Object selectedObject;
 
-		private bool inLineMode = false;
-		private GameObject editorLineDrawObject;
-
 		public void InstantiateNode(NodeData data)
 		{
 			var node = Instantiate(editorNodePrefab, viewTransform);
@@ -33,7 +31,7 @@ namespace DN.Puzzle.Color
 			node.GetComponent<DraggableItem>().DroppedItemEvent += OnDroppedNodeEvent;
 			node.AddComponent<ClickableItem>().ClickedEvent += OnNodeClickedEvent;
 			node.GetComponent<Node>().InitializeNode(data);
-			
+
 			instantiatedNodes.Add(data, node);
 		}
 
@@ -41,23 +39,35 @@ namespace DN.Puzzle.Color
 		{
 			if (item.Equals(selectedObject))
 			{
+				SetHighlighOfCurrentObject(false);
 				SetSelectedObject(null);
 				return;
 			}
 
+			if (selectedObject)
+			{
+				SetHighlighOfCurrentObject(false);
+			}
 			SetSelectedObject(item);
+			SetHighlighOfCurrentObject(true);
 		}
 
 		private void SetSelectedObject(UnityEngine.Object obj)
 		{
-			// TODO : Do something with this item. (like adding a background or changing the color)
 			selectedObject = obj;
 			ItemSelected?.Invoke(obj);
 		}
 
+		private void SetHighlighOfCurrentObject(bool active) => ((MonoBehaviour) selectedObject).GetComponent<Highlight>().SetHighlight(active);
+
 		private void OnDroppedNodeEvent(DraggableItem obj)
 		{
 			obj.GetComponent<Node>().Data.SetPosition(obj.transform.localPosition);
+
+			foreach (var line in instantiatedLines)
+			{
+				line.Value.GetComponent<Line>().InitializePosition();
+			}
 		}
 
 		public void DeleteNode(NodeData data)
@@ -67,29 +77,24 @@ namespace DN.Puzzle.Color
 			instantiatedNodes.Remove(data);
 		}
 
-		public void EnterLineCreationMode()
+		public void InstantiateLine(LineData data, IEnumerable<NodeData> nodes)
 		{
-			if (inLineMode)
-			{
-				
-			}
+			var lineObj = Instantiate(editorLinePrefab, viewTransform);
+			var line = lineObj.GetComponent<Line>();
 			
-			inLineMode = true;
-		}
+			line.InitializeData(data);
+			line.Data.SetOwner(line, nodes);
+			line.AssignToParent();
+			
+			lineObj.AddComponent<ClickableItem>().ClickedEvent += OnNodeClickedEvent;
 
-		public void ExitLineMode()
-		{
-			
-		}
-
-		public void InstantiateLine(LineData data)
-		{
-			
+			instantiatedLines.Add(data, lineObj);
 		}
 		
 		public void DeleteLine(LineData line)
 		{
-			
+			Destroy(instantiatedLines[line]);
+			instantiatedLines.Remove(line);
 		}
 
 		public void ClearAll()
@@ -103,6 +108,18 @@ namespace DN.Puzzle.Color
 			{
 				DeleteLine(line.Key);
 			}
+		}
+
+		public Node GetNodeAtPosition(Vector3 pos)
+		{
+			var casts = Physics2D.CircleCastAll(pos, 10, Vector2.right);
+			foreach (var cast in casts)
+			{
+				if (cast.collider.GetComponent<Node>())
+					return cast.collider.GetComponent<Node>();
+			}
+
+			return null;
 		}
 	}
 }

@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace DN.Puzzle.Color
@@ -6,47 +9,58 @@ namespace DN.Puzzle.Color
     [Serializable]
     public class LineData
     {
+        public string Id => id;
         [field: NonSerialized] public Line Owner { get; private set; }
         [field: SerializeField, HideInInspector] public LineColor LineColor { get; private set; }
-        [field: SerializeField, HideInInspector] public NodeData StartingNode { get; private set; }
-        [field: SerializeField, HideInInspector] public NodeData EndNode { get; private set; }
+        [field: SerializeField, HideInInspector] public string StartingNodeId { get; private set; }
+        [field: SerializeField, HideInInspector] public string EndNodeId { get; private set; }
+        [field: NonSerialized] public NodeData StartingNode { get; private set; }
+        [field: NonSerialized] public NodeData EndNode { get; private set; }
         [field: SerializeField, HideInInspector] public bool CanTraverseBothWays { get; private set; }
+
+        [SerializeField, HideInInspector] private string id;
+        
 
         public LineData(
             LineColor lineColor = Color.LineColor.Blue, 
-            NodeData startingNode = null,
-            NodeData endNode = null,
+            string startingNodeId = null,
+            string endNodeId = null,
             bool traverseBothWays = false)
         {
             LineColor = lineColor;
-            StartingNode = startingNode;
-            EndNode = endNode;
+            StartingNodeId = startingNodeId;
+            EndNodeId = endNodeId;
             CanTraverseBothWays = traverseBothWays;
+            
+            if(string.IsNullOrWhiteSpace(id))
+                id = Guid.NewGuid().ToString(); 
         }
 
-        public void SetOwner(Line owner)
+        public void SetOwner(Line owner, IEnumerable<NodeData> nodes)
         {
             if (!Owner)
             {
                 Owner = owner;
+                StartingNode = nodes.FirstOrDefault(x => x.Id.Equals(StartingNodeId));
+                EndNode = nodes.FirstOrDefault(x => x.Id.Equals(EndNodeId));
             }
         }
 
 #if UNITY_EDITOR
-        public void ConnectNode(NodeData node, bool startingNode)
+        public void ConnectNode(string nodeId, bool startingNode)
         {
             if (startingNode)
-                this.StartingNode = node;
+                this.StartingNodeId = nodeId;
             else
-                this.EndNode = node;
+                this.EndNodeId = nodeId;
         }
 
         public void DisconnectNode(bool startingNode)
         {
             if (startingNode)
-                this.StartingNode = null;
+                this.StartingNodeId = null;
             else
-                this.EndNode = null;
+                this.EndNodeId = null;
         }
 
         public void SetTraverseBothWays(bool canTraverseBothWays)

@@ -19,15 +19,15 @@ namespace DN.Puzzle.Color.Editor
 		[SerializeField] private GameObject lineOptionsView;
 		[SerializeField] private GameObject nodeOptionsView;
 		private ColorLevelData loadedData;
+		private LineDrawing lineDrawMode;
 		private LevelEditorColorData editorData;
 		private bool loaded = false;
 		private bool unsaved = false;
 
-		private bool inLineDrawMode;
-
 		protected void Awake()
 		{
 			puzzleEditorView.ItemSelected += OnItemSelected;
+			lineDrawMode = GetComponent<LineDrawing>();
 		}
 
 		protected void OnDestroy()
@@ -71,6 +71,11 @@ namespace DN.Puzzle.Color.Editor
 				puzzleEditorView.InstantiateNode(node);
 			}
 
+			foreach (var line in editorData.Lines)
+			{
+				puzzleEditorView.InstantiateLine(line, editorData.Nodes);
+			}
+
 			loaded = true;
 			unsaved = true;
 			return (true, colorLevelData);
@@ -94,9 +99,25 @@ namespace DN.Puzzle.Color.Editor
 			puzzleEditorView.InstantiateNode(node);
 		}
 
+		public void CreateLine(NodeData a, NodeData b, IEnumerable<NodeData> nodes)
+		{
+			var line = editorData.CreateLine(a.Id, b.Id);
+			puzzleEditorView.InstantiateLine(line, nodes);
+		}
+
 		public void EnterLineDrawMode()
 		{
-			inLineDrawMode = true;
+			lineDrawMode.EnterLineDrawMode(TryCreateLine);
+		}
+
+		public void TryCreateLine(Vector3 a, Vector3 b)
+		{
+			var startNode = puzzleEditorView.GetNodeAtPosition(a);
+			var endNode = puzzleEditorView.GetNodeAtPosition(b);
+
+			if (startNode == null || endNode == null) return;
+
+			CreateLine(startNode.Data, endNode.Data, editorData.Nodes);
 		}
 	}
 }

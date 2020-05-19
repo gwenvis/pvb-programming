@@ -51,11 +51,7 @@ namespace DN.Puzzle.Color
 
 		private void OnSaveButtonClicked()
 		{
-			if (puzzleEditor.Save())
-				SetText("Saving successful!");
-			else
-				SetText("Saving failed...");
-
+			SetText(puzzleEditor.Save() ? "Saving successful!" : "Saving failed...");
 		}
 
 		private void OnLoadButtonClicked()

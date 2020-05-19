@@ -35,19 +35,27 @@ namespace DN.Puzzle.Color
     {
         public IEnumerable<NodeData> Nodes => NodeData;
         public IEnumerable<LineData> Lines => LineData;
-        
+        public IEnumerable<LineColor> DraggableNodes => draggableNodes;
+
         private List<NodeData> NodeData { get; set; }
         private List<LineData> LineData { get; set; }
+        private List<LineColor> draggableNodes;
         
         public LevelEditorColorData(IEnumerable<NodeData> nodeData, IEnumerable<LineData> lineData)
         {
-            LineData = new List<LineData>(lineData);
-            NodeData = new List<NodeData>(nodeData);
+            LineData = new List<LineData>();
+            NodeData = new List<NodeData>();
+
+            if (nodeData != null)
+                NodeData.AddRange(nodeData);
+
+            if (lineData != null)
+                LineData.AddRange(lineData);
         }
 
-        public LineData CreateLine()
+        public LineData CreateLine(string startingNodeId, string endingNodeId)
         {
-            var lineData = new LineData();
+            var lineData = new LineData(startingNodeId: startingNodeId, endNodeId: endingNodeId);
             return AddLine(lineData);
         }
 

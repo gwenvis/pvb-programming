@@ -60,6 +60,7 @@
               <e p="ICommandQueue.cs" t="Include" />
               <e p="LevelEditor" t="Include">
                 <e p="DataManager.cs" t="Include" />
+                <e p="Highlight.cs" t="Include" />
                 <e p="LevelDataDropdown.cs" t="Include" />
                 <e p="LineDrawing.cs" t="Include" />
                 <e p="LineOptionsView.cs" t="Include" />

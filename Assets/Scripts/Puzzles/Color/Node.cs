@@ -15,6 +15,7 @@ namespace DN.Puzzle.Color
 			if (Data is null)
 			{
 				Data = data;
+				Data.SetOwner(this);
 			}
 		}
 	}
