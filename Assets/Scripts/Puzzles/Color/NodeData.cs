@@ -10,6 +10,7 @@ namespace DN.Puzzle.Color
     {
         [field: SerializeField, HideInInspector] public Node Owner { get; private set; }
         [field: SerializeField, HideInInspector] public bool IsFinish { get; private set; }
+        [field: SerializeField, HideInInspector] public bool IsStart { get; private set; }
         [field: SerializeField, HideInInspector] public Vector3 Position { get; private set; }
         public IEnumerable<LineData> ConnectedLines => connectedLines;
 		
@@ -43,6 +44,11 @@ namespace DN.Puzzle.Color
         public void SetIsFinish(bool isFinish)
         {
             IsFinish = isFinish;
+        }
+
+        public void SetIsStart(bool isStart)
+        {
+            IsStart = isStart;
         }
 #endif
     }

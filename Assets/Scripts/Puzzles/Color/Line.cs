@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,27 +11,33 @@ namespace DN.Puzzle.Color
 	/// </summary>
 	public class Line : MonoBehaviour
 	{
+		[Serializable]
+		public struct LineSprite
+		{
+			[field: SerializeField] public LineColor Color { get; private set; }
+			[field: SerializeField] public Sprite Line { get; private set; }
+			[field: SerializeField] public Sprite LineWithArrow { get; private set; }
+		}
+		
 		public LineData Data { get; private set; }
-		
-		[SerializeField] private Image lineSprite;
-		[SerializeField] private Image lineWithArrowSprite;
 
-		private GameObject arrow;
-		
+		[SerializeField] private LineSprite[] lines;
+		private LineSprite currentLineSprite;
+		private Image spriteRenderer;
+
 		private void Awake()
 		{
-			if (Data.StartingNode == null || Data.EndNode == null || lineSprite == null)
+			if (Data.StartingNode == null || Data.EndNode == null)
 			{
 				Debug.LogError("Assign all elements first.", gameObject);
 				return;
 			}
 
-			arrow = Resources.Load<GameObject>("Line Pointer");
+			spriteRenderer = GetComponentInChildren<Image>();
 
-			UnityEngine.Color color = SetColor();
+			UpdateLineSprite();
 			float rotation = SetRotation();
 			SetLength();
-			CreateArrow(rotation, color);
 		}
 
 		public void InitializeData(LineData data)
@@ -38,14 +45,20 @@ namespace DN.Puzzle.Color
 			if (Data is null)
 			{
 				Data = data;
+				currentLineSprite = lines.FirstOrDefault(x => x.Color == data.LineColor);
 			}
 		}
-		
-		private UnityEngine.Color SetColor()
+
+		public void SetPosition(Vector3 position, int siblings, int index)
 		{
-			ColorPuzzleSettings settings = Resources.Load<ColorPuzzleSettings>("ColorPuzzleSettings");
-			lineSprite.color = settings.ColorSettings.First(x => x.LineColor == Data.LineColor).Color;
-			return lineSprite.color;
+			// todo: set the position to and so forth.
+			SetRotation();
+			SetLength();
+		}
+		
+		private void UpdateLineSprite()
+		{
+			spriteRenderer.sprite = Data.CanTraverseBothWays ? currentLineSprite.Line : currentLineSprite.LineWithArrow;
 		}
 
 		private float SetRotation()
@@ -63,26 +76,10 @@ namespace DN.Puzzle.Color
 		{
 			Canvas canvas = GetComponentInParent<Canvas>();
 
-			Vector3 scale = lineSprite.transform.localScale;
+			Vector3 scale = spriteRenderer.transform.localScale;
 			scale.x = Vector2.Distance(Data.StartingNode.Owner.transform.position, Data.EndNode.Owner.transform.position) / canvas.transform.lossyScale.x;
-			lineSprite.transform.localScale = scale;
+			spriteRenderer.transform.localScale = scale;
 			return scale.x;
-		}
-
-		private void CreateArrow(float rotation, UnityEngine.Color color)
-		{
-			if(Data.CanTraverseBothWays)
-					return;
-
-			GameObject lArrow = Instantiate(this.arrow, gameObject.transform);
-			lArrow.GetComponent<Image>().color = color;
-			lArrow.transform.eulerAngles = new Vector3(0, 0, rotation - 90);
-
-			var position = Data.EndNode.Owner.transform.position;
-			lArrow.transform.position = 
-				position - 
-				(position - Data.StartingNode.Owner.transform.position).normalized * 
-				42.0f;
 		}
 	}
 }

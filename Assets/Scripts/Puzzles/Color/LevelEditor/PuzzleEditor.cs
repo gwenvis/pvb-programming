@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace DN.Puzzle.Color.Editor
 {
@@ -12,16 +13,52 @@ namespace DN.Puzzle.Color.Editor
 	/// </summary>
 	public class PuzzleEditor : MonoBehaviour
 	{
+		public event Action<Object> ItemSelected;
+		
 		[SerializeField] private PuzzleEditorView puzzleEditorView;
+		[SerializeField] private GameObject lineOptionsView;
+		[SerializeField] private GameObject nodeOptionsView;
 		private ColorLevelData loadedData;
 		private LevelEditorColorData editorData;
-		private bool loaded;
+		private bool loaded = false;
+		private bool unsaved = false;
 
 		private bool inLineDrawMode;
-		
+
+		protected void Awake()
+		{
+			puzzleEditorView.ItemSelected += OnItemSelected;
+		}
+
+		protected void OnDestroy()
+		{
+			puzzleEditorView.ItemSelected -= OnItemSelected;
+			OnItemSelected(null);
+		}
+
+		private void OnItemSelected(Object obj)
+		{
+			ItemSelected?.Invoke(obj);
+			
+			lineOptionsView.SetActive(false);
+			nodeOptionsView.SetActive(false);
+
+			if (obj == null)
+				return;
+			
+			var mono = (MonoBehaviour) obj;
+
+			unsaved = true;
+
+			if (mono.GetComponent<Line>())
+				lineOptionsView.SetActive(true);
+			else if (mono.GetComponent<Node>())
+				nodeOptionsView.SetActive(true);
+		}
+
 		public (bool, ColorLevelData) Load(ColorLevelData colorLevelData) 
 		{
-			if (loaded)
+			if (loaded || unsaved)
 			{
 				return (false, null);
 			}
@@ -33,8 +70,9 @@ namespace DN.Puzzle.Color.Editor
 			{
 				puzzleEditorView.InstantiateNode(node);
 			}
-			
+
 			loaded = true;
+			unsaved = true;
 			return (true, colorLevelData);
 		}
 
@@ -45,6 +83,8 @@ namespace DN.Puzzle.Color.Editor
 			EditorUtility.SetDirty(loadedData);
 			AssetDatabase.SaveAssets();
 
+			unsaved = false;
+			
 			return saved;
 		}
 

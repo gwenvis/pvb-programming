@@ -39,24 +39,14 @@
     <list default="true" id="c90ca74d-f5de-4b24-8908-ca5843d8217e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/ColorPuzzle94d6740394d228641aee9aee3e31e860.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/ColorPuzzle94d6740394d228641aee9aee3e31e860.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/Color Puzzle Editor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/Color Puzzle Editor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/Color Puzzle New Popup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/Color Puzzle New Popup.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Resources/ServiceLocatorTestObject.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Resources/ServiceLocatorTestObject.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Line.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Line.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Resources/cThis is.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Resources/cThis is.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Editor/Color Puzzle Editor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Editor/Color Puzzle Editor.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorPuzzleSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorPuzzleSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LevelDataDropdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LevelDataDropdown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NewDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NewDialog.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineColor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/ServiceLocator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,31 +57,37 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/Services/EditorPrefabsData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/ServiceLocator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Program Files/Unity/Hub/Editor/2019.3.7f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Toggle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/PlayerPathFinding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Node.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NodeOptionsView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorCommand.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LevelDataDropdown.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NewDialog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineColor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ClickableItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/ColorCommandDropzone.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelSelect/SceneManager/LevelLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/RunButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Button/RunButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health/Lives.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Context/Editor/CreateScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/ObjectCreation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineOptionsView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Context/Editor/CreateScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/ObjectCreation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/DataManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LevelDataDropdown.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/Services/EditorPrefabsData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NewDialog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorCommandQueue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorPuzzleSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineDrawing.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ICommandQueue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -100,7 +96,6 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Context/Editor/CreateScriptableObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Node.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/PlayerPathFinding.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Editor/InteractiveEditor.cs" />
@@ -117,11 +112,17 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/DataManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/ObjectCreation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineColor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ClickableItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineOptionsView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NodeOptionsView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineDrawing.cs" />
       </list>
     </option>
   </component>
@@ -174,6 +175,8 @@
       <workItem from="1589208804856" duration="407000" />
       <workItem from="1589274538151" duration="9436000" />
       <workItem from="1589364066103" duration="11831000" />
+      <workItem from="1589792758751" duration="7767000" />
+      <workItem from="1589811275790" duration="1600000" />
     </task>
     <servers />
   </component>
@@ -270,18 +273,18 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="225" key="GridCell.Tab.3.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589375239855" />
-    <state x="783" y="204" key="RiderGenerateDialog" timestamp="1589280177818">
+    <state x="783" y="204" key="RiderGenerateDialog" timestamp="1589795716285">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="783" y="204" key="RiderGenerateDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589280177818" />
+    <state x="783" y="204" key="RiderGenerateDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589795716285" />
     <state x="461" y="169" key="SettingsEditor" timestamp="1588850704920">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="169" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1588850704920" />
-    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog" timestamp="1589368154658">
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog" timestamp="1589804508848">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589368154658" />
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589804508848" />
     <state x="521" y="261" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1589374996595">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -290,10 +293,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589193587555" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1589377091630">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1589796620453">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589377091630" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589796620453" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -306,26 +309,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs</url>
-          <line>31</line>
+          <line>68</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" initialLine="31">
             <startOffsets>
-              <option value="765" />
+              <option value="1606" />
             </startOffsets>
             <endOffsets>
-              <option value="803" />
+              <option value="1644" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs</url>
-          <line>47</line>
+          <line>87</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" initialLine="47">
             <startOffsets>
-              <option value="1124" />
+              <option value="2005" />
             </startOffsets>
             <endOffsets>
-              <option value="1137" />
+              <option value="2018" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
