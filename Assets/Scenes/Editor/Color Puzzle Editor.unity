@@ -604,7 +604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &302442802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.21166992}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &331392492
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorDropdown: {fileID: 1065463986}
-  canTraverseBothWaysDropdown: {fileID: 445769593}
+  canTraverseBothWaysToggle: {fileID: 445769593}
 --- !u!223 &1228654971 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5772197998195321323, guid: 065ac842089425c4281f144e0f8c2de9,
@@ -3826,6 +3826,18 @@ PrefabInstance:
       propertyPath: editorNodePrefab
       value: 
       objectReference: {fileID: 1337973871298272626, guid: 206cf0bf6cf43e641a25ae04ffd934d5,
+        type: 3}
+    - target: {fileID: 6727003175459710979, guid: 065ac842089425c4281f144e0f8c2de9,
+        type: 3}
+      propertyPath: editorLinePrefab
+      value: 
+      objectReference: {fileID: 3720507359498578614, guid: e9f2cb126aa98ba4b8bb28a21eb46a7c,
+        type: 3}
+    - target: {fileID: 6727003175459710979, guid: 065ac842089425c4281f144e0f8c2de9,
+        type: 3}
+      propertyPath: editorLineDrawPrefab
+      value: 
+      objectReference: {fileID: 3720507359498578614, guid: e9f2cb126aa98ba4b8bb28a21eb46a7c,
         type: 3}
     - target: {fileID: 9127501013895120197, guid: 065ac842089425c4281f144e0f8c2de9,
         type: 3}
