@@ -54,7 +54,7 @@ namespace DN.LevelSelect
 
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i].GetComponent<LevelData>().isCompleted)
+                if (levels[i].GetComponent<LevelDataEditor>().isCompleted)
                 {
                     currentLevelsCompleted++;
                     levels[i].GetComponentInChildren<SpriteRenderer>().sprite = levelCompletedSprite;

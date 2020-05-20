@@ -10,7 +10,7 @@ namespace DN.LevelSelect
 	/// </summary>
 	
 	[System.Serializable]
-	public partial class LevelData : MonoBehaviour
+	public partial class LevelDataEditor : MonoBehaviour
 	{
 		public bool isCompleted;
 

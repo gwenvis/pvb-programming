@@ -19,7 +19,7 @@ namespace DN.LevelSelect
 		public bool Assistant => assistant;
 		public bool IsMazeTutorialDone => isMazeTutorialDone;
 		public bool IsColorTutorialDone => isColorTutorialDone;
-		public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
+		public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
 
 		private SetAudioListener setAudioListener;
 		private bool assistant;
@@ -27,7 +27,7 @@ namespace DN.LevelSelect
 		private BiomeController biomeController;
 		private bool isMazeTutorialDone;
 		private bool isColorTutorialDone;
-		private LevelData.SelectedPuzzle selectedPuzzle;
+		private LevelDataEditor.SelectedPuzzle selectedPuzzle;
 
 		public void SetBiomeAndLevelAndAudioController(BiomeController controller, LevelLoader loader, SetAudioListener listener)
 		{
@@ -35,7 +35,7 @@ namespace DN.LevelSelect
 			levelLoader = loader;
 			setAudioListener = listener;
 		}
-		public void SetSelectedPuzzle(LevelData.SelectedPuzzle puzzle)
+		public void SetSelectedPuzzle(LevelDataEditor.SelectedPuzzle puzzle)
 		{
 			selectedPuzzle = puzzle;
 		}

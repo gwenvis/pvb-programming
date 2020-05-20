@@ -15,8 +15,8 @@ namespace DN.LevelSelect.Player
 		[SerializeField] private BiomeController biomeController;
 		[SerializeField] private SetAudioListener audioListener;
 
-		private LevelData.SelectedPuzzle selectedPuzzle;
-		private LevelData.SelectedAnimal selectedAnimal;
+		private LevelDataEditor.SelectedPuzzle selectedPuzzle;
+		private LevelDataEditor.SelectedAnimal selectedAnimal;
 
 		private GameObject currentLevelSelected;
 
@@ -38,8 +38,8 @@ namespace DN.LevelSelect.Player
 			if (other.GetComponent<LevelData>())
 			{
 				currentLevelSelected = other.gameObject;
-				selectedPuzzle = other.GetComponent<LevelData>().PuzzleSelected;
-				selectedAnimal = other.GetComponent<LevelData>().AnimalSelected;
+				selectedPuzzle = other.GetComponent<LevelDataEditor>().PuzzleSelected;
+				selectedAnimal = other.GetComponent<LevelDataEditor>().AnimalSelected;
 				txtPanel.SetActive(true);
 			}
 		}

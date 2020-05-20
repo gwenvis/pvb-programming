@@ -11,12 +11,12 @@ namespace DN.LevelSelect.SceneManagment
     public class LevelLoader : MonoBehaviour
     {
         public GameObject LevelObject => levelObject;
-        public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
-        public LevelData.SelectedAnimal SelectedAnimal => selectedAnimal;
+        public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
+        public LevelDataEditor.SelectedAnimal SelectedAnimal => selectedAnimal;
 
         private GameObject levelObject;
-        private LevelData.SelectedPuzzle selectedPuzzle;
-        private LevelData.SelectedAnimal selectedAnimal;
+        private LevelDataEditor.SelectedPuzzle selectedPuzzle;
+        private LevelDataEditor.SelectedAnimal selectedAnimal;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
         private const string DOG_IBS_NAME = "LevelOpenerDragonfly";
@@ -26,17 +26,17 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadInBetweenScene()
         {
-            if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
+            if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
                 ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(false);
 
                 switch (selectedAnimal)
                 {
-                    case LevelData.SelectedAnimal.Dog:
+                    case LevelDataEditor.SelectedAnimal.Dog:
                         GetAndSetScene(DOG_IBS_NAME);
                         break;
 
-                    case LevelData.SelectedAnimal.Owl:
+                    case LevelDataEditor.SelectedAnimal.Owl:
                         GetAndSetScene(OWL_IBS_NAME);
                         break;
                 }
@@ -80,7 +80,7 @@ namespace DN.LevelSelect.SceneManagment
             GetAndSetScene(selectedPuzzle.ToString());
         }
 
-        public void SetLoadingLevelData(GameObject other, LevelData.SelectedPuzzle puzzle, LevelData.SelectedAnimal animal)
+        public void SetLoadingLevelData(GameObject other, LevelDataEditor.SelectedPuzzle puzzle, LevelDataEditor.SelectedAnimal animal)
         {
             levelObject = other;
             selectedPuzzle = puzzle;
@@ -95,7 +95,7 @@ namespace DN.LevelSelect.SceneManagment
         public void LoadLevelSelectFromPuzzle(bool isGameWon)
         {
             GetAndSetScene(LEVEL_SELECT_NAME);
-            levelObject.GetComponent<LevelData>().isCompleted = isGameWon;
+            levelObject.GetComponent<LevelDataEditor>().isCompleted = isGameWon;
             ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
             ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(true);
         }

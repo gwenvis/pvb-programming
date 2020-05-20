@@ -37,13 +37,13 @@ namespace DN.Tutorial
 					ServiceLocator.Locate<LevelMemoryService>().SetTutorialStatus(true);
 				}
 
-				if (ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle == LevelData.SelectedPuzzle.ColorPuzzle && !ServiceLocator.Locate<LevelMemoryService>().IsColorTutorialDone)
+				if (ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle == LevelDataEditor.SelectedPuzzle.ColorPuzzle && !ServiceLocator.Locate<LevelMemoryService>().IsColorTutorialDone)
 				{
 					ServiceLocator.Locate<LevelMemoryService>().SetTutorialStatus(false);
 					ServiceLocator.Locate<LevelMemoryService>().SetDoneOnceTutorialColor(true);
 				}
 
-				if (ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle == LevelData.SelectedPuzzle.MazePuzzle && !ServiceLocator.Locate<LevelMemoryService>().IsMazeTutorialDone)
+				if (ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle == LevelDataEditor.SelectedPuzzle.MazePuzzle && !ServiceLocator.Locate<LevelMemoryService>().IsMazeTutorialDone)
 				{
 					ServiceLocator.Locate<LevelMemoryService>().SetTutorialStatus(false);
 					ServiceLocator.Locate<LevelMemoryService>().SetDoneOnceTutorialMaze(true);
