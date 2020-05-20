@@ -19,7 +19,7 @@ namespace DN.UI
 		[SerializeField] private GameObject winScreen;
 		[SerializeField] private WinController winController;
 
-		[SerializeField] private UI_Assistant assistant;
+		[SerializeField] private UIAssistant assistant;
 
 		private LevelLoader levelLoader;
 

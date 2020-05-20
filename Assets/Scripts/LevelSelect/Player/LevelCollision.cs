@@ -35,7 +35,7 @@ namespace DN.LevelSelect.Player
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.GetComponent<LevelData>())
+			if (other.GetComponent<LevelDataEditor>())
 			{
 				currentLevelSelected = other.gameObject;
 				selectedPuzzle = other.GetComponent<LevelDataEditor>().PuzzleSelected;
@@ -46,7 +46,7 @@ namespace DN.LevelSelect.Player
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.GetComponent<LevelData>())
+			if (other.GetComponent<LevelDataEditor>())
 			{
 				txtPanel.SetActive(false);
 			}
