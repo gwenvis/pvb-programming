@@ -1,6 +1,7 @@
 ﻿using DN.Service;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace DN.LevelSelect.Player
@@ -10,6 +11,7 @@ namespace DN.LevelSelect.Player
     /// </summary>
     public class Vehicle : MonoBehaviour
     {
+        public bool canDrive = true;
 
         [SerializeField] private Transform vehicleModel;
         [SerializeField] private Rigidbody sphere;
@@ -52,21 +54,24 @@ namespace DN.LevelSelect.Player
 
         void Update()
         {
-            Accelarate();
-            WheelAndBodyTilt();
-            VehicleTilt();
-            Steering();
-
-            // Stops vehicle from floating around when standing still
-
-            if (Mathf.Approximately(speed, 0)&& sphere.velocity.magnitude < 4f)
+            if (canDrive)
             {
-                sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f);
-                canSteer = false;
-            }
-            else
-            {
-                canSteer = true;
+                Accelarate();
+                WheelAndBodyTilt();
+                VehicleTilt();
+                Steering();
+
+                // Stops vehicle from floating around when standing still
+
+                if (Mathf.Approximately(speed, 0) && sphere.velocity.magnitude < 4f)
+                {
+                    sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f);
+                    canSteer = false;
+                }
+                else
+                {
+                    canSteer = true;
+                }
             }
         }
 

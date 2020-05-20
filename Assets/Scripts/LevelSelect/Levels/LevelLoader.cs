@@ -43,7 +43,7 @@ namespace DN.LevelSelect.SceneManagment
             }
         }
 
-        private void GetAndSetScene(string sceneName)
+        public void GetAndSetScene(string sceneName)
         {
             prevSceneLoaded = SceneManager.GetActiveScene().name;
 

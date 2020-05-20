@@ -28,6 +28,7 @@ namespace DN.LevelSelect.Player
 			{
 				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal);
 				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelAndAudioController(biomeController, levelLoader, audioListener);
+				ServiceLocator.Locate<LevelMemoryService>().SetSelectedPuzzle(selectedPuzzle);
 				levelLoader.LoadInBetweenScene();
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿using DN.LevelSelect.SceneManagment;
 using DN.Service;
+using DN.Tutorial;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -15,16 +16,41 @@ namespace DN.LevelSelect
 		public BiomeController BiomeController => biomeController;
 		public LevelLoader LevelLoader => levelLoader;
 		public SetAudioListener SetAudioListener => setAudioListener;
+		public bool Assistant => assistant;
+		public bool IsMazeTutorialDone => isMazeTutorialDone;
+		public bool IsColorTutorialDone => isColorTutorialDone;
+		public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
 
 		private SetAudioListener setAudioListener;
+		private bool assistant;
 		private LevelLoader levelLoader;
 		private BiomeController biomeController;
+		private bool isMazeTutorialDone;
+		private bool isColorTutorialDone;
+		private LevelData.SelectedPuzzle selectedPuzzle;
 
 		public void SetBiomeAndLevelAndAudioController(BiomeController controller, LevelLoader loader, SetAudioListener listener)
 		{
 			biomeController = controller;
 			levelLoader = loader;
 			setAudioListener = listener;
+		}
+		public void SetSelectedPuzzle(LevelData.SelectedPuzzle puzzle)
+		{
+			selectedPuzzle = puzzle;
+		}
+		public void SetDoneOnceTutorialMaze(bool value)
+		{
+			isMazeTutorialDone = value;
+		}
+		public void SetDoneOnceTutorialColor(bool value)
+		{
+			isColorTutorialDone = value;
+		}
+
+		public void SetTutorialStatus(bool _assistant)
+		{
+			assistant = _assistant;
 		}
 	}
 }
