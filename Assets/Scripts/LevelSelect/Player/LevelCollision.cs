@@ -1,6 +1,5 @@
-﻿using DN.LevelSelect.LevelData;
-using DN.LevelSelect.SceneManagment;
-using DN.SceneManagement.Data;
+﻿using DN.LevelSelect.SceneManagment;
+using DN.Service;
 using UnityEngine;
 
 namespace DN.LevelSelect.Player
@@ -13,31 +12,40 @@ namespace DN.LevelSelect.Player
 		[SerializeField] private GameObject txtPanel;
 
 		[SerializeField] private LevelLoader levelLoader;
+		[SerializeField] private BiomeController biomeController;
+		[SerializeField] private SetAudioListener audioListener;
 
-		private string levelIndex;
+		private LevelData.SelectedPuzzle selectedPuzzle;
+		private LevelData.SelectedAnimal selectedAnimal;
 
-		private KeyCode enterLevelInput = KeyCode.KeypadEnter;
+		private GameObject currentLevelSelected;
+
+		private KeyCode enterLevelInput = KeyCode.Return;
 
 		private void Update()
 		{
-			if (Input.GetKey(enterLevelInput) && txtPanel.active)
+			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
-				levelLoader.LoadScene(levelIndex);
+				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal);
+				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelAndAudioController(biomeController, levelLoader, audioListener);
+				levelLoader.LoadInBetweenScene();
 			}
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.GetComponent<LevelDataMap>())
+			if (other.GetComponent<LevelData>())
 			{
-				levelIndex = other.GetComponent<LevelDataMap>().level.ToString();
+				currentLevelSelected = other.gameObject;
+				selectedPuzzle = other.GetComponent<LevelData>().PuzzleSelected;
+				selectedAnimal = other.GetComponent<LevelData>().AnimalSelected;
 				txtPanel.SetActive(true);
 			}
 		}
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.GetComponent<LevelDataMap>())
+			if (other.GetComponent<LevelData>())
 			{
 				txtPanel.SetActive(false);
 			}

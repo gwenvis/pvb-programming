@@ -45,7 +45,10 @@ namespace DN.Puzzle.Maze
 				}
 
 				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
+				{
 					WinEvent?.Invoke();
+					gameEnded = true;
+				}
 			}
 			if(!gameEnded)
 				LoseLifeEvent?.Invoke();
@@ -123,8 +126,8 @@ namespace DN.Puzzle.Maze
 		private Vector3 GetPositionOnGrid(Vector2 startPos)
 		{
 			return new Vector3(
-						transform.parent.position.x + 0.5f + startPos.x * 80,
-						transform.parent.position.y + 0.5f - startPos.y * 80,
+						transform.parent.position.x + startPos.x * 75,
+						transform.parent.position.y - startPos.y * 75,
 						1.0f);
 		}
 	}

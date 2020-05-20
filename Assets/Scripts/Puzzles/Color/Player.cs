@@ -39,14 +39,6 @@ namespace DN.Puzzle.Color
 
 		private Line Navigate(ColorCommand colorCommand) => playerPathFinding.FindLine(colorCommand, currentNode)?.Owner;
 
-		private void Update()
-		{
-			if(Input.GetKeyDown(KeyCode.R))
-			{
-				UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-			}
-		}
-
 		private void OnRunCompleted()
 		{
 			RunFinishedEvent?.Invoke(currentState);
