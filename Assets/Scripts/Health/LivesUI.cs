@@ -5,19 +5,28 @@ using UnityEngine.UI;
 namespace DN.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// creates the ui for the lives
 	/// </summary>
-	public class LivesUI : MonoBehaviour
+	public class LivesUI
 	{
-		[SerializeField] private float size = 50f;
+		private float size = 50f;
 		private Sprite heart;
 		private List<GameObject> hearts;
 		private RectTransform canvas;
-		private Lives lives = new Lives();
+		private GameObject canvasObject;
+		private Lives lives;
 
-		private void Start()
+		public LivesUI(GameObject canvas, Lives newLives, float heartSize)
 		{
-			canvas = gameObject.GetComponent<RectTransform>();
+			canvasObject = canvas;
+			lives = newLives;
+			size = heartSize;
+			Start();
+		}
+
+		public void Start()
+		{
+			canvas = canvasObject.GetComponent<RectTransform>();
 			hearts = new List<GameObject>();
 			heart = Resources.Load<Sprite>("Sprites/heart");
 
@@ -25,10 +34,9 @@ namespace DN.UI
 			{
 				GameObject life = new GameObject($"heart {i}");
 				life.AddComponent<Image>().sprite = heart;
-				RectTransform rTransform = life.GetComponent<RectTransform>();
-				life.transform.parent = transform;
+				RectTransform rTransform = life.GetComponent<RectTransform>();			
+				life.transform.SetParent(canvasObject.transform);
 				rTransform.sizeDelta = new Vector2(size, size);
-				Debug.Log(canvas.rect.height);
 				rTransform.position = new Vector2(rTransform.rect.width + (size / 4 + rTransform.rect.width) * i, Screen.height - size);
 				hearts.Add(life);
 			}
@@ -43,7 +51,7 @@ namespace DN.UI
 
 		private void OnLifeLostEvent(int obj)
 		{
-			Destroy(hearts[hearts.Count - 1]);
+			Object.Destroy(hearts[hearts.Count - 1]);
 			hearts.RemoveAt(hearts.Count - 1);
 		}
 
@@ -55,6 +63,7 @@ namespace DN.UI
 		private void OnDestroy()
 		{
 			lives.LifeLostEvent -= OnLifeLostEvent;
+			lives.AllLifeLost -= OnAllLifeLostEvent;
 		}
 	}
 }
