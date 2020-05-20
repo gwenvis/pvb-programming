@@ -3,7 +3,7 @@
 namespace DN
 {
 	/// <summary>
-	/// ye
+	/// base level data that should be loaded by the levels and can be inserted in the inspector
 	/// </summary>
 	public abstract class LevelData : ScriptableObject
 	{

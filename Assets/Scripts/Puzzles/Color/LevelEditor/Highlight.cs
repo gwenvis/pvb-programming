@@ -3,7 +3,7 @@
 namespace DN.Puzzle.Color.Editor
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Used when an item is clicked to display a highlight.
 	/// </summary>
 	public class Highlight : MonoBehaviour
 	{

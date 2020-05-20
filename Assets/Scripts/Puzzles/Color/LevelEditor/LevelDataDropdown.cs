@@ -34,15 +34,5 @@ namespace DN.Puzzle.Color
 			levelData = new List<ColorLevelData>(data);
 			dropdown.AddOptions(data.Select(x => x.LevelName).ToList());
 		}
-
-		protected void OnEnable()
-		{
-			dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
-		}
-
-		private void OnDropdownValueChanged(int arg0)
-		{
-			
-		}
 	}
 }
