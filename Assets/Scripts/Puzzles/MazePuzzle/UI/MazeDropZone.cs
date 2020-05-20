@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using DN.UI;
+using System.Linq;
 
 namespace DN.Puzzle.Maze.UI
 {
@@ -36,10 +37,10 @@ namespace DN.Puzzle.Maze.UI
 		public void DestroyAllBlocks()
 		{
 			CheckCurrentObjects();
-			for (int i = 0; i < currentObjects.Count; i++)
+			List<MazeDraggableItem> items = currentObjects.Cast<MazeDraggableItem>().ToList();
+			for (int i = 0; i < items.Count; i++)
 			{
-				Destroy(currentObjects[i].gameObject);
-				SpawnBlock.DeleteBlock();
+				items[i].DestroyAllChildren();
 			}
 			currentObjects = new List<DraggableItem>();
 		}
@@ -56,23 +57,32 @@ namespace DN.Puzzle.Maze.UI
 				return (0, null);
 
 			int highestChildCount = 0;
+			int realHighestChildCount = 0;
 			DraggableItem mostChildsObject = currentObjects[0];
 			foreach (DraggableItem draggableItem in currentObjects)
 			{
 				bool FoundLastChild = false;
 				DraggableItem currentDraggableItem = draggableItem;
+				int realChildren = 0;
 
 				for(int i = 1; !FoundLastChild || i >= 100; i++)
 				{
 					if(currentDraggableItem.GetComponent<BlockDropZone>().CurrentObj != null)
 					{
+						realChildren++;
 						currentDraggableItem = currentDraggableItem.GetComponent<BlockDropZone>().CurrentObj;
+					}
+					else if(currentDraggableItem.GetComponent<LoopDropZone>() != null)
+					{
+						realChildren += currentDraggableItem.GetComponent<LoopDropZone>().GetChildObjects().Count;
+						currentDraggableItem = currentDraggableItem.GetComponent<MazeDraggableItem>().DropZoneHolder.AddComponent<MazeDraggableItem>();
 					}
 					else
 					{
-						if(highestChildCount < i)
+						if(highestChildCount < realChildren)
 						{
-							highestChildCount = i;
+							highestChildCount = realChildren;
+							realHighestChildCount = i-1;
 							mostChildsObject = draggableItem;
 							FoundLastChild = true;
 						}
@@ -81,7 +91,7 @@ namespace DN.Puzzle.Maze.UI
 				}
 			}
 
-			return (highestChildCount, mostChildsObject as MazeDraggableItem);
+			return (realHighestChildCount, mostChildsObject as MazeDraggableItem);
 		}
 
 		private void OnDestroy()

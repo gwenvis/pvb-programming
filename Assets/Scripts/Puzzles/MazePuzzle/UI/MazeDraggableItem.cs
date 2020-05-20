@@ -1,6 +1,7 @@
 ﻿using DN.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,14 +12,26 @@ namespace DN.Puzzle.Maze.UI
 	/// </summary>
 	public class MazeDraggableItem : DraggableItem, IEndDragHandler
 	{
+		[SerializeField] private GameObject dropZoneHolder;
+		public GameObject DropZoneHolder => dropZoneHolder;
 		public GameObject ParentObject { get; private set; }
+		public float Height { get; protected set; }
+		public float RelativeHeight { get; protected set; }
+		public float HolderXOffset { get; protected set; }
+		public float HolderYOffset { get; protected set; }
+		public LoopDropZone NearestLoopObject { get; private set; }
 		public event Action<MazeDraggableItem> IsDestroyedEvent;
-		private float yOffset;
-		private float height;
+		protected float yOffset;
+		protected float xOffset;
+		protected List<(MazeFunctions function, MazeDraggableItem item)> functionQueue;
 
 		protected virtual void Start()
 		{
-			height = GetComponent<RectTransform>().rect.height;
+			functionQueue = new List<(MazeFunctions function, MazeDraggableItem item)>();
+			Height = GetComponent<RectTransform>().rect.height;
+			RelativeHeight = GetComponent<RectTransform>().rect.height;
+			HolderXOffset = 0;
+			HolderYOffset = 0;
 		}
 	
 		public override void OnEndDrag(PointerEventData eventData)
@@ -26,33 +39,34 @@ namespace DN.Puzzle.Maze.UI
 			canvasGroup.alpha = 1f;
 			canvasGroup.blocksRaycasts = true;
 
-			IDroppable dropZone = null;
+			RaycastHit2D[] hits = GetBoxCastHits();
 
-			foreach (RaycastHit2D hit in GetBoxCastHits())
+			IDroppable dropzone = null;
+
+			RaycastHit2D[] blockDropZoneHits = hits.ToArray().Where(x => x.transform.GetComponent<BlockDropZone>() != null
+				&& x.transform != transform
+				&& !GetAllChildren().Contains(x.transform.gameObject)).ToArray();
+
+			if(blockDropZoneHits.Length > 0)
+				dropzone = blockDropZoneHits.OrderByDescending(x => x.transform.GetComponent<BlockDropZone>().Layer).First().transform.GetComponent<IDroppable>();
+
+			hits = hits.Where(x => x.transform != transform && !GetAllChildren().Contains(x.transform.gameObject)).ToArray();
+
+			if (dropzone == null && hits.Length > 0)
 			{
-				if (hit.transform.GetComponent<IDroppable>() != null 
-				&& hit.transform != transform
-				&& !GetAllChildren().Contains(hit.transform.gameObject))
-				{
-					if (hit.transform.GetComponent<BlockDropZone>() == null)
-					{
-						dropZone = hit.transform.GetComponent<IDroppable>();
-					}
-					else if (hit.transform.GetComponent<BlockDropZone>().CurrentObj == null)
-					{
-						hit.transform.GetComponent<IDroppable>().Drop(this);
-					}
-				}
+				dropzone = hits[0].transform.GetComponent<IDroppable>();
 			}
-			if (dropZone != null)
+
+			if (dropzone != null)
 			{
-				dropZone.Drop(this);
+				dropzone.Drop(this);
 				return;
 			}
+
 			DestroyAllChildren();
 		}
 
-		private List<GameObject> GetAllChildren()
+		public virtual List<GameObject> GetAllChildren()
 		{
 			BlockDropZone dropZone = GetComponent<BlockDropZone>();
 			if (dropZone.CurrentObj == null)
@@ -64,25 +78,47 @@ namespace DN.Puzzle.Maze.UI
 		}
 
 
-		public void DestroyAllChildren()
+		public virtual void DestroyAllChildren()
 		{
-			(GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem)?.DestroyAllChildren();
+			if(GetComponent<BlockDropZone>())
+				(GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem)?.DestroyAllChildren();
 			SpawnBlock.DeleteBlock();
-			IsDestroyedEvent?.Invoke(this);
+			CallIsDestroyEvent();
 			Destroy(gameObject);
 		}
 
-		public void SetParent(GameObject parent, float offset)
+		public void SetParent(GameObject parent, float offsetY, float OffsetX = 0)
 		{
 			ParentObject = parent;
-			yOffset = offset;
+			yOffset = offsetY;
+			xOffset = OffsetX;
 		}
 
-		private void LateUpdate()
+		public void SetHeight(float height)
+		{
+			Height = height;
+		}
+
+		public void SetNearestLoopObject(LoopDropZone obj)
+		{
+			NearestLoopObject = obj;
+		}
+
+		public virtual List<(MazeFunctions function, MazeDraggableItem item)> GetQueue()
+		{
+			return functionQueue;
+		}
+
+		protected void CallIsDestroyEvent()
+		{
+			IsDestroyedEvent?.Invoke(this);
+		}
+		
+		protected virtual void Update()
 		{
 			if (ParentObject != null)
 			{
-				transform.position = new Vector2(ParentObject.transform.position.x, ParentObject.transform.position.y - height - yOffset);
+				transform.position = new Vector2(ParentObject.transform.position.x + xOffset, ParentObject.transform.position.y - yOffset);
 			}
 		}
 	}

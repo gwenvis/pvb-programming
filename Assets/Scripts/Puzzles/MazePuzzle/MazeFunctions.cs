@@ -7,6 +7,7 @@
 	{
 		Forward, 
 		TurnLeft, 
-		TurnRight
+		TurnRight,
+		UntilEnd
 	}
 }

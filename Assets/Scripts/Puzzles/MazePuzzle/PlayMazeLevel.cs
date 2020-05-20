@@ -39,11 +39,11 @@ namespace DN.Puzzle.Maze
 		{
 			(int childCount, MazeDraggableItem DraggableItem) startItem = dropZone.GetGameObjectWithMostChilds();
 			MazeDraggableItem currentItem = startItem.DraggableItem;
-			List<MazeFunctions> queue = new List<MazeFunctions>();
+			List< (MazeFunctions function, MazeDraggableItem item)> queue = new List<(MazeFunctions function, MazeDraggableItem item)>();
 			for (int i = 0; i < startItem.childCount; i++)
 			{
-				queue.Add(currentItem.GetComponent<IMovePlayerBlock>().GetMazeFunctions());
-				currentItem = currentItem.GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem;
+				queue.Add((currentItem.GetComponent<IMovePlayerBlock>().GetMazeFunctions(), currentItem));
+				currentItem = currentItem.DropZoneHolder.GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem;
 			}
 			Player.SetMoveQueue(queue);
 			StartCoroutine(Player.StartLevel());
@@ -52,6 +52,7 @@ namespace DN.Puzzle.Maze
 		private void OnLevelLoadedEvent()
 		{
 			Player = Instantiate(playerPrefab, transform).GetComponent<MazePlayerMovement>();
+			Player.SetTileSize(loadLevel.TileSize);
 			Player.SetStartPositionAndLevel(loadLevel.StartPosition, LoadLevel.Level);
 			Player.LoseLifeEvent += OnLoseLifeEvent;
 			Player.WinEvent += OnWinEvent;

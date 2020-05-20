@@ -17,18 +17,27 @@ namespace DN.Puzzle.Maze
 		private MazeBlocks[][] level;
 		private Vector2 targetPosition = Vector2.zero;
 		private Quaternion targetRotation = Quaternion.identity;
-		private List<MazeFunctions> functionQueue;
+		private List<(MazeFunctions function, MazeDraggableItem item)> functionQueue;
+		private Vector2 tileSize;
 		private float time = 0.5f;
 		private int direction = 0;
 		private float zRotation = 0;
 
 		public IEnumerator StartLevel()
 		{
-			bool gameEnded = false;
-			foreach(MazeFunctions function in functionQueue)
+			bool loopEnded = false;
+			foreach((MazeFunctions function, MazeDraggableItem item) function in functionQueue)
 			{
-				UseFunction(function);
+				Debug.Log(function.function);
+				bool isInLoop = UseFunction(function);
 				float t = 0f;
+
+				if (isInLoop)
+				{
+					loopEnded = true;
+					break;
+				}
+
 				while (t < time)
 				{
 					t += Time.deltaTime / time;
@@ -40,33 +49,76 @@ namespace DN.Puzzle.Maze
 				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
 				{
 					LoseLifeEvent?.Invoke();
-					gameEnded = true;
+					loopEnded = true;
 					break;
 				}
 
 				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
 				{
-					gameEnded = true;
+					loopEnded = true;
 					WinEvent?.Invoke();
 				}
 			}
-			if(!gameEnded)
+			if(!loopEnded)
 				LoseLifeEvent?.Invoke();
 		}
 
-		private void UseFunction(MazeFunctions function)
+		private bool UseFunction((MazeFunctions function, MazeDraggableItem item) function)
 		{
-			switch(function)
+			switch(function.function)
 			{
 				case MazeFunctions.Forward:
 					WalkForward();
-					break;
+					return false;
 				case MazeFunctions.TurnLeft:
 					Turn(90);
-					break;
+					return false;
 				case MazeFunctions.TurnRight:
 					Turn(-90);
-					break;
+					return false;
+				case MazeFunctions.UntilEnd:
+					StartCoroutine(LoopBlocks(function));
+					return true;
+				default:
+					return false;
+			}
+		}
+
+		private IEnumerator LoopBlocks((MazeFunctions function, MazeDraggableItem item) function)
+		{
+			int positionInList = functionQueue.IndexOf(function);
+			bool atEnd = false;
+			bool lostGame = false;
+			List<(MazeFunctions function, MazeDraggableItem item)> newQueue = function.item.GetQueue();
+			while (!atEnd || !lostGame)
+			{
+				foreach((MazeFunctions function, MazeDraggableItem item) item in newQueue)
+				{
+					UseFunction(item);
+					float t = 0f;
+					while (t < time)
+					{
+						t += Time.deltaTime / time;
+						transform.position = Vector3.Lerp(transform.position, targetPosition, t);
+						transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
+						yield return new WaitForEndOfFrame();
+					}
+
+					if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
+					{
+						LoseLifeEvent?.Invoke();
+						lostGame = true;
+						atEnd = true;
+						break;
+					}
+
+					if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
+					{
+						atEnd = true;
+						WinEvent?.Invoke();
+					}
+				}
+				yield return new WaitForEndOfFrame();
 			}
 		}
 
@@ -118,16 +170,21 @@ namespace DN.Puzzle.Maze
 			targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0));
 		}
 
-		public void SetMoveQueue(List<MazeFunctions> queue)
+		public void SetMoveQueue(List<(MazeFunctions function, MazeDraggableItem item)> queue)
 		{
 			functionQueue = queue;
 		}
 
-		private Vector3 GetPositionOnGrid(Vector2 startPos)
+		public void SetTileSize(Vector2 size)
+		{
+			tileSize = size;
+		}
+
+		private Vector3 GetPositionOnGrid(Vector2 position)
 		{
 			return new Vector3(
-						transform.parent.position.x + startPos.x * 75,
-						transform.parent.position.y - startPos.y * 75,
+						transform.parent.position.x + position.x * tileSize.x,
+						transform.parent.position.y - position.y * tileSize.y,
 						1.0f);
 		}
 	}

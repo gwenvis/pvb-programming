@@ -66,14 +66,22 @@ namespace DN.UI
 			return boxCollider == null ? rectTransform.sizeDelta : boxCollider.size * transform.lossyScale / 2;
 		}
 
-		protected RaycastHit2D[] GetBoxCastHits()
+		protected virtual RaycastHit2D[] GetBoxCastHits()
 		{
 			return Physics2D.BoxCastAll(
 				transform.position,
-				transform.GetComponent<BoxCollider2D>().size * transform.lossyScale / 2,
-				90,
+				transform.GetComponent<BoxCollider2D>().size,
+				0,
 				transform.forward
 				);
+		}
+
+		private void Update()
+		{
+			ExtDebug.BoxCast2D(transform.position,
+				transform.GetComponent<BoxCollider2D>().size,
+				0,
+				transform.forward, 10, 0);
 		}
 
 		public void SetCanvas(Canvas newCanvas)

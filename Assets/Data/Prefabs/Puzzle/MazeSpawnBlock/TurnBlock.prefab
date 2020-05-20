@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
-  parentObject: {fileID: 0}
+  dropZoneHolder: {fileID: 5821353898984469147}
   dropdown: {fileID: 6168019180792663408}
 --- !u!1 &5821353899969593812
 GameObject:

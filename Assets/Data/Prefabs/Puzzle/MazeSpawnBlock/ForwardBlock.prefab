@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  dropZoneHolder: {fileID: 382997577699205964}
 --- !u!1 &382997578692726787
 GameObject:
   m_ObjectHideFlags: 0
