@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 3
   selectedPuzzle: 2
 --- !u!224 &483301768 stripped
 RectTransform:
@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 5
   selectedPuzzle: 1
 --- !u!1 &1114564254
 GameObject:
