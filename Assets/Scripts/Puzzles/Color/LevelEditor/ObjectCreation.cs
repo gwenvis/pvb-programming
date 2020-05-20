@@ -1,4 +1,5 @@
-﻿using DN.Puzzle.Color.Editor;
+﻿#if UNITY_EDITOR
+using DN.Puzzle.Color.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,3 +44,4 @@ namespace DN.Puzzle.Color
 		}
 	}
 }
+#endif

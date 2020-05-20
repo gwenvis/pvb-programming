@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -78,3 +79,4 @@ namespace DN.Puzzle.Color.Editor
 		}
 	}
 }
+#endif

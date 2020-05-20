@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using DN.Color.Puzzle.Editor;
 using DN.Service;
 using UnityEngine;
@@ -13,3 +14,4 @@ namespace DN.Puzzle.Color.Editor
         [SerializeField] private GameObject unsavedDataPopup;
     }
 }
+#endif

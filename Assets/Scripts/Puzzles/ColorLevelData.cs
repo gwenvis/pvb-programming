@@ -21,6 +21,7 @@ namespace DN.Puzzle.Color
         [SerializeField] private NodeData[] nodes;
         [SerializeField] private List<LineColor> draggableNodes;
 
+        #if UNITY_EDITOR
         public bool SetData(object sender, IEnumerable<NodeData> nodeData, IEnumerable<LineData> lineData, Vector2 savedSize)
         {
             if (sender.GetType() != typeof(PuzzleEditor))
@@ -33,5 +34,6 @@ namespace DN.Puzzle.Color
             SavedSize = savedSize;
             return true;
         }
+        #endif
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace DN.Puzzle.Color.Editor
@@ -65,3 +66,4 @@ namespace DN.Puzzle.Color.Editor
 		}
 	}
 }
+#endif

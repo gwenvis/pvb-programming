@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using DN.Puzzle.Color.Editor;
 using DN.UI;
@@ -137,3 +138,4 @@ namespace DN.Puzzle.Color
 		}
 	}
 }
+#endif
