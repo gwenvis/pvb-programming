@@ -31,12 +31,21 @@
           <e p="IDroppable.cs" t="Include" />
           <e p="InputManager.cs" t="Include" />
           <e p="ItemDropZone.cs" t="Include" />
+          <e p="LevelOpening" t="Include">
+            <e p="CanvasEffects.cs" t="Include" />
+            <e p="ClickableObject.cs" t="Include" />
+          </e>
           <e p="LevelSelect" t="Include">
             <e p="Camera" t="Include">
               <e p="VehicleCamera.cs" t="Include" />
             </e>
             <e p="Levels" t="Include">
-              <e p="LevelDataMap.cs" t="Include" />
+              <e p="BiomeController.cs" t="Include" />
+              <e p="BiomeUI.cs" t="Include" />
+              <e p="LevelData.cs" t="Include" />
+              <e p="LevelLoader.cs" t="Include" />
+              <e p="SelectedAnimal.cs" t="Include" />
+              <e p="SetAudioListener.cs" t="Include" />
             </e>
             <e p="Physics" t="Include">
               <e p="PhysicsObject.cs" t="Include" />
@@ -45,11 +54,8 @@
               <e p="LevelCollision.cs" t="Include" />
               <e p="Vehicle.cs" t="Include" />
             </e>
-            <e p="SceneManager" t="Include">
-              <e p="Level.cs" t="Include" />
-              <e p="LevelLoader.cs" t="Include" />
-              <e p="LevelsData.cs" t="Include" />
-              <e p="PauseScreen.cs" t="Include" />
+            <e p="Service" t="Include">
+              <e p="LevelMemoryService.cs" t="Include" />
             </e>
           </e>
           <e p="Puzzles" t="Include">
@@ -77,6 +83,7 @@
               <e p="Line.cs" t="Include" />
               <e p="LineColor.cs" t="Include" />
               <e p="LineData.cs" t="Include" />
+              <e p="LivesService.cs" t="Include" />
               <e p="Node.cs" t="Include" />
               <e p="NodeData.cs" t="Include" />
               <e p="Player.cs" t="Include" />
@@ -91,10 +98,33 @@
             <e p="ColorLevelData.cs" t="Include" />
             <e p="LevelData.cs" t="Include" />
             <e p="LevelEditorColorData.cs" t="Include" />
+            <e p="MazePuzzle" t="Include">
+              <e p="MazeFunctions.cs" t="Include" />
+              <e p="MazePlayerMovement.cs" t="Include" />
+              <e p="PlayMazeLevel.cs" t="Include" />
+              <e p="UI" t="Include">
+                <e p="BlockDropZone.cs" t="Include" />
+                <e p="CreateSpawnerBlocks.cs" t="Include" />
+                <e p="IMovePlayerBlock.cs" t="Include" />
+                <e p="LoadLevel.cs" t="Include" />
+                <e p="MazeBlocks.cs" t="Include" />
+                <e p="MazeDraggableItem.cs" t="Include" />
+                <e p="MazeDropZone.cs" t="Include" />
+                <e p="MoveForwardBlock.cs" t="Include" />
+                <e p="SpawnBlock.cs" t="Include" />
+                <e p="TurnBlock.cs" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="Services" t="Include">
             <e p="ServiceAttribute.cs" t="Include" />
             <e p="ServiceLocator.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Screens" t="Include">
+              <e p="WinController.cs" t="Include" />
+              <e p="WinLoseScreenController.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

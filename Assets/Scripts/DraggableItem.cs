@@ -17,7 +17,7 @@ namespace DN.UI
 		public Vector2 StartPos => startPos;
 		[SerializeField] private Canvas canvas;
 
-		private CanvasGroup canvasGroup;
+		protected CanvasGroup canvasGroup;
 		private RectTransform rectTransform;
 		private Vector2 startPos;
 
@@ -45,12 +45,14 @@ namespace DN.UI
 			}
 		}
 
-		public void OnDrag(PointerEventData eventData)
+		public void SetCanvas(Canvas canvas) => this.canvas = canvas;
+
+		public virtual void OnDrag(PointerEventData eventData)
 		{
 			rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
 		}
 
-		public void OnEndDrag(PointerEventData eventData)
+		public virtual void OnEndDrag(PointerEventData eventData)
 		{
 			if (canvasGroup)
 			{
@@ -58,12 +60,7 @@ namespace DN.UI
 				canvasGroup.blocksRaycasts = true;
 			}
 
-			RaycastHit2D[] hits = Physics2D.BoxCastAll(
-				transform.position,
-				GetSize(),
-				90,
-				transform.forward
-				);
+			RaycastHit2D[] hits = GetBoxCastHits();
 
 			foreach (RaycastHit2D hit in hits)
 			{
@@ -72,11 +69,15 @@ namespace DN.UI
 
 			DroppedItemEvent?.Invoke(this);
 		}
-
-		private Vector2 GetSize()
+		
+		protected virtual RaycastHit2D[] GetBoxCastHits()
 		{
-			var boxCollider = GetComponent<BoxCollider2D>();
-			return boxCollider == null ? rectTransform.sizeDelta : boxCollider.size * transform.lossyScale / 2;
+			return Physics2D.BoxCastAll(
+				transform.position,
+				transform.GetComponent<BoxCollider2D>().size,
+				0,
+				transform.forward
+				);
 		}
 	}
 }
