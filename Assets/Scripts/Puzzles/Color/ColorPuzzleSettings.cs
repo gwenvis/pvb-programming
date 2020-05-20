@@ -1,22 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using DN.Service;
+using UnityEngine;
 
 namespace DN.Puzzle.Color
 {
 	/// <summary>
 	/// This object holds all settings that are used within the color puzzle
 	/// </summary>
-	public class ColorPuzzleSettings : ScriptableObject
+	[Service]
+	public partial class ColorPuzzleSettings : ScriptableObject
 	{
-		[System.Serializable]
-		public struct ColorLineSettings
-		{
-			public LineColor LineColor => lineColor;
-			public UnityEngine.Color Color => color;
-
-			[SerializeField] private LineColor lineColor;
-			[SerializeField] private UnityEngine.Color color;
-		}
-
 		public float PlayerSpeed => playerSpeed;
 		public float DestinationTimeout => destinationTimeout;
 		public ColorLineSettings[] ColorSettings => colorSettings;
@@ -29,5 +22,10 @@ namespace DN.Puzzle.Color
 
 		[SerializeField]
 		private ColorLineSettings[] colorSettings;
+
+		public UnityEngine.Color GetLineColor(LineColor color)
+		{
+			return colorSettings.FirstOrDefault(x => x.LineColor == color).Color;
+		}
 	}
 }

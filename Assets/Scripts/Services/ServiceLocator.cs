@@ -33,7 +33,7 @@ namespace DN.Service
 		
 		private static T LocateScriptableObject<T>() 
 		{
-			Object[] scriptableObject = Resources.FindObjectsOfTypeAll(typeof(T));
+			Object[] scriptableObject = Resources.LoadAll("", typeof(T));
 			if(scriptableObject.Length == 0)
 				throw new Exception("Could not find scriptable object, is it in the Resources folder?");
 			var obj = Convert.ChangeType(scriptableObject[0], typeof(T));

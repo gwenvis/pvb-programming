@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.499999, y: 0}
-  m_SizeDelta: {x: 3, y: 8}
+  m_SizeDelta: {x: 1, y: 4.12}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8249161647961086218
 CanvasRenderer:
@@ -63,8 +63,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: db9585ef2531df543996a68247172df3, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 900
 --- !u!1 &3720507359498578614
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,13 +117,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3720507359498578614}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95e97e4e158c585429d6a81574d247f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineColor: 0
-  startingNode: {fileID: 0}
-  endNode: {fileID: 0}
-  canTraverseBothWays: 0
-  lineSprite: {fileID: 3718999778473075489}
+  lines:
+  - <Color>k__BackingField: 0
+    <Line>k__BackingField: {fileID: 21300000, guid: e4334f36389d6e74a95dc49383af7e1e,
+      type: 3}
+    <LineWithArrow>k__BackingField: {fileID: 21300000, guid: db9585ef2531df543996a68247172df3,
+      type: 3}
+  - <Color>k__BackingField: 1
+    <Line>k__BackingField: {fileID: 21300000, guid: 1b87482ce57190c409adb09b3cd35a52,
+      type: 3}
+    <LineWithArrow>k__BackingField: {fileID: 21300000, guid: 9d6eb669bee97024caeff0a50243d526,
+      type: 3}
+  - <Color>k__BackingField: 2
+    <Line>k__BackingField: {fileID: 21300000, guid: 03e316a5029c2df4186f1abb9373392e,
+      type: 3}
+    <LineWithArrow>k__BackingField: {fileID: 21300000, guid: 01d759098ef08274284dddf6cfe334d9,
+      type: 3}

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DN.Puzzle.Color
 {
@@ -9,23 +8,15 @@ namespace DN.Puzzle.Color
 	/// </summary>
 	public class Node : MonoBehaviour
 	{
-		public IEnumerable<Line> ConnectedLines => connectedLines;
-		public bool IsFinish => isFinish;
+		public NodeData Data { get; private set; }
 
-		[SerializeField] private List<Line> connectedLines;
-		[SerializeField] private bool isFinish;
-
-#if UNITY_EDITOR
-		public void ConnectLine(Line line)
+		public void InitializeNode(NodeData data)
 		{
-			connectedLines.Add(line);
+			if (Data is null)
+			{
+				Data = data;
+				Data.SetOwner(this);
+			}
 		}
-
-		public void DisconnectLine(Line line)
-		{
-			connectedLines.Remove(line);
-		}
-#endif
-
 	}
 }
