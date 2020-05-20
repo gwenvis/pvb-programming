@@ -73,5 +73,11 @@ namespace DN.Puzzle.Color
             LineColor = lineColor;
         }
 #endif
+        public void Clean()
+        {
+            StartingNode = null;
+            EndNode = null;
+            Owner = null;
+        }
     }
 }

@@ -16,8 +16,10 @@ namespace DN.LevelSelect
 
 		public SelectedAnimal AnimalSelected => selectedAnimal;
 		public SelectedPuzzle PuzzleSelected => selectedPuzzle;
+		public DN.LevelData Level => levelData;
 
 		[SerializeField] private SelectedAnimal selectedAnimal;
 		[SerializeField] private SelectedPuzzle selectedPuzzle;
+		[SerializeField] private DN.LevelData levelData;
 	}
 }

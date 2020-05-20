@@ -4,6 +4,7 @@ using DN.Puzzle.Color;
 using DN.Service;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using LevelLoader = DN.LevelSelect.SceneManagment.LevelLoader;
 
 namespace DN.UI
 {

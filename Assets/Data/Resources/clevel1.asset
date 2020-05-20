@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: clevel1
   m_EditorClassIdentifier: 
   levelName: level1
-  <SavedSize>k__BackingField: {x: -49.34, y: -97.69}
+  <SavedSize>k__BackingField: {x: 372.66, y: 296.31}
   lines:
   - <LineColor>k__BackingField: 2
     <StartingNodeId>k__BackingField: 7b8d55d1-2a4a-467c-8c02-eb2cf1734994

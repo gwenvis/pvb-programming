@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eeabb30aa1c77442939ab22c5b6f702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeRenderer: {fileID: 214147616173230549}
+  finishNode: {fileID: 21300000, guid: 7d6eddb6463eadb4c96fb10786be7ae9, type: 3}
 --- !u!114 &6454302689317402858
 MonoBehaviour:
   m_ObjectHideFlags: 0

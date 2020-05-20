@@ -15,10 +15,12 @@ namespace DN.LevelSelect
 		public BiomeController BiomeController => biomeController;
 		public LevelLoader LevelLoader => levelLoader;
 		public SetAudioListener SetAudioListener => setAudioListener;
-
+		public DN.LevelData LevelData { get; set; }
+		
 		private SetAudioListener setAudioListener;
 		private LevelLoader levelLoader;
 		private BiomeController biomeController;
+
 
 		public void SetBiomeAndLevelAndAudioController(BiomeController controller, LevelLoader loader, SetAudioListener listener)
 		{

@@ -37,6 +37,14 @@ namespace DN.Puzzle.Color
 			StartCoroutine(RunQueue(OnRunCompleted));
 		}
 
+		public void SetStartingNode(Node node, bool moveToNode)
+		{
+			currentNode = node;
+
+			if (moveToNode)
+				transform.position = node.transform.position;
+		}
+
 		private Line Navigate(ColorCommand colorCommand) => playerPathFinding.FindLine(colorCommand, currentNode)?.Owner;
 
 		private void OnRunCompleted()
