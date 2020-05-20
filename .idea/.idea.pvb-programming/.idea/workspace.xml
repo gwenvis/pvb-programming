@@ -39,22 +39,12 @@
     <list default="true" id="c90ca74d-f5de-4b24-8908-ca5843d8217e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.pvb-programming/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/EditorLine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/EditorLine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/EditorNode.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Editor/EditorNode.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Line.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Prefabs/Puzzle/Color/Line.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Resources/cThis is.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Resources/cThis is.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Editor/Color Puzzle Editor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Editor/Color Puzzle Editor.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/DataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineDrawing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineDrawing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineOptionsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineOptionsView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Resources/cnigger.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Resources/cnigger.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorPuzzleSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorPuzzleSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NodeOptionsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NodeOptionsView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineColor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Node.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/ColorCommandDropzone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/ColorCommandDropzone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,20 +71,21 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/ColorCommandDropzone.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelSelect/SceneManager/LevelLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/RunButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorLineSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Button/RunButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health/Lives.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///C# Console" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineOptionsView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/Item.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Context/Editor/CreateScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Program Files/Unity/Hub/Editor/2019.3.7f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelEditorColorData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/ObjectCreation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/DataManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LevelDataDropdown.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/Services/EditorPrefabsData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///C# Console" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NewDialog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -121,24 +112,28 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/ServiceLocator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NewDialog.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorPuzzleSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LevelDataDropdown.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/ObjectCreation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ClickableItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NodeOptionsView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineDrawing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Node.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/DataManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/NodeData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/Highlight.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LineColor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/LineOptionsView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/Line.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/NodeOptionsView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/LevelEditor/PuzzleEditorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/ColorLevelData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/LevelEditorColorData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/UI/ColorCommandDropzone.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorLineSettings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Puzzles/Color/ColorPuzzleSettings.cs" />
       </list>
     </option>
   </component>
@@ -168,10 +163,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16908">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="16908" />
+      <option name="pid" />
       <method v="2" />
     </configuration>
   </component>
@@ -195,6 +190,7 @@
       <workItem from="1589792758751" duration="7767000" />
       <workItem from="1589811275790" duration="1600000" />
       <workItem from="1589879580406" duration="23448000" />
+      <workItem from="1589965509669" duration="2257000" />
     </task>
     <servers />
   </component>
@@ -311,10 +307,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589905599912" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1589904535751">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1589970402315">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589904535751" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1589970402315" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

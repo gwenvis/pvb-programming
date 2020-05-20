@@ -26,17 +26,31 @@ namespace DN.Puzzle.Color.Editor
 
 		protected void Awake()
 		{
-			puzzleEditorView.ItemSelected += OnItemSelected;
+			puzzleEditorView.ItemSelectedEvent += OnItemSelectedEvent;
+			puzzleEditorView.ItemDeletedEvent += OnItemDeletedEvent;
 			lineDrawMode = GetComponent<LineDrawing>();
 		}
 
 		protected void OnDestroy()
 		{
-			puzzleEditorView.ItemSelected -= OnItemSelected;
-			OnItemSelected(null);
+			puzzleEditorView.ItemSelectedEvent -= OnItemSelectedEvent;
+			puzzleEditorView.ItemDeletedEvent -= OnItemDeletedEvent;
+			OnItemSelectedEvent(null);
 		}
+		
+		private void OnItemDeletedEvent(Object obj)
+		{
+			var monoBehaviour = (MonoBehaviour) obj;
+			var line = monoBehaviour.GetComponent<Line>();
+			var node = monoBehaviour.GetComponent<Node>();
 
-		private void OnItemSelected(Object obj)
+			if (line)
+				DeleteLine(line.Data);
+			else if (node)
+				DeleteNode(node.Data);
+		}
+		
+		private void OnItemSelectedEvent(Object obj)
 		{
 			ItemSelected?.Invoke(obj);
 			
@@ -83,7 +97,7 @@ namespace DN.Puzzle.Color.Editor
 
 		public bool Save()
 		{
-			bool saved = loadedData.SetData(this, editorData.Nodes, editorData.Lines);
+			bool saved = loadedData.SetData(this, editorData.Nodes, editorData.Lines, puzzleEditorView.Size);
 			AssetDatabase.Refresh();
 			EditorUtility.SetDirty(loadedData);
 			AssetDatabase.SaveAssets();
@@ -118,6 +132,24 @@ namespace DN.Puzzle.Color.Editor
 			if (startNode == null || endNode == null) return;
 
 			CreateLine(startNode.Data, endNode.Data, editorData.Nodes);
+		}
+
+		private void DeleteNode(NodeData node)
+		{
+			// first remove all lines connected to this.
+			foreach (LineData line in node.ConnectedLines)
+			{
+				DeleteLine(line);
+			}
+			
+			editorData.RemoveNode(node);
+			puzzleEditorView.DeleteNode(node);
+		}
+
+		private void DeleteLine(LineData data)
+		{
+			editorData.RemoveLine(data);
+			puzzleEditorView.DeleteLine(data);
 		}
 	}
 }

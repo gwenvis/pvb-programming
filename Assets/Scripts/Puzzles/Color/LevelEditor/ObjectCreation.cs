@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace DN.Puzzle.Color
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// buttons for creating the objects
 	/// </summary>
 	public class ObjectCreation : MonoBehaviour
 	{

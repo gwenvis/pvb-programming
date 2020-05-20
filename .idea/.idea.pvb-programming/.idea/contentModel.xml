@@ -56,6 +56,7 @@
             <e p="Color" t="Include">
               <e p="ColorCommand.cs" t="Include" />
               <e p="ColorCommandQueue.cs" t="Include" />
+              <e p="ColorLineSettings.cs" t="Include" />
               <e p="ColorPuzzleSettings.cs" t="Include" />
               <e p="ICommandQueue.cs" t="Include" />
               <e p="LevelEditor" t="Include">
@@ -79,14 +80,17 @@
               <e p="Node.cs" t="Include" />
               <e p="NodeData.cs" t="Include" />
               <e p="Player.cs" t="Include" />
+              <e p="Player.State.cs" t="Include" />
               <e p="PlayerPathFinding.cs" t="Include" />
               <e p="UI" t="Include">
                 <e p="ColorCommandDropzone.cs" t="Include" />
+                <e p="Item.cs" t="Include" />
                 <e p="RunButton.cs" t="Include" />
               </e>
             </e>
             <e p="ColorLevelData.cs" t="Include" />
             <e p="LevelData.cs" t="Include" />
+            <e p="LevelEditorColorData.cs" t="Include" />
           </e>
           <e p="Services" t="Include">
             <e p="ServiceAttribute.cs" t="Include" />

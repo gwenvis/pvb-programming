@@ -11,18 +11,8 @@ namespace DN.Puzzle.Color
 	/// all the lines that are available in the current node if specified by
 	/// the queue.
 	/// </summary>
-	public class Player : MonoBehaviour
+	public partial class Player : MonoBehaviour
 	{
-		public enum State
-		{ 
-			Idle,
-			Navigating,
-			Moving,
-			Waiting,
-			Stuck,
-			Done,
-		}
-
 		public static event Action<State> RunFinishedEvent;
 
 		private Node currentNode;

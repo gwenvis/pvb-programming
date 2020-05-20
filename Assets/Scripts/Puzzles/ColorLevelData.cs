@@ -14,11 +14,14 @@ namespace DN.Puzzle.Color
     {
         public IEnumerable<LineData> Lines => lines;
         public IEnumerable<NodeData> Nodes => nodes;
+        public IEnumerable<LineColor> DraggableNodes => draggableNodes;
+        [field: SerializeField, HideInInspector] public Vector2 SavedSize { get; private set; }
         
         [SerializeField] private LineData[] lines;
         [SerializeField] private NodeData[] nodes;
+        [SerializeField] private List<LineColor> draggableNodes;
 
-        public bool SetData(object sender, IEnumerable<NodeData> nodeData, IEnumerable<LineData> lineData)
+        public bool SetData(object sender, IEnumerable<NodeData> nodeData, IEnumerable<LineData> lineData, Vector2 savedSize)
         {
             if (sender.GetType() != typeof(PuzzleEditor))
             {
@@ -27,57 +30,8 @@ namespace DN.Puzzle.Color
 
             lines = lineData.ToArray();
             nodes = nodeData.ToArray();
+            SavedSize = savedSize;
             return true;
         }
-    }
-
-    public class LevelEditorColorData
-    {
-        public IEnumerable<NodeData> Nodes => NodeData;
-        public IEnumerable<LineData> Lines => LineData;
-        public IEnumerable<LineColor> DraggableNodes => draggableNodes;
-
-        private List<NodeData> NodeData { get; set; }
-        private List<LineData> LineData { get; set; }
-        private List<LineColor> draggableNodes;
-        
-        public LevelEditorColorData(IEnumerable<NodeData> nodeData, IEnumerable<LineData> lineData)
-        {
-            LineData = new List<LineData>();
-            NodeData = new List<NodeData>();
-
-            if (nodeData != null)
-                NodeData.AddRange(nodeData);
-
-            if (lineData != null)
-                LineData.AddRange(lineData);
-        }
-
-        public LineData CreateLine(string startingNodeId, string endingNodeId)
-        {
-            var lineData = new LineData(startingNodeId: startingNodeId, endNodeId: endingNodeId);
-            return AddLine(lineData);
-        }
-
-        public LineData AddLine(LineData lineData)
-        {
-            LineData.Add(lineData);
-            return lineData;
-        }
-
-        public NodeData CreateNode()
-        {
-            var nodeData = new NodeData();
-            return AddNode(nodeData);
-        }
-
-        public NodeData AddNode(NodeData data)
-        {
-            NodeData.Add(data);
-            return data;
-        }
-
-        public bool RemoveNode(NodeData data) => NodeData.Remove(data);
-        public bool RemoveLine(LineData data) => LineData.Remove(data);
     }
 }

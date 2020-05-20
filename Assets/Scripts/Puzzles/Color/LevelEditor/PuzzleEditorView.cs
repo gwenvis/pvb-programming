@@ -7,21 +7,33 @@ using UnityEngine;
 namespace DN.Puzzle.Color
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// view for the puzzle editor. Handles selection of items and spawning the view models.
 	/// </summary>
 	public class PuzzleEditorView : MonoBehaviour
 	{
-		public event Action<UnityEngine.Object> ItemSelected;
+		public const KeyCode DELETE_KEY = KeyCode.Delete;
+		
+		public event Action<UnityEngine.Object> ItemSelectedEvent;
+		public event Action<UnityEngine.Object> ItemDeletedEvent;
+
+		public Vector2 Size => viewTransform.GetComponent<RectTransform>().sizeDelta;
 		
 		[SerializeField] private Transform viewTransform;
 		[SerializeField] private GameObject editorNodePrefab;
 		[SerializeField] private GameObject editorLinePrefab;
-		[SerializeField] private GameObject editorLineDrawPrefab;
 
 		private Dictionary<NodeData, GameObject> instantiatedNodes = new Dictionary<NodeData, GameObject>();
 		private Dictionary<LineData, GameObject> instantiatedLines = new Dictionary<LineData, GameObject>();
 
 		private UnityEngine.Object selectedObject;
+
+		protected void Update()
+		{
+			if (Input.GetKeyDown(DELETE_KEY) && selectedObject)
+			{
+				ItemDeletedEvent?.Invoke(selectedObject);
+			}
+		}
 
 		public void InstantiateNode(NodeData data)
 		{
@@ -55,7 +67,7 @@ namespace DN.Puzzle.Color
 		private void SetSelectedObject(UnityEngine.Object obj)
 		{
 			selectedObject = obj;
-			ItemSelected?.Invoke(obj);
+			ItemSelectedEvent?.Invoke(obj);
 		}
 
 		private void SetHighlighOfCurrentObject(bool active) => ((MonoBehaviour) selectedObject).GetComponent<Highlight>().SetHighlight(active);
@@ -93,7 +105,9 @@ namespace DN.Puzzle.Color
 		
 		public void DeleteLine(LineData line)
 		{
-			Destroy(instantiatedLines[line]);
+			if (!instantiatedLines.ContainsKey(line)) return;
+
+				Destroy(instantiatedLines[line]);
 			instantiatedLines.Remove(line);
 		}
 

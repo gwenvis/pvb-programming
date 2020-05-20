@@ -8,18 +8,8 @@ namespace DN.Puzzle.Color
 	/// This object holds all settings that are used within the color puzzle
 	/// </summary>
 	[Service]
-	public class ColorPuzzleSettings : ScriptableObject
+	public partial class ColorPuzzleSettings : ScriptableObject
 	{
-		[System.Serializable]
-		public struct ColorLineSettings
-		{
-			public LineColor LineColor => lineColor;
-			public UnityEngine.Color Color => color;
-
-			[SerializeField] private LineColor lineColor;
-			[SerializeField] private UnityEngine.Color color;
-		}
-
 		public float PlayerSpeed => playerSpeed;
 		public float DestinationTimeout => destinationTimeout;
 		public ColorLineSettings[] ColorSettings => colorSettings;

@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 namespace DN.Puzzle.Color.Editor
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Options for the lines when selecting them in the editor
 	/// </summary>
 	public class LineOptionsView : MonoBehaviour
 	{

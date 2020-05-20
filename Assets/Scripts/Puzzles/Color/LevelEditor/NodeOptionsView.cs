@@ -25,13 +25,15 @@ namespace DN.Puzzle.Color.Editor
 
 		private void OnIsFinishValueChanged(bool value)
 		{
-			isStartToggle.SetIsOnWithoutNotify(!value);
+			if(isStartToggle.isOn && value == true)
+				isStartToggle.SetIsOnWithoutNotify(false);
 			Apply();
 		}
 		
 		private void OnStartValueChanged(bool value)
 		{
-			isFinishToggle.SetIsOnWithoutNotify(!value);
+			if(isFinishToggle.isOn && value == true)
+				isFinishToggle.SetIsOnWithoutNotify(false);
 			Apply();
 		}
 
