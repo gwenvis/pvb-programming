@@ -26,7 +26,7 @@ namespace DN.Tutorial
 			characterIndex = 0;
 		}
 
-		public bool Update()
+		public bool Animate()
 		{
 			timer -= Time.deltaTime;
 			while (timer <= 0f)

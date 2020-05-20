@@ -44,7 +44,7 @@ namespace DN.Tutorial
 		{
 			for (int i = 0; i < textWriterSingles.Count; i++)
 			{
-				bool destroyInstance = textWriterSingles[i].Update();
+				bool destroyInstance = textWriterSingles[i].Animate();
 				if (destroyInstance)
 				{
 					StartCoroutine(SetUIElements());

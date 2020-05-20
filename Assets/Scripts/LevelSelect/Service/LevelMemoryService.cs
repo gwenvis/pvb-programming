@@ -8,7 +8,7 @@ using UnityEngine;
 namespace DN.LevelSelect
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// This is where the necessary data gets stored for the tutorials and scripts.
 	/// </summary>
 	[Service]
 	public class LevelMemoryService

@@ -1833,7 +1833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 2
-  selectedPuzzle: 2
+  selectedPuzzle: 1
 --- !u!1 &1114564254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 1
-  selectedPuzzle: 2
+  selectedPuzzle: 1
 --- !u!1 &1281116992
 GameObject:
   m_ObjectHideFlags: 0

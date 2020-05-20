@@ -46,36 +46,38 @@ namespace DN.LevelSelect.Player
 
         private Vector3 containerBase;
 
-        void Awake()
+        private void Awake()
         {
             container = vehicleModel.GetChild(0);
             containerBase = container.localPosition;
         }
 
-        void Update()
+        private void Update()
         {
-            if (canDrive)
+            if (!canDrive)
             {
-                Accelarate();
-                WheelAndBodyTilt();
-                VehicleTilt();
-                Steering();
+                return;
+            }
 
-                // Stops vehicle from floating around when standing still
+            Accelarate();
+            WheelAndBodyTilt();
+            VehicleTilt();
+            Steering();
 
-                if (Mathf.Approximately(speed, 0) && sphere.velocity.magnitude < 4f)
-                {
-                    sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f);
-                    canSteer = false;
-                }
-                else
-                {
-                    canSteer = true;
-                }
+            // Stops vehicle from floating around when standing still
+
+            if (Mathf.Approximately(speed, 0) && sphere.velocity.magnitude < 4f)
+            {
+                sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f);
+                canSteer = false;
+            }
+            else
+            {
+                canSteer = true;
             }
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             MovementHandler();
         }

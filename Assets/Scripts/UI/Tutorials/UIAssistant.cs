@@ -11,7 +11,7 @@ namespace DN.Tutorial
 	/// <summary>
 	/// This is where you check if tutorail is needed and activate the tutorial.
 	/// </summary>
-	public class UI_Assistant : MonoBehaviour
+	public class UIAssistant : MonoBehaviour
 	{
 		[SerializeField] private GameObject helperObj;
 
@@ -30,31 +30,31 @@ namespace DN.Tutorial
 
 		private void Awake()
 		{
-			if (!ServiceLocator.Locate<LevelMemoryService>().IsMazeTutorialDone || !ServiceLocator.Locate<LevelMemoryService>().IsColorTutorialDone)
+			var service = ServiceLocator.Locate<LevelMemoryService>();
+
+			if (!service.IsMazeTutorialDone || !service.IsColorTutorialDone)
 			{
-				if (ServiceLocator.Locate<LevelMemoryService>().Assistant)
+				if (service.Assistant)
 				{
-					ServiceLocator.Locate<LevelMemoryService>().SetTutorialStatus(true);
+					service.SetTutorialStatus(true);
 				}
 
-				if (ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle == LevelDataEditor.SelectedPuzzle.ColorPuzzle && !ServiceLocator.Locate<LevelMemoryService>().IsColorTutorialDone)
+				if (service.SelectedPuzzle == LevelDataEditor.SelectedPuzzle.ColorPuzzle && !service.IsColorTutorialDone)
 				{
-					ServiceLocator.Locate<LevelMemoryService>().SetTutorialStatus(false);
-					ServiceLocator.Locate<LevelMemoryService>().SetDoneOnceTutorialColor(true);
+					service.SetTutorialStatus(false);
+					service.SetDoneOnceTutorialColor(true);
 				}
 
-				if (ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle == LevelDataEditor.SelectedPuzzle.MazePuzzle && !ServiceLocator.Locate<LevelMemoryService>().IsMazeTutorialDone)
+				if (service.SelectedPuzzle == LevelDataEditor.SelectedPuzzle.MazePuzzle && !service.IsMazeTutorialDone)
 				{
-					ServiceLocator.Locate<LevelMemoryService>().SetTutorialStatus(false);
-					ServiceLocator.Locate<LevelMemoryService>().SetDoneOnceTutorialMaze(true);
+					service.SetTutorialStatus(false);
+					service.SetDoneOnceTutorialMaze(true);
 				}
 			}
 			else
 			{
-				ServiceLocator.Locate<LevelMemoryService>().SetTutorialStatus(true);
+				service.SetTutorialStatus(true);
 			}
-
-			print(ServiceLocator.Locate<LevelMemoryService>().Assistant);
 
 			if (vehicle != null)
 			{
