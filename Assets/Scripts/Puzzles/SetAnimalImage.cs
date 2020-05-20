@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace DN.Puzzle
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Here the image of the selected animal gets set and set active.
 	/// </summary>
 	public class SetAnimalImage : MonoBehaviour
 	{
