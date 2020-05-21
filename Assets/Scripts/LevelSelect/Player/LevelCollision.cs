@@ -15,8 +15,8 @@ namespace DN.LevelSelect.Player
 		[SerializeField] private BiomeController biomeController;
 		[SerializeField] private SetAudioListener audioListener;
 
-		private LevelData.SelectedPuzzle selectedPuzzle;
-		private LevelData.SelectedAnimal selectedAnimal;
+		private LevelDataEditor.SelectedPuzzle selectedPuzzle;
+		private LevelDataEditor.SelectedAnimal selectedAnimal;
 		private DN.LevelData levelData;
 
 		private GameObject currentLevelSelected;
@@ -29,13 +29,14 @@ namespace DN.LevelSelect.Player
 			{
 				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal, levelData);
 				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelAndAudioController(biomeController, levelLoader, audioListener);
+				ServiceLocator.Locate<LevelMemoryService>().SetSelectedPuzzle(selectedPuzzle, selectedAnimal);
 				levelLoader.LoadInBetweenScene();
 			}
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
-			var levelDataComponent = other.GetComponent<LevelData>();
+			var levelDataComponent = other.GetComponent<LevelDataEditor>();
 			if (levelDataComponent)
 			{
 				currentLevelSelected = other.gameObject;
@@ -48,7 +49,7 @@ namespace DN.LevelSelect.Player
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.GetComponent<LevelData>())
+			if (other.GetComponent<LevelDataEditor>())
 			{
 				txtPanel.SetActive(false);
 			}

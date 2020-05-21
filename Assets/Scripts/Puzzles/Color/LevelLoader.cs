@@ -25,6 +25,7 @@ namespace DN.Puzzle.Color
 
         private Dictionary<NodeData, Node> spawnedNodes;
         private Dictionary<LineData, Line> spawnedLines;
+        private List<GameObject> spawnedQueueueObjects;
 
         private ColorLevelData currentLevelData;
 
@@ -43,17 +44,22 @@ namespace DN.Puzzle.Color
             Clean();
         }
 
-        private void Clean()
+        public void Clean()
         {
             foreach (var node in spawnedNodes)
             {
                 node.Key.Clean();
+                Destroy(node.Value);
             }
 
             foreach (var line in spawnedLines)
             {
                 line.Key.Clean();
+                Destroy(line.Value);
             }
+
+            spawnedQueueueObjects.ForEach(Destroy);
+            spawnedQueueueObjects.Clear();
 
             spawnedNodes.Clear();
             spawnedLines.Clear();
@@ -65,6 +71,8 @@ namespace DN.Puzzle.Color
             LoadLevel(currentLevelData);
         }
 
+        public void LoadWithExistingData() => LoadLevel(currentLevelData);
+        
         public void LoadLevel(ColorLevelData colorLevelData)
         {
             currentLevelData = colorLevelData;
@@ -72,6 +80,7 @@ namespace DN.Puzzle.Color
 
             spawnedNodes = new Dictionary<NodeData, Node>();
             spawnedLines = new Dictionary<LineData, Line>();
+            spawnedQueueueObjects = new List<GameObject>();
             
             foreach (NodeData node in colorLevelData.Nodes)
             {
@@ -101,7 +110,7 @@ namespace DN.Puzzle.Color
                         throw new ArgumentOutOfRangeException();
                 }
 
-                Instantiate(queueItemPrefab, nodeQueueSpawn);
+                spawnedQueueueObjects.Add(Instantiate(queueItemPrefab, nodeQueueSpawn));
             }
             
             player.SetStartingNode(colorLevelData.Nodes.First(x=>x.IsStart).Owner, true);

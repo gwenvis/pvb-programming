@@ -83,7 +83,6 @@ namespace DN.Puzzle.Color
 			Vector3 startPosition = Data.StartingNode.Owner.transform.position;
 			float scaleFactor = canvas.scaleFactor;
 
-			Debug.Log(scaleFactor);
 			endOwnerPosition -= (endOwnerPosition - startPosition).normalized * ((radius * scaleFactor / 2 + OFFSET_FROM_CIRCLE * scaleFactor));
 			position += (endOwnerPosition - startPosition).normalized * ((radius * scaleFactor / 2 + OFFSET_FROM_CIRCLE * scaleFactor));
 			startPosition = position;

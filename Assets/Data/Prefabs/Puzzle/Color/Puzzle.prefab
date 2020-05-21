@@ -851,7 +851,8 @@ MonoBehaviour:
   loseScreen: {fileID: 963577571521561007}
   winScreen: {fileID: 1632044395218047542}
   winController: {fileID: 1647022511907353570}
-  levelLoader: {fileID: 3032367414572741838}
+  colorPuzzleLevelLoader: {fileID: 8017051261752136067}
+  assistant: {fileID: 0}
 --- !u!1 &5663136783410783069
 GameObject:
   m_ObjectHideFlags: 0

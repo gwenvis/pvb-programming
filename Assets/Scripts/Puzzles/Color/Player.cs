@@ -33,6 +33,7 @@ namespace DN.Puzzle.Color
 		{
 			commandQueue = navigationQueue;
 			started = true;
+			currentState = State.Idle;
 
 			StartCoroutine(RunQueue(OnRunCompleted));
 		}

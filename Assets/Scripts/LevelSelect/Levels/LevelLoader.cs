@@ -11,40 +11,56 @@ namespace DN.LevelSelect.SceneManagment
     public class LevelLoader : MonoBehaviour
     {
         public GameObject LevelObject => levelObject;
-        public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
-        public LevelData.SelectedAnimal SelectedAnimal => selectedAnimal;
+        public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
+        public LevelDataEditor.SelectedAnimal SelectedAnimal => selectedAnimal;
 
         private GameObject levelObject;
-        private LevelData.SelectedPuzzle selectedPuzzle;
-        private LevelData.SelectedAnimal selectedAnimal;
+        private LevelDataEditor.SelectedPuzzle selectedPuzzle;
+        private LevelDataEditor.SelectedAnimal selectedAnimal;
         private DN.LevelData levelData;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
-        private const string DOG_IBS_NAME = "LevelOpenerDragonfly";
+        private const string DRAGONFLY_IBS_NAME = "LevelOpenerDragonfly";
         private const string OWL_IBS_NAME = "LevelOpenerOwl";
 
         private string prevSceneLoaded;
 
         public void LoadInBetweenScene()
         {
-            if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
+            if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
                 ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(false);
 
                 switch (selectedAnimal)
                 {
-                    case LevelData.SelectedAnimal.Dog:
-                        GetAndSetScene(DOG_IBS_NAME);
+                    case LevelDataEditor.SelectedAnimal.Dragonfly:
+                        GetAndSetScene(DRAGONFLY_IBS_NAME);
                         break;
 
-                    case LevelData.SelectedAnimal.Owl:
+                    case LevelDataEditor.SelectedAnimal.Owl:
+                        GetAndSetScene(OWL_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Cricket:
+                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Penguin:
+                        GetAndSetScene(OWL_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Seal:
+                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Shark:
                         GetAndSetScene(OWL_IBS_NAME);
                         break;
                 }
             }
         }
 
-        private void GetAndSetScene(string sceneName)
+        public void GetAndSetScene(string sceneName)
         {
             prevSceneLoaded = SceneManager.GetActiveScene().name;
 
@@ -82,7 +98,7 @@ namespace DN.LevelSelect.SceneManagment
             GetAndSetScene(selectedPuzzle.ToString());
         }
 
-        public void SetLoadingLevelData(GameObject other, LevelData.SelectedPuzzle puzzle, LevelData.SelectedAnimal animal, DN.LevelData level)
+        public void SetLoadingLevelData(GameObject other, LevelDataEditor.SelectedPuzzle puzzle, LevelDataEditor.SelectedAnimal animal, LevelData level)
         {
             levelObject = other;
             selectedPuzzle = puzzle;
@@ -98,7 +114,7 @@ namespace DN.LevelSelect.SceneManagment
         public void LoadLevelSelectFromPuzzle(bool isGameWon)
         {
             GetAndSetScene(LEVEL_SELECT_NAME);
-            levelObject.GetComponent<LevelData>().isCompleted = isGameWon;
+            levelObject.GetComponent<LevelDataEditor>().isCompleted = isGameWon;
             ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
             ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(true);
         }

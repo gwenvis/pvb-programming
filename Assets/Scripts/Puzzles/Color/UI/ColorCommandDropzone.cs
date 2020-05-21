@@ -11,7 +11,7 @@ namespace DN.Puzzle.Color
 	/// </summary>
 	public partial class ColorCommandDropzone : MonoBehaviour, IDroppable
 	{
-		public IEnumerable<ColorCommand> CommandQueue => colors.Select(x=>x.colorCommand);
+		public IEnumerable<ColorCommand> CommandQueue => colors.Where(x=>x.draggableItem).Select(x=>x.colorCommand);
 
 		private List<Item> colors = new List<Item>();
 
@@ -31,7 +31,7 @@ namespace DN.Puzzle.Color
 		private void OnPickedUpItemEvent(DraggableItem item)
 		{
 			Item linqItem = colors.FirstOrDefault(x => x.draggableItem == item);
-			linqItem.draggableItem.transform.parent = linqItem.previousParent ?? null;
+			linqItem.draggableItem.transform.parent = linqItem.previousParent;
 			colors.Remove(linqItem);
 			item.PickedUpItemEvent -= OnPickedUpItemEvent;
 		}
