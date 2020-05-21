@@ -469,7 +469,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &171068092
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &207291269
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &847491490
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &1048222826
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 5
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!1 &1114564254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,7 +2065,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!1 &1281116992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,7 +3255,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &1897381692
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3464,7 +3464,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &2004222945
 SphereCollider:
   m_ObjectHideFlags: 0
