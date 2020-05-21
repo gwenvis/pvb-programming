@@ -21,7 +21,7 @@ namespace DN.Puzzle.Color
 		}
 
 		public const float SIBLING_OFFSET = 15.0f;
-		public const float OFFSET_FROM_CIRCLE = 5.0f;
+		public const float OFFSET_FROM_CIRCLE = 0.0f;
 		
 		public LineData Data { get; private set; }
 
@@ -75,13 +75,16 @@ namespace DN.Puzzle.Color
 
 		public void SetPosition(Vector3 position, int siblings, int index)
 		{
-			// todo: set the position to and so forth.
+			Canvas canvas = GetComponentInParent<Canvas>();
+			
 			float radius = Data.StartingNode.Owner.GetComponent<RectTransform>().sizeDelta.x;
 			
-			var endOwnerPosition = Data.EndNode.Owner.transform.position;
-			var startPosition = Data.StartingNode.Owner.transform.position;
-			endOwnerPosition -= (endOwnerPosition - startPosition).normalized * (radius / 2 + OFFSET_FROM_CIRCLE);
-			position += (endOwnerPosition - startPosition).normalized * (radius / 2 + OFFSET_FROM_CIRCLE);
+			Vector3 endOwnerPosition = Data.EndNode.Owner.transform.position;
+			Vector3 startPosition = Data.StartingNode.Owner.transform.position;
+			float scaleFactor = canvas.scaleFactor;
+
+			endOwnerPosition -= (endOwnerPosition - startPosition).normalized * ((radius * scaleFactor / 2 + OFFSET_FROM_CIRCLE * scaleFactor));
+			position += (endOwnerPosition - startPosition).normalized * ((radius * scaleFactor / 2 + OFFSET_FROM_CIRCLE * scaleFactor));
 			startPosition = position;
 			
 			Vector3 vector = (endOwnerPosition - position).normalized;
@@ -93,7 +96,7 @@ namespace DN.Puzzle.Color
 			transform.position = position;
 			SetRotation(endOwnerPosition);
 			SetLength(startPosition, endOwnerPosition);
-			transform.position = position + (dir * dot * cross / m * SIBLING_OFFSET * m);
+			transform.position = position + (dir * dot * cross / m * SIBLING_OFFSET * scaleFactor * m);
 		}
 		
 		public void UpdateLineSprite()

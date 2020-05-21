@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace DN.Puzzle.Color
 {
@@ -10,12 +11,18 @@ namespace DN.Puzzle.Color
 	{
 		public NodeData Data { get; private set; }
 
+		[SerializeField] private Image nodeRenderer;
+		[SerializeField] private Sprite finishNode;
+
 		public void InitializeNode(NodeData data)
 		{
 			if (Data is null)
 			{
 				Data = data;
 				Data.SetOwner(this);
+
+				if (data.IsFinish)
+					nodeRenderer.sprite = finishNode;
 			}
 		}
 	}

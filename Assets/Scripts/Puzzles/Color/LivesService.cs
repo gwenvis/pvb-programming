@@ -9,7 +9,7 @@ namespace DN
 	[Service]
 	public class LivesService
 	{
-		public int CurrenlivesLives => lives;
+		public int CurrentLives => lives;
 		public bool RunOnce => runOnce;
 
 		private int lives;

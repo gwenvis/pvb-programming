@@ -16,7 +16,7 @@ namespace DN.Puzzle.Color
         [field: SerializeField, HideInInspector] public Vector3 Position { get; private set; }
         public IEnumerable<LineData> ConnectedLines => connectedLines;
 		
-        private List<LineData> connectedLines = new List<LineData>();
+        [NonSerialized] private List<LineData> connectedLines = new List<LineData>();
         [SerializeField, HideInInspector] public string id;
 
         public NodeData()
@@ -39,16 +39,6 @@ namespace DN.Puzzle.Color
         }
 		
 #if UNITY_EDITOR
-        public void ConnectLine(LineData line)
-        {
-            connectedLines.Add(line);
-        }
-
-        public void DisconnectLine(LineData line)
-        {
-            connectedLines.Remove(line);
-        }
-
         public void SetPosition(Vector3 position)
         {
             Position = position;
@@ -64,5 +54,10 @@ namespace DN.Puzzle.Color
             IsStart = isStart;
         }
 #endif
+        public void Clean()
+        {
+            connectedLines.Clear();
+            Owner = null;
+        }
     }
 }

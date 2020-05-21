@@ -16,12 +16,13 @@ namespace DN.LevelSelect
 		public BiomeController BiomeController => biomeController;
 		public LevelLoader LevelLoader => levelLoader;
 		public SetAudioListener SetAudioListener => setAudioListener;
-		public bool Assistant => assistant;
+ 		public bool Assistant => assistant;
+		public DN.LevelData LevelData { get; set; }
 		public bool IsMazeTutorialDone => isMazeTutorialDone;
 		public bool IsColorTutorialDone => isColorTutorialDone;
 		public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
 		public LevelDataEditor.SelectedAnimal SelectedAnimal => selectedAnimal;
-
+		
 		private SetAudioListener setAudioListener;
 		private bool assistant;
 		private LevelLoader levelLoader;

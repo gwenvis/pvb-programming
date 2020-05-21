@@ -3765,6 +3765,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 155152603, guid: 065ac842089425c4281f144e0f8c2de9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 155152603, guid: 065ac842089425c4281f144e0f8c2de9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 155152603, guid: 065ac842089425c4281f144e0f8c2de9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 155152603, guid: 065ac842089425c4281f144e0f8c2de9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 155152603, guid: 065ac842089425c4281f144e0f8c2de9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 372.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 155152603, guid: 065ac842089425c4281f144e0f8c2de9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 296.31
+      objectReference: {fileID: 0}
     - target: {fileID: 1385652082, guid: 065ac842089425c4281f144e0f8c2de9, type: 3}
       propertyPath: puzzleEditorView
       value: 

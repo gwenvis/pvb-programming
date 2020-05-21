@@ -17,6 +17,7 @@ namespace DN.LevelSelect.SceneManagment
         private GameObject levelObject;
         private LevelDataEditor.SelectedPuzzle selectedPuzzle;
         private LevelDataEditor.SelectedAnimal selectedAnimal;
+        private DN.LevelData levelData;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
         private const string DRAGONFLY_IBS_NAME = "LevelOpenerDragonfly";
@@ -93,14 +94,16 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadPuzzleScene()
         {
+            ServiceLocator.Locate<LevelMemoryService>().LevelData = levelData;
             GetAndSetScene(selectedPuzzle.ToString());
         }
 
-        public void SetLoadingLevelData(GameObject other, LevelDataEditor.SelectedPuzzle puzzle, LevelDataEditor.SelectedAnimal animal)
+        public void SetLoadingLevelData(GameObject other, LevelDataEditor.SelectedPuzzle puzzle, LevelDataEditor.SelectedAnimal animal, LevelData level)
         {
             levelObject = other;
             selectedPuzzle = puzzle;
             selectedAnimal = animal;
+            levelData = level;
         }
 
         public void LoadLevelSelect()

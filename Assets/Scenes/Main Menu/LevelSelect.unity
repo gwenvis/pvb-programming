@@ -469,6 +469,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &171068092
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -562,6 +563,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &207291269
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -896,6 +898,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 3
   selectedPuzzle: 2
+  levelData: {fileID: 0}
 --- !u!224 &483301768 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
@@ -950,6 +953,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 2
+  levelData: {fileID: 0}
 --- !u!135 &489731946
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1341,6 +1345,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &847491490
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1543,6 +1548,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 2
+  levelData: {fileID: 0}
 --- !u!135 &1003144999
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1760,6 +1766,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &1048222826
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1834,6 +1841,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 5
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!1 &1114564254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2065,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!1 &1281116992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,6 +2127,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!1 &1465681684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,6 +3255,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &1897381692
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3453,6 +3464,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &2004222945
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4201,6 +4213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826933, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
         type: 3}

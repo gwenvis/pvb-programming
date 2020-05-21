@@ -28,11 +28,11 @@ namespace DN.UI
 			if (!ServiceLocator.Locate<LivesService>().RunOnce)
 			{
 				ServiceLocator.Locate<LivesService>().SetCurrentLives(startLives, true);
-				CurrentLives = ServiceLocator.Locate<LivesService>().CurrenlivesLives;
+				CurrentLives = ServiceLocator.Locate<LivesService>().CurrentLives;
 			}
 			else
 			{
-				CurrentLives = ServiceLocator.Locate<LivesService>().CurrenlivesLives;
+				CurrentLives = ServiceLocator.Locate<LivesService>().CurrentLives;
 			}
 		}
 
