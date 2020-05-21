@@ -705,9 +705,6 @@ GameObject:
   - component: {fileID: 5657309144834176638}
   - component: {fileID: 5668123210115773929}
   - component: {fileID: 658120112121570712}
-  - component: {fileID: 1647022511907353570}
-  - component: {fileID: 3032367414572741838}
-  - component: {fileID: 8281287912343713691}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -811,48 +808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartSize: 50
---- !u!114 &1647022511907353570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4564196311241547400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1643937c32a9dc4a8c9a1a46afa748a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3032367414572741838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4564196311241547400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621370ccdaa776f44b8d6e4fa287dcde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8281287912343713691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4564196311241547400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e3d18356a9a314ba704b83839deb03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lives: {fileID: 658120112121570712}
-  loseScreen: {fileID: 963577571521561007}
-  winScreen: {fileID: 1632044395218047542}
-  winController: {fileID: 1647022511907353570}
-  colorPuzzleLevelLoader: {fileID: 8017051261752136067}
-  assistant: {fileID: 0}
 --- !u!1 &5663136783410783069
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +895,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1752381773791380233}
   - component: {fileID: 8017051261752136067}
+  - component: {fileID: 2007454450458637017}
+  - component: {fileID: 5549826438287177440}
   m_Layer: 0
   m_Name: Puzzle
   m_TagString: Untagged
@@ -987,6 +944,36 @@ MonoBehaviour:
     type: 3}
   yellowQueuePrefab: {fileID: 699046626919820190, guid: eeab81c8aea454447a98beebe91749fd,
     type: 3}
+--- !u!114 &2007454450458637017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833298785889678143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e3d18356a9a314ba704b83839deb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: {fileID: 658120112121570712}
+  loseScreen: {fileID: 963577571521561007}
+  winScreen: {fileID: 1632044395218047542}
+  winController: {fileID: 0}
+  colorPuzzleLevelLoader: {fileID: 8017051261752136067}
+  assistant: {fileID: 0}
+--- !u!114 &5549826438287177440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833298785889678143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1643937c32a9dc4a8c9a1a46afa748a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2425567990148013609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1200,7 +1187,7 @@ PrefabInstance:
     - target: {fileID: 2944723930726908920, guid: 60627c51b5e50624daf93ebd9570a918,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2944723930726908920, guid: 60627c51b5e50624daf93ebd9570a918,
         type: 3}
