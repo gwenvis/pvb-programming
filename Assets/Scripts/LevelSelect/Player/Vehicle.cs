@@ -1,4 +1,5 @@
-﻿using DN.Service;
+﻿using System;
+using DN.Service;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,8 +12,24 @@ namespace DN.LevelSelect.Player
     /// </summary>
     public class Vehicle : MonoBehaviour
     {
-        public bool canDrive = true;
+        public event Action VehicleMovedEvent;
+        public event Action VehicleStoppedEvent;
+        public event Action<bool> CanDriveChangedEvent;
 
+        public bool CanDrive
+        {
+            get => canDrive;
+            set
+            {
+                if (value == canDrive) return;
+                canDrive = value;
+                CanDriveChangedEvent?.Invoke(canDrive);
+            }
+        }
+        private bool canDrive = true;
+
+        public Vector3 Velocity => sphere.velocity;
+        
         [SerializeField] private Transform vehicleModel;
         [SerializeField] private Rigidbody sphere;
         [SerializeField] private Transform spherePos;
@@ -45,6 +62,7 @@ namespace DN.LevelSelect.Player
         private bool setOnceVehicle;
 
         private Vector3 containerBase;
+        private Vector3 lastFrameVelocity;
 
         private void Awake()
         {
@@ -54,12 +72,12 @@ namespace DN.LevelSelect.Player
 
         private void Update()
         {
-            if (!canDrive)
+            if (!CanDrive)
             {
                 return;
             }
 
-            Accelarate();
+            Accelerate();
             WheelAndBodyTilt();
             VehicleTilt();
             Steering();
@@ -75,6 +93,13 @@ namespace DN.LevelSelect.Player
             {
                 canSteer = true;
             }
+
+            if (lastFrameVelocity.magnitude > 0.01f && Velocity.magnitude < 0.01f)
+            {
+                VehicleStoppedEvent?.Invoke();
+            }
+
+            lastFrameVelocity = Velocity;
         }
 
         private void FixedUpdate()
@@ -103,7 +128,7 @@ namespace DN.LevelSelect.Player
             body.localRotation = Quaternion.Slerp(body.localRotation, Quaternion.Euler(new Vector3(speedTarget / 4, 0, rotateTarget / 6)), Time.deltaTime * 4.0f);
         }
 
-        private void Accelarate()
+        private void Accelerate()
         {
             speedTarget = Mathf.SmoothStep(speedTarget, speed, Time.deltaTime * 12f);
 
@@ -112,11 +137,12 @@ namespace DN.LevelSelect.Player
             if (Input.GetKey(accelarate))
             {
                 speed = acceleration;
+                if (Velocity.sqrMagnitude < 0.1) VehicleMovedEvent?.Invoke();
             }
-
-            if (Input.GetKey(reverse))
+            else if (Input.GetKey(reverse))
             {
                 speed = -acceleration;
+                if (Velocity.sqrMagnitude < 0.1) VehicleMovedEvent?.Invoke();
             }
         }
 
