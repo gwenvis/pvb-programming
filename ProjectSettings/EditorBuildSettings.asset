@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/InBetweenScenes/LevelOpenerOwl.unity
     guid: eadefab614b10d14298400fc00a37f5a
+  - enabled: 1
+    path: Assets/Scenes/Levels/InBetweenScenes/LevelOpenerCricket.unity
+    guid: dc550a636c8150a42ae66cf44d2f68d6
+  - enabled: 1
+    path: Assets/Scenes/Levels/InBetweenScenes/LevelOpenerSeal.unity
+    guid: e0825371fb64d584e86c5ec179b56f27
+  - enabled: 1
+    path: Assets/Scenes/Levels/InBetweenScenes/LevelOpenerShark.unity
+    guid: 449cccccbc71c5647871bd5412dcf591
   m_configObjects: {}

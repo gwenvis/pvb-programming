@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacbad7531af4025a5c05ce9b15ecbd1, type: 3}
+  m_Name: clevel2
+  m_EditorClassIdentifier: 
+  levelName: level2
+  <SavedSize>k__BackingField: {x: 372.66, y: 296.31}
+  lines:
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: f8ec4194-e01e-4db4-b6cb-70e38e5452ce
+    <EndNodeId>k__BackingField: ab7ac074-a628-42eb-a437-5791f3cc4828
+    <CanTraverseBothWays>k__BackingField: 0
+    id: c770f946-2dbb-4f46-9f03-b4155bb82f83
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: 1de94729-9122-4caf-8b08-5c04c3ba9708
+    <EndNodeId>k__BackingField: f8ec4194-e01e-4db4-b6cb-70e38e5452ce
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 7c170b69-0819-4169-8d35-1b58ff74be8c
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: f8ec4194-e01e-4db4-b6cb-70e38e5452ce
+    <EndNodeId>k__BackingField: 92f28cc3-ae6e-4768-8c29-1fb3595317f7
+    <CanTraverseBothWays>k__BackingField: 1
+    id: b0ee4ebb-2fe7-4981-8090-a7cf3f9ba833
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: ab7ac074-a628-42eb-a437-5791f3cc4828
+    <EndNodeId>k__BackingField: 1de94729-9122-4caf-8b08-5c04c3ba9708
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 552023f9-c8f4-4d14-b9af-28897bf03fbc
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 92f28cc3-ae6e-4768-8c29-1fb3595317f7
+    <EndNodeId>k__BackingField: ab7ac074-a628-42eb-a437-5791f3cc4828
+    <CanTraverseBothWays>k__BackingField: 1
+    id: 329e2457-be64-4185-985d-fb535fb35069
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: ab7ac074-a628-42eb-a437-5791f3cc4828
+    <EndNodeId>k__BackingField: 2059fbc1-8035-4573-8c74-41a22efe2514
+    <CanTraverseBothWays>k__BackingField: 0
+    id: a6f31de1-559e-4094-8b0a-a3f3557ffab1
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 1de94729-9122-4caf-8b08-5c04c3ba9708
+    <EndNodeId>k__BackingField: 2059fbc1-8035-4573-8c74-41a22efe2514
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 33627e96-35da-4d94-b7d8-3fe244ff428f
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 92f28cc3-ae6e-4768-8c29-1fb3595317f7
+    <EndNodeId>k__BackingField: 2059fbc1-8035-4573-8c74-41a22efe2514
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 27d760f7-b098-4434-81c0-009b625ecebc
+  nodes:
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 1
+    <Position>k__BackingField: {x: -133.44565, y: -0.000000834465, z: 0}
+    id: f8ec4194-e01e-4db4-b6cb-70e38e5452ce
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -15.2739105, y: 102.09392, z: 0}
+    id: 92f28cc3-ae6e-4768-8c29-1fb3595317f7
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: 16.077805, y: -0.80389017, z: 0}
+    id: ab7ac074-a628-42eb-a437-5791f3cc4828
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -18.489473, y: -114.95608, z: 0}
+    id: 1de94729-9122-4caf-8b08-5c04c3ba9708
+  - <IsFinish>k__BackingField: 1
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: 132.64182, y: -1.6077802, z: 0}
+    id: 2059fbc1-8035-4573-8c74-41a22efe2514
+  draggableNodes: 

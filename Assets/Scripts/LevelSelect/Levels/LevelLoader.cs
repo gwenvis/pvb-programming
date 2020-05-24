@@ -22,6 +22,9 @@ namespace DN.LevelSelect.SceneManagment
         private const string LEVEL_SELECT_NAME = "LevelSelect";
         private const string DRAGONFLY_IBS_NAME = "LevelOpenerDragonfly";
         private const string OWL_IBS_NAME = "LevelOpenerOwl";
+        private const string SHARK_IBS_NAME = "LevelOpenerShark";
+        private const string SEAL_IBS_NAME = "LevelOpenerSeal";
+        private const string CRICKET_IBS_NAME = "LevelOpenerCricket";
 
         private string prevSceneLoaded;
 
@@ -42,7 +45,7 @@ namespace DN.LevelSelect.SceneManagment
                         break;
 
                     case LevelDataEditor.SelectedAnimal.Cricket:
-                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                        GetAndSetScene(CRICKET_IBS_NAME);
                         break;
 
                     case LevelDataEditor.SelectedAnimal.Penguin:
@@ -50,11 +53,11 @@ namespace DN.LevelSelect.SceneManagment
                         break;
 
                     case LevelDataEditor.SelectedAnimal.Seal:
-                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                        GetAndSetScene(SEAL_IBS_NAME);
                         break;
 
                     case LevelDataEditor.SelectedAnimal.Shark:
-                        GetAndSetScene(OWL_IBS_NAME);
+                        GetAndSetScene(SHARK_IBS_NAME);
                         break;
                 }
             }
