@@ -21,10 +21,14 @@ namespace DN.UI
         [SerializeField]
         private Image triggerField;
 
-        [SerializeField] private LevelLoader levelLoader;
+        [SerializeField] 
+        private LevelLoader levelLoader;
+
+        [SerializeField]
+        private ParticleSystem sparkParticle;
 
         private float startZoomPos = 1;
-        private float endZoomPos = 5;
+        private float endZoomPos = 8;
         private float duration = 3f;
         private Vector3 desiredPosition;
 
@@ -33,7 +37,7 @@ namespace DN.UI
         private float maxPosY;
         private float minPosY;
 
-        private bool isJittering = true;
+        private bool isClicked = false;
 
         private void Start()
         {
@@ -49,35 +53,43 @@ namespace DN.UI
             desiredPosition = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
 
             StartCoroutine(FadeInAnimal());
-            StartCoroutine(Jitter());
         }
 
         private IEnumerator FadeInAnimal()
         {
+            animal.CrossFadeAlpha(1, 2, false);
             yield return new WaitForSeconds(2f);
 
-            animal.CrossFadeAlpha(1, 2, false);
+            StartCoroutine(Jitter());
+            
             triggerField.CrossFadeAlpha(.6f, 2, false);
         }
 
         public void FadeInBlackScreen()
         {
-            blackFade.CrossFadeAlpha(1, 1.5f, false);
+            blackFade.CrossFadeAlpha(1, 1f, false);
         }
 
         public void ZoomIn()
         {
             StartCoroutine(startZoom(startZoomPos, endZoomPos));
-            isJittering = false;
+            isClicked = true;
         }
 
         public IEnumerator Jitter()
         {
-            while(isJittering)
+            while(true)
             {
                 float timePassed = 0;
-                float intervalTime = Random.Range(4, 6);
+                float intervalTime = Random.Range(1, 2);
                 yield return new WaitForSeconds(intervalTime);
+
+                if (isClicked)
+                {
+                    break;
+                }
+
+                sparkParticle.Emit(30);
 
                 while (timePassed < 0.3f)
                 {
@@ -92,7 +104,7 @@ namespace DN.UI
             }
         }
 
-        IEnumerator startZoom(float startZoomPos, float endZoomPos)
+        private IEnumerator startZoom(float startZoomPos, float endZoomPos)
         {
             float startTime = Time.time;
             float counter = 0f;
@@ -100,12 +112,11 @@ namespace DN.UI
             while (counter < duration)
             {
                 float t = (Time.time - startTime) / duration;
-                counter += Time.deltaTime / duration;
+                counter += Time.deltaTime * duration;
                 animal.transform.localScale = Vector3.one * Mathf.Lerp(startZoomPos, endZoomPos, t);
                 animal.transform.position = Vector3.Lerp(animal.transform.position, desiredPosition, t);
 
                 yield return new WaitForEndOfFrame();
-  
             }
             levelLoader.LoadPuzzleScene();
         }
