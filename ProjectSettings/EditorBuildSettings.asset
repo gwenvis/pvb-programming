@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/InBetweenScenes/LevelOpenerOwl.unity
     guid: eadefab614b10d14298400fc00a37f5a
+  - enabled: 1
+    path: Assets/Scenes/Music.unity
+    guid: 98f89c987dfe67242be7417bb10863c8
   m_configObjects: {}

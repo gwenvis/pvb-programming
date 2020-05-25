@@ -53,6 +53,12 @@ namespace DN.Audio
 			}
 		}
 
+		private void Update()
+		{
+			float maxSpeed = 57.0f;
+			loopSource.pitch = vehicle.Velocity.sqrMagnitude / maxSpeed;
+		}
+
 		private void OnEnable()
 		{
 			vehicle.VehicleMovedEvent += OnVehicleMovedEvent;

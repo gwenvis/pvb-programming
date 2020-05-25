@@ -21,17 +21,20 @@ namespace DN.Audio
 		private float randomPitchMax = 1.05f;
 		private AudioClip oldAudioClip;
 		private bool lowPitch = false;
+		private Coroutine audioUpdate;
 
 		public void Play()
 		{
 			started = true;
 			SelectRandomClip();
-			StartCoroutine(AudioUpdate());
+			audioUpdate = StartCoroutine(AudioUpdate());
 		}
 
 		public void Stop()
 		{
 			started = false;
+			StopCoroutine(audioUpdate);
+			audioSource.Stop();
 		}
 
 		public void Mute(bool mute) => audioSource.mute = mute;
