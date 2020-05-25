@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -271,7 +271,7 @@ MonoBehaviour:
   animal: {fileID: 1759059356}
   blackFade: {fileID: 1184838517}
   triggerField: {fileID: 2098292098}
-  levelLoader: {fileID: 0}
+  levelLoader: {fileID: 2069005585}
 --- !u!114 &616147858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 1759059357}
   - component: {fileID: 1759059356}
   m_Layer: 5
-  m_Name: Dragonfly
+  m_Name: Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 092b64f803a40354f990babef56a4032, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f22ddb0fffcf7540a573f8dd916a135, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -771,9 +771,21 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -295.4, y: -87}
-  m_SizeDelta: {x: 191.44, y: 143.41}
+  m_AnchoredPosition: {x: -157, y: -88}
+  m_SizeDelta: {x: 545.24, y: 408.57}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2069005585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5321432640765803276, guid: 3ebe100b1259e1d48a38669dd02ec189,
+    type: 3}
+  m_PrefabInstance: {fileID: 705789851}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621370ccdaa776f44b8d6e4fa287dcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2098292095
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +823,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 99.3, y: 105.5}
+  m_SizeDelta: {x: 540, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &2098292097
 BoxCollider2D:
@@ -826,7 +838,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.6}
+  m_Offset: {x: -16.7, y: 46.54}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -837,7 +849,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 91.2, y: 95.8}
+  m_Size: {x: 452.74, y: 235.6}
   m_EdgeRadius: 0
 --- !u!114 &2098292098
 MonoBehaviour:

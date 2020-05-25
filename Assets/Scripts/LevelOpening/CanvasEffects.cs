@@ -23,13 +23,25 @@ namespace DN.UI
 
         [SerializeField] private LevelLoader levelLoader;
 
-        private float startZoomPos;
-        private float endZoomPos;
-        private float duration = 2;
+        private float startZoomPos = 1;
+        private float endZoomPos = 5;
+        private float duration = 3f;
         private Vector3 desiredPosition;
 
-        void Start()
+        private float maxPosX;
+        private float minPosX;
+        private float maxPosY;
+        private float minPosY;
+
+        private bool isJittering = true;
+
+        private void Start()
         {
+            maxPosX = animal.rectTransform.anchoredPosition.x + 3f;
+            minPosX = animal.rectTransform.anchoredPosition.x - 3f;
+            maxPosY = animal.rectTransform.anchoredPosition.y + 3f;
+            minPosY = animal.rectTransform.anchoredPosition.y - 3f;
+
             animal.canvasRenderer.SetAlpha(0.0f);
             triggerField.canvasRenderer.SetAlpha(0.0f);
             blackFade.canvasRenderer.SetAlpha(0.0f);
@@ -37,6 +49,7 @@ namespace DN.UI
             desiredPosition = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
 
             StartCoroutine(FadeInAnimal());
+            StartCoroutine(Jitter());
         }
 
         private IEnumerator FadeInAnimal()
@@ -49,15 +62,34 @@ namespace DN.UI
 
         public void FadeInBlackScreen()
         {
-            blackFade.CrossFadeAlpha(1, 2, false);
+            blackFade.CrossFadeAlpha(1, 1.5f, false);
         }
 
         public void ZoomIn()
         {
-            startZoomPos = 1;
-            endZoomPos = 10;
-
             StartCoroutine(startZoom(startZoomPos, endZoomPos));
+            isJittering = false;
+        }
+
+        public IEnumerator Jitter()
+        {
+            while(isJittering)
+            {
+                float timePassed = 0;
+                float intervalTime = Random.Range(4, 6);
+                yield return new WaitForSeconds(intervalTime);
+
+                while (timePassed < 0.3f)
+                {
+                    float newPosX = Random.Range(minPosX, maxPosX);
+                    float newPosY = Random.Range(minPosY, maxPosY);
+
+                    animal.rectTransform.anchoredPosition = new Vector2(newPosX, newPosY);
+
+                    timePassed += Time.deltaTime;
+                    yield return null;
+                }
+            }
         }
 
         IEnumerator startZoom(float startZoomPos, float endZoomPos)
@@ -73,8 +105,7 @@ namespace DN.UI
                 animal.transform.position = Vector3.Lerp(animal.transform.position, desiredPosition, t);
 
                 yield return new WaitForEndOfFrame();
-
-                //a;ofbnpei;oagnpaoifghb NIET COPYRIGHT MY CODE DOING MY NO COPY    
+  
             }
             levelLoader.LoadPuzzleScene();
         }
