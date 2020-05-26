@@ -77,12 +77,12 @@ namespace DN.UI
 		public void ContinueToLevelselectLose()
 		{
 			ServiceLocator.Locate<LivesService>().SetCurrentLives(3, false);
-			levelLoader.LoadLevelSelectFromPuzzle(false);
+			StartCoroutine(levelLoader.LoadLevelSelectFromPuzzle(false));
 		}
 
 		public void ContinueToLevelselectWon()
 		{
-			levelLoader.LoadLevelSelectFromPuzzle(true);
+			StartCoroutine(levelLoader.LoadLevelSelectFromPuzzle(true));
 		}
 	}
 }
