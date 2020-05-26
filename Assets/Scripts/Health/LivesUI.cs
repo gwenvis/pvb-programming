@@ -9,8 +9,9 @@ namespace DN.UI
 	/// </summary>
 	public class LivesUI
 	{
-		private float size = 50f;
-		private Sprite heart;
+		private float offset = 30f;
+		private float size = 30f;
+		private GameObject heart;
 		private List<GameObject> hearts;
 		private RectTransform canvas;
 		private GameObject canvasObject;
@@ -24,20 +25,19 @@ namespace DN.UI
 			Start();
 		}
 
-		public void Start()
+		private void Start()
 		{
 			canvas = canvasObject.GetComponent<RectTransform>();
 			hearts = new List<GameObject>();
-			heart = Resources.Load<Sprite>("Sprites/heart");
+			heart = Resources.Load<GameObject>("Prefab/heart");
 
 			for (int i = 0; i < lives.CurrentLives; i++)
 			{
-				GameObject life = new GameObject($"heart {i}");
-				life.AddComponent<Image>().sprite = heart;
+				GameObject life = Object.Instantiate(heart);
 				RectTransform rTransform = life.GetComponent<RectTransform>();			
 				life.transform.SetParent(canvasObject.transform);
 				rTransform.sizeDelta = new Vector2(size, size);
-				rTransform.position = new Vector2(rTransform.rect.width + (size / 4 + rTransform.rect.width) * i, Screen.height - size);
+				rTransform.position = new Vector2(rTransform.rect.width + (size + rTransform.rect.width) * i + offset, Screen.height - size - offset);
 				hearts.Add(life);
 			}
 			lives.LifeLostEvent += OnLifeLostEvent;
@@ -47,6 +47,11 @@ namespace DN.UI
 		private void OnAllLifeLostEvent()
 		{
 			lives.LifeLostEvent -= OnLifeLostEvent;
+		}
+
+		public List<GameObject> GetHearts()
+		{
+			return hearts;
 		}
 
 		private void OnLifeLostEvent(int obj)

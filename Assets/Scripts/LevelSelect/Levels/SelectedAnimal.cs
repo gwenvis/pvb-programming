@@ -2,7 +2,7 @@
 {
     public partial class LevelDataEditor
     {
-        public enum SelectedAnimal { None, Dragonfly, Owl, Shark, Penguin, Seal, Cricket};
+        public enum SelectedAnimal { None, Bug, Hog, Shark, Penguin, Racoon};
         public enum SelectedPuzzle { None, ColorPuzzle, MazePuzzle };
 
     }
