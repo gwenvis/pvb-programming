@@ -28,8 +28,8 @@ namespace DN.UI
         private ParticleSystem sparkParticle;
 
         private float startZoomPos = 1;
-        private float endZoomPos = 8;
-        private float duration = 3f;
+        private float endZoomPos = 5;
+        private float duration = 4f;
         private Vector3 desiredPosition;
 
         private float maxPosX;
