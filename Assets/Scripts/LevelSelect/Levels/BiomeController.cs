@@ -1,12 +1,5 @@
-﻿using Boo.Lang;
-using DN.LevelSelect.SceneManagment;
-using DN.Service;
-using System.Diagnostics.PerformanceData;
-using System.Dynamic;
-using UnityEditor;
-using UnityEditor.Rendering;
+﻿using DN.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DN.LevelSelect
 {
@@ -15,18 +8,6 @@ namespace DN.LevelSelect
     /// </summary>
     public class BiomeController : MonoBehaviour
     {
-        public int CurrentBiome => currentBiome;
-        public int CurrentLevelsCompleted => currentLevelsCompleted;
-        public int SelectedLevelCompleted => selectedLevelCompleted;
-        public int CurrentLevelIndex => currentLevelIndex;
-        public bool IsBiomeFinished => isBiomeFinished;
-
-        private int currentLevelIndex;
-        private int currentBiome;
-        private int currentLevelsCompleted;
-        private int selectedLevelCompleted;
-
-        private bool isBiomeFinished;
 
         [SerializeField] private GameObject[] biomes;
         [SerializeField] private GameObject[] levels;
@@ -41,31 +22,30 @@ namespace DN.LevelSelect
 
         private GameObject[] borders;
 
-        private GameObject previousBiome;
-
+        private int previousBiome;
         private int biomeCount;
+        private int currentBiome;
 
-        private GameObject prevBiomeObj;
+        private int currentLevelsCompleted;
+
+        private bool isBiomeFinished;
+
         private GameObject currentBiomeObj;
 
         private int minBiomeLevelsCompleted = 0;
         private int maxBiomeLevelsCompleted;
 
-        private bool isGameFinished;
-
         private void Awake()
         {
-            SetLevelData();
             SetBiomeStart();
             SetBordersStart();
             GetBiomeLevels();
-            CheckForCompletionBiome();
-            UpdateBorders();
+            CompletedLevel();
         }
 
-        private void Update()
+        public void CompletedLevel()
         {
-            UpdateSelectedLevel();
+            CheckForCompletionBiome();
         }
 
         private void CheckForCompletionBiome()
@@ -74,7 +54,7 @@ namespace DN.LevelSelect
 
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i].GetComponent<LevelData>().isCompleted)
+                if (levels[i].GetComponent<LevelDataEditor>().isCompleted)
                 {
                     currentLevelsCompleted++;
                     levels[i].GetComponentInChildren<SpriteRenderer>().sprite = levelCompletedSprite;
@@ -84,9 +64,7 @@ namespace DN.LevelSelect
             if (currentLevelsCompleted >= maxBiomeLevelsCompleted)
             {
                 currentLevelsCompleted = minBiomeLevelsCompleted;
-                previousBiome = currentBiomeObj;
                 currentBiome++;
-
 
                 if (currentBiome != biomeCount)
                 {
@@ -94,6 +72,7 @@ namespace DN.LevelSelect
                 }
 
                 isBiomeFinished = true;
+                previousBiome = currentBiome - 1;
                 NextBiome(isBiomeFinished);
             }
             else
@@ -120,24 +99,6 @@ namespace DN.LevelSelect
             {
                 levels[i] = currentBiomeObj.transform.GetChild(i).gameObject;
             }
-
-            if (!isBiomeFinished)
-            {
-                if (ServiceLocator.Locate<LevelMemoryService>().IsGameWon)
-                {
-                    ServiceLocator.Locate<LevelMemoryService>().SetBiomeFinished(isBiomeFinished);
-                    for (int i = 0; i < ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes.Count; i++)
-                    {
-                        levels[ServiceLocator.Locate<LevelMemoryService>().CompletedLevelIndexes[i]].GetComponent<LevelData>().isCompleted = true;
-                    }
-                }
-            }
-            else
-            {
-                ServiceLocator.Locate<LevelMemoryService>().SetBiomeFinished(!isBiomeFinished);
-                ServiceLocator.Locate<LevelMemoryService>().NextBiomeClear(currentBiome);
-                ServiceLocator.Locate<LevelMemoryService>().ClearList();
-            }
         }
 
         private void SetBiomeStart()
@@ -158,6 +119,7 @@ namespace DN.LevelSelect
             ClearLevels();
             GetBiomeLevels();
             CheckForAllBiomesCleared();
+            UpdateBorders();
             biomeUI.SetTaskManager(isBiomeFinished, (maxBiomeLevelsCompleted - currentLevelsCompleted));
 
             currentBiomeObj.SetActive(value);
@@ -165,28 +127,7 @@ namespace DN.LevelSelect
 
         private void UpdateBorders()
         {
-            for (int i = 0; i < ServiceLocator.Locate<LevelMemoryService>().CompletedBiomeIndexes.Count; i++)
-            {
-                if(ServiceLocator.Locate<LevelMemoryService>().CompletedBiomeIndexes.Count <= biomeCount)
-                {
-                    borders[i].SetActive(false);
-                }
-            }
-        }
-
-        private void UpdateSelectedLevel()
-        {
-            float distance;
-            float minDistance = 4f;
-
-            for (int i = 0; i < levels.Length; i++)
-            {
-                distance = Vector3.Distance(player.position, levels[i].transform.position);
-                if(distance <= minDistance)
-                {
-                    currentLevelIndex = i;
-                }
-            }
+            borders[previousBiome].SetActive(false);
         }
 
         private void ClearLevels()
@@ -201,17 +142,8 @@ namespace DN.LevelSelect
         {
             if (currentBiome >= biomeCount)
             {
-                isGameFinished = true;
                 Debug.Log("Finished Game biem");
             }
-        }
-
-        private void SetLevelData()
-        {
-            currentBiome = ServiceLocator.Locate<LevelMemoryService>().CurrentBiome;
-            currentLevelsCompleted = ServiceLocator.Locate<LevelMemoryService>().CurrentLevelsCompleted;
-            selectedLevelCompleted = ServiceLocator.Locate<LevelMemoryService>().SelectedLevelCompleted;
-            isBiomeFinished = ServiceLocator.Locate<LevelMemoryService>().BiomeFinished;
         }
     }
 }

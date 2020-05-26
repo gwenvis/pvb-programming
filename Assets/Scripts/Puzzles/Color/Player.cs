@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Debug = System.Diagnostics.Debug;
 
 namespace DN.Puzzle.Color
 {
@@ -10,21 +11,11 @@ namespace DN.Puzzle.Color
 	/// all the lines that are available in the current node if specified by
 	/// the queue.
 	/// </summary>
-	public class Player : MonoBehaviour
+	public partial class Player : MonoBehaviour
 	{
-		public enum State
-		{ 
-			Idle,
-			Navigating,
-			Moving,
-			Waiting,
-			Stuck,
-			Done,
-		}
-
 		public static event Action<State> RunFinishedEvent;
 
-		[SerializeField] private Node currentNode;
+		private Node currentNode;
 		private PlayerPathFinding playerPathFinding;
 		private ColorPuzzleSettings colorPuzzleSettings;
 		private ICommandQueue<ColorCommand> commandQueue;
@@ -42,11 +33,20 @@ namespace DN.Puzzle.Color
 		{
 			commandQueue = navigationQueue;
 			started = true;
+			currentState = State.Idle;
 
 			StartCoroutine(RunQueue(OnRunCompleted));
 		}
 
-		private Line Navigate(ColorCommand colorCommand) => playerPathFinding.FindLine(colorCommand, currentNode);
+		public void SetStartingNode(Node node, bool moveToNode)
+		{
+			currentNode = node;
+
+			if (moveToNode)
+				transform.position = node.transform.position;
+		}
+
+		private Line Navigate(ColorCommand colorCommand) => playerPathFinding.FindLine(colorCommand, currentNode)?.Owner;
 
 		private void OnRunCompleted()
 		{
@@ -73,10 +73,13 @@ namespace DN.Puzzle.Color
 						currentState = currentLine == null ? State.Stuck : State.Moving;
 						break;
 					case State.Moving:
-						Node endNode = currentNode == currentLine.StartingNode ? currentLine.EndNode : currentLine.StartingNode;
+						// ReSharper disable once PossibleNullReferenceException
+						Node endNode = currentNode.Data == currentLine.Data.StartingNode
+							? currentLine.Data.EndNode.Owner
+							: currentLine.Data.StartingNode.Owner;
 						yield return Moving(currentLine, endNode);
 						currentNode = endNode;
-						currentState = currentNode.IsFinish ? State.Done : State.Waiting;
+						currentState = currentNode.Data.IsFinish ? State.Done : State.Waiting;
 						break;
 					case State.Waiting:
 						yield return new WaitForSeconds(colorPuzzleSettings.DestinationTimeout);
@@ -106,19 +109,22 @@ namespace DN.Puzzle.Color
 
 		private IEnumerator Moving(Line line, Node endNode)
 		{
-			;
 			bool moving = true;
 			while (moving)
 			{
+				var endNodePosition = endNode.transform.position;
+
+				var position = transform.position;
 				Vector3 nextPosition = Vector3.MoveTowards(
-					transform.position, 
-					endNode.transform.position, 
+					position, 
+					endNodePosition, 
 					colorPuzzleSettings.PlayerSpeed * Time.deltaTime
 					);
 
-				transform.position = nextPosition;
+				position = nextPosition;
+				transform.position = position;
 
-				float distance = Vector3.Distance(transform.position, endNode.transform.position);
+				float distance = Vector3.Distance(position, endNodePosition);
 				if (distance < 0.001f)
 				{
 					moving = false;

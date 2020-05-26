@@ -5157,18 +5157,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &509942270 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5321432640765803276, guid: 3ebe100b1259e1d48a38669dd02ec189,
-    type: 3}
-  m_PrefabInstance: {fileID: 705789851}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621370ccdaa776f44b8d6e4fa287dcde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &616147856
 GameObject:
   m_ObjectHideFlags: 0
@@ -5204,7 +5192,7 @@ MonoBehaviour:
   animal: {fileID: 1759059356}
   blackFade: {fileID: 1184838517}
   triggerField: {fileID: 2098292098}
-  levelLoader: {fileID: 509942270}
+  levelLoader: {fileID: 0}
   sparkParticle: {fileID: 442834371}
 --- !u!114 &616147858
 MonoBehaviour:
@@ -5579,7 +5567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1184838517
 MonoBehaviour:
   m_ObjectHideFlags: 0

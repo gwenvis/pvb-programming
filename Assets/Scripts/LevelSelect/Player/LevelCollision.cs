@@ -13,10 +13,11 @@ namespace DN.LevelSelect.Player
 
 		[SerializeField] private LevelLoader levelLoader;
 		[SerializeField] private BiomeController biomeController;
-		[SerializeField] private Transform player;
+		[SerializeField] private SetAudioListener audioListener;
 
-		private LevelData.SelectedPuzzle selectedPuzzle;
-		private LevelData.SelectedAnimal selectedAnimal;
+		private LevelDataEditor.SelectedPuzzle selectedPuzzle;
+		private LevelDataEditor.SelectedAnimal selectedAnimal;
+		private DN.LevelData levelData;
 
 		private GameObject currentLevelSelected;
 
@@ -26,27 +27,29 @@ namespace DN.LevelSelect.Player
 		{
 			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
-				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal);
-				ServiceLocator.Locate<LevelMemoryService>().SetData(biomeController.CurrentBiome, biomeController.CurrentLevelsCompleted, selectedPuzzle, selectedAnimal, biomeController.SelectedLevelCompleted, biomeController.CurrentLevelIndex);
-				ServiceLocator.Locate<LevelMemoryService>().SetVehicleData(player.position, player.rotation, true);
-				StartCoroutine(levelLoader.LoadInBetweenScene());
+				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal, levelData);
+				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelAndAudioController(biomeController, levelLoader, audioListener);
+				ServiceLocator.Locate<LevelMemoryService>().SetSelectedPuzzle(selectedPuzzle, selectedAnimal);
+				levelLoader.LoadInBetweenScene();
 			}
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.GetComponent<LevelData>())
+			var levelDataComponent = other.GetComponent<LevelDataEditor>();
+			if (levelDataComponent)
 			{
 				currentLevelSelected = other.gameObject;
-				selectedPuzzle = other.GetComponent<LevelData>().PuzzleSelected;
-				selectedAnimal = other.GetComponent<LevelData>().AnimalSelected;
+				selectedPuzzle = levelDataComponent.PuzzleSelected;
+				selectedAnimal = levelDataComponent.AnimalSelected;
+				levelData = levelDataComponent.Level;
 				txtPanel.SetActive(true);
 			}
 		}
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.GetComponent<LevelData>())
+			if (other.GetComponent<LevelDataEditor>())
 			{
 				txtPanel.SetActive(false);
 			}

@@ -2,9 +2,8 @@
 {
 	public enum LineColor
 	{ 
-		Red,
-		Yellow,
-		Green,
-		Blue
+		Pink = 0,
+		Yellow = 1,
+		Blue = 2
 	}
 }

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,45 +12,108 @@ namespace DN.Puzzle.Color
 	/// </summary>
 	public class Line : MonoBehaviour
 	{
-		public LineColor LineColor => lineColor;
-		public Node StartingNode => startingNode;
-		public Node EndNode => endNode;
-		public bool CanTraverseBothWays => canTraverseBothWays;
+		[Serializable]
+		public struct LineSprite
+		{
+			[field: SerializeField] public LineColor Color { get; private set; }
+			[field: SerializeField] public Sprite Line { get; private set; }
+			[field: SerializeField] public Sprite LineWithArrow { get; private set; }
+		}
 
-		[SerializeField] private LineColor lineColor;
-		[SerializeField] private Node startingNode;
-		[SerializeField] private Node endNode;
-		[SerializeField] private bool canTraverseBothWays;
-		[SerializeField] private Image lineSprite;
+		public const float SIBLING_OFFSET = 15.0f;
+		public const float OFFSET_FROM_CIRCLE = 0.0f;
+		
+		public LineData Data { get; private set; }
 
-		private GameObject arrow;
+		[SerializeField] private LineSprite[] lines;
+		private LineSprite currentLineSprite;
+		private Image spriteRenderer;
 
 		private void Awake()
 		{
-			if (!startingNode || !endNode || !lineSprite)
+			spriteRenderer = GetComponentInChildren<Image>();
+
+			UpdateLineSprite();
+		}
+
+		public void Start()
+		{
+			InitializePosition();
+		}
+
+		public void InitializePosition()
+		{
+			if (Data?.StartingNode == null || Data.EndNode == null)
 			{
-				Debug.LogError("Assign all elements first.", gameObject);
 				return;
 			}
+			
+			// get all siblings and our own index from theses siblings.
+			
+			var siblings = Data.StartingNode.ConnectedLines.Where(x =>
+				(x.StartingNode == Data.StartingNode && x.EndNode == Data.EndNode) ||
+				(x.StartingNode == Data.EndNode && x.EndNode == Data.StartingNode)).ToList();
+			int myIndex = siblings.IndexOf(Data);
 
-			arrow = Resources.Load<GameObject>("Line Pointer");
-
-			UnityEngine.Color color = SetColor();
-			float rotation = SetRotation();
-			SetLength();
-			CreateArrow(rotation, color);
+			SetPosition(Data.StartingNode.Owner.transform.position, siblings.Count, myIndex);
 		}
 
-		private UnityEngine.Color SetColor()
+		public void AssignToParent()
 		{
-			ColorPuzzleSettings settings = Resources.Load<ColorPuzzleSettings>("ColorPuzzleSettings");
-			lineSprite.color = settings.ColorSettings.First(x => x.LineColor == lineColor).Color;
-			return lineSprite.color;
+			Data.StartingNode.AddLineData(Data);
+			Data.EndNode.AddLineData(Data);
 		}
 
-		private float SetRotation()
+		public void InitializeData(LineData data)
 		{
-			Vector3 vector = endNode.transform.position - startingNode.transform.position;
+			if (Data is null)
+			{
+				Data = data;
+				UpdateLineSprite();
+			}
+		}
+
+		public void SetPosition(Vector3 position, int siblings, int index)
+		{
+			Canvas canvas = GetComponentInParent<Canvas>();
+			
+			float radius = Data.StartingNode.Owner.GetComponent<RectTransform>().sizeDelta.x;
+			
+			Vector3 endOwnerPosition = Data.EndNode.Owner.transform.position;
+			Vector3 startPosition = Data.StartingNode.Owner.transform.position;
+			float scaleFactor = canvas.scaleFactor;
+
+			endOwnerPosition -= (endOwnerPosition - startPosition).normalized * ((radius * scaleFactor / 2 + OFFSET_FROM_CIRCLE * scaleFactor));
+			position += (endOwnerPosition - startPosition).normalized * ((radius * scaleFactor / 2 + OFFSET_FROM_CIRCLE * scaleFactor));
+			startPosition = position;
+			
+			Vector3 vector = (endOwnerPosition - position).normalized;
+			Vector3 cross = new Vector2(vector.y, -vector.x);
+			
+			int dot = (index % 2) * 2 - 1;
+			int dir = index - index / 2;
+			int m = (siblings % 2 + 1);
+			transform.position = position;
+			SetRotation(endOwnerPosition);
+			SetLength(startPosition, endOwnerPosition);
+			transform.position = position + (dir * dot * cross / m * SIBLING_OFFSET * scaleFactor * m);
+		}
+		
+		public void UpdateLineSprite()
+		{
+			if (Data == null)
+			{
+				spriteRenderer.sprite = lines[0].LineWithArrow;
+				return;
+			}
+			
+			currentLineSprite = lines.FirstOrDefault(x => x.Color == Data.LineColor);
+			spriteRenderer.sprite = Data.CanTraverseBothWays ? currentLineSprite.Line : currentLineSprite.LineWithArrow;
+		}
+
+		public float SetRotation(Vector3 end)
+		{
+			Vector3 vector = end - transform.position;
 			float rotation = Mathf.Atan2(
 				vector.y,
 				vector.x) * Mathf.Rad2Deg;
@@ -57,52 +122,15 @@ namespace DN.Puzzle.Color
 			return rotation;
 		}
 
-		private float SetLength()
+		public float SetLength(Vector3 startPosition, Vector3 endPosition)
 		{
 			Canvas canvas = GetComponentInParent<Canvas>();
 
-			Vector3 scale = lineSprite.transform.localScale;
-			scale.x = Vector2.Distance(startingNode.transform.position, endNode.transform.position) / canvas.transform.lossyScale.x;
-			lineSprite.transform.localScale = scale;
-			return scale.x;
+			var size = spriteRenderer.rectTransform.sizeDelta;
+			float length = Vector2.Distance(startPosition, endPosition) / canvas.scaleFactor;
+			size.x = length;
+			spriteRenderer.rectTransform.sizeDelta = size;
+			return length;
 		}
-
-		private void CreateArrow(float rotation, UnityEngine.Color color)
-		{
-			if(CanTraverseBothWays)
-					return;
-
-			GameObject arrow = Instantiate(this.arrow, gameObject.transform);
-			arrow.GetComponent<Image>().color = color;
-			arrow.transform.eulerAngles = new Vector3(0, 0, rotation - 90);
-
-			arrow.transform.position = 
-				endNode.transform.position - 
-				(endNode.transform.position - startingNode.transform.position).normalized * 
-				42.0f;
-		}
-
-#if UNITY_EDITOR
-		public void ConnectNode(Node node, bool startingNode)
-		{
-			if (startingNode)
-				this.startingNode = node;
-			else
-				this.endNode = node;
-		}
-
-		public void DisconnectNode(bool startingNode)
-		{
-			if (startingNode)
-				this.startingNode = null;
-			else
-				this.endNode = null;
-		}
-
-		public void SetTraverseBothWays(bool canTraverseBothWays)
-		{
-			this.canTraverseBothWays = canTraverseBothWays;
-		}
-#endif
 	}
 }

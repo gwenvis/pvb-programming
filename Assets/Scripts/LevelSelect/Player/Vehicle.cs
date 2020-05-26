@@ -1,6 +1,7 @@
 ﻿using DN.Service;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace DN.LevelSelect.Player
@@ -10,6 +11,7 @@ namespace DN.LevelSelect.Player
     /// </summary>
     public class Vehicle : MonoBehaviour
     {
+        public bool canDrive = true;
 
         [SerializeField] private Transform vehicleModel;
         [SerializeField] private Rigidbody sphere;
@@ -44,26 +46,19 @@ namespace DN.LevelSelect.Player
 
         private Vector3 containerBase;
 
-        void Awake()
+        private void Awake()
         {
             container = vehicleModel.GetChild(0);
             containerBase = container.localPosition;
-
-            if (!ServiceLocator.Locate<LevelMemoryService>().PlayerPosSetOnce)
-            {
-                setOnceVehicle = true;
-                ServiceLocator.Locate<LevelMemoryService>().SetVehicleData(spherePos.position, vehicleModel.rotation, setOnceVehicle);
-            }
-
-            if (ServiceLocator.Locate<LevelMemoryService>().PlayerPos != spherePos.position)
-            {
-                spherePos.position = ServiceLocator.Locate<LevelMemoryService>().PlayerPos;
-                vehicleModel.rotation = ServiceLocator.Locate<LevelMemoryService>().PlayerRot;
-            }
         }
 
-        void Update()
+        private void Update()
         {
+            if (!canDrive)
+            {
+                return;
+            }
+
             Accelarate();
             WheelAndBodyTilt();
             VehicleTilt();
@@ -71,7 +66,7 @@ namespace DN.LevelSelect.Player
 
             // Stops vehicle from floating around when standing still
 
-            if (Mathf.Approximately(speed, 0)&& sphere.velocity.magnitude < 4f)
+            if (Mathf.Approximately(speed, 0) && sphere.velocity.magnitude < 4f)
             {
                 sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f);
                 canSteer = false;
@@ -82,7 +77,7 @@ namespace DN.LevelSelect.Player
             }
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             MovementHandler();
         }

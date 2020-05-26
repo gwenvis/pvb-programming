@@ -9,16 +9,9 @@ namespace DN.Puzzle.Color
 	/// This dropzone sets the parent of the dropped object as the current one, 
 	/// and properly resets it once it's removed
 	/// </summary>
-	public class ColorCommandDropzone : MonoBehaviour, IDroppable
+	public partial class ColorCommandDropzone : MonoBehaviour, IDroppable
 	{
-		private struct Item
-		{
-			public DraggableItem draggableItem;
-			public ColorCommand colorCommand;
-			public Transform previousParent;
-		}
-
-		public IEnumerable<ColorCommand> CommandQueue => colors.Select(x=>x.colorCommand);
+		public IEnumerable<ColorCommand> CommandQueue => colors.Where(x=>x.draggableItem).Select(x=>x.colorCommand);
 
 		private List<Item> colors = new List<Item>();
 
@@ -38,7 +31,7 @@ namespace DN.Puzzle.Color
 		private void OnPickedUpItemEvent(DraggableItem item)
 		{
 			Item linqItem = colors.FirstOrDefault(x => x.draggableItem == item);
-			linqItem.draggableItem.transform.parent = linqItem.previousParent ?? null;
+			linqItem.draggableItem.transform.parent = linqItem.previousParent;
 			colors.Remove(linqItem);
 			item.PickedUpItemEvent -= OnPickedUpItemEvent;
 		}

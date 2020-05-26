@@ -545,6 +545,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!135 &171068092
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -638,6 +639,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!135 &207291269
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -972,6 +974,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!1 &489731943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1023,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 2
+  levelData: {fileID: 0}
 --- !u!135 &489731946
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1410,6 +1414,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!224 &689617447 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1572582869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &808766623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1549,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!135 &847491490
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1741,6 +1752,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!135 &1003144999
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1848,6 +1860,7 @@ RectTransform:
   - {fileID: 347124367}
   - {fileID: 157147134}
   - {fileID: 1397745068}
+  - {fileID: 689617447}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1868,8 +1881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e9faee8d9a06946a1ad6c4111ce1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 157147131}
-  pauseButton: {fileID: 1397745067}
 --- !u!1 &1035373779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,6 +1983,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!135 &1048222826
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2046,6 +2058,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 2
   selectedPuzzle: 2
+  levelData: {fileID: 0}
 --- !u!1 &1114564254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,6 +2282,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 2
+  levelData: {fileID: 0}
 --- !u!1 &1281116992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,6 +2344,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 2
+  levelData: {fileID: 0}
 --- !u!1 &1397745067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,6 +3008,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562010561}
   m_CullTransparentMesh: 0
+--- !u!1001 &1572582869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1013119202}
+    m_Modifications:
+    - target: {fileID: 2663549380601848411, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: vehicle
+      value: 
+      objectReference: {fileID: 8805797915755995841}
+    - target: {fileID: 2663549381591826933, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_Name
+      value: Assitant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826933, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000015259
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0014725
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 450.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663549381591826938, guid: 9264d24d6a254f949a39353e3a95d2aa,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9264d24d6a254f949a39353e3a95d2aa, type: 3}
 --- !u!1 &1572674419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,8 +3729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621370ccdaa776f44b8d6e4fa287dcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInBetweenFinished: 0
-  transition: {fileID: 0}
 --- !u!1 &1897381689
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,6 +3777,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!135 &1897381692
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3843,6 +3986,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 1
   selectedPuzzle: 1
+  levelData: {fileID: 0}
 --- !u!135 &2004222945
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6747,6 +6891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f76777b52d54f442b4632056290850b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDrive: 1
   vehicleModel: {fileID: 82867921}
   sphere: {fileID: 8805797916390567425}
   spherePos: {fileID: 8805797916390567439}
@@ -6938,7 +7083,7 @@ MonoBehaviour:
   txtPanel: {fileID: 347124366}
   levelLoader: {fileID: 1853801882}
   biomeController: {fileID: 1560973969}
-  player: {fileID: 8805797916390567439}
+  audioListener: {fileID: 0}
 --- !u!135 &8805797916390567438
 SphereCollider:
   m_ObjectHideFlags: 0

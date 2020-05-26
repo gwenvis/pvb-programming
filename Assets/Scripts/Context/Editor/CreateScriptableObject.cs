@@ -56,6 +56,7 @@ namespace DN.Editor
 				scriptableObjects.AddRange(assembly.GetTypes().Where(t => 
 					t != s && 
 					t != GetType() &&
+					!t.IsAbstract &&
 					s.IsAssignableFrom(t) && 
 					!string.IsNullOrEmpty(t.Namespace) && 
 					t.Namespace.StartsWith("DN"))

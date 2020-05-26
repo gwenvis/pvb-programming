@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DN
+namespace DN.UI
 {
 	/// <summary>
-	/// ADD CLASS SUMMARY!
+	/// Here the in game UI gets set in the level select.
 	/// </summary>
 	public class BiomeUI : MonoBehaviour
 	{
@@ -13,8 +13,8 @@ namespace DN
 		[SerializeField] private Text finishedBiomeText;
 
 		private const string TASK_MANAGER_BEGIN = "Help nog ";
-		private const string TASK_MANAGER_EIND = " robots in dit gebied!";
-		private const string TASK_MANAGER_EIND_SINGULAR = " robot in dit gebied!";
+		private const string TASK_MANAGER_EIND = " dieren in dit gebied!";
+		private const string TASK_MANAGER_EIND_SINGULAR = " dier in dit gebied!";
 
 		public void SetTaskManager(bool biomeIsFinished, int robotsNeedFixing)
 		{

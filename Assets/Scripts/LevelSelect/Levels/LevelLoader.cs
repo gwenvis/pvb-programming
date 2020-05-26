@@ -1,8 +1,5 @@
-﻿using DN.LevelSelect.Player;
-using DN.Service;
+﻿using DN.Service;
 using System.Collections;
-using System.ComponentModel;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,81 +10,110 @@ namespace DN.LevelSelect.SceneManagment
     /// </summary>
     public class LevelLoader : MonoBehaviour
     {
-        [HideInInspector] public bool isInBetweenFinished;
-
-        [SerializeField]
-        private Animator transition;
-
         public GameObject LevelObject => levelObject;
-        public LevelData.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
-        public LevelData.SelectedAnimal SelectedAnimal => selectedAnimal;
+        public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
+        public LevelDataEditor.SelectedAnimal SelectedAnimal => selectedAnimal;
 
         private GameObject levelObject;
-        private LevelData.SelectedPuzzle selectedPuzzle;
-        private LevelData.SelectedAnimal selectedAnimal;
+        private LevelDataEditor.SelectedPuzzle selectedPuzzle;
+        private LevelDataEditor.SelectedAnimal selectedAnimal;
+        private DN.LevelData levelData;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
-        private const string DOG_IBS_NAME = "LevelOpenerDragonfly";
-        private const string OWL_IBS_NAME = "LevelOpenerOwl";
+        private const string BUG_IBS_NAME = "LevelOpenerBug";
+        private const string HOG_IBS_NAME = "LevelOpenerHog";
+        private const string PENGUIN_IBS_NAME = "LevelOpenerPenguin";
+        private const string RACOON_IBS_NAME = "LevelOpenerRacoon";
+        private const string SHARK_IBS_NAME = "LevelOpenerShark";
 
-        private float transitionTime = 1f;
+        private string prevSceneLoaded;
 
-        public void GetData()
+        public void LoadInBetweenScene()
         {
-            selectedPuzzle = ServiceLocator.Locate<LevelMemoryService>().SelectedPuzzle;
-            selectedAnimal = ServiceLocator.Locate<LevelMemoryService>().SelectedAnimal;
-        }
-
-        public IEnumerator LoadInBetweenScene()
-        {
-            transition.SetTrigger("Start");
-
-            yield return new WaitForSeconds(transitionTime);
-
-            GetData();
-            if (levelObject.GetComponent<LevelData>().PuzzleSelected == selectedPuzzle)
+            if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
                 switch (selectedAnimal)
                 {
-                    case LevelData.SelectedAnimal.Dog:
-                        SceneManager.LoadScene(DOG_IBS_NAME, LoadSceneMode.Single);
+                    case LevelDataEditor.SelectedAnimal.Bug:
+                        GetAndSetScene(BUG_IBS_NAME);
                         break;
 
-                    case LevelData.SelectedAnimal.Owl:
-                        SceneManager.LoadScene(OWL_IBS_NAME, LoadSceneMode.Single);
+                    case LevelDataEditor.SelectedAnimal.Hog:
+                        GetAndSetScene(HOG_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Racoon:
+                        GetAndSetScene(PENGUIN_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Penguin:
+                        GetAndSetScene(RACOON_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Shark:
+                        GetAndSetScene(SHARK_IBS_NAME);
                         break;
                 }
             }
         }
 
-        public void LoadPuzzleScene()
+        public void GetAndSetScene(string sceneName)
         {
-            GetData();
-            SceneManager.LoadScene(selectedPuzzle.ToString(), LoadSceneMode.Single);
-            isInBetweenFinished = false;
+            prevSceneLoaded = SceneManager.GetActiveScene().name;
+
+            Scene loadedLevel = SceneManager.GetSceneByName(sceneName);
+            if (loadedLevel.isLoaded)
+            {
+                SceneManager.SetActiveScene(loadedLevel);
+                SceneManager.UnloadScene(prevSceneLoaded);
+                return;
+            }
+
+            StartCoroutine(LoadLevel(sceneName, prevSceneLoaded));
         }
 
-        public void SetLoadingLevelData(GameObject other, LevelData.SelectedPuzzle puzzle, LevelData.SelectedAnimal animal)
+        IEnumerator LoadLevel(string sceneName, string prevSceneName)
+        {
+            enabled = false;
+            yield return SceneManager.LoadSceneAsync(
+                sceneName, LoadSceneMode.Additive
+            );
+
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
+            if (prevSceneName != LEVEL_SELECT_NAME)
+            {
+                SceneManager.UnloadScene(prevSceneName);
+            }
+
+            enabled = true;
+        }
+
+        public void LoadPuzzleScene()
+        {
+            ServiceLocator.Locate<LevelMemoryService>().LevelData = levelData;
+            GetAndSetScene(selectedPuzzle.ToString());
+        }
+
+        public void SetLoadingLevelData(GameObject other, LevelDataEditor.SelectedPuzzle puzzle, LevelDataEditor.SelectedAnimal animal, LevelData level)
         {
             levelObject = other;
             selectedPuzzle = puzzle;
             selectedAnimal = animal;
+            levelData = level;
         }
 
         public void LoadLevelSelect()
         {
-            GetData();
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }
 
-        public IEnumerator LoadLevelSelectFromPuzzle(bool isGameWon)
+        public void LoadLevelSelectFromPuzzle(bool isGameWon)
         {
-            transition.SetTrigger("Start");
-
-            yield return new WaitForSeconds(transitionTime);
-
-            ServiceLocator.Locate<LevelMemoryService>().SetGameWonOrLost(isGameWon);
-            SceneManager.LoadScene(LEVEL_SELECT_NAME);
+            GetAndSetScene(LEVEL_SELECT_NAME);
+            levelObject.GetComponent<LevelDataEditor>().isCompleted = isGameWon;
+            ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
+            ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(true);
         }
     }
 }
