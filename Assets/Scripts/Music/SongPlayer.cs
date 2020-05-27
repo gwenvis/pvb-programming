@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using DN.Service;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,18 +13,24 @@ namespace DN.Music
 	public class SongPlayer : MonoBehaviour
 	{
 		public event Action DestroyEvent;
-		
+
 		public enum SourceIndex
 		{
 			All = 0,
 			Some = 1
 		}
-		
+
 		[SerializeField, Range(0, 1)] private float volume = 1;
-		[SerializeField, Tooltip("-1 for random")] private int startingSongIndex = 0;
+
+		[SerializeField, Tooltip("-1 for random")]
+		private int startingSongIndex = 0;
+
 		[SerializeField] private bool avoidRepetition = true;
 		[SerializeField] private GameObject audioSourceTemplateObject;
-		[SerializeField,  Tooltip("Volume in seconds")] private float crossfadeSpeed = 0.089f;
+
+		[SerializeField, Tooltip("Volume in seconds")]
+		private float crossfadeSpeed = 0.089f;
+
 		[SerializeField] private bool startOnAwake = true;
 
 		private Song[] songs;
@@ -31,9 +38,11 @@ namespace DN.Music
 		private Song currentSong;
 		private int lastSong = -1;
 		private SourceIndex sourceIndex = SourceIndex.Some;
+		private float playTimeLeft = 0.0f;
 
 		private Coroutine crossfadeCoroutine;
-		
+		private bool IsPlaying => audioSources.Any(x => x.isPlaying);
+
 		private void Awake()
 		{
 			// make two audio sources.
@@ -44,11 +53,12 @@ namespace DN.Music
 				audioSources[i] = obj.GetComponent<AudioSource>();
 				obj.SetActive(true);
 			}
-			
+
 			ServiceLocator.Locate<SongService>().SetPlayer(this);
 
 			songs = ServiceLocator.Locate<SongData>().Songs;
 			SetVolume(volume);
+			StartCoroutine(SongQueue());
 			if (startOnAwake)
 			{
 				SetStartingSong();
@@ -74,6 +84,7 @@ namespace DN.Music
 			foreach (var audioSource in audioSources)
 			{
 				audioSource.Play();
+				playTimeLeft = currentSong.AllStems.length - audioSource.time;
 			}
 		}
 
@@ -83,7 +94,9 @@ namespace DN.Music
 			{
 				audioSource.Stop();
 			}
+
 			StopCoroutine(crossfadeCoroutine);
+			playTimeLeft = 0;
 		}
 
 		public void CrossFadeTo(SourceIndex sourceIndex)
@@ -91,9 +104,11 @@ namespace DN.Music
 			if (sourceIndex == this.sourceIndex) return;
 			StopCoroutine(crossfadeCoroutine);
 
-			AudioSource from = audioSources[(int)(sourceIndex == SourceIndex.All ? SourceIndex.Some : SourceIndex.All)];
-			AudioSource to = audioSources[(int)(sourceIndex == SourceIndex.All ? SourceIndex.All : SourceIndex.Some)];
+			AudioSource from =
+				audioSources[(int) (sourceIndex == SourceIndex.All ? SourceIndex.Some : SourceIndex.All)];
+			AudioSource to = audioSources[(int) (sourceIndex == SourceIndex.All ? SourceIndex.All : SourceIndex.Some)];
 			crossfadeCoroutine = StartCoroutine(Crossfade(from, to));
+			this.sourceIndex = sourceIndex;
 		}
 
 		private IEnumerator Crossfade(AudioSource from, AudioSource to)
@@ -121,7 +136,7 @@ namespace DN.Music
 
 			currentSong = songs[startingSongIndex];
 		}
-		
+
 		private void SetNewSong()
 		{
 			int chosenSong = 0;
@@ -153,7 +168,31 @@ namespace DN.Music
 
 		private new void StopCoroutine(Coroutine coroutine)
 		{
-			if(coroutine != null) base.StopCoroutine(coroutine);
+			if (coroutine != null) base.StopCoroutine(coroutine);
+		}
+
+		private IEnumerator SongQueue()
+		{
+			// wait until a song starts playing
+			while (!IsPlaying)
+			{
+				yield return new WaitForEndOfFrame();
+			}
+			
+			// song is playing, get the time.
+			bool playing = true;
+			while (playing)
+			{
+				float waitTime = audioSources[0].clip.length - audioSources[0].time;
+				yield return new WaitForSeconds(waitTime);
+
+				playing = audioSources[0].clip.length - audioSources[0].time > 1.0f && audioSources[0].time > Mathf.Epsilon;
+			}
+			
+			// song has ended, queue the next and restart this coroutine.
+			SetNewSong();
+			Play();
+			StartCoroutine(SongQueue());
 		}
 	}
 }

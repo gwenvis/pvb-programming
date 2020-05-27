@@ -15,36 +15,26 @@ namespace DN.Audio
 		public enum State
 		{
 			Idle,
-			Starting,
-			Pitching,
 			Looping
 		}
 
 		[Header("Audio sources")] 
-		[SerializeField] private VehicleEngineIdle idleSource;
-		[SerializeField] private AudioSource startSource;
-		[SerializeField] private AudioSource loopPitchSource;
+		[SerializeField] private AudioSource idleSource;
 		[SerializeField] private AudioSource loopSource;
+		[SerializeField] private AudioSource screechSource;
 
-		[Header("Settings")] [SerializeField, Tooltip("What is the pitch shift increment that should be used?")]
-		private float pitchShift = 0.2f;
-
-		[SerializeField, Tooltip("What is the maximum amount of pitch shifting before going to the loop sound?")]
-		private float maxPitchShift = 1.6f;
-
-		[SerializeField, Tooltip("How much delay will there be between pitch shifting?")]
-		private float pitchShiftTimeout = 0.1f;
+		[Header("Settings")] 
+		[SerializeField] private float minScreech = 0.998f;
+		[SerializeField] private float maxScreechVolume = 0.4f;
 
 		private State currentState = State.Idle;
 		private Vehicle vehicle;
 		private bool canDrive;
-
-		private Coroutine coroutine;
+		private Vector3 lastVelocity;
 
 		private void Awake()
 		{
 			vehicle = GetComponent<Vehicle>();
-			idleSource = GetComponent<VehicleEngineIdle>();
 			canDrive = vehicle.CanDrive;
 
 			if (canDrive)
@@ -57,6 +47,16 @@ namespace DN.Audio
 		{
 			float maxSpeed = 57.0f;
 			loopSource.pitch = vehicle.Velocity.sqrMagnitude / maxSpeed;
+			idleSource.volume = 1 - vehicle.Velocity.sqrMagnitude / maxSpeed;
+			Vector3 dot1 = vehicle.Velocity;
+			dot1.y = 0;
+			Vector3 dot2 = lastVelocity;
+			dot2.y = 0;
+			float dot = Vector3.Dot(dot1.normalized, dot2.normalized);
+			screechSource.volume = Mathf.Lerp(0, maxScreechVolume, Mathf.Lerp(screechSource.volume, (1 - dot) / (1 - minScreech), 2 * Time.deltaTime));
+			if (vehicle.Velocity.sqrMagnitude < 1) screechSource.volume = 0;
+			
+			lastVelocity = vehicle.Velocity;
 		}
 
 		private void OnEnable()
@@ -68,10 +68,8 @@ namespace DN.Audio
 
 		private void VehicleOnCanDriveChangedEvent(bool obj)
 		{
-			idleSource.Mute(!obj);
+			idleSource.mute = !obj;
 			loopSource.mute = !obj;
-			startSource.mute = !obj;
-			loopPitchSource.mute = !obj;
 		}
 
 		private void VehicleOnVehicleStoppedEvent()
@@ -81,14 +79,7 @@ namespace DN.Audio
 
 		private void OnVehicleMovedEvent()
 		{
-			SwitchState(State.Starting);
-		}
-
-		private void StopAllOtherSources()
-		{
-			idleSource.Stop();
-			loopSource.Stop();
-			loopPitchSource.Stop();
+			SwitchState(State.Looping);
 		}
 
 		private void SwitchState(State carState)
@@ -99,22 +90,15 @@ namespace DN.Audio
 			}
 
 			currentState = carState;
-			StopAllOtherSources();
-			if(coroutine != null) StopCoroutine(coroutine);
 
 			if (carState == State.Idle)
 			{
 				idleSource.Play();
+				loopSource.Pause();
 			}
 			else if (carState == State.Looping)
 			{
 				loopSource.Play();
-			}
-			else if (carState == State.Starting)
-			{
-				startSource.Stop();
-				startSource.Play();
-				SwitchState(State.Looping);
 			}
 		}
 	}
