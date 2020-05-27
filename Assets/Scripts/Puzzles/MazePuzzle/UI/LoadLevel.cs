@@ -14,21 +14,24 @@ namespace DN.Puzzle.Maze.UI
 		public Vector2 EndPosition { get; private set; }
 		public Vector2 TileSize { get; private set; }
 		public event Action LevelLoadedEvent;
-		[SerializeField]private Sprite[] blocks;
-		[SerializeField]private GameObject canvas;
+		[SerializeField] private Sprite[] blocks;
+		[SerializeField] private GameObject canvas;
 		[SerializeField] private Dictionary<MazeBlocks, Sprite> blockDictionary = new Dictionary<MazeBlocks, Sprite>();
 
 
 		public static int MaxBlocks { get; private set; } = 20; 
 		//Voor nu het level moet later gezet worden door data met SetLevel(); 
 		public static MazeBlocks[][] Level { get; private set; } = {
-										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
-										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path },
-										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path },
-										new[] { MazeBlocks.Start, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path },
-										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.End },
-										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.None },
-										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.Start, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None},
+										new[] { MazeBlocks.None, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.End, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.Path, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None},
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
+										new[] { MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None, MazeBlocks.None },
 										};
 
 		private void Start()
@@ -60,11 +63,15 @@ namespace DN.Puzzle.Maze.UI
 		{
 			for (int y = 0; y < mazeBlocks.GetLength(0); y++)
 			{
-				for (int x = 0; x < mazeBlocks[x].GetLength(0); x++)
+				for (int x = 0; x < mazeBlocks[y].GetLength(0); x++)
 				{
 					GameObject obj = new GameObject($"level tile ({x} {y})");
 					obj.transform.SetParent(transform);
 					obj.AddComponent<CanvasRenderer>();
+					RectTransform t = obj.AddComponent<RectTransform>();
+					UiObjectScaler objectScaler = obj.AddComponent<UiObjectScaler>();
+					objectScaler.SetTransform(t);
+					objectScaler.ChangeValues(new Vector2(0.1041f, 0.1041f), Vector2.zero, false);
 					AspectRatioFitter af = obj.AddComponent<AspectRatioFitter>();
 					af.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
 					var sprite = obj.AddComponent<Image>();

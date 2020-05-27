@@ -35,6 +35,11 @@ namespace DN
 			SetValues();
 		}
 
+		public void SetTransform(RectTransform t)
+		{
+			rectTransform = t;
+		}
+
 		private void SetValues()
 		{
 			rectTransform.sizeDelta = new Vector2(width * Screen.width, height * Screen.height);
