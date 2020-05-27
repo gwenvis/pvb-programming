@@ -5,9 +5,9 @@
 	/// </summary>
 	public enum MazeBlocks
 	{
-		Start,
-		End,
-		Path,
-		None
+		Start = 0,
+		End = 1,
+		Path = 2,
+		None = 3
 	}
 }
