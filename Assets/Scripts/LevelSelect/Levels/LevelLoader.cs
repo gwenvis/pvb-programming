@@ -10,6 +10,8 @@ namespace DN.LevelSelect.SceneManagment
     /// </summary>
     public class LevelLoader : MonoBehaviour
     {
+        [SerializeField] Animator transition;
+
         public GameObject LevelObject => levelObject;
         public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
         public LevelDataEditor.SelectedAnimal SelectedAnimal => selectedAnimal;
@@ -28,10 +30,14 @@ namespace DN.LevelSelect.SceneManagment
 
         private string prevSceneLoaded;
 
-        public void LoadInBetweenScene()
+        public IEnumerator LoadInBetweenScene()
         {
             if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
+                transition.SetTrigger("Start");
+
+                yield return new WaitForSeconds(2f);
+
                 switch (selectedAnimal)
                 {
                     case LevelDataEditor.SelectedAnimal.Bug:
@@ -72,6 +78,11 @@ namespace DN.LevelSelect.SceneManagment
             StartCoroutine(LoadLevel(sceneName, prevSceneLoaded));
         }
 
+        public void CloseGame()
+        {
+            Application.Quit();
+        }
+
         IEnumerator LoadLevel(string sceneName, string prevSceneName)
         {
             enabled = false;
@@ -103,8 +114,18 @@ namespace DN.LevelSelect.SceneManagment
             levelData = level;
         }
 
-        public void LoadLevelSelect()
+
+        public void StartLevelSelect()
         {
+            StartCoroutine(LoadLevelSelect());
+        }
+
+        public IEnumerator LoadLevelSelect()
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(2f);
+
             SceneManager.LoadScene(LEVEL_SELECT_NAME);
         }
 
