@@ -58,7 +58,7 @@ namespace DN.Tutorial
 
 			if (vehicle != null)
 			{
-				vehicle.canDrive = false;
+				vehicle.CanDrive = false;
 			}
 			messageText = transform.Find("message").Find("messageText").GetComponent<Text>();
 		}
@@ -87,7 +87,7 @@ namespace DN.Tutorial
 		{
 			if (vehicle != null)
 			{
-				vehicle.canDrive = true;
+				vehicle.CanDrive = true;
 			}
 			helperObj.SetActive(false);
 

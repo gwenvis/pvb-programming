@@ -1,5 +1,6 @@
 ﻿using DN.Service;
 using System.Collections;
+using DN.Music;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,8 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadInBetweenScene()
         {
+            ServiceLocator.Locate<SongService>().ExitingLevelSelect();
+            
             if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
                 switch (selectedAnimal)
@@ -105,7 +108,16 @@ namespace DN.LevelSelect.SceneManagment
 
         public void LoadLevelSelect()
         {
-            SceneManager.LoadScene(LEVEL_SELECT_NAME);
+            void SetScene(AsyncOperation operation)
+            {
+                operation.allowSceneActivation = true;
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(LEVEL_SELECT_NAME));
+                Debug.Log("loading complete");
+            }
+
+            var loadSceneAsync = SceneManager.LoadSceneAsync(LEVEL_SELECT_NAME, LoadSceneMode.Additive);
+            loadSceneAsync.completed += SetScene;
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
         }
 
         public void LoadLevelSelectFromPuzzle(bool isGameWon)
@@ -113,7 +125,7 @@ namespace DN.LevelSelect.SceneManagment
             GetAndSetScene(LEVEL_SELECT_NAME);
             levelObject.GetComponent<LevelDataEditor>().isCompleted = isGameWon;
             ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
-            ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(true);
+            ServiceLocator.Locate<SongService>().EnteringLevelSelect();
         }
     }
 }

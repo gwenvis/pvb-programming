@@ -1,4 +1,5 @@
-﻿using DN.Service;
+﻿using System;
+using DN.Service;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,13 +12,31 @@ namespace DN.LevelSelect.Player
     /// </summary>
     public class Vehicle : MonoBehaviour
     {
-        public bool canDrive = true;
+        public event Action VehicleMovedEvent;
+        public event Action VehicleStoppedEvent;
+        public event Action<bool> CanDriveChangedEvent;
 
+        [SerializeField] private Transform[] rayCasts;
+
+        public bool CanDrive
+        {
+            get => canDrive;
+            set
+            {
+                if (value == canDrive) return;
+                canDrive = value;
+                CanDriveChangedEvent?.Invoke(canDrive);
+            }
+        }
+        private bool canDrive = true;
+
+        public Vector3 Velocity => sphere.velocity;
+        
         [SerializeField] private Transform vehicleModel;
         [SerializeField] private Rigidbody sphere;
         [SerializeField] private Transform spherePos;
 
-        [SerializeField] [Range(5.0f, 40.0f)] private float acceleration = 30f;
+        [SerializeField] private float acceleration = 30f;
         [SerializeField] [Range(20.0f, 160.0f)] private float steering = 80f;
         [SerializeField] [Range(0.0f, 20.0f)] private float gravity = 10f;
 
@@ -45,6 +64,7 @@ namespace DN.LevelSelect.Player
         private bool setOnceVehicle;
 
         private Vector3 containerBase;
+        private Vector3 lastFrameVelocity;
 
         private void Awake()
         {
@@ -54,12 +74,12 @@ namespace DN.LevelSelect.Player
 
         private void Update()
         {
-            if (!canDrive)
+            if (!CanDrive)
             {
                 return;
             }
 
-            Accelarate();
+            Accelerate();
             WheelAndBodyTilt();
             VehicleTilt();
             Steering();
@@ -75,6 +95,13 @@ namespace DN.LevelSelect.Player
             {
                 canSteer = true;
             }
+
+            if (lastFrameVelocity.magnitude > 0.01f && Velocity.magnitude <= 0.01f)
+            {
+                VehicleStoppedEvent?.Invoke();
+            }
+
+            lastFrameVelocity = Velocity;
         }
 
         private void FixedUpdate()
@@ -103,7 +130,7 @@ namespace DN.LevelSelect.Player
             body.localRotation = Quaternion.Slerp(body.localRotation, Quaternion.Euler(new Vector3(speedTarget / 4, 0, rotateTarget / 6)), Time.deltaTime * 4.0f);
         }
 
-        private void Accelarate()
+        private void Accelerate()
         {
             speedTarget = Mathf.SmoothStep(speedTarget, speed, Time.deltaTime * 12f);
 
@@ -112,11 +139,12 @@ namespace DN.LevelSelect.Player
             if (Input.GetKey(accelarate))
             {
                 speed = acceleration;
+                if (Velocity.sqrMagnitude < 0.1) VehicleMovedEvent?.Invoke();
             }
-
-            if (Input.GetKey(reverse))
+            else if (Input.GetKey(reverse))
             {
                 speed = -acceleration;
+                if (Velocity.sqrMagnitude < 0.1) VehicleMovedEvent?.Invoke();
             }
         }
 
@@ -150,7 +178,24 @@ namespace DN.LevelSelect.Player
             onGround = Physics.Raycast(transform.position, Vector3.down, out hitOn, 1.1f);
             nearGround = Physics.Raycast(transform.position, Vector3.down, out hitNear, 2.0f);
 
-            vehicleModel.up = Vector3.Lerp(vehicleModel.up, hitNear.normal, Time.deltaTime * 8.0f);
+            Vector3 averageUp = Vector3.zero;
+
+            foreach (var raycast in rayCasts)
+            {
+                RaycastHit hit;
+                bool hitSomething = Physics.Raycast(raycast.position, Vector3.down, out hit, 2.1f);
+                if (hitSomething)
+                {
+                    averageUp += hit.normal;
+                }
+                else
+                {
+                    averageUp += Vector3.up;
+                }
+            }
+
+            //vehicleModel.up = Vector3.Lerp(vehicleModel.up, hitNear.normal, Time.deltaTime * 8.0f);
+            vehicleModel.up = Vector3.Lerp(vehicleModel.up, averageUp / rayCasts.Length, 0.3f);
             vehicleModel.Rotate(0, transform.eulerAngles.y, 0);
 
             if (nearGround)
@@ -164,7 +209,7 @@ namespace DN.LevelSelect.Player
                 sphere.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
             }
 
-            transform.position = sphere.transform.position + new Vector3(0, 0.35f, 0);
+            transform.position = sphere.transform.position + new Vector3(0, 0.31f, 0);
         }
     }
 }
