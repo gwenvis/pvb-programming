@@ -8,6 +8,9 @@
 		Forward, 
 		TurnLeft, 
 		TurnRight,
-		UntilEnd
+		UntilEnd,
+		IfRight,
+		IfLeft,
+		IfForward
 	}
 }

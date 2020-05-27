@@ -28,7 +28,7 @@ namespace DN.Puzzle.Maze.UI
 		protected virtual void Start()
 		{
 			functionQueue = new List<(MazeFunctions function, MazeDraggableItem item)>();
-			Height = GetComponent<RectTransform>().rect.height;
+			GetHeight();
 			RelativeHeight = GetComponent<RectTransform>().rect.height;
 			HolderXOffset = 0;
 			HolderYOffset = 0;
@@ -97,6 +97,11 @@ namespace DN.Puzzle.Maze.UI
 		public void SetHeight(float height)
 		{
 			Height = height;
+		}
+
+		public virtual void GetHeight()
+		{
+			Height = GetComponent<RectTransform>().rect.height;
 		}
 
 		public void SetNearestLoopObject(LoopDropZone obj)

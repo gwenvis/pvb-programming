@@ -59,6 +59,7 @@ namespace DN.Puzzle.Maze.UI
 			int highestChildCount = 0;
 			int realHighestChildCount = 0;
 			DraggableItem mostChildsObject = currentObjects[0];
+
 			foreach (DraggableItem draggableItem in currentObjects)
 			{
 				bool FoundLastChild = false;
@@ -67,7 +68,7 @@ namespace DN.Puzzle.Maze.UI
 
 				for(int i = 1; !FoundLastChild || i >= 100; i++)
 				{
-					if(currentDraggableItem.GetComponent<BlockDropZone>().CurrentObj != null)
+					if(currentDraggableItem.GetComponent<BlockDropZone>()?.CurrentObj != null)
 					{
 						realChildren++;
 						currentDraggableItem = currentDraggableItem.GetComponent<BlockDropZone>().CurrentObj;

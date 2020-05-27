@@ -24,7 +24,7 @@ namespace DN.Puzzle.Maze.UI
 			function = (MazeFunctions)Enum.Parse(typeof(MazeFunctions), $"Turn{dropdown.options[dropdown.value].text}");
 		}
 
-		public MazeFunctions GetMazeFunctions()
+		public MazeFunctions GetMazeFunction()
 		{
 			return function;
 		}

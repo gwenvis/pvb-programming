@@ -10,7 +10,7 @@ namespace DN.Puzzle.Maze.UI
 	{
 		protected override void SetParent(DraggableItem droppedObject)
 		{
-			droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, gameObject.GetComponent<RectTransform>().rect.height*1.5f, gameObject.GetComponent<RectTransform>().rect.width/2);
+			droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, gameObject.GetComponent<RectTransform>().rect.height * 1.5f, gameObject.GetComponent<RectTransform>().rect.width / 2);
 		}
 	}
 }

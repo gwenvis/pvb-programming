@@ -8,7 +8,7 @@ namespace DN.Puzzle.Maze.UI
 	/// </summary>
 	public class BlockDropZone : MonoBehaviour, IDroppable
 	{
-		public int Layer { get; private set; } = 0;
+		public int Layer { get; protected set; } = 0;
 		public DraggableItem CurrentObj { get; private set; }
 
 		public void Drop(DraggableItem droppedObject)
@@ -34,7 +34,7 @@ namespace DN.Puzzle.Maze.UI
 			CurrentObj = null;
 		}
 
-		public void SetLayer(int layer)
+		public virtual void SetLayer(int layer)
 		{
 			Layer = layer;
 		}

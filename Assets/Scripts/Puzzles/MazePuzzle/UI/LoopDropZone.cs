@@ -12,18 +12,18 @@ namespace DN.Puzzle.Maze.UI
 	public class LoopDropZone : BlockDropZone, IDroppable
 	{
 		[SerializeField] private RectTransform sideTransform;
-		private List<DraggableItem> childObjects;
-		private BoxCollider2D boxCollider;
+		protected List<DraggableItem> childObjects = new List<DraggableItem>();
+		protected BoxCollider2D boxCollider;
+		protected float yOffset;
+		protected float originalColliderYOffset;
+		private float xOffset = 4f;
 		private Dictionary<DraggableItem, int> listPositions;
 		private Dictionary<int, Type> types;
-		private float yOffset;
-		private float originalColliderYOffset;
 
-		private void Start()
+		protected virtual void Start()
 		{
 			GetSideTransform();
 			listPositions = new Dictionary<DraggableItem, int>();
-			childObjects = new List<DraggableItem>();
 			boxCollider = GetComponent<BoxCollider2D>();
 			yOffset = GetComponent<RectTransform>().rect.height * 2;
 			originalColliderYOffset = boxCollider.offset.y;
@@ -32,7 +32,14 @@ namespace DN.Puzzle.Maze.UI
 
 		public new void Drop(DraggableItem droppedObject)
 		{
-			droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, GetComponent<RectTransform>().rect.height, sideTransform.rect.width/3);
+			if (GetComponent<MazeDraggableItem>())
+			{
+				droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, GetComponent<RectTransform>().rect.height, sideTransform.rect.width/2 + xOffset);
+			}
+			else
+			{
+				droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, GetComponent<RectTransform>().rect.height*1.5f, sideTransform.rect.width/2 + xOffset + GetComponent<RectTransform>().rect.width/2);
+			}
 			types.Add(childObjects.Count, (droppedObject as MazeDraggableItem).DropZoneHolder.GetComponent<IDroppable>().GetType());
 			droppedObject.GetComponent<BlockDropZone>().SetLayer(Layer + 1);
 			Destroy(droppedObject.GetComponentsInChildren<BlockDropZone>().Last());
@@ -105,10 +112,10 @@ namespace DN.Puzzle.Maze.UI
 			childObjects = items;
 		}
 
-		private void ResizeBlock()
+		public virtual void ResizeBlock()
 		{
 			float height= 0;
-			MazeDraggableItem mazeDraggableItem = GetComponent<MazeDraggableItem>();
+			MazeDraggableItem mazeDraggableItem = GetComponentInParent<MazeDraggableItem>();
 			if (childObjects.Count == 0)
 			{
 				height = mazeDraggableItem.RelativeHeight;
@@ -118,7 +125,7 @@ namespace DN.Puzzle.Maze.UI
 				height += (item as MazeDraggableItem).Height;
 			}
 			mazeDraggableItem.SetHeight(height + yOffset);
-			sideTransform.sizeDelta = new Vector2(height + yOffset, sideTransform.sizeDelta.y);
+			sideTransform.sizeDelta = new Vector2(height, sideTransform.sizeDelta.y);
 			boxCollider.size = new Vector2(boxCollider.size.x, height + yOffset/2);
 			boxCollider.offset = new Vector2(boxCollider.offset.x, originalColliderYOffset - height / 2 + yOffset / 4);
 			mazeDraggableItem.NearestLoopObject?.ResizeBlock();

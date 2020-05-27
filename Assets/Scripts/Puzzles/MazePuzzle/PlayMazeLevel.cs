@@ -42,11 +42,11 @@ namespace DN.Puzzle.Maze
 			List< (MazeFunctions function, MazeDraggableItem item)> queue = new List<(MazeFunctions function, MazeDraggableItem item)>();
 			for (int i = 0; i < startItem.childCount; i++)
 			{
-				queue.Add((currentItem.GetComponent<IMovePlayerBlock>().GetMazeFunctions(), currentItem));
+				queue.Add((currentItem.GetComponent<IMovePlayerBlock>().GetMazeFunction(), currentItem));
 				currentItem = currentItem.DropZoneHolder.GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem;
 			}
 			Player.SetMoveQueue(queue);
-			StartCoroutine(Player.StartLevel());
+			Player.StartLevel();
 		}
 
 		private void OnLevelLoadedEvent()

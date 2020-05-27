@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DN.Puzzle.Maze
@@ -22,109 +23,130 @@ namespace DN.Puzzle.Maze
 		private float time = 0.5f;
 		private int direction = 0;
 		private float zRotation = 0;
+		private bool atEnd = false;
+		private bool lostGame = false;
 
-		public IEnumerator StartLevel()
+		public async void StartLevel()
 		{
-			bool loopEnded = false;
 			foreach((MazeFunctions function, MazeDraggableItem item) function in functionQueue)
 			{
-				Debug.Log(function.function);
-				bool isInLoop = UseFunction(function);
-				float t = 0f;
-
-				if (isInLoop)
-				{
-					loopEnded = true;
-					break;
-				}
-
-				while (t < time)
-				{
-					t += Time.deltaTime / time;
-					transform.position = Vector3.Lerp(transform.position, targetPosition, t);
-					transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
-					yield return new WaitForEndOfFrame();
-				}
-
-				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
-				{
-					LoseLifeEvent?.Invoke();
-					loopEnded = true;
-					break;
-				}
-
-				if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
-				{
-					loopEnded = true;
-					WinEvent?.Invoke();
-				}
+				await UseFunction(function);
 			}
-			if(!loopEnded)
+			if(!atEnd)
 				LoseLifeEvent?.Invoke();
 		}
 
-		private bool UseFunction((MazeFunctions function, MazeDraggableItem item) function)
+		private async Task UseFunction((MazeFunctions function, MazeDraggableItem item) function)
 		{
+			Debug.Log(function);
 			switch(function.function)
 			{
 				case MazeFunctions.Forward:
 					WalkForward();
-					return false;
+					await WaitSeconds(0.5f);
+					break;
 				case MazeFunctions.TurnLeft:
 					Turn(90);
-					return false;
+					await WaitSeconds(0.5f);
+					break;
 				case MazeFunctions.TurnRight:
 					Turn(-90);
-					return false;
+					await WaitSeconds(0.5f);
+					break;
 				case MazeFunctions.UntilEnd:
-					StartCoroutine(LoopBlocks(function));
-					return true;
+					await LoopBlocks(function);
+					break;
+				case MazeFunctions.IfForward:
+					await If(function);
+					break;
+				case MazeFunctions.IfLeft:
+					await If(function);
+					break;
+				case MazeFunctions.IfRight:
+					await If(function);
+					break;
+			}
+		}
+
+		private async Task LoopBlocks((MazeFunctions function, MazeDraggableItem item) function)
+		{
+			List<(MazeFunctions function, MazeDraggableItem item)> newQueue = function.item.GetQueue();
+			int iterations = 0;
+			while (!atEnd || !lostGame)
+			{
+				iterations++;
+				foreach ((MazeFunctions function, MazeDraggableItem item) item in newQueue)
+				{
+					await UseFunction(item);
+				}
+				await Awaiters.EndOfFrame;
+				if (iterations >= 100)
+					break;
+			}
+			if (!atEnd)
+				LoseLifeEvent?.Invoke();
+		}
+
+		private async Task If((MazeFunctions function, MazeDraggableItem item) function)
+		{
+				List<(MazeFunctions function, MazeDraggableItem item)> newQueue =  IsPathInDirection(function.function) ? function.item.GetQueue() : 
+					(function.item as IfBlock).HasElse ? (function.item as IfBlock).GetElseQueue() : 
+					new List<(MazeFunctions function, MazeDraggableItem item)>();
+
+				foreach ((MazeFunctions function, MazeDraggableItem item) item in newQueue)
+				{
+					await UseFunction(item);
+				}
+		}
+
+		private bool IsPathInDirection(MazeFunctions function)
+		{
+			switch(function)
+			{
+				case MazeFunctions.IfForward:
+					Vector2 forwardPosition = currentPosition + GetDirection(direction);
+					return level[(int)forwardPosition.y][(int)forwardPosition.x] == MazeBlocks.Path;
+				case MazeFunctions.IfLeft:
+					Vector2 leftPosition = currentPosition + GetDirection(GetDirectionNum(direction + 1));
+					return level[(int)leftPosition.y][(int)leftPosition.x] == MazeBlocks.Path;
+				case MazeFunctions.IfRight:
+					Vector2 rightPosition = currentPosition + GetDirection(GetDirectionNum(direction - 1));
+					return level[(int)rightPosition.y][(int)rightPosition.x] == MazeBlocks.Path;
 				default:
 					return false;
 			}
 		}
 
-		private IEnumerator LoopBlocks((MazeFunctions function, MazeDraggableItem item) function)
+		private async Task WaitSeconds(float seconds)
 		{
-			int positionInList = functionQueue.IndexOf(function);
-			bool atEnd = false;
-			bool lostGame = false;
-			List<(MazeFunctions function, MazeDraggableItem item)> newQueue = function.item.GetQueue();
-			while (!atEnd || !lostGame)
+			float t = 0f;
+			while (t < seconds)
 			{
-				foreach((MazeFunctions function, MazeDraggableItem item) item in newQueue)
-				{
-					UseFunction(item);
-					float t = 0f;
-					while (t < time)
-					{
-						t += Time.deltaTime / time;
-						transform.position = Vector3.Lerp(transform.position, targetPosition, t);
-						transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
-						yield return new WaitForEndOfFrame();
-					}
+				t += Time.deltaTime / seconds;
+				transform.position = Vector3.Lerp(transform.position, targetPosition, t);
+				transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
+				await Awaiters.EndOfFrame;
+			}
 
-					if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
-					{
-						LoseLifeEvent?.Invoke();
-						lostGame = true;
-						atEnd = true;
-						break;
-					}
+			if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
+			{
+				LoseLifeEvent?.Invoke();
+				lostGame = true;
+				atEnd = true;
+			}
 
-					if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
-					{
-						atEnd = true;
-						WinEvent?.Invoke();
-					}
-				}
-				yield return new WaitForEndOfFrame();
+			if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.End)
+			{
+				atEnd = true;
+				WinEvent?.Invoke();
 			}
 		}
 
 		private void WalkForward()
 		{
-			currentPosition += GetDirection();
+			Vector2 prevPos = currentPosition;
+			currentPosition += GetDirection(direction);
+			Debug.Log($"prevPos: {prevPos}, newPos: {currentPosition}, {GetDirection(direction)} {direction}");
 			targetPosition = GetPositionOnGrid(currentPosition);
 		}
 
@@ -136,19 +158,26 @@ namespace DN.Puzzle.Maze
 			level = newLevel;
 		}
 
-		public void Turn(int direction)
+		public void Turn(int dir)
 		{
-			targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + direction));
-			this.direction = direction == 90 ? this.direction += 1 : this.direction -= 1;
+			targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + dir));
+			direction = dir == 90 ? direction + 1 : direction - 1;
 
-			if (this.direction > 3)
-				this.direction = 0;
-
-			if (this.direction < 0)
-				this.direction = 3;
+			direction = GetDirectionNum(direction);
 		}
 
-		private Vector2 GetDirection()
+		private int GetDirectionNum(int dir)
+		{
+			if (dir > 3)
+				dir = 0;
+
+			if (dir < 0)
+				dir = 3;
+
+			return dir;
+		}
+
+		private Vector2 GetDirection(int direction)
 		{
 			switch (direction)
 			{
