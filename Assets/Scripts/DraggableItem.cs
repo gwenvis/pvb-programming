@@ -79,18 +79,5 @@ namespace DN.UI
 				transform.forward
 				);
 		}
-
-		private void Update()
-		{
-			ExtDebug.BoxCast2D(transform.position,
-				transform.GetComponent<BoxCollider2D>().size,
-				0,
-				transform.forward, 10, 0);
-		}
-
-		public void SetCanvas(Canvas newCanvas)
-		{
-			canvas = newCanvas;
-		}
     }
 }

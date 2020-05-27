@@ -69,10 +69,6 @@ namespace DN.Puzzle.Maze.UI
 			{
 				transform.position = new Vector2(ParentObject.transform.position.x + xOffset, ParentObject.transform.position.y - yOffset);
 			}
-			ExtDebug.BoxCast2D(transform.position,
-				new Vector2(GetComponent<RectTransform>().rect.width, GetComponent<RectTransform>().rect.height),
-				0,
-				transform.forward, 10, 0);
 		}
 
 		public override void GetHeight()
