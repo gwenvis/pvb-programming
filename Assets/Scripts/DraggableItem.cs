@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace DN.UI
 {
-	/// </summary>
-	/// This script is used if you want the item to be draggable. When the item is dropped it checks if it is dropped on top of an <see cref="IDroppable"/> object.
 	/// <summary>
+	/// This script is used if you want the item to be draggable. When the item is dropped it checks if it is dropped on top of an <see cref="IDroppable"/> object.
+	/// </summary>
 	public class DraggableItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 	{
-		public event System.Action<DraggableItem> PickedUpItemEvent;
+		public event Action<DraggableItem> PickedUpItemEvent;
+		public event Action<DraggableItem> DroppedItemEvent;
+
 		public Vector2 StartPos => startPos;
 		[SerializeField] private Canvas canvas;
 
@@ -23,6 +26,9 @@ namespace DN.UI
 			startPos = transform.position;
 			rectTransform = GetComponent<RectTransform>();
 			canvasGroup = GetComponent<CanvasGroup>();
+
+			if (!canvas)
+				canvas = GetComponentInParent<Canvas>();
 		}
 
 		public void OnPointerDown(PointerEventData eventData)
@@ -39,7 +45,9 @@ namespace DN.UI
 			}
 		}
 
-		public void OnDrag(PointerEventData eventData)
+		public void SetCanvas(Canvas canvas) => this.canvas = canvas;
+
+		public virtual void OnDrag(PointerEventData eventData)
 		{
 			rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
 		}
@@ -58,12 +66,8 @@ namespace DN.UI
 			{
 				hit.transform.GetComponent<IDroppable>()?.Drop(this);
 			}
-		}
 
-		private Vector2 GetSize()
-		{
-			var boxCollider = GetComponent<BoxCollider2D>();
-			return boxCollider == null ? rectTransform.sizeDelta : boxCollider.size * transform.lossyScale / 2;
+			DroppedItemEvent?.Invoke(this);
 		}
 
 		protected virtual RaycastHit2D[] GetBoxCastHits()

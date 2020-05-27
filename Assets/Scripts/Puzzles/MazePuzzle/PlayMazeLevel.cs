@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using DN.Puzzle.Maze.UI;
 using DN.UI;
+using UnityEngine.UI;
 
 namespace DN.Puzzle.Maze
 {
@@ -18,7 +19,7 @@ namespace DN.Puzzle.Maze
 		[SerializeField] private GameObject playerPrefab;
 		[SerializeField] private Lives lives;
 		[SerializeField] private WinController winController;
-		[SerializeField] private TextMeshProUGUI blocktext;
+		[SerializeField] private Text blocktext;
 
 		private void Awake()
 		{

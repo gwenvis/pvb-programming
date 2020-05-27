@@ -1,6 +1,5 @@
-﻿using DN.LevelSelect.LevelData;
-using DN.LevelSelect.SceneManagment;
-using DN.SceneManagement.Data;
+﻿using DN.LevelSelect.SceneManagment;
+using DN.Service;
 using UnityEngine;
 
 namespace DN.LevelSelect.Player
@@ -13,31 +12,44 @@ namespace DN.LevelSelect.Player
 		[SerializeField] private GameObject txtPanel;
 
 		[SerializeField] private LevelLoader levelLoader;
+		[SerializeField] private BiomeController biomeController;
+		[SerializeField] private SetAudioListener audioListener;
 
-		private string levelIndex;
+		private LevelDataEditor.SelectedPuzzle selectedPuzzle;
+		private LevelDataEditor.SelectedAnimal selectedAnimal;
+		private DN.LevelData levelData;
 
-		private KeyCode enterLevelInput = KeyCode.KeypadEnter;
+		private GameObject currentLevelSelected;
+
+		private KeyCode enterLevelInput = KeyCode.Return;
 
 		private void Update()
 		{
-			if (Input.GetKey(enterLevelInput) && txtPanel.active)
+			if (Input.GetKeyDown(enterLevelInput) && txtPanel.active)
 			{
-				levelLoader.LoadScene(levelIndex);
+				levelLoader.SetLoadingLevelData(currentLevelSelected, selectedPuzzle, selectedAnimal, levelData);
+				ServiceLocator.Locate<LevelMemoryService>().SetBiomeAndLevelAndAudioController(biomeController, levelLoader, audioListener);
+				ServiceLocator.Locate<LevelMemoryService>().SetSelectedPuzzle(selectedPuzzle, selectedAnimal);
+				levelLoader.LoadInBetweenScene();
 			}
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.GetComponent<LevelDataMap>())
+			var levelDataComponent = other.GetComponent<LevelDataEditor>();
+			if (levelDataComponent)
 			{
-				levelIndex = other.GetComponent<LevelDataMap>().level.ToString();
+				currentLevelSelected = other.gameObject;
+				selectedPuzzle = levelDataComponent.PuzzleSelected;
+				selectedAnimal = levelDataComponent.AnimalSelected;
+				levelData = levelDataComponent.Level;
 				txtPanel.SetActive(true);
 			}
 		}
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.GetComponent<LevelDataMap>())
+			if (other.GetComponent<LevelDataEditor>())
 			{
 				txtPanel.SetActive(false);
 			}

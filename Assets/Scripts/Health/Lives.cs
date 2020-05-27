@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DN.Service;
+using System;
 using UnityEngine;
 
 namespace DN.UI
@@ -9,6 +10,7 @@ namespace DN.UI
 	public class Lives : MonoBehaviour
 	{
 		[SerializeField] private float heartSize = 50f;
+		private ParticleSystem heartParticle;
 		public event Action<int> LifeLostEvent;
 		public event Action AllLifeLost;
 		LivesUI livesUI;
@@ -20,19 +22,30 @@ namespace DN.UI
 		private void Start()
 		{
 			livesUI = new LivesUI(gameObject, this, heartSize);
+			heartParticle = livesUI.GetHearts()[livesUI.GetHearts().Count - 1].GetComponentInChildren<ParticleSystem>();
 		}
 
 		public Lives()
 		{
-			CurrentLives = startLives;
+			if (!ServiceLocator.Locate<LivesService>().RunOnce)
+			{
+				ServiceLocator.Locate<LivesService>().SetCurrentLives(startLives, true);
+				CurrentLives = ServiceLocator.Locate<LivesService>().CurrentLives;
+			}
+			else
+			{
+				CurrentLives = ServiceLocator.Locate<LivesService>().CurrentLives;
+			}
 		}
 
 		public void LoseLife()
 		{
+			heartParticle.Play();
+			
 			CurrentLives--;
 			LifeLostEvent?.Invoke(CurrentLives);
 
-			if(CurrentLives <= 0)
+			if (CurrentLives <= 0)
 			{
 				AllLifeLost?.Invoke();
 			}

@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 3fc1f1a7a15a64847b5aec4b9bde1e90
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Canyon
+    second: {fileID: 2100000, guid: 400237daee120cd4181b2138671ed713, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Canyon_Shade
+    second: {fileID: 2100000, guid: 831975d95971009429eb391625e4a52d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: 37f9c04ea88809e4cb0293fc4ee9a30e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass_Shade
+    second: {fileID: 2100000, guid: 427682f32cda5c9428c6619dfa4979d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves
+    second: {fileID: 2100000, guid: bee81397031601a4aa7174fd0cc33e37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Placeholder
+    second: {fileID: 2100000, guid: 4aa60b3b8c74cf345a1eea00b26d23c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rocks
+    second: {fileID: 2100000, guid: ef721b245bc7d7740bf2c1d6f261419c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rocks_Shade
+    second: {fileID: 2100000, guid: e535dc7285b4616408a3448bdce48241, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sand
+    second: {fileID: 2100000, guid: 168b9230e98e091499be5d5fe2169415, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sand_Shade
+    second: {fileID: 2100000, guid: b0754206528f6b74dbe3fa166dfc370d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shell_3
+    second: {fileID: 2100000, guid: 3954e0729d4fcee478dd73532c3e965f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Snow
+    second: {fileID: 2100000, guid: ff43f42b8108c9142b6a1c034d9c3c71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Starfish
+    second: {fileID: 2100000, guid: 20a4422035b7a7c428abdd36524c9838, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Water
+    second: {fileID: 2100000, guid: 011a67ddab37bc247af7b5331a1c5db9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: a2e0b281ff20b384ea8eac47823298ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 6e3e424f4db43dc4c95adb2e6b96f05b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shell
+    second: {fileID: 2100000, guid: a68e5858ca907fa4392ab315b789fe85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shell_2
+    second: {fileID: 2100000, guid: b1a20a44ab2ec6c4a88c8218fa75ad3d, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["pCube6","pCube11","Ocean","pCube3","pCube8","pCube4","pCube7","pCube5","pCube24","Rock_big10.004","Tree_medium.001","pCube20.012","Rock_medium2.007","pCube19.001","Long_shell9","Rock_smallest18","Rock_small2.004","pCube15.009","pCube12.016","pCone30","pCylinder33.001","Rock_smallest12","Rock_smallest6","pCylinder31.009","pCylinder38.005","pCube13.003","pCube21.014","pCube14","Tree_medium4","pCone30.003","Rock_smallest15.007","pCube18.018","pCube22.009","Rock_small4.004","Long_shell10","Tree_small8","Rock_big10.009","pCone24.003","pCube13.005","pCube22.019","pCylinder33.008","pCylinder30.013","pCylinder34.001","pCylinder35.002","pCube18.007","pCylinder32.005","Rock_small4.009","pCylinder34.002","pCube19.005","Tube_shell2","Rock_smallest15.005","pCylinder31.011","pCylinder41.005","pCone13.001","pCube15.020","pCube21.007","pCube14.001","pCylinder23","pCone11.004","pCube14.010","pCube15.018","Rock_small1.003","Tube_shell8","pCube16.001","pCylinder41","Tree_small2","pCylinder35.010","pCube13.018","pCylinder30.012","Rock_small2.002","pCube13.011","Rock_smallest15.002","Tree_big.001","pCone27.003","pCube17.020","Tree_small2.001","Rock_big11","pCube16.011","pCylinder29.010","pCube17.022","pCube12.010","Rock_small6","Rock_medium3.003","Rock_medium2.001","pCylinder31.016","pCone9","Rock_medium6","pCube14.009","pCylinder31.013","pCube19.014","pCylinder32.009","pCylinder34.014","pCylinder32.004","Rock_smallest7","Rock_small4.005","pCylinder30.008","Rock_small1.008","Long_shell4","Rock_smallest4","Tree_medium","pCylinder36.003","pCube17.023","Rock_smallest15.004","pCylinder29.012","Rock_smallest1.001","pCube19.023","pCube15.022","Rock_smallest.001","pCube13.023","Rock_smallest4.001","pCone9.001","pCube13.008","Rock_small4.007","pCone28.001","pCylinder31.018","pCylinder33.005","pCube22.021","Rock_big.001","pCylinder36.010","pCone23.001","Rock_big10.003","Rock_small2","pCylinder35.008","Round_shell13","Rock_big1.005","pCube18.015","pCylinder31.012","pCylinder31","pCube12.022","pCube12.004","pCube13.004","Rock_small5.001","pCylinder30","pCube18.020","Rock_small4.006","Rock_smallest1.008","pCylinder40.005","pCube16.015","pCube21","pCylinder29.002","Round_shell1","pCylinder36.008","Rock_medium3","pCylinder37.003","pCube14.018","Rock_small5","pCylinder33.013","pCylinder34.010","pCube21.013","Tree_small1","Rock_small3.002","pCube19.011","pCube20.004","Rock_big5","pCube12.009","pCube22.023","pCube13.020","pCone9.003","pCube12.021","Rock_medium1","pCone14","Tree_big1","Rock_smallest17.001","Rock_small6.004","pCube20.014","pCube20.018","pCube12.007","pCube20.009","pCube22.015","Rock_smallest2","pCube12.005","pCylinder29.011","Rock_small4","Rock_smallest15.001","Rock_small3.008","pCube21.021","Rock_big3","pCube14.020","pCube15.004","pCube19.010","pCube14.005","Rock_medium2.002","pCube14.015","pCube21.023","pCylinder38","pCube21.020","pCylinder35.011","pCylinder32.011","Rock_smallest17.003","Rock_big.005","pCone12.004","pCone18","pCube19.004","Tree_medium7","pCylinder25","pCylinder31.017","pCylinder31.010","pCone27.002","Rock_medium3.006","Star_shell8","pCube17.016","Rock_medium2.005","Rock_big.004","Tube_shell6","pCube14.012","Rock_smallest","pCylinder31.022","pCube15.011","Star_shell1","pCube17.019","pCylinder37.002","pCube17","pCone32","pCube16","Tree_small9","pCube15.016","pCube21.012","pCube13","pCube12.002","pCube20.016","pCone23.002","pCube16.004","pCone14.003","Rock_smallest17.006","pCylinder39.002","Rock_smallest16.004","pCone14.004","pCylinder37.001","pCylinder36.009","Rock_small5.003","pCylinder30.009","Tree_medium2.001","Round_shell3","pCube19.015","pCylinder15","pCube19.012","Rock_big10.007","Round_shell12","pCube18.011","pCylinder35.013","pCube18.005","pCylinder35.001","pCylinder33.010","pCube20","pCone12.002","pCylinder37.007","Rock_small1.005","pCone10.001","pCube14.016","pCube21.005","pCube18.019","pCube21.006","pCylinder16","Rock_smallest16.009","pCylinder30.011","Round_shell9","Tube_shell3","pCylinder29.004","pCone12.003","pCube15.008","pCylinder31.015","Rock_medium3.001","pCube21.004","pCube17.015","pCylinder27","pCube22.020","pCube17.010","pCylinder39.001","Rock_big1.008","pCone30.001","Rock_big.006","pCylinder30.019","pCylinder40.001","pCube12.015","Rock_small6.005","pCube19.021","pCylinder33.006","pCube15.012","Rock_medium2","pCube20.008","Rock_small8","pCube12.014","pCylinder36.011","Rock_big2","pCube20.022","Tube_shell5","pCube20.001","pCube17.003","pCube21.017","pCube12.023","pCube17.018","pCube20.021","pCube17.021","pCone23","pCylinder33.011","pCube18.021","pCube20.007","pCube17.017","pCube19","pCylinder35.014","Rock_smallest15.006","pCube21.003","pCylinder17","Rock_small6.002","Rock_smallest16","pCube16.021","pCube19.017","Rock_big8","Rock_small3.005","pCube22.017","pCube16.006","pCube15.003","Rock_big1.002","pCylinder32","pCylinder32.013","pCube22.005","Rock_small4.008","pCylinder38.006","pCylinder39.004","Rock_medium2.008","pCylinder33.007","pCylinder29.023","pCube22.014","Rock_medium2.009","pCone20","Rock_medium4.001","Tree_medium2","pCube15.006","pCube16.023","pCylinder29.017","pCube15.010","pCylinder29.020","pCone12.001","pCube21.018","Tree_small","Rock_small3.004","pCube21.019","pCube13.016","pCube15.007","pCylinder32.001","pCube20.023","Tree_medium6.001","Rock_smallest1.002","pCylinder31.008","pCylinder41.006","pCube12.011","Round_shell7","Rock_small4.003","Rock_small3.006","Rock_smallest16.001","Rock_small2.007","Rock_big1.009","pCylinder32.012","Rock_smallest14","pCylinder35.005","Rock_small5.008","Rock_smallest17","pCone30.002","pCube14.017","pCube17.011","pCube20.015","pCube13.009","pCube21.015","pCone28.002","pCube20.006","pCylinder36.005","pCylinder30.001","Rock_big10.005","pCylinder34.006","pCylinder31.023","pCube14.003","pCube19.016","pCone24.002","pCone31","Tree_small7","pCube22.013","pCube19.019","pCube13.014","pCylinder33.004","pCylinder41.004","pCube16.003","pCube22.008","pCylinder40.007","pCube22.022","Long_shell11","Star_shell4","Rock_big10","pCylinder38.003","pCylinder31.020","pCylinder33.009","pCube18.022","Star_shell2","Rock_big","pCylinder29.001","pCube19.003","pCube15.002","pCube18.016","Rock_small7","pCube14.019","Rock_small2.010","pCylinder34.003","pCylinder29.003","pCylinder35.003","Rock_small3.010","Tree_medium3","pCube16.017","pCube14.014","pCylinder30.022","pCube19.022","pCylinder13","pCylinder39.003","pCone28","Rock_small1","Rock_small5.007","pCylinder30.010","pCube20.002","pCylinder41.002","Rock_smallest17.007","pCube20.017","pCylinder32.002","pCube18.012","pCube19.013","Rock_smallest13","pCube21.008","pCube19.008","pCube13.006","Tree_medium12","Rock_small2.001","Tree_medium5.001","pCylinder26","pCylinder30.002","pCylinder29","pCylinder35","pCone15","pCube17.006","pCube13.015","pCylinder41.001","Rock_small4.001","pCylinder29.013","pCylinder35.015","pCylinder38.002","pCube21.016","pCylinder32.014","Long_shell3","pCube12.001","pCube17.004","pCube13.021","pCylinder30.004","Rock_small6.001","Rock_small4.002","Tree_big","pCone9.002","pCone27","pCube18.023","Rock_big1.007","pCylinder34.004","pCube22.016","pCube12.012","Rock_smallest16.006","Rock_smallest17.008","Tree_small3.001","pCone11","Rock_small3.009","pCylinder36.001","pCube14.002","Tube_shell1","Round_shell4","pCone11.003","Rock_medium2.003","pCube21.001","pCylinder37.006","pCube13.002","pCube15","Rock_small1.004","Round_shell11","Rock_smallest15","Rock_big4.001","Rock_smallest8","pCylinder38.001","pCone29","pCube18.001","Rock_small4.010","pCube16.008","Rock_big4","pCube10","Rock_smallest1.004","pCube20.013","pCylinder32.008","pCube16.016","pCube13.017","pCube15.014","pCylinder36.014","pCube12.020","pCube20.011","Rock_medium2.006","pCylinder34.012","Rock_small","pCube15.001","pCylinder37.005","Rock_smallest16.008","pCylinder40.002","Rock_smallest10","Rock_smallest1.006","pCylinder35.007","Rock_smallest1","pCube17.008","Rock_medium5","pCube22.001","Rock_smallest2.001","pCone13.002","pCube14.023","pCube20.020","pCylinder30.018","Long_shell8","pCube17.013","pCube18","pCone14.001","Rock_small.001","Rock_smallest17.005","pCylinder33","pCylinder40","pCube17.012","pCube13.013","Tree_medium10","pCube16.019","pCone29.001","pCube12.019","pCube14.007","pCube18.010","Rock_big10.008","pCylinder33.012","Rock_big.002","pCube20.010","pCylinder34.007","pCube15.015","pCube13.022","pCone10","Tree_medium1","pCylinder30.015","Round_shell8","pCone11.002","Rock_big10.001","pCylinder36.015","pCylinder29.021","pCylinder34.015","pCube14.006","pCylinder33.002","pCube22.010","Tree_small5","Rock_smallest16.003","Rock_small6.009","pCylinder31.005","pCube16.012","pCone25","pCylinder41.007","pCube13.010","Tree_medium13","pCylinder34","Rock_smallest1.005","Rock_medium3.005","Tree_medium3.001","pCone19","pCylinder31.006","Rock_smallest3.001","Rock_smallest15.008","pCylinder31.004","Rock_big7","pCube22.012","Rock_small6.007","Rock_small2.009","Rock_big.008","pCube12.018","pCone13.004","pCylinder34.008","Rock_big.007","Star_shell7","pCube12.008","pCylinder35.009","pCylinder41.003","Tree_medium6","Rock_smallest16.005","Rock_big.009","Rock_big10.006","Tree_medium7.001","pCube15.021","pCylinder30.023","pCylinder31.014","Round_shell2","pCone13.003","pCylinder38.004","pCube18.009","pCylinder34.009","Rock_medium2.004","Rock_smallest17.002","pCube14.008","pCube21.010","Rock_smallest9","Rock_small2.008","pCube18.003","Rock_smallest17.004","pCone24.004","Rock_smallest1.007","pCube16.005","Rock_small6.006","pCube18.006","Rock_big1.004","Tree_medium1.001","Star_shell3","pCube12.006","pCone23.003","pCylinder36","Tube_shell7","pCube20.005","Rock_big10.002","pCone13","pCube22.002","Rock_small3","pCube13.019","pCube14.011","Rock_smallest5","Long_shell7","pCylinder36.013","pCylinder35.004","pCylinder29.015","Star_shell10","pCone28.003","Rock_smallest11","Long_shell12","pCylinder34.005","pCube14.021","pCube19.002","pCylinder30.016","pCylinder29.007","pCone24.001","Rock_medium.001","pCube20.019","pCube14.013","pCylinder37","Round_shell5","pCube21.009","pCube22.006","Round_shell6","pCone12","Tree_medium9","pCube21.011","pCone29.002","pCube15.023","pCone26","pCube12.013","pCylinder31.021","Rock_medium3.002","pCylinder29.019","pCylinder35.006","pCube17.014","pCube13.001","pCube18.017","pCylinder29.006","pCube16.020","pCylinder29.018","pCube17.007","pCube20.003","Tree_medium8","pCube22.007","Rock_smallest15.003","Rock_medium3.007","pCube15.005","pCube17.005","pCylinder30.006","pCylinder39.007","pCylinder32.010","pCube19.020","Tree_small4","pCube15.013","pCylinder32.006","pCylinder33.003","pCube22.004","Rock_small2.003","Long_shell1","pCube15.017","pCone11.001","pCube16.014","pCylinder36.006","pCube18.004","pCube17.002","pCube17.001","Long_shell2","pCylinder30.014","pCylinder29.008","pCylinder29.009","Rock_medium3.004","Round_shell10","Rock_smallest17.009","pCube16.018","Tree_small3","Rock_small1.002","Rock_big1.006","Rock_big6","pCylinder34.011","pCone29.003","Rock_small6.003","Rock_small5.004","pCylinder29.005","pCube21.022","pCylinder34.013","pCone14.002","pCube21.002","pCube16.010","Rock_big1.003","pCylinder32.015","Rock_small2.005","pCube12.017","pCylinder32.007","pCube15.019","pCylinder33.014","pCylinder29.014","pCube14.004","Rock_small2.006","pCylinder40.004","Rock_big9","pCube16.002","Rock_medium","Rock_small1.010","pCone21","pCylinder36.012","pCylinder39.005","pCylinder33.015","Rock_small6.008","pCylinder30.007","Rock_small5.002","pCylinder32.003","Star_shell6","Star_shell5","pCube19.007","Rock_small5.009","pCube14.022","Rock_small1.009","pCube18.008","pCylinder40.006","Star_shell9","pCylinder40.003","Rock_small3.001","pCylinder38.007","Rock_small5.006","pCylinder36.002","Rock_big.003","pCube16.022","pCube22.011","pCube12","pCube22.018","pCylinder29.022","pCube18.013","pCylinder39","pCylinder30.017","pCylinder31.019","pCube19.018","pCube16.007","pCylinder30.021","pCylinder30.003","pCube9","Tube_shell4","Rock_small1.006","pCylinder29.016","pCylinder30.020","pCylinder31.007","pCube18.002","pCube22.003","Rock_big1.001","pCylinder31.001","Pier","pCylinder36.007","pCylinder31.003","Rock_smallest1.009","Rock_smallest3","Long_shell6","pCube19.009","Rock_smallest15.009","Rock_small3.007","Rock_small3.003","Long_shell5","Rock_medium7","Rock_smallest16.002","pCube13.007","Rock_big.010","pCylinder31.002","pCylinder24","Tree_medium5","pCube22","pCone24","Tree_medium11","pCylinder14","Rock_smallest1.003","pCube12.003","Rock_medium4","pCube17.009","pCube13.012","pCube19.006","pCylinder39.006","Tree_small6","pCylinder36.004","pCube16.013","pCylinder30.005","pCylinder37.004","Rock_small1.007","Rock_big1","pCube16.009","pCone27.001","Rock_small5.005","pCylinder35.012","Rock_small1.001","pCube18.014","Tree_medium4.001","Rock_smallest16.007","pSphere18","Tree_small10","pSphere9","pSphere19","Tree_medium14","Tree_big7","pSphere23","Tree_big5","pSphere45","pSphere11","Tree_small.001","pSphere4","pSphere54","pSphere5","pSphere52","pSphere53","pSphere29","pSphere44","Tree_big2","pSphere25","pSphere22","pSphere30","pSphere49","pSphere50","pSphere46","pSphere41","pSphere13","pSphere42","pSphere3","Bridge","Tree_small12","Tree_small11","Grass_map","pSphere51","pSphere8","pSphere6","pSphere7","Tree_big6","pSphere47","Tree_medium15","pSphere27","Tree_big1.001","pSphere24","Tree_medium16","pSphere20","Beach_map","Sand_map","pSphere12","pSphere48","pSphere31","Tree_small14","pSphere14","pSphere17","Tree_small1.001","pSphere21","pSphere1","Tree_big4","Tree_small13","pSphere28","Tree_big8","pSphere26","pSphere2","Tree_big3","pSphere16","pSphere10","pSphere15","Tree_small15","Tree_medium17","pSphere43"],"padding":[1,37,1,19,37,29,37,35,37,256,70,122,256,107,256,256,256,84,117,256,201,256,256,134,241,107,120,107,70,256,256,114,84,256,256,82,256,256,96,107,163,154,215,221,117,182,256,215,96,256,256,166,159,256,107,117,107,197,256,117,114,256,197,107,164,82,236,114,154,256,122,256,56,256,107,82,256,122,141,107,117,256,256,256,157,256,256,84,166,120,182,201,163,256,256,173,256,256,256,70,192,107,256,148,256,107,107,256,107,256,256,123,256,256,177,201,107,256,236,256,256,256,178,248,256,122,166,166,107,93,93,256,154,107,256,256,166,122,107,148,256,178,256,198,114,256,201,215,122,82,256,122,93,256,84,107,107,256,107,256,256,63,256,256,120,114,117,85,122,256,96,148,256,256,256,107,152,107,93,117,96,256,122,107,221,107,221,182,256,256,256,256,93,77,224,166,159,256,256,256,116,256,256,256,122,256,166,122,256,107,192,107,256,107,82,117,122,107,122,117,256,93,256,256,184,256,256,221,221,256,124,70,256,122,224,122,256,256,122,221,96,221,215,107,256,178,256,256,117,96,107,107,156,256,154,256,256,129,256,123,166,256,93,122,256,107,117,177,256,256,256,154,164,122,256,107,220,122,256,121,256,120,221,127,107,256,107,107,107,107,114,107,107,256,201,107,117,107,107,221,256,107,256,256,256,107,107,256,256,107,107,107,256,182,182,96,256,248,184,256,226,148,121,256,256,256,70,107,107,148,117,148,256,114,82,256,107,116,117,182,107,75,256,186,164,122,256,256,256,256,256,256,182,256,221,256,256,256,107,122,122,84,122,256,107,221,154,256,235,166,107,117,256,256,82,122,107,120,181,164,107,123,162,107,256,173,256,198,166,201,107,256,256,148,107,122,117,256,107,256,187,148,192,256,65,107,121,154,107,125,184,256,256,256,147,122,164,256,107,182,122,122,256,123,122,107,65,256,78,156,154,148,221,256,107,122,157,256,148,221,192,117,182,256,107,93,107,134,256,256,56,256,256,107,256,193,117,122,256,256,82,256,256,221,122,254,256,256,256,107,247,122,107,256,256,256,256,256,221,256,107,256,122,256,4,256,122,147,116,107,120,221,107,122,256,201,256,107,241,256,171,256,256,247,256,121,256,107,256,256,107,107,165,256,122,107,256,256,256,201,171,122,122,65,107,256,107,117,117,256,201,256,117,240,122,107,256,65,154,256,256,256,221,148,201,107,201,117,82,256,256,149,122,256,155,117,70,201,256,256,65,256,166,256,256,145,155,122,256,256,256,114,256,173,256,191,123,221,164,75,256,256,256,77,107,154,161,256,256,221,84,201,256,256,123,117,256,256,107,256,256,256,96,256,107,256,65,256,107,256,221,256,96,256,256,122,256,107,122,256,256,221,198,148,256,256,256,127,215,107,122,146,161,256,256,107,122,221,256,84,107,256,256,89,122,256,107,256,122,166,256,148,241,119,107,107,148,107,158,117,107,70,117,256,256,96,96,154,174,194,107,82,122,199,176,93,256,256,107,256,120,241,93,122,107,255,149,165,119,256,256,256,114,82,256,256,196,201,256,256,256,132,107,201,256,122,117,256,182,256,107,203,107,201,143,93,256,171,256,122,256,256,256,221,179,201,256,168,256,158,256,256,117,256,107,256,123,171,256,171,256,178,256,221,256,107,122,107,114,148,122,184,154,166,114,117,154,154,4,256,256,139,154,182,122,107,256,166,39,247,166,256,256,256,84,256,256,256,256,256,256,117,256,166,125,78,107,256,65,197,256,107,256,86,122,107,184,82,198,122,138,221,256,256,84,256,256,221,256,120,70,256,34,82,29,39,65,63,64,63,38,39,82,58,78,63,94,71,25,46,63,52,41,35,59,51,58,29,60,31,51,45,82,82,2,51,17,81,50,63,68,78,46,63,70,78,32,2,2,38,68,61,82,37,46,82,133,24,63,82,185,63,60,54,63,42,45,36,82,65,29],"unwrapper":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}'
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 110
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 110
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

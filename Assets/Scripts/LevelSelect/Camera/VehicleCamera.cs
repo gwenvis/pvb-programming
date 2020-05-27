@@ -24,7 +24,7 @@ namespace DN.LevelSelect.CameraMovement
             camera = cameraRig.GetChild(0).GetComponent<Camera>();
         }
 
-        void LateUpdate()
+        void FixedUpdate()
         {
             cameraRig.position = Vector3.Lerp(cameraRig.position, transform.position + cameraPositionOffset, Time.deltaTime * followSpeed);
         }
