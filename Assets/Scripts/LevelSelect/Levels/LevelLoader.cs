@@ -21,8 +21,11 @@ namespace DN.LevelSelect.SceneManagment
         private DN.LevelData levelData;
 
         private const string LEVEL_SELECT_NAME = "LevelSelect";
-        private const string DRAGONFLY_IBS_NAME = "LevelOpenerDragonfly";
-        private const string OWL_IBS_NAME = "LevelOpenerOwl";
+        private const string BUG_IBS_NAME = "LevelOpenerBug";
+        private const string HOG_IBS_NAME = "LevelOpenerHog";
+        private const string PENGUIN_IBS_NAME = "LevelOpenerPenguin";
+        private const string RACOON_IBS_NAME = "LevelOpenerRacoon";
+        private const string SHARK_IBS_NAME = "LevelOpenerShark";
 
         private string prevSceneLoaded;
 
@@ -34,28 +37,24 @@ namespace DN.LevelSelect.SceneManagment
             {
                 switch (selectedAnimal)
                 {
-                    case LevelDataEditor.SelectedAnimal.Dragonfly:
-                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                    case LevelDataEditor.SelectedAnimal.Bug:
+                        GetAndSetScene(BUG_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Owl:
-                        GetAndSetScene(OWL_IBS_NAME);
+                    case LevelDataEditor.SelectedAnimal.Hog:
+                        GetAndSetScene(HOG_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Cricket:
-                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                    case LevelDataEditor.SelectedAnimal.Racoon:
+                        GetAndSetScene(PENGUIN_IBS_NAME);
                         break;
 
                     case LevelDataEditor.SelectedAnimal.Penguin:
-                        GetAndSetScene(OWL_IBS_NAME);
-                        break;
-
-                    case LevelDataEditor.SelectedAnimal.Seal:
-                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                        GetAndSetScene(RACOON_IBS_NAME);
                         break;
 
                     case LevelDataEditor.SelectedAnimal.Shark:
-                        GetAndSetScene(OWL_IBS_NAME);
+                        GetAndSetScene(SHARK_IBS_NAME);
                         break;
                 }
             }

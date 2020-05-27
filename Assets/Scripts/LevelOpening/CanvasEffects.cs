@@ -1,6 +1,4 @@
-﻿using DN.LevelSelect;
-using DN.LevelSelect.SceneManagment;
-using DN.Service;
+﻿using DN.LevelSelect.SceneManagment;
 using DN.UI.LevelOpener.Object;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,48 +21,90 @@ namespace DN.UI
         [SerializeField]
         private Image triggerField;
 
+        [SerializeField] 
         private LevelLoader levelLoader;
 
-        private float startZoomPos;
-        private float endZoomPos;
-        private float duration = 2;
+        [SerializeField]
+        private ParticleSystem sparkParticle;
+
+        private float startZoomPos = 1;
+        private float endZoomPos = 5;
+        private float duration = 4f;
         private Vector3 desiredPosition;
 
-        void Start()
+        private float maxPosX;
+        private float minPosX;
+        private float maxPosY;
+        private float minPosY;
+
+        private bool isClicked = false;
+
+        private void Start()
         {
+            maxPosX = animal.rectTransform.anchoredPosition.x + 3f;
+            minPosX = animal.rectTransform.anchoredPosition.x - 3f;
+            maxPosY = animal.rectTransform.anchoredPosition.y + 3f;
+            minPosY = animal.rectTransform.anchoredPosition.y - 3f;
+
             animal.canvasRenderer.SetAlpha(0.0f);
             triggerField.canvasRenderer.SetAlpha(0.0f);
             blackFade.canvasRenderer.SetAlpha(0.0f);
 
             desiredPosition = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
 
-            levelLoader = ServiceLocator.Locate<LevelMemoryService>().LevelLoader;
-
             StartCoroutine(FadeInAnimal());
         }
 
         private IEnumerator FadeInAnimal()
         {
+            animal.CrossFadeAlpha(1, 2, false);
             yield return new WaitForSeconds(2f);
 
-            animal.CrossFadeAlpha(1, 2, false);
+            StartCoroutine(Jitter());
+            
             triggerField.CrossFadeAlpha(.6f, 2, false);
         }
 
         public void FadeInBlackScreen()
         {
-            blackFade.CrossFadeAlpha(1, 2, false);
+            blackFade.CrossFadeAlpha(1, 1f, false);
         }
 
         public void ZoomIn()
         {
-            startZoomPos = 1;
-            endZoomPos = 10;
-
             StartCoroutine(startZoom(startZoomPos, endZoomPos));
+            isClicked = true;
         }
 
-        IEnumerator startZoom(float startZoomPos, float endZoomPos)
+        public IEnumerator Jitter()
+        {
+            while(true)
+            {
+                float timePassed = 0;
+                float intervalTime = Random.Range(1, 2);
+                yield return new WaitForSeconds(intervalTime);
+
+                if (isClicked)
+                {
+                    break;
+                }
+
+                sparkParticle.Emit(30);
+
+                while (timePassed < 0.3f)
+                {
+                    float newPosX = Random.Range(minPosX, maxPosX);
+                    float newPosY = Random.Range(minPosY, maxPosY);
+
+                    animal.rectTransform.anchoredPosition = new Vector2(newPosX, newPosY);
+
+                    timePassed += Time.deltaTime;
+                    yield return null;
+                }
+            }
+        }
+
+        private IEnumerator startZoom(float startZoomPos, float endZoomPos)
         {
             float startTime = Time.time;
             float counter = 0f;
@@ -72,11 +112,11 @@ namespace DN.UI
             while (counter < duration)
             {
                 float t = (Time.time - startTime) / duration;
-                counter += Time.deltaTime / duration;
+                counter += Time.deltaTime * duration;
                 animal.transform.localScale = Vector3.one * Mathf.Lerp(startZoomPos, endZoomPos, t);
                 animal.transform.position = Vector3.Lerp(animal.transform.position, desiredPosition, t);
 
-                yield return new WaitForEndOfFrame(); 
+                yield return new WaitForEndOfFrame();
             }
             levelLoader.LoadPuzzleScene();
         }
