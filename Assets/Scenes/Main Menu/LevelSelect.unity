@@ -547,7 +547,7 @@ MonoBehaviour:
   isCompleted: 0
   selectedAnimal: 3
   selectedPuzzle: 2
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 47916d316511ab3499bf02d6fc802e79, type: 2}
 --- !u!135 &55396119
 SphereCollider:
   m_ObjectHideFlags: 0
