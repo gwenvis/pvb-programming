@@ -31,13 +31,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Car Post Processing
   m_EditorClassIdentifier: 
-  settings:
-  - {fileID: 4539960563243403775}
-  - {fileID: -7159454499731654108}
-  - {fileID: 2401157338764381792}
 --- !u!114 &2401157338764381792
 MonoBehaviour:
   m_ObjectHideFlags: 3

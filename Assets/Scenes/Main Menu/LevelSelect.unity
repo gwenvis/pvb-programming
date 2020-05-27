@@ -732,7 +732,6 @@ GameObject:
   m_Component:
   - component: {fileID: 78429514}
   - component: {fileID: 78429513}
-  - component: {fileID: 78429512}
   m_Layer: 0
   m_Name: Light Probe Group
   m_TagString: Untagged
@@ -740,21 +739,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &78429512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78429511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e58b2a5f02556c4897347a45818c57a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_mergeDistance: 0.5
-  m_usePointLights: 1
-  m_pointLightRange: 1
 --- !u!220 &78429513
 LightProbeGroup:
   m_ObjectHideFlags: 0
@@ -2108,7 +2092,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96635008 stripped
 GameObject:
@@ -3571,7 +3555,7 @@ Transform:
   - {fileID: 1772250777}
   - {fileID: 1914329388}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &271985042
 GameObject:
@@ -19437,7 +19421,7 @@ Transform:
   - {fileID: 1872965070}
   - {fileID: 619898729}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &868058762 stripped
 GameObject:
@@ -23349,55 +23333,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362800821}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1368896888
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1368896890}
-  - component: {fileID: 1368896889}
-  m_Layer: 0
-  m_Name: Beach light probres
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1368896889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368896888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce72b8e8fac84047a96f26f2b28d1d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_volume:
-    m_origin: {x: 13.6910515, y: -13.4459, z: -19.947937}
-    m_size: {x: 267.14816, y: 87.4, z: 123.749756}
-  m_type: 0
-  m_densityFixed: {x: 10, y: 10, z: 10}
-  m_densityFloat: {x: 1, y: 1, z: 1}
---- !u!4 &1368896890
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368896888}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.2, y: 32.3, z: 37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369095139
 GameObject:
   m_ObjectHideFlags: 0
@@ -23921,7 +23856,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425515090
 GameObject:
@@ -33659,7 +33594,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.932803, g: 0.9339623, b: 0.91193485, a: 1}
-  m_Intensity: 2.21
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -33720,7 +33655,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 37.39, y: -29.470001, z: -21.112001}
 --- !u!114 &2059372183
 MonoBehaviour:
@@ -33735,7 +33670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.932803, g: 0.9339623, b: 0.91193485, a: 1}
-  intensity: 2.21
+  intensity: 1
   shadowSpread: 0.01
   samples: 16
   bitmask: 1
