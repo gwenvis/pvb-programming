@@ -13,8 +13,9 @@ namespace DN.Puzzle.Maze.UI
 		public static int SpawnedBlocks { get; private set; } = 0;
 		public static event Action<int> ChangedBlocksEvent;
 		[SerializeField]private GameObject draggableObject;
+		[SerializeField] private Canvas canvas;
 		private DraggableItem draggableItem;
-		private Canvas canvas;
+
 
 		public void SetDraggableItem(GameObject draggableItem)
 		{

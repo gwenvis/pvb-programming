@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace DN
+namespace DN.UI
 {
 	/// <summary>
 	/// Scale the ui object correctly
@@ -22,8 +22,8 @@ namespace DN
 		{
 			if(isSquare)
 			{
-				AspectRatioFitter af = gameObject.AddComponent<AspectRatioFitter>();
-				af.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
+				//AspectRatioFitter af = gameObject.AddComponent<AspectRatioFitter>();
+				//af.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
 			}
 				
 			rectTransform = GetComponent<RectTransform>();
@@ -43,32 +43,52 @@ namespace DN
 			SetValues();
 		}
 
+		public Vector2 GetSize()
+		{
+			return new Vector2(width, height);
+		}
+
 		public void SetTransform(RectTransform t)
 		{
 			rectTransform = t;
 		}
 
+		public void SetSquare(bool square)
+		{
+			isSquare = square;
+		}
+
 		private void SetValues()
 		{
-			rectTransform.sizeDelta = new Vector2(width * Screen.width, height * Screen.height);
-			if(isSquare)
+			if (isSquare)
+			{
+				rectTransform.sizeDelta = new Vector2(width * Screen.width, height * Screen.width);
+			}
+			else
+			{
+				rectTransform.sizeDelta = new Vector2(width * Screen.width, height * Screen.height);
+			}
+			if (isSquare)
 				transform.localScale = new Vector3(0.5f, 0.5f, 1);
 			if (useCollider)
 				collider.size = new Vector2(width * Screen.width, height * Screen.height);
 			if (changePosition)
 			{
-				rectTransform.localPosition = new Vector2(posX * Screen.width, posY * Screen.height);
+				if(isSquare)
+				{
+					rectTransform.localPosition = new Vector2(posX * Screen.width, posY * Screen.width);
+				}
+				else
+				{
+					rectTransform.localPosition = new Vector2(posX * Screen.width, posY * Screen.height);
+				}
+
 			}
 		}
 
 		private void Update()
 		{
-			rectTransform = GetComponent<RectTransform>();
-			rectTransform.sizeDelta = new Vector2(width * Screen.width, height * Screen.height);
-			if (changePosition)
-			{
-				rectTransform.localPosition = new Vector2(posX * Screen.width, posY * Screen.height);
-			}
+			SetValues();
 		}
 	}
 }

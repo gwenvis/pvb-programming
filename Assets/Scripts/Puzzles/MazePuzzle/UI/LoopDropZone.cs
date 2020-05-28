@@ -40,6 +40,7 @@ namespace DN.Puzzle.Maze.UI
 			{
 				droppedObject.GetComponent<MazeDraggableItem>().SetParent(gameObject, GetComponent<RectTransform>().rect.height*1.5f, sideTransform.rect.width/2 + xOffset + GetComponent<RectTransform>().rect.width/2);
 			}
+			droppedObject.transform.SetParent(transform.parent);
 			types.Add(childObjects.Count, (droppedObject as MazeDraggableItem).DropZoneHolder.GetComponent<IDroppable>().GetType());
 			droppedObject.GetComponent<BlockDropZone>().SetLayer(Layer + 1);
 			Destroy(droppedObject.GetComponentsInChildren<BlockDropZone>().Last());
