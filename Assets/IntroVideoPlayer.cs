@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class IntroVideoPlayer : MonoBehaviour
 {
-    VideoPlayer videoPlayer;
+    [SerializeField] RawImage imageVideo;
+
+    private VideoPlayer videoPlayer;
 
     void Start()
     {
@@ -15,7 +18,14 @@ public class IntroVideoPlayer : MonoBehaviour
 
     private IEnumerator PlayVideo()
     {
+        videoPlayer.Prepare();
         yield return new WaitForSeconds(2f);
+        while (!videoPlayer.isPrepared)
+        {
+            yield return new WaitForSeconds(1f);
+            break;
+        }
+        imageVideo.texture = videoPlayer.texture;
         videoPlayer.Play();
     }
 }
