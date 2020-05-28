@@ -132,13 +132,28 @@ namespace DN.Puzzle.Maze
 			{
 				case MazeFunctions.IfForward:
 					Vector2 forwardPosition = currentPosition + GetDirection(direction);
-					return level[(int)forwardPosition.y][(int)forwardPosition.x] == MazeBlocks.Path;
+					if ((int)forwardPosition.y < 0 || (int)forwardPosition.x < 0 || (int)forwardPosition.y > 9 || (int)forwardPosition.x > 9)
+					{
+						return false;
+					}
+					MazeBlocks nextForwardBlock = level[(int)forwardPosition.y][(int)forwardPosition.x];
+					return nextForwardBlock == MazeBlocks.Path || nextForwardBlock == MazeBlocks.End;
 				case MazeFunctions.IfLeft:
 					Vector2 leftPosition = currentPosition + GetDirection(GetDirectionNum(direction + 1));
-					return level[(int)leftPosition.y][(int)leftPosition.x] == MazeBlocks.Path;
+					if ((int)leftPosition.y < 0 || (int)leftPosition.x < 0 || (int)leftPosition.y > 9 || (int)leftPosition.x > 9)
+					{
+						return false;
+					}
+					MazeBlocks nextLeftBlock = level[(int)leftPosition.y][(int)leftPosition.x];
+					return nextLeftBlock == MazeBlocks.Path || nextLeftBlock == MazeBlocks.End;
 				case MazeFunctions.IfRight:
 					Vector2 rightPosition = currentPosition + GetDirection(GetDirectionNum(direction - 1));
-					return level[(int)rightPosition.y][(int)rightPosition.x] == MazeBlocks.Path;
+					if((int)rightPosition.y < 0 || (int)rightPosition.x < 0 || (int)rightPosition.y > 9 || (int)rightPosition.x > 9)
+					{
+						return false;
+					}
+					MazeBlocks nextRightBlock = level[(int)rightPosition.y][(int)rightPosition.x];
+					return nextRightBlock == MazeBlocks.Path || nextRightBlock == MazeBlocks.End;
 				default:
 					return false;
 			}
@@ -159,7 +174,7 @@ namespace DN.Puzzle.Maze
 
 
 			if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None ||
-			(int)currentPosition.y < 0 || (int)currentPosition.x < 0 || (int)currentPosition.y > 10 || (int)currentPosition.x > 10)
+			(int)currentPosition.y < 0 || (int)currentPosition.x < 0 || (int)currentPosition.y > 9 || (int)currentPosition.x > 9)
 			{
 				LoseLifeEvent?.Invoke();
 				lostGame = true;
