@@ -29,7 +29,7 @@ namespace DN.Puzzle.Maze.UI
 				block.GetComponent<MazeDraggableItem>().GetHeight();
 				float width = block.GetComponent<RectTransform>().rect.width;
 				xPos = xPos + width + xOffset;
-				block.transform.localPosition = new Vector2(xPos, xOffset);
+				block.transform.localPosition = new Vector2(xPos, xOffset*6);
 
 				SpawnBlock spawnBlock = block.AddComponent<SpawnBlock>();
 				spawnBlock.SetDraggableItem(spawnBlocks[i]);
