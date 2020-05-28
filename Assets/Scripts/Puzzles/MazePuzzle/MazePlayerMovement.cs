@@ -155,6 +155,9 @@ namespace DN.Puzzle.Maze
 				await Awaiters.EndOfFrame;
 			}
 
+			Debug.Log(level[(int)currentPosition.y][(int)currentPosition.x]);
+
+
 			if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None ||
 			(int)currentPosition.y < 0 || (int)currentPosition.x < 0 || (int)currentPosition.y > 10 || (int)currentPosition.x > 10)
 			{
