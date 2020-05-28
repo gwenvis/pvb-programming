@@ -21,10 +21,18 @@ namespace DN.Puzzle.Maze.UI
 
 		private void OnDropdownValueChanged()
 		{
-			function = (MazeFunctions)Enum.Parse(typeof(MazeFunctions), $"Turn{dropdown.options[dropdown.value].text}");
+			switch(dropdown.value)
+			{
+				case 0:
+					function = MazeFunctions.TurnLeft;
+					break;
+				case 1:
+					function = MazeFunctions.TurnRight;
+					break;
+			}
 		}
 
-		public MazeFunctions GetMazeFunctions()
+		public MazeFunctions GetMazeFunction()
 		{
 			return function;
 		}

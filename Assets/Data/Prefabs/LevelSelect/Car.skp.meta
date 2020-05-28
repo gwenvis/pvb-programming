@@ -3,7 +3,32 @@ guid: cc513c433a6accf49b6537ed0f6824d4
 SketchUpImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 443cae444d13d3f4c813e942e81a8ca2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bodyDark
+    second: {fileID: 2100000, guid: 504ab6ea18c6fb647972f7bb5ad30fb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 082685fc83452ce43b2d02288eee323a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: d41e8720a4fb9e346911a1e160c7ad1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tire
+    second: {fileID: 2100000, guid: 7b451fa595c213b4fa73f0ee61d276cd, type: 2}
   materials:
     materialImportMode: 1
     materialName: 2
@@ -80,7 +105,7 @@ SketchUpImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.0254
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -99,5 +124,5 @@ SketchUpImporter:
   selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b000000
   assetHash:
     serializedVersion: 2
-    Hash: 734316c601bbd32fdf926b0fc74e1ec3
+    Hash: 6b4c5ce7fe488ddeb63f4e67375b410d
   fileUnit: 0

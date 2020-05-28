@@ -1,6 +1,6 @@
 ﻿using DN.Service;
-using System;
 using System.Collections;
+using DN.Music;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,8 +11,6 @@ namespace DN.LevelSelect.SceneManagment
     /// </summary>
     public class LevelLoader : MonoBehaviour
     {
-        [SerializeField] Animator transition;
-
         public GameObject LevelObject => levelObject;
         public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
         public LevelDataEditor.SelectedAnimal SelectedAnimal => selectedAnimal;
@@ -31,14 +29,12 @@ namespace DN.LevelSelect.SceneManagment
 
         private string prevSceneLoaded;
 
-        public IEnumerator LoadInBetweenScene()
+        public void LoadInBetweenScene()
         {
+            ServiceLocator.Locate<SongService>().ExitingLevelSelect();
+            
             if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
-                transition.SetTrigger("Start");
-
-                yield return new WaitForSeconds(2f);
-
                 switch (selectedAnimal)
                 {
                     case LevelDataEditor.SelectedAnimal.Bug:
@@ -79,11 +75,6 @@ namespace DN.LevelSelect.SceneManagment
             StartCoroutine(LoadLevel(sceneName, prevSceneLoaded));
         }
 
-        public void CloseGame()
-        {
-            Application.Quit();
-        }
-
         IEnumerator LoadLevel(string sceneName, string prevSceneName)
         {
             enabled = false;
@@ -115,32 +106,18 @@ namespace DN.LevelSelect.SceneManagment
             levelData = level;
         }
 
-        public void StartIntroVideo()
+        public void LoadLevelSelect()
         {
-            StartCoroutine(IntroVideo());
-        }
+            void SetScene(AsyncOperation operation)
+            {
+                operation.allowSceneActivation = true;
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(LEVEL_SELECT_NAME));
+                Debug.Log("loading complete");
+            }
 
-        public IEnumerator IntroVideo()
-        {
-            transition.SetTrigger("Start");
-
-            yield return new WaitForSeconds(2f);
-
-            SceneManager.LoadScene("IntroVideo", LoadSceneMode.Single);
-        }
-
-        public void StartLevelSelect()
-        {
-            StartCoroutine(LoadLevelSelect());
-        }
-
-        public IEnumerator LoadLevelSelect()
-        {
-            transition.SetTrigger("Start");
-
-            yield return new WaitForSeconds(2f);
-
-            SceneManager.LoadScene(LEVEL_SELECT_NAME);
+            var loadSceneAsync = SceneManager.LoadSceneAsync(LEVEL_SELECT_NAME, LoadSceneMode.Additive);
+            loadSceneAsync.completed += SetScene;
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
         }
 
         public void LoadLevelSelectFromPuzzle(bool isGameWon)
@@ -148,7 +125,7 @@ namespace DN.LevelSelect.SceneManagment
             GetAndSetScene(LEVEL_SELECT_NAME);
             levelObject.GetComponent<LevelDataEditor>().isCompleted = isGameWon;
             ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
-            ServiceLocator.Locate<LevelMemoryService>().SetAudioListener.SetListener(true);
+            ServiceLocator.Locate<SongService>().EnteringLevelSelect();
         }
     }
 }

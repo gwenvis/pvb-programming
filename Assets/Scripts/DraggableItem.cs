@@ -69,7 +69,7 @@ namespace DN.UI
 
 			DroppedItemEvent?.Invoke(this);
 		}
-		
+
 		protected virtual RaycastHit2D[] GetBoxCastHits()
 		{
 			return Physics2D.BoxCastAll(
@@ -79,5 +79,5 @@ namespace DN.UI
 				transform.forward
 				);
 		}
-	}
+    }
 }
