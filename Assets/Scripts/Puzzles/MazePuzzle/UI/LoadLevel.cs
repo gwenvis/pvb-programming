@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DN.LevelSelect;
 using DN.Service;
+using DN.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,18 +72,20 @@ namespace DN.Puzzle.Maze.UI
 					obj.AddComponent<CanvasRenderer>();
 					RectTransform t = obj.AddComponent<RectTransform>();
 					UiObjectScaler objectScaler = obj.AddComponent<UiObjectScaler>();
+					objectScaler.SetSquare(true);
 					objectScaler.SetTransform(t);
-					objectScaler.ChangeValues(new Vector2(0.1041f, 0.1041f), Vector2.zero, false);
-					AspectRatioFitter af = obj.AddComponent<AspectRatioFitter>();
-					af.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
+					
+
+					//AspectRatioFitter af = obj.AddComponent<AspectRatioFitter>();
+					//af.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
 					var sprite = obj.AddComponent<Image>();
 					Sprite spriteee = blockDictionary[mazeBlocks[y][x]];
 					sprite.sprite = spriteee;
-					obj.transform.position = new Vector3(
-						transform.position.x + x * obj.transform.GetComponent<RectTransform>().rect.width/2,
-						transform.position.y - y * obj.transform.GetComponent<RectTransform>().rect.height/2,
-						1.0f);
+					Vector2 size = new Vector2(0.06f, 0.06f);
+					Vector2 position = new Vector2(x * size.x/2, -y * size.y / 2);
+					objectScaler.ChangeValues(size, position, true);
 					obj.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+					
 					if (mazeBlocks[y][x] == MazeBlocks.Start)
 					{
 						StartPosition = new Vector2(x, y);

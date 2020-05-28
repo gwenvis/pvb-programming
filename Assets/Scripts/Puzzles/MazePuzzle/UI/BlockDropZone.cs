@@ -18,6 +18,7 @@ namespace DN.Puzzle.Maze.UI
 				SetParent(droppedObject);
 				CurrentObj = droppedObject;
 				droppedObject.PickedUpItemEvent += OnPickedUpItemEvent;
+				droppedObject.transform.SetParent(transform.parent);
 				return;
 			}
 		}
