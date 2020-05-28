@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu/Main Menu.unity
     guid: 543b11a11fe4dbe42af561a611a8e55f
-  - enabled: 1
-    path: Assets/Scenes/Main Menu/LevelSelect.unity
-    guid: 1ed292573331ab44ab6f877d16c7bc40
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/Puzzles/ColorPuzzle.unity
     guid: b70e1ff6964108544bc9f1f6846c7c28
@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/InBetweenScenes/LevelOpenerShark.unity
     guid: 0235f328849ebc34da05164c81ebd36e
+  - enabled: 1
+    path: Assets/Scenes/IntroVideo.unity
+    guid: 5fe75ead6fcc8414399174a1e66e809a
   m_configObjects: {}

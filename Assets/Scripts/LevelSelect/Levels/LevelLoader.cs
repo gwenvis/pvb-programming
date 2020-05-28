@@ -1,4 +1,5 @@
 ﻿using DN.Service;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -114,6 +115,19 @@ namespace DN.LevelSelect.SceneManagment
             levelData = level;
         }
 
+        public void StartIntroVideo()
+        {
+            StartCoroutine(IntroVideo());
+        }
+
+        public IEnumerator IntroVideo()
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(2f);
+
+            SceneManager.LoadScene("IntroVideo", LoadSceneMode.Single);
+        }
 
         public void StartLevelSelect()
         {

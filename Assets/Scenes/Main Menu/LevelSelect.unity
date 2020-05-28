@@ -2410,8 +2410,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 1
-  selectedPuzzle: 2
-  levelData: {fileID: 0}
+  selectedPuzzle: 1
+  levelData: {fileID: 11400000, guid: 994fa5a923ce64242bd03a1ad7ce0adb, type: 2}
 --- !u!1 &1397745067
 GameObject:
   m_ObjectHideFlags: 0

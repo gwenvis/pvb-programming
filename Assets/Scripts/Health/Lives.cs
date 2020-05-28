@@ -10,6 +10,8 @@ namespace DN.UI
 	public class Lives : MonoBehaviour
 	{
 		[SerializeField] private float heartSize = 50f;
+		[SerializeField] private Animator livesAnimator;
+		
 		public event Action<int> LifeLostEvent;
 		public event Action AllLifeLost;
 		LivesUI livesUI;
@@ -37,7 +39,10 @@ namespace DN.UI
 		}
 
 		public void LoseLife()
-		{	
+		{
+			print("gugugunk");
+			livesAnimator.SetTrigger("LostLife");
+
 			CurrentLives--;
 			LifeLostEvent?.Invoke(CurrentLives);
 
