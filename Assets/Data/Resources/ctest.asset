@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacbad7531af4025a5c05ce9b15ecbd1, type: 3}
+  m_Name: ctest
+  m_EditorClassIdentifier: 
+  levelName: test
+  <SavedSize>k__BackingField: {x: 372.66, y: 296.31}
+  lines:
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: df58990f-e210-4f11-8ecd-ccdf3d630c57
+    <EndNodeId>k__BackingField: 12ace5e8-2a0f-4f40-9030-9e21ecc0cdc4
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 081dd1ca-d115-4457-a06a-0b47fe085e77
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 12ace5e8-2a0f-4f40-9030-9e21ecc0cdc4
+    <EndNodeId>k__BackingField: 5bc4c0e1-4096-4867-ac4d-0943b30f9f19
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 9594dbd6-9112-44a3-8977-30bcb0ea2b28
+  nodes:
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -116.18578, y: 30.122236, z: 0}
+    id: 12ace5e8-2a0f-4f40-9030-9e21ecc0cdc4
+  - <IsFinish>k__BackingField: 1
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -40.449844, y: -74.01462, z: 0}
+    id: 5bc4c0e1-4096-4867-ac4d-0943b30f9f19
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 1
+    <Position>k__BackingField: {x: -16.352077, y: 99.83369, z: 0}
+    id: df58990f-e210-4f11-8ecd-ccdf3d630c57
+  draggableNodes: 0100000000000000
