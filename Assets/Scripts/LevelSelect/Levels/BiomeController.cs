@@ -1,4 +1,5 @@
-﻿using DN.UI;
+﻿using DN.LevelSelect.SceneManagment;
+using DN.UI;
 using UnityEngine;
 
 namespace DN.LevelSelect
@@ -19,6 +20,8 @@ namespace DN.LevelSelect
         [SerializeField] private Transform borderParent;
         
         [SerializeField] private BiomeUI biomeUI;
+
+        [SerializeField] private LevelLoader levelLoader;
 
         private GameObject[] borders;
 
@@ -142,7 +145,7 @@ namespace DN.LevelSelect
         {
             if (currentBiome >= biomeCount)
             {
-                Debug.Log("Finished Game biem");
+                StartCoroutine(levelLoader.StartEndAnimation());
             }
         }
     }

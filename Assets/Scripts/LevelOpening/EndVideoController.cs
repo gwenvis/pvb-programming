@@ -10,26 +10,33 @@ namespace DN.Intro
     /// <summary>
     /// Here the Intro video is played and handles the stuff after it is done playing
     /// </summary>
-    public class IntroVideoPlayer : MonoBehaviour
+    public class EndVideoController : MonoBehaviour
     {
         [SerializeField] private RawImage imageVideo;
         [SerializeField] private LevelLoader levelLoader;
+        [SerializeField] private Animator animalsAnim;
 
         private VideoPlayer videoPlayer;
 
         private void Start()
         {
             videoPlayer = GetComponent<VideoPlayer>();
-            StartCoroutine(PlayVideo());
+            StartCoroutine(PlayIntroVideo());
             videoPlayer.loopPointReached += Endreached;
         }
 
         private void Endreached(UnityEngine.Video.VideoPlayer vp)
         {
-            StartCoroutine(levelLoader.LoadLevelSelect());
+            StartCoroutine(StartEndTransition());
         }
 
-        private IEnumerator PlayVideo()
+        private IEnumerator StartEndTransition()
+        {
+            yield return new WaitForSeconds(5f);
+            StartCoroutine(levelLoader.StartEndTransition());
+        }
+
+        private IEnumerator PlayIntroVideo()
         {
             videoPlayer.Prepare();
             yield return new WaitForSeconds(1f);
