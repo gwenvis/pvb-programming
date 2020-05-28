@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifiedAssetPathList:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
-  - Assets/Data/Prefabs/LevelSelect/Map - 20-05-2020.fbx
-  modifiedAssetPaddingHash: aaf8cc2e6e50acfa
+  - Assets/Data/Prefabs/LevelSelect/Map - 27-05.fbx
+  modifiedAssetPaddingHash: aaf8cc2e5a67d4ff
