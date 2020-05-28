@@ -10,7 +10,8 @@ namespace DN.UI
 	public class Lives : MonoBehaviour
 	{
 		[SerializeField] private float heartSize = 50f;
-		private ParticleSystem heartParticle;
+		[SerializeField] private Animator livesAnimator;
+		
 		public event Action<int> LifeLostEvent;
 		public event Action AllLifeLost;
 		LivesUI livesUI;
@@ -22,7 +23,6 @@ namespace DN.UI
 		private void Start()
 		{
 			livesUI = new LivesUI(gameObject, this, heartSize);
-			heartParticle = livesUI.GetHearts()[livesUI.GetHearts().Count - 1].GetComponentInChildren<ParticleSystem>();
 		}
 
 		public Lives()
@@ -40,8 +40,8 @@ namespace DN.UI
 
 		public void LoseLife()
 		{
-			heartParticle.Play();
-			
+			livesAnimator.SetTrigger("LostLife");
+
 			CurrentLives--;
 			LifeLostEvent?.Invoke(CurrentLives);
 

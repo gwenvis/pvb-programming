@@ -1,4 +1,6 @@
-﻿using DN.LevelSelect.SceneManagment;
+﻿using DN.LevelSelect;
+using DN.LevelSelect.SceneManagment;
+using DN.Service;
 using DN.UI.LevelOpener.Object;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,6 +45,8 @@ namespace DN.UI
 
         private void Start()
         {
+            levelLoader = ServiceLocator.Locate<LevelMemoryService>().LevelLoader;
+
             maxPosX = animal.rectTransform.anchoredPosition.x + 3f;
             minPosX = animal.rectTransform.anchoredPosition.x - 3f;
             maxPosY = animal.rectTransform.anchoredPosition.y + 3f;

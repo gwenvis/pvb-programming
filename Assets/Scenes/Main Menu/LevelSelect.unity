@@ -584,8 +584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 3
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: 4edef764f8d687441b49cce4df0eca3b, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: 47916d316511ab3499bf02d6fc802e79, type: 2}
 --- !u!135 &55396119
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2147,7 +2147,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &78997538 stripped
 GameObject:
@@ -3033,8 +3033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 2
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: 95eb2d23bff98a44b8e4b6d5bb65b55f, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: d15b247771bf3e74eb7f90820c7c4878, type: 2}
 --- !u!135 &171068092
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3356,8 +3356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 2
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: 409ea10ba8595ba4598be9f2803db08f, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: c977baa8a4ede324aaa8ce3e594bbb8a, type: 2}
 --- !u!135 &207291269
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3767,7 +3767,7 @@ Transform:
   - {fileID: 1772250777}
   - {fileID: 1914329388}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254868566
 GameObject:
@@ -4971,7 +4971,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347124366
 GameObject:
@@ -5800,7 +5800,7 @@ Transform:
   m_LocalScale: {x: 40, y: 1, z: 40}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &441953643
 GameObject:
@@ -6137,8 +6137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 3
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: 0957b89fa5804b44ba3562024c032f9c, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: 6b58534ae38175848b142acb61d8e222, type: 2}
 --- !u!1 &478641993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6417,8 +6417,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 2
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: 18bd2fec42e49dc499a45800e4168d33, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: 5747063e7e0a65f478e139caadd77133, type: 2}
 --- !u!135 &489731946
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7350,8 +7350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 2
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: bc8072b9e2dd9284a8e9134c03a5e767, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: 1e8e61ff298b8ab4898ab2db5a4f9461, type: 2}
 --- !u!135 &550705579
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9784,8 +9784,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 2
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: ffbb212cf8b288241bca474fa13bc969, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: cc451ac09f7db0644b2b4c38f84de848, type: 2}
 --- !u!135 &770538893
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11151,7 +11151,7 @@ Transform:
   - {fileID: 1242382021}
   - {fileID: 331573931}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &870138825
 GameObject:
@@ -12842,7 +12842,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_TargetDisplay: 0
 --- !u!224 &1013119202
 RectTransform:
@@ -12860,7 +12860,7 @@ RectTransform:
   - {fileID: 1724263871}
   - {fileID: 483301768}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17548,7 +17548,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416249724
 GameObject:
@@ -18024,8 +18024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   selectedAnimal: 2
-  selectedPuzzle: 1
-  levelData: {fileID: 11400000, guid: f4861ca455d998441a1ad90d2db54995, type: 2}
+  selectedPuzzle: 2
+  levelData: {fileID: 11400000, guid: 7b46d3b8efb4aaf49a990cf16a6b4f44, type: 2}
 --- !u!135 &1462704464
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18298,7 +18298,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: af2a036263d160742a1963ee3afff473,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: af2a036263d160742a1963ee3afff473,
         type: 3}
@@ -19100,6 +19100,80 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1545847211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5321432639103264748, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803275, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelIntroLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321432640765803277, guid: 3ebe100b1259e1d48a38669dd02ec189,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ebe100b1259e1d48a38669dd02ec189, type: 3}
 --- !u!1 &1551211589
 GameObject:
   m_ObjectHideFlags: 0
@@ -19343,7 +19417,7 @@ Transform:
   - {fileID: 1228052087}
   - {fileID: 1508884087}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1560973971
 MonoBehaviour:
@@ -22178,7 +22252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1853801882
 MonoBehaviour:
@@ -22192,6 +22266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621370ccdaa776f44b8d6e4fa287dcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 2082437598}
 --- !u!114 &1853801883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23189,7 +23264,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1911721804
 GameObject:
@@ -23680,7 +23755,7 @@ Transform:
   - {fileID: 632076934}
   - {fileID: 563240727}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931775492
 GameObject:
@@ -24560,7 +24635,7 @@ Transform:
   - {fileID: 512138476}
   - {fileID: 560602102}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 30.011002, z: 0}
 --- !u!65 &1998810776
 BoxCollider:
@@ -25548,7 +25623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 37.39, y: -29.470001, z: -21.112001}
 --- !u!114 &2059372183
 MonoBehaviour:
@@ -25806,6 +25881,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2082437598 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5321432639103264745, guid: 3ebe100b1259e1d48a38669dd02ec189,
+    type: 3}
+  m_PrefabInstance: {fileID: 1545847211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2083306020
 GameObject:
   m_ObjectHideFlags: 0
@@ -26375,18 +26456,6 @@ PrefabInstance:
       propertyPath: vehicle
       value: 
       objectReference: {fileID: 8805797915755995841}
-    - target: {fileID: 2663549380601848411, guid: 9264d24d6a254f949a39353e3a95d2aa,
-        type: 3}
-      propertyPath: beginText
-      value: Hey daar! Alle dieren zijn kapot gegaan door een grote elektrische explosie!
-        We hebben jouw hulp nodig om alle robots in de wereld te repraren!
-      objectReference: {fileID: 0}
-    - target: {fileID: 2663549381136620479, guid: 9264d24d6a254f949a39353e3a95d2aa,
-        type: 3}
-      propertyPath: m_Text
-      value: Hey daar! Alle dieren zijn kapot gegaan door een grote elektrische explosie!
-        We hebben jouw hulp nodig om alle robots in de wereld te repraren!
-      objectReference: {fileID: 0}
     - target: {fileID: 2663549381337168825, guid: 9264d24d6a254f949a39353e3a95d2aa,
         type: 3}
       propertyPath: m_Sprite
