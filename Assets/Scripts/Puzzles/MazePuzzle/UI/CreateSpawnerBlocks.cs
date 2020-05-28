@@ -17,7 +17,7 @@ namespace DN.Puzzle.Maze.UI
 
 		private void Start()
 		{
-			float xPos = 0;//GetComponent<RectTransform>().rect.height/2;
+			float xPos = 0;
 			for(int i = 0; i < spawnBlocks.Length; i++)
 			{
 				GameObject block = Instantiate(spawnBlocks[i], transform);
@@ -27,7 +27,6 @@ namespace DN.Puzzle.Maze.UI
 				iDroppables.ForEach(x => Destroy(x as Component));
 
 				block.GetComponent<MazeDraggableItem>().GetHeight();
-				float height = spawnedBlocks.Count <= 0 ? block.GetComponent<MazeDraggableItem>().Height : spawnedBlocks[spawnedBlocks.Count - 1].GetComponent<MazeDraggableItem>().Height;
 				float width = block.GetComponent<RectTransform>().rect.width;
 				xPos = xPos + width + xOffset;
 				block.transform.localPosition = new Vector2(xPos, xOffset);

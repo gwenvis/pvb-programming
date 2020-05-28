@@ -19,7 +19,7 @@ namespace DN.Puzzle.Maze
 		[SerializeField] private GameObject playerPrefab;
 		[SerializeField] private Lives lives;
 		[SerializeField] private WinController winController;
-		[SerializeField] private Text blocktext;
+		[SerializeField] private TextMeshProUGUI blocktext;
 
 		private void Awake()
 		{
@@ -44,7 +44,8 @@ namespace DN.Puzzle.Maze
 			for (int i = 0; i < startItem.childCount; i++)
 			{
 				queue.Add((currentItem.GetComponent<IMovePlayerBlock>().GetMazeFunction(), currentItem));
-				currentItem = currentItem.DropZoneHolder.GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem;
+				if(i+1 < startItem.childCount)
+					currentItem = currentItem.DropZoneHolder.GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem;
 			}
 			Player.SetMoveQueue(queue);
 			Player.StartLevel();
@@ -55,6 +56,7 @@ namespace DN.Puzzle.Maze
 			Player = Instantiate(playerPrefab, transform).GetComponent<MazePlayerMovement>();
 			Player.SetTileSize(loadLevel.TileSize);
 			Player.SetStartPositionAndLevel(loadLevel.StartPosition, LoadLevel.Level);
+			Player.SetStartRotation();
 			Player.LoseLifeEvent += OnLoseLifeEvent;
 			Player.WinEvent += OnWinEvent;
 		}

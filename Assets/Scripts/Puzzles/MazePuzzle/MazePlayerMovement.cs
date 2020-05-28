@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
 
 namespace DN.Puzzle.Maze
 {
@@ -15,6 +17,11 @@ namespace DN.Puzzle.Maze
 		public Vector2 currentPosition { get; private set; }
 		public event Action LoseLifeEvent;
 		public event Action WinEvent;
+		[SerializeField] private GameObject wireObject;
+		[SerializeField] private Sprite wireStraight;
+		[SerializeField] private Sprite wireCorner;
+		private Quaternion startRotation;
+		private Dictionary<Vector2, GameObject> spawnedWires = new Dictionary<Vector2, GameObject>();
 		private MazeBlocks[][] level;
 		private Vector2 targetPosition = Vector2.zero;
 		private Quaternion targetRotation = Quaternion.identity;
@@ -26,20 +33,33 @@ namespace DN.Puzzle.Maze
 		private bool atEnd = false;
 		private bool lostGame = false;
 
+		private void Start()
+		{
+			LoseLifeEvent += RemoveWires;
+		}
+
+		private void RemoveWires()
+		{
+			foreach (KeyValuePair<Vector2, GameObject> wire in spawnedWires)
+			{
+				Destroy(wire.Value);
+			}
+			spawnedWires = new Dictionary<Vector2, GameObject>();
+		}
+
 		public async void StartLevel()
 		{
-			foreach((MazeFunctions function, MazeDraggableItem item) function in functionQueue)
+			foreach ((MazeFunctions function, MazeDraggableItem item) function in functionQueue)
 			{
 				await UseFunction(function);
 			}
-			if(!atEnd)
+			if (!atEnd)
 				LoseLifeEvent?.Invoke();
 		}
 
 		private async Task UseFunction((MazeFunctions function, MazeDraggableItem item) function)
 		{
-			Debug.Log(function);
-			switch(function.function)
+			switch (function.function)
 			{
 				case MazeFunctions.Forward:
 					WalkForward();
@@ -89,19 +109,26 @@ namespace DN.Puzzle.Maze
 
 		private async Task If((MazeFunctions function, MazeDraggableItem item) function)
 		{
-				List<(MazeFunctions function, MazeDraggableItem item)> newQueue =  IsPathInDirection(function.function) ? function.item.GetQueue() : 
-					(function.item as IfBlock).HasElse ? (function.item as IfBlock).GetElseQueue() : 
-					new List<(MazeFunctions function, MazeDraggableItem item)>();
+			List<(MazeFunctions function, MazeDraggableItem item)> newQueue = IsPathInDirection(function.function) ? function.item.GetQueue() :
+				(function.item as IfBlock).HasElse ? (function.item as IfBlock).GetElseQueue() :
+				new List<(MazeFunctions function, MazeDraggableItem item)>();
 
-				foreach ((MazeFunctions function, MazeDraggableItem item) item in newQueue)
-				{
-					await UseFunction(item);
-				}
+			foreach ((MazeFunctions function, MazeDraggableItem item) item in newQueue)
+			{
+				await UseFunction(item);
+			}
+		}
+
+		private GameObject CreateWire(Sprite sprite)
+		{
+			GameObject wire = Instantiate(wireObject, transform.parent);
+			wire.GetComponent<Image>().sprite = sprite;
+			return wire;
 		}
 
 		private bool IsPathInDirection(MazeFunctions function)
 		{
-			switch(function)
+			switch (function)
 			{
 				case MazeFunctions.IfForward:
 					Vector2 forwardPosition = currentPosition + GetDirection(direction);
@@ -128,7 +155,8 @@ namespace DN.Puzzle.Maze
 				await Awaiters.EndOfFrame;
 			}
 
-			if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None)
+			if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None ||
+			(int)currentPosition.y < 0 || (int)currentPosition.x < 0 || (int)currentPosition.y > 10 || (int)currentPosition.x > 10)
 			{
 				LoseLifeEvent?.Invoke();
 				lostGame = true;
@@ -145,8 +173,17 @@ namespace DN.Puzzle.Maze
 		private void WalkForward()
 		{
 			Vector2 prevPos = currentPosition;
+			GameObject wire = CreateWire(wireStraight);
+			wire.transform.SetPositionAndRotation(GetPositionOnGrid(prevPos), gameObject.transform.rotation);
+			if (!spawnedWires.ContainsKey(prevPos))
+			{
+				spawnedWires.Add(prevPos, wire);
+			}
+			else
+			{
+				Destroy(wire);
+			}
 			currentPosition += GetDirection(direction);
-			Debug.Log($"prevPos: {prevPos}, newPos: {currentPosition}, {GetDirection(direction)} {direction}");
 			targetPosition = GetPositionOnGrid(currentPosition);
 		}
 
@@ -158,12 +195,29 @@ namespace DN.Puzzle.Maze
 			level = newLevel;
 		}
 
+		public void SetStartRotation()
+		{
+			startRotation = transform.rotation;
+		}
+
 		public void Turn(int dir)
 		{
 			targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + dir));
 			direction = dir == 90 ? direction + 1 : direction - 1;
 
 			direction = GetDirectionNum(direction);
+
+			GameObject wire = CreateWire(wireCorner);
+			float additionalRotation = dir == 90 ? -90 : 0;
+			wire.transform.SetPositionAndRotation(GetPositionOnGrid(currentPosition), Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + additionalRotation)));
+			if (!spawnedWires.ContainsKey(currentPosition))
+			{
+				spawnedWires.Add(currentPosition, wire);
+			}
+			else
+			{
+				Destroy(wire);
+			}
 		}
 
 		private int GetDirectionNum(int dir)
@@ -191,6 +245,11 @@ namespace DN.Puzzle.Maze
 					return new Vector2(0, 1);
 			}
 			return Vector2.zero;
+		}
+
+		public void SetToFirstRotation()
+		{
+			transform.rotation = startRotation;
 		}
 
 		public void SetDirection(int dir)

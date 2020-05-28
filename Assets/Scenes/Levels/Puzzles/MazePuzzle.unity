@@ -637,6 +637,7 @@ MonoBehaviour:
   posX: -0.59
   posY: -0.15
   changePosition: 1
+  isSquare: 0
 --- !u!1 &537529603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1106,7 @@ MonoBehaviour:
   posX: -0.13
   posY: -0.61
   changePosition: 1
+  isSquare: 0
 --- !u!1 &1486125205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1200,7 @@ MonoBehaviour:
   posX: 0
   posY: 0
   changePosition: 0
+  isSquare: 0
 --- !u!1 &1498587879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1349,7 @@ MonoBehaviour:
   posX: 0
   posY: -0.3
   changePosition: 1
+  isSquare: 0
 --- !u!1 &1545104487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1497,11 @@ MonoBehaviour:
   loseScreen: {fileID: 655007055}
   winScreen: {fileID: 1562794371}
   winController: {fileID: 1545104493}
+  colorPuzzleLevelLoader: {fileID: 0}
+  assistant: {fileID: 0}
+  winContinueButton: {fileID: 0}
+  loseContinueButton: {fileID: 0}
+  loseRestartButton: {fileID: 0}
 --- !u!1 &1562794371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5842281215192754507, guid: 60627c51b5e50624daf93ebd9570a918,
@@ -1607,3 +1616,4 @@ MonoBehaviour:
   posX: -0.067
   posY: 0.127
   changePosition: 1
+  isSquare: 0

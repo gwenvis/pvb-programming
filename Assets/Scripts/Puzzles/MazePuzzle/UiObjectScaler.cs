@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace DN
 {
@@ -12,12 +13,19 @@ namespace DN
 		[SerializeField] private float posX;
 		[SerializeField] private float posY;
 		[SerializeField] private bool changePosition = false;
+		[SerializeField] private bool isSquare = false;
 		private RectTransform rectTransform;
 		private BoxCollider2D collider;
 		private bool useCollider;
 
-		private void Start()
+		private void Awake()
 		{
+			if(isSquare)
+			{
+				AspectRatioFitter af = gameObject.AddComponent<AspectRatioFitter>();
+				af.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
+			}
+				
 			rectTransform = GetComponent<RectTransform>();
 			useCollider = GetComponent<BoxCollider2D>();
 			if(useCollider)
@@ -43,6 +51,8 @@ namespace DN
 		private void SetValues()
 		{
 			rectTransform.sizeDelta = new Vector2(width * Screen.width, height * Screen.height);
+			if(isSquare)
+				transform.localScale = new Vector3(0.5f, 0.5f, 1);
 			if (useCollider)
 				collider.size = new Vector2(width * Screen.width, height * Screen.height);
 			if (changePosition)
