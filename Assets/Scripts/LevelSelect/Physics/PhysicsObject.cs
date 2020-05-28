@@ -14,7 +14,7 @@ namespace DN.LevelSelect.PhysicsObjects
 
             GetComponent<MeshCollider>().convex = true;
 
-            Rigidbody rigidbody = gameObject.AddComponent<Rigidbody>();
+            Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
             rigidbody.interpolation = RigidbodyInterpolation.Extrapolate;
 
         }

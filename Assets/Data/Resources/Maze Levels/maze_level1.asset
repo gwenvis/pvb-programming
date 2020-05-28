@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: maze_level1
   m_EditorClassIdentifier: 
   levelName: MazeLevel1
-  image: {fileID: 2800000, guid: 29418a5d4c4425d4c8ca6cd5e3d17ee2, type: 3}
+  image: {fileID: 2800000, guid: 667d08b900ebe624ea4b732118c57566, type: 3}
   maxBlocks: 20
