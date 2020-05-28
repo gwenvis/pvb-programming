@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: a55bf9c5d96146846b79ddc1d552e7d3,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -27901,7 +27901,7 @@ MonoBehaviour:
   acceleration: 40
   steering: 80
   gravity: 10
-  body: {fileID: 0}
+  body: {fileID: 2672287700127081582}
 --- !u!4 &8805797915755995852
 Transform:
   m_ObjectHideFlags: 0
