@@ -22,11 +22,6 @@ MonoBehaviour:
     id: b0b541c1-2399-411c-8ef5-e81bf9663ed8
   - <LineColor>k__BackingField: 1
     <StartingNodeId>k__BackingField: b75fa721-094c-4dc8-b146-5277b6161e81
-    <EndNodeId>k__BackingField: 28fad7fa-434c-423a-abdf-a394817af2c4
-    <CanTraverseBothWays>k__BackingField: 0
-    id: 979e2174-fa3a-4d57-8d5f-e947889df55c
-  - <LineColor>k__BackingField: 1
-    <StartingNodeId>k__BackingField: b75fa721-094c-4dc8-b146-5277b6161e81
     <EndNodeId>k__BackingField: f74eea31-7dc8-4665-9a29-f7f40298d8f1
     <CanTraverseBothWays>k__BackingField: 1
     id: 0e036a28-131a-4431-83df-1c502eedf0e0
