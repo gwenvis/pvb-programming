@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db534100913940940bdfd4943b96fc74, type: 3}
-  m_Name: maze_level1
+  m_Name: maze_level10
   m_EditorClassIdentifier: 
-  levelName: MazeLevel1
-  image: {fileID: 2800000, guid: 667d08b900ebe624ea4b732118c57566, type: 3}
+  levelName: maze_level10
+  image: {fileID: 2800000, guid: 916936cf7fd3fc64b9851a6888a4852d, type: 3}
   maxBlocks: 20
