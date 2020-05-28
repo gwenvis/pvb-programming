@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacbad7531af4025a5c05ce9b15ecbd1, type: 3}
+  m_Name: clevel6
+  m_EditorClassIdentifier: 
+  levelName: level6
+  <SavedSize>k__BackingField: {x: 372.66, y: 296.31}
+  lines:
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 9a3f21b3-6213-4d15-abb1-7145f4917dfc
+    <EndNodeId>k__BackingField: a3597cd6-73fe-476c-bceb-ebac05c327bb
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 74354f5b-8cd5-4f83-8e62-39cc8e647224
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: a3597cd6-73fe-476c-bceb-ebac05c327bb
+    <EndNodeId>k__BackingField: 1e481186-749e-4beb-a59f-6951c3f810a7
+    <CanTraverseBothWays>k__BackingField: 1
+    id: fe6a8bb4-b658-488f-8a92-c85217423652
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 1e481186-749e-4beb-a59f-6951c3f810a7
+    <EndNodeId>k__BackingField: 3e3bd55f-836a-47fd-aa71-3a8d35382481
+    <CanTraverseBothWays>k__BackingField: 0
+    id: eee4ea68-952d-458b-a6c5-7d13ac68e1c9
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: 1e481186-749e-4beb-a59f-6951c3f810a7
+    <EndNodeId>k__BackingField: 845847c8-ab13-4209-8b92-dec442fd2735
+    <CanTraverseBothWays>k__BackingField: 0
+    id: eadd0859-71d4-4c52-9b9f-19e4d9167c96
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: 1e481186-749e-4beb-a59f-6951c3f810a7
+    <EndNodeId>k__BackingField: 9a3f21b3-6213-4d15-abb1-7145f4917dfc
+    <CanTraverseBothWays>k__BackingField: 1
+    id: bee05aa4-e04d-4ff8-8045-4b99fb1c1574
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 9a3f21b3-6213-4d15-abb1-7145f4917dfc
+    <EndNodeId>k__BackingField: 30cf1c2f-ffb4-4255-b518-d88f3cc83771
+    <CanTraverseBothWays>k__BackingField: 0
+    id: caf80977-caa3-4512-a6c4-85e04f09d15f
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: 30cf1c2f-ffb4-4255-b518-d88f3cc83771
+    <EndNodeId>k__BackingField: a3597cd6-73fe-476c-bceb-ebac05c327bb
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 02a6715d-c36d-4b81-a8b6-cdd7b0763d86
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 3e3bd55f-836a-47fd-aa71-3a8d35382481
+    <EndNodeId>k__BackingField: 30cf1c2f-ffb4-4255-b518-d88f3cc83771
+    <CanTraverseBothWays>k__BackingField: 0
+    id: e8b9a385-7264-4e01-8acb-679ccb52a899
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 845847c8-ab13-4209-8b92-dec442fd2735
+    <EndNodeId>k__BackingField: 3e3bd55f-836a-47fd-aa71-3a8d35382481
+    <CanTraverseBothWays>k__BackingField: 1
+    id: f5e5cc81-f257-4973-8dff-79627f70e19b
+  nodes:
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 1
+    <Position>k__BackingField: {x: -148.71951, y: 0.80389017, z: 0}
+    id: 9a3f21b3-6213-4d15-abb1-7145f4917dfc
+  - <IsFinish>k__BackingField: 1
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: 78.78134, y: 88.4278, z: 0}
+    id: 3e3bd55f-836a-47fd-aa71-3a8d35382481
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -6.431121, y: -86.01614, z: 0}
+    id: 1e481186-749e-4beb-a59f-6951c3f810a7
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: 113.34845, y: -34.567276, z: 0}
+    id: 845847c8-ab13-4209-8b92-dec442fd2735
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -24.920595, y: 95.66278, z: 0}
+    id: 30cf1c2f-ffb4-4255-b518-d88f3cc83771
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -15.273912, y: 16.077803, z: 0}
+    id: a3597cd6-73fe-476c-bceb-ebac05c327bb
+  draggableNodes: 0000000001000000020000000000000002000000

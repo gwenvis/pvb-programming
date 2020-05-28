@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacbad7531af4025a5c05ce9b15ecbd1, type: 3}
+  m_Name: cLevel4
+  m_EditorClassIdentifier: 
+  levelName: Level4
+  <SavedSize>k__BackingField: {x: 372.66, y: 296.31}
+  lines:
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 15f45fc3-6f7d-4f0d-a89e-d5dbac14333d
+    <EndNodeId>k__BackingField: 555d600b-0ed0-4ddf-ae70-576808332ade
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 586bab22-befe-43c7-903b-0eec8396a12a
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: 555d600b-0ed0-4ddf-ae70-576808332ade
+    <EndNodeId>k__BackingField: 15f45fc3-6f7d-4f0d-a89e-d5dbac14333d
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 18810ef7-4091-40fe-a5de-5bacf60149d7
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: 555d600b-0ed0-4ddf-ae70-576808332ade
+    <EndNodeId>k__BackingField: 4e858951-aece-4193-b930-ad812cc285e1
+    <CanTraverseBothWays>k__BackingField: 1
+    id: bafde0b5-8c3a-4d75-bac7-9f20c684ef1f
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 0cc9d10e-4052-419e-a444-81c396249a10
+    <EndNodeId>k__BackingField: 555d600b-0ed0-4ddf-ae70-576808332ade
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 901c3493-8325-44bc-b392-04cd0402019b
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 555d600b-0ed0-4ddf-ae70-576808332ade
+    <EndNodeId>k__BackingField: ccd4c72b-69f4-415f-87e8-ed2c328d59bd
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 229f427c-dd32-430d-bb72-892389464300
+  - <LineColor>k__BackingField: 0
+    <StartingNodeId>k__BackingField: ccd4c72b-69f4-415f-87e8-ed2c328d59bd
+    <EndNodeId>k__BackingField: 0cc9d10e-4052-419e-a444-81c396249a10
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 06b5299d-c149-4011-833d-32250cf20c0a
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 0cc9d10e-4052-419e-a444-81c396249a10
+    <EndNodeId>k__BackingField: 4e858951-aece-4193-b930-ad812cc285e1
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 0a555c2e-0b6a-4b3e-bbc9-8938e1b6bde1
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 15f45fc3-6f7d-4f0d-a89e-d5dbac14333d
+    <EndNodeId>k__BackingField: 4e858951-aece-4193-b930-ad812cc285e1
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 3177ac9d-50c1-4372-8239-04b51ec4e8a8
+  - <LineColor>k__BackingField: 2
+    <StartingNodeId>k__BackingField: 15f45fc3-6f7d-4f0d-a89e-d5dbac14333d
+    <EndNodeId>k__BackingField: ccd4c72b-69f4-415f-87e8-ed2c328d59bd
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 73ea995a-90cd-46dd-95a2-f64d127955b2
+  - <LineColor>k__BackingField: 1
+    <StartingNodeId>k__BackingField: 0cc9d10e-4052-419e-a444-81c396249a10
+    <EndNodeId>k__BackingField: ccd4c72b-69f4-415f-87e8-ed2c328d59bd
+    <CanTraverseBothWays>k__BackingField: 0
+    id: 9295d0d0-2a90-4af5-b537-75bcf78795e0
+  nodes:
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 1
+    <Position>k__BackingField: {x: -149.52336, y: -76.36952, z: 0}
+    id: 15f45fc3-6f7d-4f0d-a89e-d5dbac14333d
+  - <IsFinish>k__BackingField: 1
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: 98.074455, y: 83.60448, z: 0}
+    id: 0cc9d10e-4052-419e-a444-81c396249a10
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -110.9367, y: 104.50561, z: 0}
+    id: ccd4c72b-69f4-415f-87e8-ed2c328d59bd
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: 90.83946, y: -56.272312, z: 0}
+    id: 4e858951-aece-4193-b930-ad812cc285e1
+  - <IsFinish>k__BackingField: 0
+    <IsStart>k__BackingField: 0
+    <Position>k__BackingField: {x: -30.547825, y: 12.0583515, z: 0}
+    id: 555d600b-0ed0-4ddf-ae70-576808332ade
+  draggableNodes: 00000000010000000200000000000000
