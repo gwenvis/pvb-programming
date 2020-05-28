@@ -24,6 +24,8 @@ namespace DN.UI
 
         [SerializeField] private UIAssistant assistant;
 
+        [SerializeField] private Animator transition;
+
         [Header("Buttons")] [SerializeField] private Button winContinueButton;
         [SerializeField] private Button loseContinueButton;
         [SerializeField] private Button loseRestartButton;
@@ -112,13 +114,20 @@ namespace DN.UI
         public void ContinueToLevelselectLose()
         {
             ResetLives();
-            levelLoader.LoadLevelSelectFromPuzzle(false);
+            StartTransition();
+            StartCoroutine(levelLoader.LoadLevelSelectFromPuzzle(false));
         }
 
         public void ContinueToLevelselectWon()
         {
             ResetLives();
-            levelLoader.LoadLevelSelectFromPuzzle(true);
+            StartTransition();
+            StartCoroutine(levelLoader.LoadLevelSelectFromPuzzle(true));
+        }
+
+        private void StartTransition()
+        {
+            transition.SetTrigger("Start");
         }
 
         private void ResetLives()

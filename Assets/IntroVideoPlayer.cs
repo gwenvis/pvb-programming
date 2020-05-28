@@ -26,7 +26,7 @@ namespace DN.Intro
 
         private void Endreached(UnityEngine.Video.VideoPlayer vp)
         {
-            levelLoader.StartLevelSelect();
+            StartCoroutine(levelLoader.LoadLevelSelect());
         }
 
         private IEnumerator PlayVideo()

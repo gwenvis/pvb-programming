@@ -40,7 +40,6 @@ namespace DN.UI
 
 		public void LoseLife()
 		{
-			print("gugugunk");
 			livesAnimator.SetTrigger("LostLife");
 
 			CurrentLives--;

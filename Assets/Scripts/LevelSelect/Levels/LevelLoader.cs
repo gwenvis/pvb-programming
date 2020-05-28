@@ -11,6 +11,8 @@ namespace DN.LevelSelect.SceneManagment
     /// </summary>
     public class LevelLoader : MonoBehaviour
     {
+        [SerializeField] Animator transition;
+
         public GameObject LevelObject => levelObject;
         public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
         public LevelDataEditor.SelectedAnimal SelectedAnimal => selectedAnimal;
@@ -29,12 +31,16 @@ namespace DN.LevelSelect.SceneManagment
 
         private string prevSceneLoaded;
 
-        public void LoadInBetweenScene()
+        public IEnumerator LoadInBetweenScene()
         {
             ServiceLocator.Locate<SongService>().ExitingLevelSelect();
             
             if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
+                transition.SetTrigger("Start");
+
+                yield return new WaitForSeconds(2f);
+
                 switch (selectedAnimal)
                 {
                     case LevelDataEditor.SelectedAnimal.Bug:
@@ -106,22 +112,35 @@ namespace DN.LevelSelect.SceneManagment
             levelData = level;
         }
 
-        public void LoadLevelSelect()
+        public void StartIntroVideo()
         {
-            void SetScene(AsyncOperation operation)
-            {
-                operation.allowSceneActivation = true;
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName(LEVEL_SELECT_NAME));
-                Debug.Log("loading complete");
-            }
-
-            var loadSceneAsync = SceneManager.LoadSceneAsync(LEVEL_SELECT_NAME, LoadSceneMode.Additive);
-            loadSceneAsync.completed += SetScene;
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            StartCoroutine(IntroVideo());
         }
 
-        public void LoadLevelSelectFromPuzzle(bool isGameWon)
+        public IEnumerator IntroVideo()
         {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(2f);
+
+            SceneManager.LoadScene("IntroVideo", LoadSceneMode.Single);
+        }
+
+        public IEnumerator LoadLevelSelect()
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(2f);
+
+            GetAndSetScene("LevelSelect");
+        }
+
+        public IEnumerator LoadLevelSelectFromPuzzle(bool isGameWon)
+        {
+            yield return new WaitForSeconds(2f);
+
+            transition.SetTrigger("End");
+
             GetAndSetScene(LEVEL_SELECT_NAME);
             levelObject.GetComponent<LevelDataEditor>().isCompleted = isGameWon;
             ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
