@@ -7,6 +7,10 @@
 	{
 		Forward, 
 		TurnLeft, 
-		TurnRight
+		TurnRight,
+		UntilEnd,
+		IfRight,
+		IfLeft,
+		IfForward
 	}
 }

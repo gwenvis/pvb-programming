@@ -9,7 +9,7 @@ namespace DN.Puzzle.Maze.UI
 	{
 		MazeFunctions function = MazeFunctions.Forward;
 
-		public MazeFunctions GetMazeFunctions()
+		public MazeFunctions GetMazeFunction()
 		{
 			return function;
 		}
