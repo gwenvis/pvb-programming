@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1316085827020378416}
   - component: {fileID: 1316085827020378430}
   - component: {fileID: 5159388818203185594}
+  - component: {fileID: -6110408805268452080}
   m_Layer: 5
   m_Name: If Block
   m_TagString: Untagged
@@ -147,6 +148,21 @@ MonoBehaviour:
   dropZoneHolder: {fileID: 1316085827410253660}
   elseObject: {fileID: 0}
   dropdown: {fileID: 8124616173986643795}
+--- !u!114 &-6110408805268452080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316085827020378423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d36fa24a0f33648bc5e6a20f635019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropClip: {fileID: 8300000, guid: 1a4fbe282a7110641807c26b7d6f205f, type: 3}
+  pickClip: {fileID: 8300000, guid: 4697e67bf71c7d54d95ea0482194260d, type: 3}
+  volume: 0.6
 --- !u!1 &1316085827410253660
 GameObject:
   m_ObjectHideFlags: 0
