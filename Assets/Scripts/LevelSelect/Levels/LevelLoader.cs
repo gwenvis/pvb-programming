@@ -1,4 +1,5 @@
-﻿using DN.Service;
+﻿using System;
+using DN.Service;
 using System.Collections;
 using DN.Music;
 using UnityEngine;
@@ -34,6 +35,11 @@ namespace DN.LevelSelect.SceneManagment
         private const string SHARK_IBS_NAME = "LevelOpenerShark";
 
         private string prevSceneLoaded;
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
 
         public IEnumerator LoadInBetweenScene()
         {
@@ -101,7 +107,8 @@ namespace DN.LevelSelect.SceneManagment
                 SceneManager.UnloadScene(prevSceneName);
             }
 
-            enabled = true;
+            if(this)
+                enabled = true;
         }
 
         public void LoadPuzzleScene()
@@ -129,7 +136,8 @@ namespace DN.LevelSelect.SceneManagment
 
             yield return new WaitForSeconds(2f);
 
-            SceneManager.LoadScene("IntroVideo", LoadSceneMode.Single);
+            //SceneManager.LoadScene("IntroVideo", LoadSceneMode.Additive);
+            GetAndSetScene("IntroVideo");
         }
 
         public IEnumerator LoadLevelSelect()
