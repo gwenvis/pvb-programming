@@ -68,6 +68,8 @@ namespace DN.Puzzle.Maze
 
 		private async Task UseFunction((MazeFunctions function, MazeDraggableItem item) function)
 		{
+			if (atEnd) return;
+			
 			switch (function.function)
 			{
 				case MazeFunctions.Forward:
