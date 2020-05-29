@@ -140,6 +140,24 @@ namespace DN.LevelSelect.SceneManagment
             GetAndSetScene("IntroVideo");
         }
 
+        public IEnumerator StartEndAnimation()
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(2f);
+
+            GetAndSetScene("EndVideo");
+        }
+
+        public IEnumerator StartEndTransition()
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(2f);
+
+            GetAndSetScene("MainMenu");
+        }
+
         public IEnumerator LoadLevelSelect()
         {
             transition.SetTrigger("Start");

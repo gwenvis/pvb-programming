@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1291,7 +1291,7 @@ PrefabInstance:
     - target: {fileID: 3647010254115278691, guid: 44ade6c89e432b544aaa3d0121ff254d,
         type: 3}
       propertyPath: beginText
-      value: Helpt dit dier! Zijn navigatiesysteem is gebroken. Kan jij dit repareren
+      value: Help dit dier! Zijn navigatiesysteem is gebroken. Kan jij dit repareren
         door het doolhof te lopen?
       objectReference: {fileID: 0}
     - target: {fileID: 3647010254522643192, guid: 44ade6c89e432b544aaa3d0121ff254d,
