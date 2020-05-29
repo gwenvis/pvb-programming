@@ -65,12 +65,14 @@ namespace DN.Puzzle.Maze
 		{
 			winController.WonGame();
 			dropZone.DestroyAllBlocks();
+			SpawnBlock.ResetSpawnedBlocks();
 		}
 
 		private void OnLoseLifeEvent()
 		{
 			lives.LoseLife();
 			dropZone.DestroyAllBlocks();
+			SpawnBlock.ResetSpawnedBlocks();
 			Player.SetMoveQueue(null);
 			Player.SetDirection(0);
 			Player.SetStartPositionAndLevel(loadLevel.StartPosition, LoadLevel.Level);

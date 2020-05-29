@@ -26,6 +26,9 @@ Dieren fabriek is een spel waarin je de wereld rondreist om defecte dieren te he
 ## Software Analyse 
 De software analyse kun je vinden in ons [Software analyse document](https://docs.google.com/document/d/e/2PACX-1vSD96ENP5xE5E2LSb33igb1q_GbYd0Y0GpO1QShqAvM_kdfQlUsmNVh_u8BSa2KL1ZIOrte3dbTI3Xg/pub).
 
+## Demo
+Je kan [hier](https://youtu.be/zODPZQtr3D8) klikken om de trailer te zien. En je kan [hier](https://github.com/stepperman/pvb-programming/releases/tag/v1.0) klikken om de executable te downloaden.
+
 ## Portfolio
 Hier beneden staat iedereen hun portfolios.
 
@@ -36,8 +39,8 @@ Hier beneden staat iedereen hun portfolios.
 
 - [Portfolio Tijmen Bruijn]()
 - [Portfolio Stijn Leidelmeyer]()
-- [Portfolio Sven de Langen]()
-- [Portfolio Michael van de Kant]()
+- [Portfolio Sven de Langen](https://svendelangen.myportfolio.com/work)
+- [Portfolio Michael van de Kant](http://www.michaelvandekant.com/)
 
 
 ![CI](https://github.com/stepperman/pvb-programming/workflows/CI/badge.svg)

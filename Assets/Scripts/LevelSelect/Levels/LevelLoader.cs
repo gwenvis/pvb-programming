@@ -1,4 +1,5 @@
-﻿using DN.Service;
+﻿using System;
+using DN.Service;
 using System.Collections;
 using DN.Music;
 using UnityEngine;
@@ -29,11 +30,21 @@ namespace DN.LevelSelect.SceneManagment
         private const string LEVEL_SELECT_NAME = "LevelSelect";
         private const string BUG_IBS_NAME = "LevelOpenerBug";
         private const string HOG_IBS_NAME = "LevelOpenerHog";
+        private const string CRICKET_IBS_NAME = "LevelOpenerCricket";
+        private const string DRAGONFLY_IBS_NAME = "LevelOpenerDragonFly";
+        private const string SEALION_IBS_NAME = "LevelOpenerSeaLion";
+        private const string STICKTAIL_IBS_NAME = "LevelOpenerStickTail";
+        private const string WALRUS_IBS_NAME = "LevelOpenerWalrus";
         private const string PENGUIN_IBS_NAME = "LevelOpenerPenguin";
         private const string RACOON_IBS_NAME = "LevelOpenerRacoon";
         private const string SHARK_IBS_NAME = "LevelOpenerShark";
 
         private string prevSceneLoaded;
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
 
         public IEnumerator LoadInBetweenScene()
         {
@@ -49,6 +60,26 @@ namespace DN.LevelSelect.SceneManagment
                 
                 switch (selectedAnimal)
                 {
+                    case LevelDataEditor.SelectedAnimal.DragonFly:
+                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Cricket:
+                        GetAndSetScene(CRICKET_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.SeaLion:
+                        GetAndSetScene(SEALION_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.StickTail:
+                        GetAndSetScene(STICKTAIL_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Walrus:
+                        GetAndSetScene(WALRUS_IBS_NAME);
+                        break;
+
                     case LevelDataEditor.SelectedAnimal.Bug:
                         GetAndSetScene(BUG_IBS_NAME);
                         break;
@@ -57,11 +88,11 @@ namespace DN.LevelSelect.SceneManagment
                         GetAndSetScene(HOG_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Racoon:
+                    case LevelDataEditor.SelectedAnimal.Penguin:
                         GetAndSetScene(PENGUIN_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Penguin:
+                    case LevelDataEditor.SelectedAnimal.Racoon:
                         GetAndSetScene(RACOON_IBS_NAME);
                         break;
 
@@ -101,7 +132,8 @@ namespace DN.LevelSelect.SceneManagment
                 SceneManager.UnloadScene(prevSceneName);
             }
 
-            enabled = true;
+            if(this)
+                enabled = true;
         }
 
         public void LoadPuzzleScene()
@@ -129,7 +161,8 @@ namespace DN.LevelSelect.SceneManagment
 
             yield return new WaitForSeconds(2f);
 
-            SceneManager.LoadScene("IntroVideo", LoadSceneMode.Single);
+            //SceneManager.LoadScene("IntroVideo", LoadSceneMode.Additive);
+            GetAndSetScene("IntroVideo");
         }
 
         public IEnumerator StartEndAnimation()

@@ -82,7 +82,6 @@ namespace DN.Puzzle.Maze.UI
 		{
 			if(GetComponent<BlockDropZone>())
 				(GetComponent<BlockDropZone>().CurrentObj as MazeDraggableItem)?.DestroyAllChildren();
-			SpawnBlock.DeleteBlock();
 			CallIsDestroyEvent();
 			Destroy(gameObject);
 		}

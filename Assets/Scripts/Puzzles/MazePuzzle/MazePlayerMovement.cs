@@ -38,6 +38,12 @@ namespace DN.Puzzle.Maze
 			LoseLifeEvent += RemoveWires;
 		}
 
+		private void ResetBools()
+		{
+			atEnd = false;
+			lostGame = false;
+		}
+
 		private void RemoveWires()
 		{
 			foreach (KeyValuePair<Vector2, GameObject> wire in spawnedWires)
@@ -55,6 +61,9 @@ namespace DN.Puzzle.Maze
 			}
 			if (!atEnd)
 				LoseLifeEvent?.Invoke();
+
+			if (lostGame)
+				ResetBools();
 		}
 
 		private async Task UseFunction((MazeFunctions function, MazeDraggableItem item) function)
@@ -148,7 +157,7 @@ namespace DN.Puzzle.Maze
 					return nextLeftBlock == MazeBlocks.Path || nextLeftBlock == MazeBlocks.End;
 				case MazeFunctions.IfRight:
 					Vector2 rightPosition = currentPosition + GetDirection(GetDirectionNum(direction - 1));
-					if((int)rightPosition.y < 0 || (int)rightPosition.x < 0 || (int)rightPosition.y > 9 || (int)rightPosition.x > 9)
+					if ((int)rightPosition.y < 0 || (int)rightPosition.x < 0 || (int)rightPosition.y > 9 || (int)rightPosition.x > 9)
 					{
 						return false;
 					}
@@ -169,9 +178,6 @@ namespace DN.Puzzle.Maze
 				transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
 				await Awaiters.EndOfFrame;
 			}
-
-			Debug.Log(level[(int)currentPosition.y][(int)currentPosition.x]);
-
 
 			if (level[(int)currentPosition.y][(int)currentPosition.x] == MazeBlocks.None ||
 			(int)currentPosition.y < 0 || (int)currentPosition.x < 0 || (int)currentPosition.y > 9 || (int)currentPosition.x > 9)
