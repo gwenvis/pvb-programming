@@ -88,11 +88,11 @@ namespace DN.LevelSelect.SceneManagment
                         GetAndSetScene(HOG_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Racoon:
+                    case LevelDataEditor.SelectedAnimal.Penguin:
                         GetAndSetScene(PENGUIN_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Penguin:
+                    case LevelDataEditor.SelectedAnimal.Racoon:
                         GetAndSetScene(RACOON_IBS_NAME);
                         break;
 
