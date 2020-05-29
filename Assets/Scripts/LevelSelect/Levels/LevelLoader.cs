@@ -126,6 +126,15 @@ namespace DN.LevelSelect.SceneManagment
             SceneManager.LoadScene("IntroVideo", LoadSceneMode.Single);
         }
 
+        public IEnumerator StartEndAnimation()
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(2f);
+
+            GetAndSetScene("EndVideo");
+        }
+
         public IEnumerator StartEndTransition()
         {
             transition.SetTrigger("Start");
