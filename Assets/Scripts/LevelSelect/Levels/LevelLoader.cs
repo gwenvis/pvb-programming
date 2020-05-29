@@ -60,7 +60,7 @@ namespace DN.LevelSelect.SceneManagment
                 
                 switch (selectedAnimal)
                 {
-                    case LevelDataEditor.SelectedAnimal.Dragonfly:
+                    case LevelDataEditor.SelectedAnimal.DragonFly:
                         GetAndSetScene(DRAGONFLY_IBS_NAME);
                         break;
 
@@ -68,11 +68,11 @@ namespace DN.LevelSelect.SceneManagment
                         GetAndSetScene(CRICKET_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Sealion:
+                    case LevelDataEditor.SelectedAnimal.SeaLion:
                         GetAndSetScene(SEALION_IBS_NAME);
                         break;
 
-                    case LevelDataEditor.SelectedAnimal.Sticktail:
+                    case LevelDataEditor.SelectedAnimal.StickTail:
                         GetAndSetScene(STICKTAIL_IBS_NAME);
                         break;
 
