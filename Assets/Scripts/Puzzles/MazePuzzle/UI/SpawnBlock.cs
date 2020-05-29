@@ -39,9 +39,9 @@ namespace DN.Puzzle.Maze.UI
 			ChangedBlocksEvent?.Invoke(SpawnedBlocks);
 		}
 
-		public static void DeleteBlock()
+		public static void ResetSpawnedBlocks()
 		{
-			SpawnedBlocks--;
+			SpawnedBlocks = 0;
 			ChangedBlocksEvent?.Invoke(SpawnedBlocks);
 		}
 	}
