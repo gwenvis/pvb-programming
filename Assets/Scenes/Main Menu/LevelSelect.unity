@@ -3032,7 +3032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 9
   selectedPuzzle: 2
   levelData: {fileID: 11400000, guid: d15b247771bf3e74eb7f90820c7c4878, type: 2}
 --- !u!135 &171068092
@@ -3355,7 +3355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 9
   selectedPuzzle: 2
   levelData: {fileID: 11400000, guid: c977baa8a4ede324aaa8ce3e594bbb8a, type: 2}
 --- !u!135 &207291269
@@ -6295,7 +6295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 3
+  selectedAnimal: 5
   selectedPuzzle: 2
   levelData: {fileID: 11400000, guid: 6b58534ae38175848b142acb61d8e222, type: 2}
 --- !u!1 &478641993
@@ -6575,7 +6575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 10
   selectedPuzzle: 2
   levelData: {fileID: 11400000, guid: 5747063e7e0a65f478e139caadd77133, type: 2}
 --- !u!135 &489731946
@@ -7508,7 +7508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 4
   selectedPuzzle: 2
   levelData: {fileID: 11400000, guid: 1e8e61ff298b8ab4898ab2db5a4f9461, type: 2}
 --- !u!135 &550705579
@@ -8243,7 +8243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 1
+  selectedAnimal: 7
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: 0957b89fa5804b44ba3562024c032f9c, type: 2}
 --- !u!135 &619265040
@@ -9942,7 +9942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 4
   selectedPuzzle: 2
   levelData: {fileID: 11400000, guid: cc451ac09f7db0644b2b4c38f84de848, type: 2}
 --- !u!135 &770538893
@@ -13657,7 +13657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 1
+  selectedAnimal: 8
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: d341cb1bd3d153c419dbc9d4157fa49a, type: 2}
 --- !u!135 &1048222826
@@ -15105,7 +15105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 1
+  selectedAnimal: 2
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: 1e4a7e2bdb6429a4ea0ad23c0a0c06c4, type: 2}
 --- !u!1 &1185008042
@@ -18347,7 +18347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 6
   selectedPuzzle: 2
   levelData: {fileID: 11400000, guid: 7b46d3b8efb4aaf49a990cf16a6b4f44, type: 2}
 --- !u!135 &1462704464
@@ -19729,6 +19729,7 @@ MonoBehaviour:
     type: 3}
   borderParent: {fileID: 1928622545}
   biomeUI: {fileID: 1560973971}
+  levelLoader: {fileID: 0}
 --- !u!4 &1560973970
 Transform:
   m_ObjectHideFlags: 0
@@ -20469,7 +20470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 4
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: 95eb2d23bff98a44b8e4b6d5bb65b55f, type: 2}
 --- !u!135 &1615004172
@@ -22638,7 +22639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 2
+  selectedAnimal: 7
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: d4c1ec898b063c74c8664e8ec75ad35f, type: 2}
 --- !u!135 &1850531408
@@ -23443,7 +23444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 1
+  selectedAnimal: 8
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: bc8072b9e2dd9284a8e9134c03a5e767, type: 2}
 --- !u!135 &1897381692
@@ -23977,7 +23978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 1
+  selectedAnimal: 7
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: f4861ca455d998441a1ad90d2db54995, type: 2}
 --- !u!135 &1921131800
@@ -25165,7 +25166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 1
+  selectedAnimal: 10
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: 1844d9bdbf7a1a04793addda60575cac, type: 2}
 --- !u!135 &2004222945
@@ -25954,7 +25955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
-  selectedAnimal: 1
+  selectedAnimal: 6
   selectedPuzzle: 1
   levelData: {fileID: 11400000, guid: 7cb9f56ab93da56498f0d7f9e6c6f0d3, type: 2}
 --- !u!135 &2066598499
