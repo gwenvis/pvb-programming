@@ -1,6 +1,7 @@
 ﻿using DN.LevelSelect.SceneManagment;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -14,12 +15,15 @@ namespace DN.Intro
     {
         [SerializeField] private RawImage imageVideo;
         [SerializeField] private LevelLoader levelLoader;
+        [SerializeField] private string videoPath;
 
         private VideoPlayer videoPlayer;
 
         private void Start()
         {
             videoPlayer = GetComponent<VideoPlayer>();
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+                videoPlayer.url = videoPath;
             StartCoroutine(PlayVideo());
             videoPlayer.loopPointReached += Endreached;
         }
