@@ -24,7 +24,7 @@ namespace DN.Intro
             videoPlayer = GetComponent<VideoPlayer>();
             if (Application.platform == RuntimePlatform.WebGLPlayer)
                 videoPlayer.url = videoPath;
-            StartCoroutine(PlayVideo());
+            StartCoroutine(PlayIntroVideo());
             videoPlayer.loopPointReached += Endreached;
         }
 
