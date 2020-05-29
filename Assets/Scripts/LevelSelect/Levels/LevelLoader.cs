@@ -12,6 +12,10 @@ namespace DN.LevelSelect.SceneManagment
     public class LevelLoader : MonoBehaviour
     {
         [SerializeField] Animator transition;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip enterLevelSelectClip;
+        [SerializeField] private AudioClip exitLevelSelectClip;
+        [SerializeField] private AudioClip exitLevelSelectLoseClip;
 
         public GameObject LevelObject => levelObject;
         public LevelDataEditor.SelectedPuzzle SelectedPuzzle => selectedPuzzle;
@@ -35,12 +39,14 @@ namespace DN.LevelSelect.SceneManagment
         {
             ServiceLocator.Locate<SongService>().ExitingLevelSelect();
             
+            
             if (levelObject.GetComponent<LevelDataEditor>().PuzzleSelected == selectedPuzzle)
             {
                 transition.SetTrigger("Start");
 
                 yield return new WaitForSeconds(2f);
-
+                if (enterLevelSelectClip && audioSource) audioSource.PlayOneShot(enterLevelSelectClip);
+                
                 switch (selectedAnimal)
                 {
                     case LevelDataEditor.SelectedAnimal.Bug:
@@ -163,6 +169,9 @@ namespace DN.LevelSelect.SceneManagment
             levelObject.GetComponent<LevelDataEditor>().isCompleted = isGameWon;
             ServiceLocator.Locate<LevelMemoryService>().BiomeController.CompletedLevel();
             ServiceLocator.Locate<SongService>().EnteringLevelSelect();
+
+            AudioClip clip = isGameWon ? exitLevelSelectClip : exitLevelSelectLoseClip;
+            if (clip && audioSource) audioSource.PlayOneShot(clip);
         }
     }
 }

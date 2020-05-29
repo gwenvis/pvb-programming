@@ -10,6 +10,7 @@ namespace DN.Puzzle.Maze.UI
 	/// </summary>
 	public class MazeDropZone : MonoBehaviour, IDroppable
 	{
+		[SerializeField] private GameObject scrollRect;
 		private List<DraggableItem> currentObjects = new List<DraggableItem>();
 
 		public void Drop(DraggableItem droppedObject)
@@ -19,7 +20,7 @@ namespace DN.Puzzle.Maze.UI
 				currentObjects.Add(droppedObject);
 				(droppedObject as MazeDraggableItem).IsDestroyedEvent += OnDestroyedEvent;
 			}
-
+			droppedObject.transform.SetParent(scrollRect.transform);
 			RectTransform blockTransform = droppedObject.GetComponent<RectTransform>();
 
 			if (blockTransform.localPosition.x - blockTransform.rect.width/2 < transform.localPosition.x)
