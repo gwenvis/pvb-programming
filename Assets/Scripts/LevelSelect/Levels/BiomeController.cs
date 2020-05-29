@@ -81,7 +81,7 @@ namespace DN.LevelSelect
             else
             {
                 biomeUI.SetTaskManager(isBiomeFinished, (maxBiomeLevelsCompleted - currentLevelsCompleted));
-                currentLevelsCompleted = minBiomeLevelsCompleted;
+                currentLevelsCompleted = 0;
                 isBiomeFinished = false;
             }
         }
@@ -124,6 +124,7 @@ namespace DN.LevelSelect
             CheckForAllBiomesCleared();
             UpdateBorders();
             biomeUI.SetTaskManager(isBiomeFinished, (maxBiomeLevelsCompleted - currentLevelsCompleted));
+            currentLevelsCompleted = 0;
 
             currentBiomeObj.SetActive(value);
         }
