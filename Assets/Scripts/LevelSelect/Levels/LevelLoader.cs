@@ -30,6 +30,11 @@ namespace DN.LevelSelect.SceneManagment
         private const string LEVEL_SELECT_NAME = "LevelSelect";
         private const string BUG_IBS_NAME = "LevelOpenerBug";
         private const string HOG_IBS_NAME = "LevelOpenerHog";
+        private const string CRICKET_IBS_NAME = "LevelOpenerCricket";
+        private const string DRAGONFLY_IBS_NAME = "LevelOpenerDragonFly";
+        private const string SEALION_IBS_NAME = "LevelOpenerSeaLion";
+        private const string STICKTAIL_IBS_NAME = "LevelOpenerStickTail";
+        private const string WALRUS_IBS_NAME = "LevelOpenerWalrus";
         private const string PENGUIN_IBS_NAME = "LevelOpenerPenguin";
         private const string RACOON_IBS_NAME = "LevelOpenerRacoon";
         private const string SHARK_IBS_NAME = "LevelOpenerShark";
@@ -55,6 +60,26 @@ namespace DN.LevelSelect.SceneManagment
                 
                 switch (selectedAnimal)
                 {
+                    case LevelDataEditor.SelectedAnimal.Dragonfly:
+                        GetAndSetScene(DRAGONFLY_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Cricket:
+                        GetAndSetScene(CRICKET_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Sealion:
+                        GetAndSetScene(SEALION_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Sticktail:
+                        GetAndSetScene(STICKTAIL_IBS_NAME);
+                        break;
+
+                    case LevelDataEditor.SelectedAnimal.Walrus:
+                        GetAndSetScene(WALRUS_IBS_NAME);
+                        break;
+
                     case LevelDataEditor.SelectedAnimal.Bug:
                         GetAndSetScene(BUG_IBS_NAME);
                         break;
